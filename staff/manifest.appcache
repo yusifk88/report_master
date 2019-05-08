@@ -1,0 +1,28 @@
+CACHE MANIFEST
+#DATE 2018-06-25
+CACHE:
+../admin/start/jquery-ui.theme.min.css
+../admin/css/ui-lightness/jquery-ui-1.10.4.min.css
+../admin/css/font-awesome.min.css
+../admin/css/dropzone.min.css
+../admin/css/basic.min.css
+../admin/css/snarl.min.css
+../admin/css/bootstrap-dialog.min.css
+../admin/css/bootstrap.min.css
+../admin/css/mystyle.css
+../admin/fonts/FontAwesome.otf
+../admin/fonts/fontawesome-webfont.eot
+../admin/fonts/fontawesome-webfont.svg
+../admin/js/jquery.js
+../admin/js/jquery-ui-1.10.4.min.js
+../admin/js/bootstrap.min.js
+../admin/js/bootstrap-dialog.min.js
+../admin/js/dropzone.min.js
+../admin/js/snarl.min.js
+../admin/js/waves.min.js
+../admin/js/chart.js
+../admin/js/wejs.js
+../admin/js/chart.js
+NETWORK:
+*
+FALLBACK

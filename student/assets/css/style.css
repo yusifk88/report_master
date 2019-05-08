@@ -1,0 +1,84 @@
+.img-circle{
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+
+}
+
+.padding-left{
+
+    padding-left: 18%;
+
+}
+
+#main-content, #nav-btn{
+    transition: 0.5s ease-out;
+
+}
+#nav-btn{
+     transition: 5s ease-out;
+
+ }
+
+.popover-body{
+
+    padding: 0;
+
+    border:none !important;
+
+}
+@media (max-width: 762px){
+    .padding-left{
+
+        padding-left: 28%;
+    }
+
+    nav.sidebar{
+
+        width: 30% !important;
+
+    }
+
+
+    .hidden-sm{
+
+        display: none;
+
+    }
+
+    #perf_graph{
+
+        width: 500px !important;
+
+    }
+
+}
+
+@keyframes spin-right{
+    0%{
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes spin-left{
+    0%{
+        transform: rotate(-90deg);
+    }
+}
+
+.spin-once{
+
+    animation: spin-right 0.2s linear;
+
+}
+
+.spin-reverse{
+
+    animation: spin-left 0.2s linear;
+
+}
+
+.modal-content{
+    z-index: 999;
+
+}

@@ -1,0 +1,21 @@
+<?php
+include_once './objts/config.php';
+$cf = new config();
+$cf->connect();
+include_once './objts/utitlity.php';
+$util = new Utitlity();
+$id = $_GET['id'];
+$term=$_GET['term'];
+$ayear =$_GET['ayear'];
+$cls =$_GET['cls'];
+$sub= $_GET['subjt'];
+$oldrecs = mysqli_query($cf->con,"select stid,subtotl,exam from records where id ='$id'");
+$oldrecrow = mysqli_fetch_object($oldrecs);
+$stid = $oldrecrow->stid;
+$oldsubtotl= $oldrecrow->subtotl;
+$oldexam = $oldrecrow->exam;
+$oldtotls = ($oldexam+$oldsubtotl);
+mysqli_query($cf->con,"update totls set totlscore=totlscore-$oldtotls where stid = '$stid' and term = '$term' and ayear = '$ayear' and cls='$cls'");
+mysqli_query($cf->con,"delete from records where id = ".$id);
+//$util->position($sub, $cls, $ayear, $term);
+//$util->position_totls($ayear, $term, $cls);
