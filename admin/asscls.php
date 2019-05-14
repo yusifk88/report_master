@@ -10,11 +10,11 @@ include_once "objts/config.php";
 $cf = new config();
 $cf->connect();
 
-$ayears = mysqli_query($cf->con,"select id,classname from classes");
+$ayears = mysqli_query($cf->con, "select id,classname from classes");
 
-while($row=mysqli_fetch_object($ayears)){
+while ($row = mysqli_fetch_object($ayears)) {
     ?>
-    <option value="<?=$row->id?>"><?=$row->classname?></option>
+    <option value="<?= $row->id ?>"><?= $row->classname ?></option>
 
     <?php
 }

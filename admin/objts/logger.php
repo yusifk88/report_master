@@ -8,5 +8,13 @@
 
 class logger
 {
+    var $uid = 0;
+    var $action = '';
+
+    function createlog(){
+
+
+
+    }
 
 }

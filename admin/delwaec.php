@@ -6,4 +6,4 @@ $cf->connect();
 
 $id = $_GET["id"];
 
-mysqli_query($cf->con,"delete from waec WHERE stid = '$id'");
+mysqli_query($cf->con, "delete from waec WHERE stid = '$id'");

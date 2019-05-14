@@ -22,7 +22,7 @@ class myreports extends CI_Controller
             $data['exam_ratio'] = $this->school->exam_ratio;
 
             $stid = $_SESSION['stid'];
-            $data['stid']=$stid;
+            $data['stid'] = $stid;
             $ayears = $this->db->query("select distinct(acyear) as ayear from records where stid = '$stid' ")->result();
             $data['myyears'] = $ayears;
             $data['active'] = 1;

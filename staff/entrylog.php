@@ -1,9 +1,9 @@
 <?php
 ini_set("max_execution_time",300);
 include("check_session.php");
-include_once './objts/school.php';
-include_once 'objts/config.php';
-include_once 'objts/utitlity.php';
+include_once '../admin/objts/school.php';
+include_once '../admin/objts/config.php';
+include_once '../admin/objts/utitlity.php';
 $ut = new utitlity();
 $cf = new config();
 $sch = new school();
@@ -23,8 +23,8 @@ $staff_list = mysqli_query($cf->con, "select staff.fname,staff.lname,classes.cla
 <head>
     <meta charset="UTF-8">
 
-    <link href="css/bootstrap-print.css" rel="stylesheet" type="text/css"/>
-    <script src='js/wejs.js' type="text/javascript"></script>
+    <link href="../admin/css/bootstrap-print.css" rel="stylesheet" type="text/css"/>
+    <script src='../admin/js/wejs.js' type="text/javascript"></script>
     <style type="text/css">
         table, th, tr, td {
             border: 1px solid #000 !important;

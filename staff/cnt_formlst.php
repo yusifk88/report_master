@@ -9,4 +9,4 @@ $term = $_GET["term"];
 $cnt = mysqli_query("select count(*) from stuinfo where ayear = '$ayear' and form = '$form'");
 $data = mysql_result($cnt, 0);
 header("content-Type:application/JSON");
-echo '{"count_val" : '.$data.'}';
+echo '{"count_val" : ' . $data . '}';

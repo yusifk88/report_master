@@ -1,5 +1,5 @@
 <?php
-include("objts/config.php");
+include("../admin/objts/config.php");
 $con = new config();
 $con->connect();
 $id = $_GET['stid'];

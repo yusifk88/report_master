@@ -12,16 +12,16 @@ $ayear = $_GET['ayear'];
 
     <link href="css/bootstrap-print.css" rel="stylesheet" type="text/css"/>
     <style type="text/css">
-        table, th, tr, td{
-            border:1px solid #000 !important;
+        table, th, tr, td {
+            border: 1px solid #000 !important;
 
 
         }
 
-        @media print{
+        @media print {
 
-            table, th, tr, td{
-                border:1px solid #000 !important;
+            table, th, tr, td {
+                border: 1px solid #000 !important;
 
 
             }
@@ -33,7 +33,7 @@ $ayear = $_GET['ayear'];
 <body>
 <div class="container">
     <?php
-    $cls_list = mysqli_query( $cf->con,"select fname,oname,lname,stindex,gender, classes.classname from stuinfo ,classes where ayear = '$ayear' and stuinfo.class = classes.id and stuinfo.id not in (SELECT  stid from withdraw) order by fname ASC ");
+    $cls_list = mysqli_query($cf->con, "select fname,oname,lname,stindex,gender, classes.classname from stuinfo ,classes where ayear = '$ayear' and stuinfo.class = classes.id and stuinfo.id not in (SELECT  stid from withdraw) order by fname ASC ");
     $sch = new school();
 
 
@@ -41,7 +41,7 @@ $ayear = $_GET['ayear'];
 
     <div class="row" style="border-bottom: 1px solid #000; margin-bottom: 10px; ">
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-            <img style="margin: 10px;"  class="img-responsive" src="objts/<?= $sch->logopath ?>" alt="School Crest" />
+            <img style="margin: 10px;" class="img-responsive" src="objts/<?= $sch->logopath ?>" alt="School Crest"/>
 
 
         </div>
@@ -49,11 +49,10 @@ $ayear = $_GET['ayear'];
             <center>
                 <u><span style="font-size: 25px; font-weight: bold;"><?= ucwords($sch->schname) ?></span><br/></u>
                 <span style="font-size: 12px;"><?= strtoupper($sch->schooladdress) ?></span><br/>
-                <span style="font-size: 20px;">GENERAL LIST OF STUDENTS <?=" (". $ayear .")";?> </span>
+                <span style="font-size: 20px;">GENERAL LIST OF STUDENTS <?= " (" . $ayear . ")"; ?> </span>
 
 
             </center>
-
 
 
         </div>
@@ -84,23 +83,22 @@ $ayear = $_GET['ayear'];
         </tr>
 
 
-
         </thead>
         <tbody>
         <?php
-        $i=0;
-        $males =0;
-        $female =0;
+        $i = 0;
+        $males = 0;
+        $female = 0;
         while ($row = mysqli_fetch_object($cls_list)) {
-             $row->gender == 'Male' ? $males++ : $female++;
+            $row->gender == 'Male' ? $males++ : $female++;
             $i++;
             ?>
             <tr>
-                <td style="text-align: center;"><?=$i;?></td>
-                <td style="text-align: center;"><?=$row->stindex;?></td>
-                <td><?=$row->fname.' '.$row->lname.' '.$row->oname;?></td>
-                <td  style="text-align: center;"><?=$row->gender;?></td>
-                <td style="text-align: center;"><?=$row->classname;?></td>
+                <td style="text-align: center;"><?= $i; ?></td>
+                <td style="text-align: center;"><?= $row->stindex; ?></td>
+                <td><?= $row->fname . ' ' . $row->lname . ' ' . $row->oname; ?></td>
+                <td style="text-align: center;"><?= $row->gender; ?></td>
+                <td style="text-align: center;"><?= $row->classname; ?></td>
             </tr>
             <?php
 
@@ -110,22 +108,19 @@ $ayear = $_GET['ayear'];
         </tbody>
 
 
-
-
     </table>
 
 
     <div class="row" style="border-top: 1px solid #000;">
         <h3><strong>SUMMARY</strong></h3>
-        <p><strong>Total Number:</strong> <?=$i;?></p>
-        <p><strong>Number Of Girls:</strong> <?=$female;?></p>
-        <p><strong>Number Of Boys:</strong> <?=$males;?></p>
-
-
+        <p><strong>Total Number:</strong> <?= $i; ?></p>
+        <p><strong>Number Of Girls:</strong> <?= $female; ?></p>
+        <p><strong>Number Of Boys:</strong> <?= $males; ?></p>
 
 
     </div>
-    <button type='button' class='btn btn-primary btn-sm pull-right hidden-print' onclick='window.print();'>Print</button>
+    <button type='button' class='btn btn-primary btn-sm pull-right hidden-print' onclick='window.print();'>Print
+    </button>
 
 </div>
 </body>

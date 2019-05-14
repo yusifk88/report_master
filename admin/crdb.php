@@ -1,13 +1,13 @@
 <?php
 
- $con = mysqli_connect("localhost","root","");
-$chk = mysqli_select_db($con,"reportdb");
-if(!$chk){
-    
-    mysqli_query($con,"create database reportdb");
-    mysqli_select_db($con,"reportdb");
-    
-    mysqli_query($con,"
+$con = mysqli_connect("localhost", "root", "");
+$chk = mysqli_select_db($con, "reportdb");
+if (!$chk) {
+
+    mysqli_query($con, "create database reportdb");
+    mysqli_select_db($con, "reportdb");
+
+    mysqli_query($con, "
             CREATE TABLE classes (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `classname` varchar(100) NOT NULL,
@@ -15,19 +15,18 @@ if(!$chk){
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1
              ");
-    
-    
-      mysqli_query($con," CREATE TABLE `dept` (
+
+
+    mysqli_query($con, " CREATE TABLE `dept` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `depname` varchar(120) NOT NULL,
   `dentry` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 ");
-   
-      
-      
-     mysqli_query($con," CREATE TABLE `houses` (
+
+
+    mysqli_query($con, " CREATE TABLE `houses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(120) NOT NULL,
   `des` varchar(200) NOT NULL,
@@ -35,8 +34,8 @@ if(!$chk){
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
  ");
-     
-        mysqli_query($con,"CREATE TABLE `records` (
+
+    mysqli_query($con, "CREATE TABLE `records` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `stid` int(11) NOT NULL,
   `acyear` varchar(20) NOT NULL,
@@ -63,9 +62,9 @@ if(!$chk){
   `post` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=latin1;
- "); 
-  
-        mysqli_query($con,"CREATE TABLE staff (
+ ");
+
+    mysqli_query($con, "CREATE TABLE staff (
   `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `fname` varchar(100) NOT NULL,
   `lname` varchar(100) NOT NULL,
@@ -87,10 +86,10 @@ if(!$chk){
   `user_type` varchar(20) NOT NULL,
   `status` varchar(20) NOT NULL
 )
-"); 
-  
-        
-      mysqli_query($con," CREATE TABLE `stuinfo` (
+");
+
+
+    mysqli_query($con, " CREATE TABLE `stuinfo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `stindex` varchar(20) NOT NULL,
   `ayear` varchar(20) NOT NULL,
@@ -114,8 +113,8 @@ if(!$chk){
   `photo` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
 )");
-      
-            mysqli_query($con," CREATE TABLE `subas` (
+
+    mysqli_query($con, " CREATE TABLE `subas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subid` int(11) NOT NULL,
   `stfid` int(11) NOT NULL,
@@ -124,15 +123,15 @@ if(!$chk){
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
  ");
 
-      mysqli_query($con," CREATE TABLE `subjects` (
+    mysqli_query($con, " CREATE TABLE `subjects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subjdesc` varchar(20) NOT NULL,
   `type` varchar(70) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
-"); 
-      
-     mysqli_query($con," CREATE TABLE `totls` (
+");
+
+    mysqli_query($con, " CREATE TABLE `totls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `stid` int(11) NOT NULL,
   `cls` int(11) NOT NULL,
@@ -143,18 +142,18 @@ if(!$chk){
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=latin1;
  ");
-      $pass = md5("032102726042");
-     mysqli_query($con,"insert into staff(fname,lname,gender,contact,uname,upass,user_type,status) values('Wide','Empire','Male','0207796042','muyudu','$pass','admin','active')");
+    $pass = md5("032102726042");
+    mysqli_query($con, "insert into staff(fname,lname,gender,contact,uname,upass,user_type,status) values('Wide','Empire','Male','0207796042','muyudu','$pass','admin','active')");
 
 
-  mysqli_query($con,"CREATE TABLE IF NOT EXISTS `deadline` (
+    mysqli_query($con, "CREATE TABLE IF NOT EXISTS `deadline` (
   `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `status` varchar(10) NOT NULL,
   `ddate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1");
 
 
-    mysqli_query($con,"CREATE TABLE IF NOT EXISTS `ginfo` (
+    mysqli_query($con, "CREATE TABLE IF NOT EXISTS `ginfo` (
   `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `stid` int(11) NOT NULL,
   `term` varchar(4) NOT NULL,
@@ -164,7 +163,7 @@ if(!$chk){
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1");
 
 
-    mysqli_query($con,"CREATE TABLE IF NOT EXISTS `frmass` (
+    mysqli_query($con, "CREATE TABLE IF NOT EXISTS `frmass` (
   `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `stid` int(11) NOT NULL,
   `cls` int(11) NOT NULL,
@@ -179,14 +178,14 @@ if(!$chk){
 )  ENGINE=InnoDB DEFAULT CHARSET=latin1");
 
 
-mysqli_query($con,"CREATE TABLE IF NOT EXISTS `frmmaters` (
+    mysqli_query($con, "CREATE TABLE IF NOT EXISTS `frmmaters` (
   `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT ,
   `stfid` int(11) NOT NULL,
   `clid` int(11) NOT NULL
 ) DEFAULT CHARSET=latin1");
 
 
-mysqli_query($con,"CREATE TABLE IF NOT EXISTS `withdraw` (
+    mysqli_query($con, "CREATE TABLE IF NOT EXISTS `withdraw` (
   `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `stid` int(11) NOT NULL,
   `wdate` date NOT NULL
@@ -195,11 +194,7 @@ mysqli_query($con,"CREATE TABLE IF NOT EXISTS `withdraw` (
 
     $nw = date("Y-m-d");
 
-mysqli_query($con,"insert into deadline(status,ddate) values('OFF','$nw')");
-
-
-
-
+    mysqli_query($con, "insert into deadline(status,ddate) values('OFF','$nw')");
 
 
 }

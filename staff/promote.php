@@ -12,9 +12,9 @@ $selects = $_POST['selectchk'];
 $selcount = count($selects);
 
 
-for($i=0; $i<$selcount; $i++){
+for ($i = 0; $i < $selcount; $i++) {
     $id = $selects[$i];
     mysqli_query("update stuinfo set class = '$prmto_class',form='$prmto_form',ayear='$prmto_ayear' where class = '$prmfrom_class' and form = '$prmfrom_form' and ayear = '$prmfrom_ayear' and id = '$id' ");
-    
+
 }
 echo 'Promotion Was Successful';

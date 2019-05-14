@@ -7,15 +7,14 @@ $dpid = $_GET['depid'];
 $dep = mysqli_query("select classname,id from classes where dpid='$dpid'");
 
 while ($row = mysql_fetch_assoc($dep)) {
-    
+
     ?>
 
-<option value="<?php echo $row['id']; ?>" ><?php echo $row['classname']; ?></option>
-    
-    
-    
- <?php   
-    
+    <option value="<?php echo $row['id']; ?>"><?php echo $row['classname']; ?></option>
+
+
+    <?php
+
 }
 ?>
 

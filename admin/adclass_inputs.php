@@ -10,7 +10,7 @@ $d = $dp->getdpts();
 
         <div class="md-form">
             <i class="prefix fa fa-home"></i>
-            <input id="classname" class="form-control" type="text" required="required" />
+            <input id="classname" class="form-control" type="text" required="required"/>
             <label for="classname">Class Name</label>
 
         </div>
@@ -18,21 +18,21 @@ $d = $dp->getdpts();
 
         <label class="control-label" for="dept">Department</label>
         <select class="form-control" id="dep">
-            
+
             <?php
             while ($row = mysqli_fetch_object($d)) {
-                
-                
+
+
                 ?>
-                
-            <option value="<?php echo $row->id; ?>"><?php echo "$row->depname";?></option>
-            
+
+                <option value="<?php echo $row->id; ?>"><?php echo "$row->depname"; ?></option>
+
                 <?php
-                
+
             }
-            
+
             ?>
         </select>
-        
-    </form> 
+
+    </form>
 </div>

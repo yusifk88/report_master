@@ -1,9 +1,9 @@
 <?php
 include_once("./objts/config.php");
-$cf= new config();
+$cf = new config();
 $cf->connect();
 session_start();
-if(isset($_SESSION['id'])) {
+if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
     $mydet = mysqli_fetch_object(mysqli_query($cf->con, "select * from staff where id = '$id'"));
     $ranklist = ["Senior Sup't", "Prin. Sup't", "Assist. Dir ii", "Assist. Dir I", "Dep. Dir.", "Dir. II", "Dir. I"];
@@ -18,28 +18,28 @@ if(isset($_SESSION['id'])) {
     $rank = is_numeric($mydet->rank) ? $mydet->rank : 0;
     ?>
     <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="page-header">
+        <div class="mx-auto col-md-8 col-sm-12 col-12 ">
+            <div class="card">
+                <div class="card-header">
                     <div class="row">
-                        <div class="col-gl-2 col-md-2 col-sm-4 col-xs-4">
-                            <button class="btn btn-good waves-effect waves-button"
-                                    onclick="editaccount(<?= $mydet->id ?>)">Change Details
+                        <div class=" col-md-2 col-sm-4 col-4">
+                            <button class="btn btn-sm rgba-cyan-strong"
+                                    onclick="upstaff(<?= $mydet->id ?>)">Change Details
                             </button>
                         </div>
-                        <div class="col-gl-2 col-md-2 col-sm-4 col-xs-4">
-                            <button class="btn btn-good waves-effect waves-button"
+                        <div class=" col-md-2 col-sm-4 col-4">
+                            <button class="btn btn-sm rgba-cyan-strong"
                                     onclick="chngpass(<?= $mydet->id ?>);">Change Password
                             </button>
                         </div>
-                        <div class="col-gl-2 col-md-2 col-sm-4 col-xs-4">
-                            <button class="btn btn-good waves-effect waves-button"
+                        <div class=" col-md-2 col-sm-4 col-4">
+                            <button class="btn btn-sm rgba-cyan-strong"
                                     onclick="printstf(<?= $mydet->id ?>)">My Profile
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" id="dp-cont">
                             <img style=" margin-left:10px;width: 150px; height:150px;"
@@ -49,7 +49,7 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6" style="vertical-align: bottom;">
                             <button onclick="$('#dp-cont').click();" style="vertical-align: bottom;"
-                                    class="btn btn-good waves-effect waves-button">Change Photo
+                                    class="btn btn-outline-amber">Change Photo
                             </button>
                         </div>
 
@@ -61,8 +61,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-12 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$mydet->fname." ".$mydet->lname?>
-                  </div>
+                            <?= $mydet->fname . " " . $mydet->lname ?>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -71,8 +71,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-10 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$mydet->stfid?>
-                  </div>
+                            <?= $mydet->stfid ?>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -81,8 +81,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-10 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$mydet->contact?>
-                  </div>
+                            <?= $mydet->contact ?>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -91,8 +91,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-10 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$mydet->dob?>
-                  </div>
+                            <?= $mydet->dob ?>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -101,8 +101,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-10 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$mydet->regno?>
-                  </div>
+                            <?= $mydet->regno ?>
+                        </div>
                     </div>
 
 
@@ -112,8 +112,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-10 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$mydet->snnid?>
-                  </div>
+                            <?= $mydet->snnid ?>
+                        </div>
                     </div>
 
 
@@ -123,8 +123,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-10 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$mydet->pqual?>
-                  </div>
+                            <?= $mydet->pqual ?>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -133,8 +133,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-10 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$mydet->aqual?>
-                  </div>
+                            <?= $mydet->aqual ?>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -143,8 +143,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-10 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$ranklist[$rank]?>
-                  </div>
+                            <?= $ranklist[$rank] ?>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -153,8 +153,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-10 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$mydet->appdate?>
-                  </div>
+                            <?= $mydet->appdate ?>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -182,8 +182,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-10 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$dbyear?>
-                  </div>
+                            <?= $dbyear ?>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -192,8 +192,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-10 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$mydet->bank?>
-                  </div>
+                            <?= $mydet->bank ?>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-gl-2 col-md-2 col-sm-2 col-xs-12">
@@ -201,8 +201,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-10 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$mydet->accno?>
-                  </div>
+                            <?= $mydet->accno ?>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -211,8 +211,8 @@ if(isset($_SESSION['id'])) {
                         </div>
                         <div class="col-gl-10 col-md-10 col-sm-10 col-xs-12"
                              style="padding: 10px; border-bottom: 1px solid #DDDDDD;">
-                      <?=$mydet->uname?>
-                  </div>
+                            <?= $mydet->uname ?>
+                        </div>
                     </div>
 
                 </div>
@@ -220,7 +220,7 @@ if(isset($_SESSION['id'])) {
         </div>
     </div>
     <?php
-}else{
+} else {
     ?>
     <script>
 
@@ -232,111 +232,119 @@ if(isset($_SESSION['id'])) {
 ?>
 <script>
 
-    function printstf(id){
+    function printstf(id) {
         window.open("staffprf.php?id=" + id, "Staff Profile", "outerHeight=800px,outerWidth=800px,innerHeight=750px,innerWidth=750px,menubar=yes,scrollbars=yes");
     }
-    function editaccount(id){
+
+    function editaccount(id) {
         fullProg();
-        $.get("get_up_inputs.php?id="+id,null,function(data){
-        }).done(function(data){
+        $.get("get_up_inputs.php?id=" + id, null, function (data) {
+        }).done(function (data) {
             remove_fullprog();
             BootstrapDialog.show({
-                title:"Update Your Particulars.",
-                message:data,
-                buttons:[{label:"UPDATE",cssClass:"btn-good waves-effect waves-button",action:function(d){
-                    if(!$("#upfname,#uplname,#upcontact").val()){
-                        return false;
-                    }
-                    d.close();
-                    var progress = Snarl.addNotification({
-                        title:"Please Wait...",
-                        text:"Updating Staff Info.",
-                        icon:"<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-circle-o-notch fa-spin'></i>",
-                        timeout:null
-                    });
-                    $(".snarl-notification").addClass('snarl-info');
-                    $.get("updatestaff.php?id="+id+"&fname="+$("#upfname").val()+"&lname="+$("#uplname").val()+"&gender="+$("#upgender").val()+"&contact="+$("#upcontact").val()+"&rank="+$("#uprank").val()+"&stfid="+$("#upstfid").val()+"&dob="+$("#updob").val()+"&regno="+$("#upregno").val()+"&aqual="+$("#upaqual").val()+"&pqual="+$("#uppqual").val()+"&appdate="+$("#upappdate").val()+"&assdate="+$("#upassdate").val()+"&bank="+$("#upbank").val()+"&accno="+$("#upaccno").val()+"&ssnid="+$('#upssnid').val(),function(data){
-                    }).done(function(){
-                        Snarl.removeNotification(progress);
-                        Snarl.addNotification({
-                            title:"UPDATED",
-                            text:"Staff Info. Updated successfully",
-                            icon:"<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle-o'></i>",
-                            timeout:5000
+                title: "Update Your Particulars.",
+                message: data,
+                buttons: [{
+                    label: "UPDATE", cssClass: "btn-good waves-effect waves-button", action: function (d) {
+                        if (!$("#upfname,#uplname,#upcontact").val()) {
+                            return false;
+                        }
+                        d.close();
+                        var progress = Snarl.addNotification({
+                            title: "Please Wait...",
+                            text: "Updating Staff Info.",
+                            icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-circle-o-notch fa-spin'></i>",
+                            timeout: null
                         });
-                        $(".snarl-notification").addClass('snarl-success');
-                        getMyaccount();
-                    });
-                }},{label:"CANCEL",cssClass:"btn-bad waves-effect waves-button",action:function(d){d.close()}}],
-                closable:false,
-                size:"size-wide"
+                        $(".snarl-notification").addClass('snarl-info');
+                        $.get("updatestaff.php?id=" + id + "&fname=" + $("#upfname").val() + "&lname=" + $("#uplname").val() + "&gender=" + $("#upgender").val() + "&contact=" + $("#upcontact").val() + "&rank=" + $("#uprank").val() + "&stfid=" + $("#upstfid").val() + "&dob=" + $("#updob").val() + "&regno=" + $("#upregno").val() + "&aqual=" + $("#upaqual").val() + "&pqual=" + $("#uppqual").val() + "&appdate=" + $("#upappdate").val() + "&assdate=" + $("#upassdate").val() + "&bank=" + $("#upbank").val() + "&accno=" + $("#upaccno").val() + "&ssnid=" + $('#upssnid').val(), function (data) {
+                        }).done(function () {
+                            Snarl.removeNotification(progress);
+                            Snarl.addNotification({
+                                title: "UPDATED",
+                                text: "Staff Info. Updated successfully",
+                                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle-o'></i>",
+                                timeout: 5000
+                            });
+                            $(".snarl-notification").addClass('snarl-success');
+                            getMyaccount();
+                        });
+                    }
+                }, {
+                    label: "CANCEL", cssClass: "btn-bad waves-effect waves-button", action: function (d) {
+                        d.close()
+                    }
+                }],
+                closable: false,
+                size: "size-wide"
             });
-        }).error(function(){
+        }).error(function () {
             show_error();
         });
 
     }
 
-    function chngpass(id){
-        var temp ="<input id='myid' type='hidden' value='"+id+"'>";
-        temp+="<div class='row'>";
-        temp+="<div class='col-lg-12 ol-md-12 col-sm-12 col-xs-12'><label class='control-label'>Password</label><input id='newpass' type='password' class='form-control' placeholder='Create New password'></div>";
-        temp+="<div class='col-lg-12 ol-md-12 col-sm-12 col-xs-12'><label class='control-label'>Confirm Password</label><input id='cnewpass' type='password' class='form-control' placeholder='Confirm New password'></div>";
-        temp+="</div>";
+    function chngpass(id) {
+        var temp = "<input id='myid' type='hidden' value='" + id + "'>";
+        temp += "<div class='row'>";
+        temp += "<div class='col-lg-12 ol-md-12 col-sm-12 col-xs-12'><label class='control-label'>Password</label><input id='newpass' type='password' class='form-control' placeholder='Create New password'></div>";
+        temp += "<div class='col-lg-12 ol-md-12 col-sm-12 col-xs-12'><label class='control-label'>Confirm Password</label><input id='cnewpass' type='password' class='form-control' placeholder='Confirm New password'></div>";
+        temp += "</div>";
         BootstrapDialog.show({
-        title:"Reset your password",
-        message:temp,
-        buttons:[{label:"Chnage",cssClass:"btn-good waves-effect waves-button",action:function(d){
-        var id = $("#myid").val();
-        var newpass = $("#newpass").val();
-        var cnewpass = $("#cnewpass").val();
-            if(newpass.length<1){
-                $("#newpass").focus();
+            title: "Reset your password",
+            message: temp,
+            buttons: [{
+                label: "Chnage", cssClass: "btn-good waves-effect waves-button", action: function (d) {
+                    var id = $("#myid").val();
+                    var newpass = $("#newpass").val();
+                    var cnewpass = $("#cnewpass").val();
+                    if (newpass.length < 1) {
+                        $("#newpass").focus();
 
-            }else if(cnewpass.length<1){
-                $("#cnewpass").focus();
-            }else if(newpass !=cnewpass){
-                Snarl.addNotification({
-                    title: "ERROR",
-                    text: "The passwords you entered are not the same, please check and try again",
-                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                    timeout: 8000
-                });
-                $(".snarl-notification").addClass('snarl-error');
-            }else{
+                    } else if (cnewpass.length < 1) {
+                        $("#cnewpass").focus();
+                    } else if (newpass != cnewpass) {
+                        Snarl.addNotification({
+                            title: "ERROR",
+                            text: "The passwords you entered are not the same, please check and try again",
+                            icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                            timeout: 8000
+                        });
+                        $(".snarl-notification").addClass('snarl-error');
+                    } else {
 
-                $.get("do_reset.php?id="+id+"&new_pass="+newpass,function(){
+                        $.get("do_reset.php?id=" + id + "&new_pass=" + newpass, function () {
 
-                    Snarl.addNotification({
-                        title: "SUCCESS",
-                        text: "Your password was changed successfully, please remember to use the new password next time",
-                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
-                        timeout: 8000
-                    });
+                            Snarl.addNotification({
+                                title: "SUCCESS",
+                                text: "Your password was changed successfully, please remember to use the new password next time",
+                                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                                timeout: 8000
+                            });
 
-                    $(".snarl-notification").addClass('snarl-success');
-                    d.close();
+                            $(".snarl-notification").addClass('snarl-success');
+                            d.close();
 
-                });
-            }
-        }}]
+                        });
+                    }
+                }
+            }]
 
-});
+        });
     }
 
 
-
-
-   var drp = $("div#dp-cont").dropzone(
-        { url: "./dropdp.php",
+    var drp = $("div#dp-cont").dropzone(
+        {
+            url: "./dropdp.php",
             acceptedFiles: "image/*",
-            addRemoveLinks:true,
-            dictDefaultMessage:"",
-            resizeWidth:"180",
-            resizeHeight:"200",
-            resizeMethod:"crop",
-            maxFiles:1,
-            complete:function(){
+            addRemoveLinks: true,
+            dictDefaultMessage: "",
+            resizeWidth: "180",
+            resizeHeight: "200",
+            resizeMethod: "crop",
+            maxFiles: 1,
+            complete: function () {
 
                 getMyaccount();
             }

@@ -6,8 +6,8 @@ include_once './objts/house.php';
 $hse = new House();
 $name = $_GET['name'];
 $des = $_GET['des'];
-$hse->house_des=$des;
-$hse->house_name=$name;
+$hse->house_des = $des;
+$hse->house_name = $name;
 
-$res=$hse->createhouse();
+$res = $hse->createhouse();
 echo $res;

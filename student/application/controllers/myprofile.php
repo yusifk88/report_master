@@ -9,22 +9,25 @@
 class myprofile extends CI_Controller
 {
 
-    function index(){
+    function index()
+    {
 
         session_start();
-        if(!isset($_SESSION['stindex'])){
+        if (!isset($_SESSION['stindex'])) {
             $this->load->view("login");
-        }else{
+        } else {
             $data['active'] = 0;
             $myid = $_SESSION['stid'];
             $myinfo = $this->db->query("select stuinfo.*,stuinfo.id as stid,classes.classname,houses.name,dept.depname,houses.des from stuinfo,classes,dept,houses WHERE stuinfo.id = '$myid' and stuinfo.class=classes.id and stuinfo.dept = dept.id and stuinfo.house=houses.id")->result()[0];
-            $data['myinfo'] =$myinfo;
-            $this->load->view("temp/header",$data);
+            $data['myinfo'] = $myinfo;
+            $this->load->view("temp/header", $data);
             $this->load->view("myprofile");
             $this->load->view("temp/footer");
         }
     }
-    function printprofile(){
+
+    function printprofile()
+    {
         $this->load->model("school");
         $this->load->model("utility");
         $myid = $this->input->get('id');
@@ -35,25 +38,24 @@ class myprofile extends CI_Controller
         $data['schname'] = $this->school->schname;
         $data['address'] = $this->school->schooladdress;
         $data['cmnt'] = $cmnt;
-        $this->load->view("profile",$data);
+        $this->load->view("profile", $data);
     }
 
 
-    function createacnt(){
+    function createacnt()
+    {
         session_start();
         $myindex = $this->input->post("myindex");
         $newpass = md5($this->db->escape_str($this->input->post("newpass")));
         $test = $this->db->query("select * from stlogin where stindex = '$myindex'")->num_rows();
-        if($test <1){
+        if ($test < 1) {
 
             $this->db->query("insert into stlogin(stindex,stpassword) VALUES('$myindex','$newpass')");
-        }else{
+        } else {
 
-          $this->db->query("update stlogin set stpassword = '$newpass' where stindex = '$myindex'");
+            $this->db->query("update stlogin set stpassword = '$newpass' where stindex = '$myindex'");
 
         }
-
-
 
 
         session_destroy();

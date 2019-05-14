@@ -25,28 +25,29 @@ $id = $_GET['id'];
     </thead>
     <tbody>
     <?php
-    $cmts = mysqli_query($cf->con,"select * from ginfo where stid = '$id' order by id DESC ");
+    $cmts = mysqli_query($cf->con, "select * from ginfo where stid = '$id' order by id DESC ");
 
-    $i =1;
-    while($row = mysqli_fetch_object($cmts)){
+    $i = 1;
+    while ($row = mysqli_fetch_object($cmts)) {
 
 
         ?>
         <tr>
-            <td><?=$i;?></td>
-            <td><?=$row->coment;?></td>
-            <td><?=$row->ayear;?></td>
-            <td><?= $ut->addsufix($row->term);?> Term</td>
-            <td><?=$row->dentry;?></td>
-            <td style="text-align: center;"><i onclick="delcomm(<?=$row->id;?>);" title="Delete this Comment" data-toggle ="tooltip" style="color: red; cursor: pointer;" class="fa fa-remove waves-effect waves-circle"></i> </td>
-
+            <td><?= $i; ?></td>
+            <td><?= $row->coment; ?></td>
+            <td><?= $row->ayear; ?></td>
+            <td><?= $ut->addsufix($row->term); ?> Term</td>
+            <td><?= $row->dentry; ?></td>
+            <td style="text-align: center;"><i onclick="delcomm(<?= $row->id; ?>);" title="Delete this Comment"
+                                               data-toggle="tooltip" style="color: red; cursor: pointer;"
+                                               class="fa fa-remove waves-effect waves-circle"></i></td>
 
 
         </tr>
 
 
         <?php
-    $i++;
+        $i++;
     }
     ?>
 

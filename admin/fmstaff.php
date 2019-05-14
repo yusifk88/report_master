@@ -1,4 +1,5 @@
 <?php
+ini_set("max_execution_time",300);
 include("check_session.php");
 include_once './objts/config.php';
 include_once './objts/school.php';
@@ -9,40 +10,40 @@ $cg = new config();
 $cg->connect();
 include_once './objts/utitlity.php';
 $util = new Utitlity();
-$stafflist = mysqli_query($cg->con,"select staff.*,classes.classname from staff,classes,frmmaters WHERE staff.id = frmmaters.stfid and classes.id = frmmaters.clid ORDER by fname ASC ");
+$stafflist = mysqli_query($cg->con, "select staff.*,classes.classname from staff,classes,frmmaters WHERE staff.id = frmmaters.stfid and classes.id = frmmaters.clid ORDER by fname ASC ");
 ?>
 <html>
 <head>
     <title>List Of Staff</title>
-    <link href='css/bootstrap-print.css' rel='stylesheet' />
+    <link href='css/bootstrap-print.css' rel='stylesheet'/>
     <style type="text/css">
-        table, th, tr, td{
-            border:1px solid #000 !important;
+        table, th, tr, td {
+            border: 1px solid #000 !important;
 
 
         }
 
-        #main_head{
+        #main_head {
 
-            font-size:28px;
+            font-size: 28px;
             font-weight: bold;
 
 
         }
 
-        #sub_head{
+        #sub_head {
 
 
-            font-size:20px;
+            font-size: 20px;
             font-weight: bold;
 
 
         }
 
-        @media print{
+        @media print {
 
-            table, th, tr, td{
-                border:1px solid #000 !important;
+            table, th, tr, td {
+                border: 1px solid #000 !important;
 
 
             }
@@ -55,7 +56,7 @@ $stafflist = mysqli_query($cg->con,"select staff.*,classes.classname from staff,
     <div class='row'>
         <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
             <center>
-                <u><span id='main_head'><?=$sch->schname;?></span></u>
+                <u><span id='main_head'><?= $sch->schname; ?></span></u>
                 <br/><u><span id='sub_head'>LIST OF FORM MASTERS/MISTRESSES</span></u>
             </center>
         </div>
@@ -72,18 +73,18 @@ $stafflist = mysqli_query($cg->con,"select staff.*,classes.classname from staff,
         </thead>
         <tbody>
         <?php
-        $i=1;
-        while($row = mysqli_fetch_object($stafflist)){
+        $i = 1;
+        while ($row = mysqli_fetch_object($stafflist)) {
 
             ?>
             <tr>
-                <td class="text-center"><?=$i?></td>
-                <td><?=$row->fname." ".$row->lname?></td>
-                <td><?=$row->gender?></td>
-                <td><?=$row->contact?></td>
-                <td class="text-center"><?=$row->classname?></td>
+                <td class="text-center"><?= $i ?></td>
+                <td><?= $row->fname . " " . $row->lname ?></td>
+                <td><?= $row->gender ?></td>
+                <td><?= $row->contact ?></td>
+                <td class="text-center"><?= $row->classname ?></td>
 
-<td></td>
+                <td></td>
 
 
             </tr>
@@ -96,19 +97,10 @@ $stafflist = mysqli_query($cg->con,"select staff.*,classes.classname from staff,
         ?>
 
 
-
         </tbody>
 
 
-
-
-
-
-
-
-
     </table>
-
 
 
     <button onclick="window.print();" class="btn btn-primary">Print</button>

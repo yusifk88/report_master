@@ -5,4 +5,4 @@ $cf->connect();
 
 $id = $_GET['id'];
 
-mysqli_query($cf->con,"delete from frmass WHERE id = '$id'");
+mysqli_query($cf->con, "delete from frmass WHERE id = '$id'");

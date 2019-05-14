@@ -4,4 +4,4 @@ $cf = new config();
 $id = $_GET['id'];
 $cf->connect();
 
-mysqli_query($cf->con,"delete from books_lend where id = '$id'");
+mysqli_query($cf->con, "delete from books_lend where id = '$id'");

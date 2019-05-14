@@ -35,7 +35,7 @@ if(isset($_SESSION['id'])){
 
                                 <div class="col-2 col-md-1">
                                     <img class="img-fluid img-responsive img-rounded m-2"
-                                         src="<?= file_exists($row->photo) ? $row->photo : 'objts/dpic/photo.jpg' ?>"
+                                         src="<?= file_exists('../admin/'.$row->photo) ? $row->photo : '../admin/objts/dpic/photo.jpg' ?>"
                                          alt="">
                                 </div>
                                 <div class="col-10 col-md-11 ml-2">
@@ -90,7 +90,7 @@ if(isset($_SESSION['id'])){
 
                                     <div class="col-2 col-md-1">
                                         <img class="img-fluid img-responsive img-rounded m-2"
-                                             src="<?= file_exists($row->photo) ? $row->photo : 'objts/dpic/photo.jpg' ?>"
+                                             src="<?= file_exists('../admin/'.$row->photo) ? $row->photo : '../admin/objts/dpic/photo.jpg' ?>"
                                              alt="">
                                     </div>
                                     <div class="col-10 col-md-11 ml-2">
@@ -165,7 +165,7 @@ if(isset($_SESSION['id'])){
 
                                     <div class="col-2 col-md-1">
                                         <img class="img-fluid img-responsive img-rounded m-2"
-                                             src="<?= file_exists($row->photo) ? $row->photo : 'objts/dpic/photo.jpg' ?>"
+                                             src="<?= file_exists('../admin/'.$row->photo) ? $row->photo : 'objts/dpic/photo.jpg' ?>"
                                              alt="">
                                     </div>
                                     <div class="col-10 col-md-11 ml-2">

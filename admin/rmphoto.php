@@ -9,4 +9,4 @@
 
 $file = $_GET['file'];
 
-unlink("objts/temppic/".$file);
+unlink("objts/temppic/" . $file);

@@ -8,4 +8,4 @@ $cls = $_GET['cls'];
 $cnt = mysqli_query("select count(*) from stuinfo where dept = '$prog' and ayear = '$ayear' and class = '$cls'");
 $data = mysql_result($cnt, 0);
 header("content-Type:application/JSON");
-echo '{"count_val" : '.$data.'}';
+echo '{"count_val" : ' . $data . '}';

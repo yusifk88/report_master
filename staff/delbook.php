@@ -3,4 +3,4 @@ include_once("objts/config.php");
 $cf = new config();
 $cf->connect();
 $id = $_GET['bid'];
-mysqli_query($cf->con,"delete from books where id = '$id'");
+mysqli_query($cf->con, "delete from books where id = '$id'");

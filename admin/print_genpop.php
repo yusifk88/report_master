@@ -2,7 +2,7 @@
 include_once 'objts/config.php';
 $cf = new config();
 $cf->connect();
-$ayear = mysqli_query($cf->con,"select distinct(ayear) from stuinfo ORDER by ayear desc");
+$ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo ORDER by ayear desc");
 
 ?>
 <div class="col-lg-6 col-md-6 col-md-offset-3 col-sm-12 col-12 mx-auto">
@@ -18,9 +18,9 @@ $ayear = mysqli_query($cf->con,"select distinct(ayear) from stuinfo ORDER by aye
                         <label class="control-label" for="ayer3">Academic Year</label>
                         <select id="ayer3" class="we-select form-control">
                             <?php
-                            while ($row2 = mysqli_fetch_object($ayear)){
+                            while ($row2 = mysqli_fetch_object($ayear)) {
                                 ?>
-                                <option><?=$row2->ayear;?></option>
+                                <option><?= $row2->ayear; ?></option>
                                 <?php
                             }
                             ?>

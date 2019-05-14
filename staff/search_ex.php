@@ -1,12 +1,12 @@
 <?php
-include("objts/config.php");
+include("../admin/objts/config.php");
 $cf = new config();
 $cf->connect();
 $key = $_GET['key'];
 session_start();
 if(isset($_SESSION['id'])){
     $stfid = $_SESSION['id'];
-    $inactive = mysqli_query($cf->con, "select exiat.*,staff.fname as stfname, staff.lname as stlname,stuinfo.lname,stuinfo.fname,stuinfo.oname,stuinfo.photo,TIMESTAMPDIFF(HOUR,return_date,returned_time) as duedays from exiat,staff,stuinfo WHERE exiat.stfid = staff.id and exiat.stid = stuinfo.id and returned = 1 and return_date < NOW() and (stuinfo.fname LIKE'%$key%' or stuinfo.lname LIKE '%$key%' or stuinfo.oname LIKE '%$key%' and stfid = '$stfid')");
+    $inactive = mysqli_query($cf->con, "select exiat.*,staff.fname as stfname, staff.lname as stlname,stuinfo.lname,stuinfo.fname,stuinfo.oname,stuinfo.photo,TIMESTAMPDIFF(HOUR,return_date,returned_time) as duedays from exiat,staff,stuinfo WHERE exiat.stfid = staff.id and exiat.stid = stuinfo.id and returned = 1 and return_date < NOW() and exiat.stfid = '$stfid' and (stuinfo.fname LIKE'%$key%' or stuinfo.lname LIKE '%$key%' or stuinfo.oname LIKE '%$key%')");
 }else {
     $inactive = mysqli_query($cf->con, "select exiat.*,staff.fname as stfname, staff.lname as stlname,stuinfo.lname,stuinfo.fname,stuinfo.oname,stuinfo.photo,TIMESTAMPDIFF(HOUR,return_date,returned_time) as duedays from exiat,staff,stuinfo WHERE exiat.stfid = staff.id and exiat.stid = stuinfo.id and returned = 1 and return_date < NOW() and (stuinfo.fname LIKE'%$key%' or stuinfo.lname LIKE '%$key%' or stuinfo.oname LIKE '%$key%')");
 }

@@ -1,28 +1,40 @@
+body{
+
+    padding-right: 0 !important;
+}
 .snarl-success {
     background-color: green !important;
     color: #FFFFFF !important;
 }
 
-.st-item:hover{
+.st-item:hover {
 
     background-color: lightgray;
     border: 1px solid darkgrey;
-    transition:  2ms ease-in-out;
+    transition: 2ms ease-in-out;
 }
 
-.st-selected{
+.exeat_warning{
+    position:fixed;
+    z-index: 99;
+    top: 45px;
+    width: 100%;
+
+}
+
+.st-selected {
     background-color: deepskyblue;
     color: #FFFFFF;
 
 }
 
-.bootstrap-dialog-header{
+.bootstrap-dialog-header {
 
     width: 100%;
 
 }
 
-.close{
+.close {
 
     color: #FFFFFF !important;
     text-align: center;
@@ -30,7 +42,7 @@
 }
 
 #snarl-wrapper {
-    z-index: 9999999!important;
+    z-index: 9999999 !important;
 }
 
 .snarl-error {
@@ -43,13 +55,14 @@
     color: #FFFFFF !important;
 }
 
-.main-search-cont{
+.main-search-cont {
     position: fixed;
     width: 100%;
     z-index: 99;
     display: none;
 
 }
+
 .modal {
     z-index: 999999 !important;
 }
@@ -98,20 +111,14 @@
 }
 
 
-
 .navbar-nav a {
 
     transition: 0.2s ease-in-out;
 }
 
 
-
-
-
-
-
-body>.container-fluid {
-    transition: .3s ease-in-out;
+body > .container-fluid {
+    transition: .2s ease-in-out;
 }
 
 body {
@@ -226,7 +233,8 @@ body {
     color: #17a2b8;
 }
 
-.start-btn span {}
+.start-btn span {
+}
 
 .bottom-nav {
     transition: .5s ease-in-out;
@@ -258,20 +266,23 @@ body {
     background: transparent !important;
 }
 
-.noclose .ui-dialog-titlebar-close {}
+.noclose .ui-dialog-titlebar-close {
+}
 
-.noclose .ui-dialog-titlebar {}
+.noclose .ui-dialog-titlebar {
+}
 
 .startmenu {
     display: none;
 }
 
+
 .mainform {
-    margin-top: 3.6em;
+    margin-top: 1.5em;
 }
 
 .startmenu {
-    margin-top: 3.5em;
+    margin-top: 2em;
 }
 
 .tile:hover {
@@ -285,6 +296,7 @@ body {
 
 .tile .detail {
     text-align: match-parent;
+    padding: 2px;
 }
 
 .tile {
@@ -296,8 +308,8 @@ body {
     margin-bottom: 8px;
     margin-top: 8px;
     color: #fff;
-    padding: 2px;
     width: 100%;
+    padding: 2px;
 }
 
 .tile-icon {
@@ -378,11 +390,12 @@ body {
 .mainform-content {
     top: 100px;
     margin: 10px;
-     padding: 10px;
+    padding: 10px;
 }
 
 .mainform-content .row,
-.mainform-content .col-lg-12 .col-md-12 {}
+.mainform-content .col-lg-12 .col-md-12 {
+}
 
 .ui-datepicker-month,
 .ui-datepicker-year {
@@ -411,7 +424,6 @@ table tr {
 }
 
 
-
 .navbar-fixed-top,
 .ui-dialog {
     z-index: 999999 !important;
@@ -427,56 +439,69 @@ table tr {
     -moz-filter: blur(5px);
     filter: blur(15px) !important;
 }
-.hidden-md{
+
+.hidden-md {
 
     display: none;
 }
 
-.navbar-nav{
+.navbar-nav {
     float: right !important;
 
 }
 
 
-i.active, label.active{
+i.active, label.active {
 
     color: #17a2b8 !important;
 
 }
 
-.prefix{
+.prefix {
 
     transition: 0.3s ease-in-out;
 
 }
 
 @media (max-width: 960px) {
-    .tile-icon{
+    .navber-header{
+        width: 100% !important;
+
+    }
+    .tile-icon {
         margin-top: 20px !important;
 
     }
 
-    .hidden-md{
+    .hidden-md {
 
         display: inline;
 
     }
 
-    .hidden-sm{
+    .visible-md {
+
+        display: none;
+
+    }
+
+    .hidden-sm {
 
         display: none;
     }
 
-   .modal-lg {
+    .modal-lg {
 
         max-width: 100% !important;
         margin: 0 !important;
         max-height: 100% !important;
     }
-        .modal-lg .modal-body{
+
+    .modal-lg .modal-body {
         height: auto;
         overflow-x: auto;
     }
+
     .ui-widget-overlay {
         background: #000;
         opacity: .95;
@@ -487,6 +512,7 @@ i.active, label.active{
         -moz-filter: blur(5px);
         filter: blur(5px) !important;
     }
+
     .navbar-brand {
         color: #FFFFFF !important;
     }
@@ -495,34 +521,40 @@ i.active, label.active{
         width: 100% !important;
         margin-left: 0;
     }
+
     .container-fluid {
         padding-left: 0 !important;
         padding-right: 0 !important;
         margin-right: 0 !important;
         margin-left: 0 !important;
     }
+
     .container-fluid div {
         padding-left: 0 !important;
         padding-right: 0 !important;
         margin-right: 0;
         margin-left: 0;
     }
+
     .col-lg-12 {
         padding-left: 1px !important;
         padding-right: 1px !important;
     }
+
     .panel,
     .panel-body {
         padding-left: 0 !important;
         padding-right: 0 !important;
         margin: 0 !important;
     }
+
     .row {
         padding-left: 0 !important;
-        padding-right: 0!important;
+        padding-right: 0 !important;
         margin-right: 0 !important;
         margin-left: 0 !important;
     }
+
     .col-sm-6 {
         padding-left: 0 !important;
         padding-right: 0 !important;
@@ -535,11 +567,13 @@ i.active, label.active{
         margin-right: 1px !important;
         margin-top: 0 !important;
     }
+
     .col-lg-12 {
         padding: 0 !important;
     }
+
     /*table {*/
-        /*font-size: 1.7rem;*/
+    /*font-size: 1.7rem;*/
     /*}*/
     .tile-group {
         margin-bottom: 0 !important;
@@ -561,7 +595,7 @@ div#image_cont .dz-remove {
 }
 
 
-.btn-circle{
+.btn-circle {
     width: 60px;
     height: 60px;
     border-radius: 100%;
@@ -569,20 +603,21 @@ div#image_cont .dz-remove {
     padding-top: 18px;
 }
 
-.floating-right{
+.floating-right {
     position: fixed;
     bottom: 5%;
     right: 5%;
     box-shadow: 0 0 5px;
 }
-.floating-left{
+
+.floating-left {
     position: fixed;
     bottom: 5%;
     left: 5%;
     box-shadow: 0 0 5px;
 }
 
-.btn-bg-good,.btn-bg-good:hover,.btn-bg-good:focus{
+.btn-bg-good, .btn-bg-good:hover, .btn-bg-good:focus {
 
     background-color: deepskyblue;
     color: #FFFFFF;
@@ -595,51 +630,51 @@ canvas {
 }
 
 @keyframes spin-change {
-    0%{
+    0% {
         color: deepskyblue;
         transform: rotate(120deg);
 
     }
-    10%{
+    10% {
         transform: scale(0.5);
     }
-    20%{
+    20% {
         transform: scale(1);
 
     }
-    40%{
+    40% {
         color: purple;
         transform: rotate(160deg);
 
     }
-    60%{
+    60% {
         transform: scale(1.5);
 
     }
-    80%{
+    80% {
         color: #cd0a0a;
         transform: rotate(270deg);
 
     }
 
-    90%{
+    90% {
 
         transform: scale(1);
 
     }
-    100%{
+    100% {
         color: #d58512;
         transform: rotate(360deg);
 
     }
 }
 
-.we-spin{
+.we-spin {
     animation: spin-change 0.5s linear infinite;
     border-radius: 0 0 3px;
 }
 
-div.we-overlay{
+div.we-overlay {
     transition: 0.3s ease-in-out;
     top: 0;
     position: fixed;

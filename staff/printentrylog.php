@@ -5,7 +5,7 @@ $cf->connect();
 $ayears = mysqli_query($cf->con, "select distinct(ayear) from stuinfo ORDER by ayear ASC");
 ?>
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <label for="" class="form-control-label">Year</label>
         <select class="form-control" name="" id="entry_year">
             <?php

@@ -16,26 +16,26 @@ $student = new Students();
 }
 */
 
-$student->index= mysql_real_escape_string($_POST['index']);
-$student->photo=mysql_real_escape_string($_POST['photo']);
-$student->fname=mysql_real_escape_string($_POST['fname']);
-$student->lname=mysql_real_escape_string($_POST['lname']);
-$student->oname=mysql_real_escape_string($_POST['oname']);
-$student->dob=$_POST['dob'];
-$student->dor=$_POST['dor'];
-$student->dept=$_POST['dept'];
-$student->house=$_POST['hse'];
-$student->clas=$_POST['cls'];
-$student->lschool=mysql_real_escape_string($_POST['lsch']);
-$student->fhometown=mysql_real_escape_string($_POST['fhtown']);
-$student->ffname=mysql_real_escape_string($_POST['fthname']);
-$student->ftel=mysql_real_escape_string($_POST['pthtel']);
-$student->mfname=mysql_real_escape_string($_POST['mthname']);
-$student->mtel=mysql_real_escape_string($_POST['mthtel']);
-$student->mhometown=mysql_real_escape_string($_POST['mtown']);
-$student->ayear=$_POST['ayear'];
-$student->gender=$_POST['gender'];
-$student->form=$_POST['form'];
+$student->index = mysql_real_escape_string($_POST['index']);
+$student->photo = mysql_real_escape_string($_POST['photo']);
+$student->fname = mysql_real_escape_string($_POST['fname']);
+$student->lname = mysql_real_escape_string($_POST['lname']);
+$student->oname = mysql_real_escape_string($_POST['oname']);
+$student->dob = $_POST['dob'];
+$student->dor = $_POST['dor'];
+$student->dept = $_POST['dept'];
+$student->house = $_POST['hse'];
+$student->clas = $_POST['cls'];
+$student->lschool = mysql_real_escape_string($_POST['lsch']);
+$student->fhometown = mysql_real_escape_string($_POST['fhtown']);
+$student->ffname = mysql_real_escape_string($_POST['fthname']);
+$student->ftel = mysql_real_escape_string($_POST['pthtel']);
+$student->mfname = mysql_real_escape_string($_POST['mthname']);
+$student->mtel = mysql_real_escape_string($_POST['mthtel']);
+$student->mhometown = mysql_real_escape_string($_POST['mtown']);
+$student->ayear = $_POST['ayear'];
+$student->gender = $_POST['gender'];
+$student->form = $_POST['form'];
 $msg = $student->createstudent();
 echo $msg;
 

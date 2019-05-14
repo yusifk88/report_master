@@ -10,9 +10,9 @@ $cnduct = $_GET['cnduct'];
 $remark = $_GET['remark'];
 $ayear = $_GET['ayear'];
 $term = $_GET['term'];
-mysqli_query($cf->con,"update frmass set attdance = '$attndance' WHERE  term ='$term' and ayear = '$ayear'");
+mysqli_query($cf->con, "update frmass set attdance = '$attndance' WHERE  term ='$term' and ayear = '$ayear'");
 
-mysqli_query($cf->con,"update frmass set attnded = '$attended',cnduct = '$cnduct',interest = '$interest',remark='$remark' where id = '$id'");
-echo"Record updated successfully";
+mysqli_query($cf->con, "update frmass set attnded = '$attended',cnduct = '$cnduct',interest = '$interest',remark='$remark' where id = '$id'");
+echo "Record updated successfully";
 
 

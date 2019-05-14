@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="jquery-ui.css" server="C:/wamp/www/report/" local="126543528400000000" remote="126543528400000000" Dst="-1" />
-<file name="jquery-ui.min.css" server="C:/wamp/www/report/" local="130409576060000000" remote="130409576060000000" Dst="-1" />
-<file name="jquery.ui.theme.css" server="C:/wamp/www/report/" local="126543616140000000" remote="126543616140000000" Dst="-1" />
-<file name="jquery.ui.theme.css" server="C:/xampp/htdocs" local="129933667500000000" remote="129933667500000000" Dst="2" />
+    <file name="jquery-ui.css" server="C:/wamp/www/report/" local="126543528400000000" remote="126543528400000000"
+          Dst="-1"/>
+    <file name="jquery-ui.min.css" server="C:/wamp/www/report/" local="130409576060000000" remote="130409576060000000"
+          Dst="-1"/>
+    <file name="jquery.ui.theme.css" server="C:/wamp/www/report/" local="126543616140000000" remote="126543616140000000"
+          Dst="-1"/>
+    <file name="jquery.ui.theme.css" server="C:/xampp/htdocs" local="129933667500000000" remote="129933667500000000"
+          Dst="2"/>
 </dwsync>

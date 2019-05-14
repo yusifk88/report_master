@@ -7,7 +7,7 @@ $cf->connect();
 $clas = new Rclass();
 $cl = $clas->getclasses();
 
-$ayears = mysqli_query($cf->con,"select distinct(ayear) from stuinfo");
+$ayears = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
 
 ?>
 
@@ -16,10 +16,10 @@ $ayears = mysqli_query($cf->con,"select distinct(ayear) from stuinfo");
         <label for="acayear" class="control-label">Academic Year</label>
         <select name="" id="acayear" class="form-control">
             <?php
-            while($ays = mysqli_fetch_object($ayears)){
-             ?>
-                <option value="<?=$ays->ayear?>"><?=$ays->ayear?></option>
-               <?php
+            while ($ays = mysqli_fetch_object($ayears)) {
+                ?>
+                <option value="<?= $ays->ayear ?>"><?= $ays->ayear ?></option>
+                <?php
             }
             ?>
         </select>
@@ -30,10 +30,10 @@ $ayears = mysqli_query($cf->con,"select distinct(ayear) from stuinfo");
         <label for="acclas" class="control-label">Class</label>
         <select name="" id="acclas" class="form-control">
             <?php
-            while($cls = mysqli_fetch_object($cl)){
-             ?>
-                <option value="<?=$cls->id?>"><?=$cls->classname?></option>
-               <?php
+            while ($cls = mysqli_fetch_object($cl)) {
+                ?>
+                <option value="<?= $cls->id ?>"><?= $cls->classname ?></option>
+                <?php
             }
             ?>
         </select>
@@ -47,7 +47,6 @@ $ayears = mysqli_query($cf->con,"select distinct(ayear) from stuinfo");
             <textarea id="actitle" class="form-control md-textarea"></textarea>
             <label for="actitle">Customize the heading of this document</label>
         </div>
-
 
 
     </div>

@@ -9,7 +9,8 @@
 class myreport extends CI_Controller
 {
 
-    function index(){
+    function index()
+    {
         $ayear = $this->input->get("ayear");
         $term = $this->input->get("term");
         $id = $this->input->get("id");
@@ -40,7 +41,7 @@ class myreport extends CI_Controller
         $data['schname'] = $this->school->schname;
         $data['schaddress'] = $this->school->schooladdress;
         $data['crest'] = $this->school->logopath;
-        $this->load->view("reportView",$data);
+        $this->load->view("reportView", $data);
 
 
     }

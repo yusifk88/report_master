@@ -10,24 +10,22 @@ include_once "objts/config.php";
 $cf = new config();
 $cf->connect();
 
-$ayears = mysqli_query($cf->con,"select distinct(ayear) from stuinfo where ayear not in(select distinct(acyear) from records) ORDER BY ayear DESC");
+$ayears = mysqli_query($cf->con, "select distinct(ayear) from stuinfo where ayear not in(select distinct(acyear) from records) ORDER BY ayear DESC");
 
-$ayears2 = mysqli_query($cf->con,"select distinct(acyear) from records");
-
-
+$ayears2 = mysqli_query($cf->con, "select distinct(acyear) from records");
 
 
-while($row=mysqli_fetch_object($ayears)){
+while ($row = mysqli_fetch_object($ayears)) {
     ?>
-    <option><?=$row->ayear?></option>
+    <option><?= $row->ayear ?></option>
 
     <?php
 }
 
-while($row=mysqli_fetch_object($ayears2)){
-	?>
-	    <option><?=$row->acyear?></option>
+while ($row = mysqli_fetch_object($ayears2)) {
+    ?>
+    <option><?= $row->acyear ?></option>
 
-	
-	<?php
+
+    <?php
 }
