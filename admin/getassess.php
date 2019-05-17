@@ -26,16 +26,20 @@ if (mysqli_num_rows($recs) > 0) {
                         S/N
                     </th>
                     <th style="border: 1px solid deepskyblue; border-right: 1px solid #fff;">
-                         Name
+                        Name
                     </th>
                     <th colspan="4"
                         style="text-align: center; border: 1px solid deepskyblue; border-right: 1px solid #fff;">
-                        Class Test
+                        Class Task
                     </th>
 
                     <th colspan="4"
                         style="text-align: center; border: 1px solid deepskyblue; border-right: 1px solid #fff;">
-                        Class Exercise
+                        Assignment
+                    </th>
+
+                    <th colspan="2" style="text-align: center; border: 1px solid deepskyblue; border-right: 1px solid #fff;">
+                        Project Work
                     </th>
 
                     <th style="text-align: center; border: 1px solid deepskyblue; border-right: 1px solid #fff;">
@@ -85,8 +89,8 @@ if (mysqli_num_rows($recs) > 0) {
                         <td style="text-align: center; vertical-align: middle;"><?= $recrow['hw2']; ?></td>
                         <td style="text-align: center; vertical-align: middle;"><?= $recrow['hw3']; ?></td>
                         <td style="text-align: center; vertical-align: middle;"><?= $recrow['hw4']; ?></td>
-                        <!--            <td style="text-align: center; vertical-align: middle;">--><!--</td>-->
-                        <!--            <td style="text-align: center; vertical-align: middle;">--><!--</td>-->
+                                  <td style="text-align: center; vertical-align: middle;"><?= $recrow['pw1']; ?></td>
+                                   <td style="text-align: center; vertical-align: middle;"><?= $recrow['pw2']; ?></td>
                         <td style="text-align: center; vertical-align: middle;"><?= $recrow['subtotl']; ?></td>
                         <td style="text-align: center; vertical-align: middle;"><?= $cvsubtotal; ?></td>
                         <td style="text-align: center; vertical-align: middle;"><?= $recrow['exam']; ?></td>
@@ -137,10 +141,9 @@ if (mysqli_num_rows($recs) > 0) {
                             timeout: null
                         });
                         $(".snarl-notification").addClass('snarl-info');
-
-                        var sum = Number($("#up-ta1").val()) + Number($("#up-ta2").val()) + Number($("#up-ta3").val()) + Number($("#up-ta4").val()) + Number($("#up-hw1").val()) + Number($("#up-hw2").val()) + Number($("#up-hw3").val()) + Number($("#up-hw4").val()) + Number($("#up-pw1").val()) + Number($("#up-pw2").val());
+                        var sum = Number($("#up-ta1").val()) + Number($("#up-ta2").val()) + Number($("#up-ta3").val()) + Number($("#up-ta4").val()) + Number($("#up-hw1").val()) + Number($("#up-hw2").val()) + Number($("#up-hw3").val()) + Number($("#up-hw4").val());
                         if (Number(sum) <= 100 && Number($("#up-exam").val()) <= 100) {
-                            $.get("up_assess.php?id=" + $("#up-id").val() + "&ayear=" + $("#assess-ayear").val() + "&term=" + $("#assess-term").val() + "&subjt=" + $("#assess-subjt").val() + "&cls=" + $("#assess_class").val() + "&ta1=" + $("#up-ta1").val() + "&ta2=" + $("#up-ta2").val() + "&ta3=" + $("#up-ta3").val() + "&ta4=" + $("#up-ta4").val() + "&hw1=" + $("#up-hw1").val() + "&hw2=" + $("#up-hw2").val() + "&hw3=" + $("#up-hw3").val() + "&hw4=" + $("#up-hw4").val() + "&pw1=" + $("#up-pw1").val() + "&pw2=" + $("#up-pw2").val() + "&exam=" + $("#up-exam").val(), function (data) {
+                            $.get("up_assess.php?id=" + $("#up-id").val() + "&ayear=" + $("#assess-ayear").val() + "&term=" + $("#assess-term").val() + "&subjt=" + $("#assess-subjt").val() + "&cls=" + $("#assess_class").val() + "&ta1=" + $("#up-ta1").val() + "&ta2=" + $("#up-ta2").val() + "&ta3=" + $("#up-ta3").val() + "&ta4=" + $("#up-ta4").val() + "&hw1=" + $("#up-hw1").val() + "&hw2=" + $("#up-hw2").val() + "&hw3=" + $("#up-hw3").val() + "&hw4=" + $("#up-hw4").val() + "&exam=" + $("#up-exam").val(), function (data) {
                             }).done(function () {
                                 $("#assess_class").change();
                                 d.close();
@@ -166,7 +169,6 @@ if (mysqli_num_rows($recs) > 0) {
                             });
 
                         } else {
-
                             Snarl.removeNotification(progress);
                             Snarl.addNotification({
                                 title: "ERROR",

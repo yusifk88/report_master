@@ -21,11 +21,17 @@ $dead = mysqli_fetch_object(mysqli_query($cf->con,"select * from deadline"));
     <link href="admin/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <link href="admin/css/wecss.css" rel="stylesheet" type="text/css"/>
     <link href="admin/css/mystyle.css" rel="stylesheet" type="text/css"/>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-12 mx-auto pt-5">
+			<div class="row">
+			<p class="text-danger">Before you login, please prove that you are not a robot</p> <br>
+			<div class="g-recaptcha" data-sitekey="6LfgNncUAAAAAKZLB_fZLSkBySpHmU8iXc83u9Is"></div>
+			
+			</div>
             <div class="card animated fadeInUp mt-5 container-fluid">
                     <div class="row">
                         <div class="col-md-12 col-12 bg-warning text-center p-3 m-0">
@@ -106,7 +112,20 @@ $dead = mysqli_fetch_object(mysqli_query($cf->con,"select * from deadline"));
                                         Your school is not on a subscription
                                         <?php
 
-                                    }
+                                    }else{
+                                    if($sch->sub_expired()) {
+                                    ?>
+                                    <h3 class="text-danger">Expired!</h3>
+
+                                        <?php
+                                    }else{
+                                        ?>
+                                            <h5 class="text-white">Next Subscription date: <strong><?=date('d-M-Y',strtotime($sch->sub_date))?></strong></h5>
+                                        <h5 class="text-danger"><?=$sch->get_subdays()?> Days to Expiration</h5>
+
+
+                                        <?php
+                                    }}
 
                                 ?>
 
@@ -120,8 +139,22 @@ $dead = mysqli_fetch_object(mysqli_query($cf->con,"select * from deadline"));
                     </div>
 
 
+                <?php
+                if($sch->sub_expired()){
+                    ?>
+                    <div class="card-footer bg-danger m-0 text-white">
+                        Your portal subscription is Over. per our agreed terms and conditions, some system features will not work. Please contact us to renew your subscription <br>
+                        info@skoolrec.com or 0549403129
+                    </div>
+                    <?php
+                }
 
+                ?>
             </div>
+			
+			
+		
+			
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 cil-xs-12 col-lg-off-4 col-md-offset-4">
                     <br/>
@@ -140,6 +173,10 @@ $dead = mysqli_fetch_object(mysqli_query($cf->con,"select * from deadline"));
 <script>
     $(document).ready(function () {
         $("#btnlogin").click(function () {
+			
+			var cac = grecaptcha.getResponse();
+
+			if(cac.length > 0){			
             $("#msg").html("Please wait....").show();
 
             if (!$("#uname").val() && !$("#upass").val()) {
@@ -179,6 +216,13 @@ $dead = mysqli_fetch_object(mysqli_query($cf->con,"select * from deadline"));
                     show_error();
                 });
             }
+			}else{
+				
+				 $("#msg").html("You have NOT checked the captcha, please prove you are not a robot");
+                                $("#msg").fadeIn();
+				
+				
+			}
         });
         $("#uname,#upass").keypress(function (e) {
             if (e.which === 13) {

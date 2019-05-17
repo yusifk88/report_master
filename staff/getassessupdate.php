@@ -48,7 +48,7 @@ while ($row = mysqli_fetch_object($rcs)) {
                         </div>
                         <div class="row" style="border-bottom: 1px solid #ccc;">
                             <div class="col-lg-2 col-md-2 col-sm-12 col-12">
-                                <strong>Class Exercise</strong>
+                                <strong>Assignment</strong>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-12 col-12">
                                 <label for="up-hw1" class="control-label text-muted">One</label>

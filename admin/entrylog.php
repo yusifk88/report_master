@@ -82,8 +82,8 @@ $staff_list = mysqli_query($cf->con, "select staff.fname,staff.lname,classes.cla
                             %
                         </td>
                         <td>
-                            No. of class test entered:<?= $row->test_pop ?> <br>
-                            No. of class Exercise entered:<?= $row->classex_pop ?> <br>
+                            No. of class task entered:<?= $row->test_pop ?> <br>
+                            No. of assignment entered:<?= $row->classex_pop ?> <br>
                             No. of exam records entered: <?= $row->exam_pop ?>
                         </td>
                     </tr>

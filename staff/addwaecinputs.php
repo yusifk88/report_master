@@ -1,7 +1,8 @@
 <?php
+include_once '../admin/chck_sub.php';
 
-include_once './objts/config.php';
-include_once './objts/staff.php';
+include_once '../admin/objts/config.php';
+include_once '../admin/objts/staff.php';
 $cfg = new config();
 $cfg->connect();
 $ayear = $_GET['ayear'];

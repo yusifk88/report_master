@@ -899,7 +899,7 @@ $librian = mysqli_query($cfg->con, "select * from librian where stfid = '$stafid
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: 0 !important;">
             <div class="alert alert-info" style="margin: 1px !important;">
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 hidden-sm hidden-xs"><h3>Manage Assessment <span
+                    <div class=" col-md-5 col-sm-12 col-xs-12 hidden-sm hidden-xs"><h3>Manage Assessment <span
                                     class="fa fa-list-alt"></span></h3></div>
                     <br>
                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
@@ -976,9 +976,9 @@ $librian = mysqli_query($cfg->con, "select * from librian where stfid = '$stafid
                                 style="color: #FFFFFF !important;">ADD <i class="fa fa-caret-down"></i></button>
                         <ul class="dropdown-menu animated zoomIn" aria-labelledby="asaddbtn">
                             <li class="dropdown-item"><a onclick="getclstaks_inputs(); return false;">Class
-                                    Test</a></li>
-                            <li class="dropdown-item"><a onclick="getclsassing_inputs()">Class Exercise</a></li>
-<!--                            <li class="dropdown-item"><a onclick="getclspwork_inputs()">Project Work</a></li>-->
+                                    Task</a></li>
+                            <li class="dropdown-item"><a onclick="getclsassing_inputs()">Assignment</a></li>
+                           <li class="dropdown-item"><a onclick="getclspwork_inputs()">Project Work</a></li>
                             <li class="dropdown-item"><a onclick="getclsexam_inputs()">Exam</a></li>
                         </ul>
                     </div>
@@ -990,9 +990,9 @@ $librian = mysqli_query($cfg->con, "select * from librian where stfid = '$stafid
                         </button>
                         <ul class="dropdown-menu animated zoomIn" aria-labelledby="asaddbtn">
                             <li class="dropdown-item"><a  onclick="getbatchclstaks_inputs(); return false;">Class
-                                    Test</a></li>
-                            <li class="dropdown-item"><a onclick="getbatchclsassing_inputs()">Class Exercise</a></li>
-<!--                            <li class="dropdown-item"><a onclick="getbatchclspwork_inputs()">Project Work</a></li>-->
+                                    Task</a></li>
+                            <li class="dropdown-item"><a onclick="getbatchclsassing_inputs()">Assignment</a></li>
+                           <li class="dropdown-item"><a onclick="getbatchclspwork_inputs()">Project Work</a></li>
                             <li class="dropdown-item"><a onclick="getbatchclsexam_inputs()">Exam</a></li>
                         </ul>
                     </div>

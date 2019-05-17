@@ -695,6 +695,11 @@ include './objts/subjects.php';
                     <br> REGISTER STUDENT <i class="fa fa-user-plus fa-2x"></i>
                 </div>
                 <div class="card-body" style="padding: 10px !important;">
+
+                    <?php
+                        if(!$sch->sub_expired()){
+                    ?>
+
                     <div class="alert bg-warning">
                         <h4><i class="fa fa-warning"></i> Please make sure to select the correct academic year to prevent misplacing students  </h4>
 
@@ -998,6 +1003,17 @@ include './objts/subjects.php';
                         <button type="button" id="clearbtn" class="btn btn-danger">Clear All</button>
 
                     </form>
+
+                <?php
+                }else{
+
+                            ?>
+
+                            <h3 class="text-danger">Sorry, you cannot have access to this component at the moment, your portal subscription is over</h3>
+                            <?php
+                }
+
+                ?>
                 </div>
             </div>
         </div>
@@ -1132,14 +1148,11 @@ include './objts/subjects.php';
     <div class="mainform content row"
          style="background: transparent; box-shadow: 0 0 0 ; padding: 0; margin-right: 0 !important; margin-left: 0 !important; margin-bottom: 3em;"
          id="print-pool">
-
-
     </div>
     <div class="mainform content row"
          style="background: transparent; box-shadow: 0 0 0 ; padding: 0; margin-right: 0 !important; margin-left: 0 !important; margin-bottom: 3em; margin-top: 7em;"
          id="schres">
     </div>
-
     <div class="mainform row content"
          style="background: transparent; box-shadow: 0 0 0 ; padding: 0; margin-right: 0 !important; margin-left: 0 !important; margin-bottom: 3em; margin-top: 4em !important;"
          id="graph-class">
@@ -1889,12 +1902,10 @@ include './objts/subjects.php';
                 temp += "<div class='alert alert-info' style='padding:2px;'>Account information <span class='fa fa-hand-down'></span><br/>";
                 temp += "<div class='row'>";
                 temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-
                 temp += "<label class='control-label' for ='uname'>User Name</label>";
                 temp += "<input type ='text' class='form-control' placeholder='Enter user Name' id='aduname' />";
                 temp += "</div>";
                 temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-
                 temp += "<label class='control-label' for ='upass'>Admin Password</label>";
                 temp += "<input type='password' class='form-control' placeholder='Enter admin password' id='adupass'>";
                 temp += "</div> </div>";
@@ -1902,13 +1913,10 @@ include './objts/subjects.php';
                 temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
                 temp += "</div>";
                 temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-
                 temp += "<label class='control-label' for ='cpass'>Confirm admin Password</label>";
                 temp += "<input type='password' class='form-control' placeholder='Enter admin password again' id='adcpass'>";
                 temp += "</div> </div>";
                 temp += "</form>";
-
-
                 BootstrapDialog.show({
                     title: "Create Admin. Account",
                     message: temp,
@@ -2038,14 +2046,22 @@ include './objts/subjects.php';
         });
     });
 </script>
-<button class="btn btn-circle floating-right bg-info waves-effect waves-float waves-light add-btn"
-        style="display: none;"><i class="fa fa-plus"></i></button>
+<?php
+    if(!$sch->sub_expired()){
+        ?>
+        <button class="btn btn-circle floating-right bg-info waves-effect waves-float waves-light add-btn"
+                style="display: none;"><i class="fa fa-plus"></i></button>
+
+        <?php
+    }
+
+?>
+
 </body>
 </html>
 <!-- dialogs ---->
 <div class="search-pane bg-info" style="opacity: 1 !important;">
     <div class="container-fluid rgba-amber-strong">
-
         <div class="search-header">
             <div class="row">
                 <div class="col-md-1 col-1">

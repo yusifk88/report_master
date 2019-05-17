@@ -1,4 +1,5 @@
 <?php
+include_once '../admin/chck_sub.php';
 include_once '../admin/objts/config.php';
 $cf = new config();
 $cf->connect();
@@ -11,11 +12,11 @@ $per_page = 1;
 $page_query = mysqli_query($cf->con, "select count(*) from stuinfo where class='$cls' and");
 $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
 $start = ($page - 1) * $per_page;
-$cnsql = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and id like '%$stid%' and ayear = '$ayear' and id  not in (select stid from records  where pw1 is not null and pw2 is not null and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls' ) and id not in(SELECT stid from withdraw)");
-$stinputs = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and id like '%$stid%' and ayear = '$ayear' and id not in (select stid from records where pw1 is not null and pw2 is not null and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls') and id not in(SELECT stid from withdraw) order by fname ASC LIMIT " . $start . "," . $per_page);
+$cnsql = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and id like '%$stid%' and ayear = '$ayear' and id  not in (select stid from records  where (pw1 is not null and pw1>0) or (pw2 is not null and pw2>0) and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls' ) and id not in(SELECT stid from withdraw)");
+$stinputs = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and id like '%$stid%' and ayear = '$ayear' and id not in (select stid from records where (pw1 is not null and pw1>0) or (pw2 is not null and pw2>0) and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls') and id not in(SELECT stid from withdraw) order by fname ASC LIMIT " . $start . "," . $per_page);
 $recount = mysqli_num_rows($cnsql);
 $pages = ceil($recount / $per_page);
-$stnames = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and ayear = '$ayear' and id not in (select stid from records where pw1 is not null and pw2 is not null and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls') and id not in(SELECT stid from withdraw) order by fname ASC ");
+$stnames = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and ayear = '$ayear' and id not in (select stid from records where (pw1 is not null and pw1>0) or (pw2 is not null and pw2>0) and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls') and id not in(SELECT stid from withdraw) order by fname ASC ");
 if (mysqli_num_rows($stinputs) > 0) {
     while ($row = mysqli_fetch_assoc($stinputs)) {
         ?>
@@ -102,7 +103,7 @@ if (mysqli_num_rows($stinputs) > 0) {
                         }
 
                         ?>
-                        <span class="text-success"> <i class="fa fa-info-circle"></i> <strong>NOTE.</strong> Scores under this category should sum up to a maximum of 20 </span>
+                        <span class="text-danger"> <i class="fa fa-info-circle"></i> <strong>NOTE.</strong> Scores under this category should sum up to a maximum of 20 </span>
 
                         <?php
                         // echo 'term:'. $term."year:".$ayear."sub:".$subjt."cls:".$cls;

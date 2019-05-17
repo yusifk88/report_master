@@ -1,4 +1,5 @@
 <?php
+include_once 'chck_sub.php';
 include_once 'objts/config.php';
 include_once 'objts/school.php';
 $sch = new school();
@@ -111,7 +112,7 @@ if($sch->SMSsub == true) {
 }else{
     ?>
 
-    <div class="alert bg-warning"><h5><i class="fa fa-warning"></i> You have not subscribed to our SMS plan, please contact for us an SMS plan</h5></div>
+    <div class="alert bg-warning"><h5><i class="fa fa-warning"></i> You have not subscribed to our SMS plan, please contact us for an SMS plan</h5></div>
 
     <?php
 }

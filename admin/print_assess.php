@@ -1,6 +1,6 @@
 <?php
-include_once './objts/config.php';
-include_once './objts/school.php';
+include_once 'objts/config.php';
+include_once 'objts/school.php';
 $sch = new school();
 $term = $_GET['term'];
 $ayear = $_GET['ayear'];
@@ -107,9 +107,9 @@ if ($staff) {
                 <tr>
                     <th style='text-align:center;'>S/N</th>
                     <th>FULL NAME</th>
-                    <th style='text-align :center;' colspan='4'>CLASS<br/>TEST</th>
-                    <th style='text-align: center;' colspan='4'>CLASS EXERCISE</th>
-                    <!--						<th style='text-align: center; '  colspan="2">PROJECT<br/>WORK</th>-->
+                    <th style='text-align :center;' colspan='4'>CLASS<br/>TASK</th>
+                    <th style='text-align: center;' colspan='4'>ASSIGNMENT</th>
+                 					<th style='text-align: center; '  colspan="2">PROJECT<br/>WORK</th>
                     <th style='text-align: center;'>SBA</th>
                     <th style='text-align: center;'>SBA <br/>(<?= $sch->clscore_ratio . "%"; ?>)</th>
                     <th style='text-align: center;'>EXAMS<br/>100%</th>
@@ -142,8 +142,8 @@ if ($staff) {
                         <td style='text-align:center; vertical-align: middle;'><?= $recrows->hw2; ?></td>
                         <td style='text-align:center; vertical-align: middle;'><?= $recrows->hw3; ?></td>
                         <td style='text-align: center; vertical-align: middle;'><?= $recrows->hw4; ?></td>
-                        <!--					<td style='text-align:center; vertical-align: middle;'></td>-->
-                        <!--					<td style='text-align:center; vertical-align: middle;'></td>-->
+                        <td style='text-align:center; vertical-align: middle;'><?=$recrows->pw1?></td>
+                        <td style='text-align:center; vertical-align: middle;'><?=$recrows->pw2?></td>
                         <td style='text-align: center; vertical-align: middle;'><?= $recrows->subtotl; ?></td>
                         <td style='text-align:center; vertical-align: middle;'><?= $cvsubtotal; ?></td>
                         <td style='text-align:center; vertical-align: middle;'><?= $recrows->exam; ?></td>

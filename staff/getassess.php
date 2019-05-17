@@ -1,7 +1,7 @@
 <?php
-include_once './objts/config.php';
-include_once './objts/school.php';
-include_once './objts/utitlity.php';
+include_once '../admin/objts/config.php';
+include_once '../admin/objts/school.php';
+include_once '../admin/objts/utitlity.php';
 $ut = new utitlity();
 $cf = new config();
 $sch = new school();
@@ -30,12 +30,16 @@ if (mysqli_num_rows($recs) > 0) {
                     </th>
                     <th colspan="4"
                         style="text-align: center; border: 1px solid deepskyblue; border-right: 1px solid #fff;">
-                        Class Test
+                        Class Task
                     </th>
 
                     <th colspan="4"
                         style="text-align: center; border: 1px solid deepskyblue; border-right: 1px solid #fff;">
-                        Class Exercise
+                        Assignment
+                    </th>
+
+                    <th colspan="2" style="text-align: center; border: 1px solid deepskyblue; border-right: 1px solid #fff;">
+                        Project Work
                     </th>
 
                     <th style="text-align: center; border: 1px solid deepskyblue; border-right: 1px solid #fff;">
@@ -85,8 +89,8 @@ if (mysqli_num_rows($recs) > 0) {
                         <td style="text-align: center; vertical-align: middle;"><?= $recrow['hw2']; ?></td>
                         <td style="text-align: center; vertical-align: middle;"><?= $recrow['hw3']; ?></td>
                         <td style="text-align: center; vertical-align: middle;"><?= $recrow['hw4']; ?></td>
-                        <!--            <td style="text-align: center; vertical-align: middle;">--><!--</td>-->
-                        <!--            <td style="text-align: center; vertical-align: middle;">--><!--</td>-->
+                                  <td style="text-align: center; vertical-align: middle;"><?= $recrow['pw1']; ?></td>
+                                   <td style="text-align: center; vertical-align: middle;"><?= $recrow['pw2']; ?></td>
                         <td style="text-align: center; vertical-align: middle;"><?= $recrow['subtotl']; ?></td>
                         <td style="text-align: center; vertical-align: middle;"><?= $cvsubtotal; ?></td>
                         <td style="text-align: center; vertical-align: middle;"><?= $recrow['exam']; ?></td>

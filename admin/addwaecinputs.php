@@ -1,5 +1,5 @@
 <?php
-
+include_once 'chck_sub.php';
 include_once './objts/config.php';
 include_once './objts/staff.php';
 $cfg = new config();

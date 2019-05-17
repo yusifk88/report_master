@@ -1,4 +1,6 @@
 <?php
+include_once '../admin/chck_sub.php';
+
 include_once '../admin/objts/config.php';
 include_once '../admin/objts/school.php';
 include_once '../admin/objts/utitlity.php';

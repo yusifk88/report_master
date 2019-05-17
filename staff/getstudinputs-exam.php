@@ -1,4 +1,5 @@
 <?php
+include_once '../admin/chck_sub.php';
 include_once '../admin/objts/config.php';
 $cf = new config();
 $cf->connect();

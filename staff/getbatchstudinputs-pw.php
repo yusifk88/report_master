@@ -1,4 +1,5 @@
 <?php
+include_once '../admin/chck_sub.php';
 include_once '../admin/objts/config.php';
 $cf = new config();
 $cf->connect();
@@ -7,14 +8,14 @@ $stid = $_GET['stid'];
 $ayear = $_GET['ayear'];
 $term = $_GET['term'];
 $subjt = $_GET['subjt'];
-$per_page = 1;
-$page_query = mysqli_query($cf->con, "select count(*) from stuinfo where class='$cls' and");
-$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
-$start = ($page - 1) * $per_page;
-$cnsql = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and id like '%$stid%' and ayear = '$ayear' and id  not in (select stid from records  where (pw1 is not null or pw1=0) and (pw2 is not null or pw2=0) and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls' ) and id not in(SELECT stid from withdraw)");
-$stinputs = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and id like '%$stid%' and ayear = '$ayear' and id not in (select stid from records where (pw1 is not null or pw1 = 0) and (pw2 is not null or pw2 =0) and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls') and id not in(SELECT stid from withdraw) order by fname ASC, lname ASC");
-$recount = mysqli_num_rows($cnsql);
-$pages = ceil($recount / $per_page);
+//$per_page = 1;
+//$page_query = mysqli_query($cf->con, "select count(*) from stuinfo where class='$cls' and");
+//$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+//$start = ($page - 1) * $per_page;
+//$cnsql = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and id like '%$stid%' and ayear = '$ayear' and id  not in (select stid from records  where (pw1 is not null or pw1=0) and (pw2 is not null or pw2=0) and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls' ) and id not in(SELECT stid from withdraw)");
+$stinputs = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and ayear = '$ayear' and id not in (select stid from records where (pw1 is not null and pw1 > 0) or (pw2 is not null and pw2 >0) and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls') and id not in(SELECT stid from withdraw) order by fname ASC, lname ASC");
+//$recount = mysqli_num_rows($cnsql);
+//$pages = ceil($recount / $per_page);
 
 if (mysqli_num_rows($stinputs) > 0) {
     ?>
@@ -31,15 +32,13 @@ if (mysqli_num_rows($stinputs) > 0) {
                             <li>
                                 The system will skip students with empty records
                             </li>
-
+                            <li class="bg-warning text-dark">
+                                Records under this category MUST aum up to a maximum of 20. Any Invalid records will NOT be saved
+                            </li>
                         </ul>
-
-
                     </div>
                 </div>
-
             </div>
-
             <div class="list-group">
             <?php
             while ($row = mysqli_fetch_assoc($stinputs)) {

@@ -410,7 +410,7 @@ function savhwork() {
     } else if (Number(totl) > 40) {
         Snarl.addNotification({
             title: "ERROR",
-            text: "Class exercise records should sum up to a maximum of 40, please check and try again",
+            text: "Assignment records should sum up to a maximum of 40, please check and try again",
             icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
             timeout: 3000
         });
@@ -1621,10 +1621,10 @@ function savtask() {
     var sub = $("#assess-subjt").val();
     if (Number(totl) === 0) {
         $("#ta1").focus();
-    } else if (Number(totl) > 60) {
+    } else if (Number(totl) > 40) {
         Snarl.addNotification({
             title: "ERROR",
-            text: "Class Test records should sum up to a maximum of 60, please check and try again",
+            text: "Class Task records should sum up to a maximum of 40, please check and try again",
             icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
             timeout: 3000
         });

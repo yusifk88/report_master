@@ -88,19 +88,19 @@ if (!$staff) {
                     <td colspan="3"><?= $subname; ?></td>
                     <td colspan="6"><strong>TUTOR:</strong> <?= $stfname . " " . $stlname; ?></td>
                     <td colspan="3"><strong>CLASS: </strong> <?= $classname; ?></td>
-                    <td colspan="2"><strong>TERM:</strong><?= $term_suf; ?> Term</td>
+                    <td colspan="4"><strong>TERM:</strong><?= $term_suf; ?> Term</td>
 
                 </tr>
 
                 <tr>
                     <th style='text-align:center;'>S/N</th>
                     <th>FULL NAME</th>
-                    <th style='text-align :center;' colspan='4'>CLASS TEST</th>
-                    <th style='text-align :center;'>Sub<br/> Total(60)</th>
-                    <th style='text-align: center;' colspan='4'>CLASS EXERCISE</th>
+                    <th style='text-align :center;' colspan='4'>CLASS TASK</th>
+                    <th style='text-align :center;'>Sub<br/> Total(40)</th>
+                    <th style='text-align: center;' colspan='4'>ASSIGNMENT</th>
                     <th style='text-align: center;'>Sub<br/> Total(40)</th>
-                    <!--						<th style='text-align: center; '  colspan="2">PROJECT <br> WORK</th>-->
-                    <!--						<th style='text-align: center; '>Sub<br/>Total</th>-->
+                    						<th style='text-align: center; '  colspan="2">PROJECT <br> WORK</th>
+                    						<th style='text-align: center; '>Sub<br/>Total(20)</th>-->
                     <th style='text-align: center;'> Total SBA</th>
                     <th style='text-align: center;'>EXAMS<br/>100%</th>
                 </tr>
@@ -129,9 +129,9 @@ if (!$staff) {
                         <td style='text-align:center;'></td>
                         <td style='text-align:center;'></td>
                         <td style='text-align:center;'></td>
-                        <!--					<td style='text-align:center;'></td>-->
-                        <!--					<td style='text-align:center;'></td>-->
-                        <!--					<td style='text-align:center;'></td>-->
+                        					<td style='text-align:center;'></td>
+                        					<td style='text-align:center;'></td>
+                        					<td style='text-align:center;'></td>
                         <td style='text-align:center;'></td>
 
 

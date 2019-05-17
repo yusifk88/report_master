@@ -100,7 +100,7 @@ if (!$staff) {
                     <th style='text-align :center;' colspan='4'>CLASS TASK</th>
                     <th style='text-align :center;'>Sub<br/> Total</th>
 
-                    <th style='text-align: center;' colspan='4'>HOME WORK</th>
+                    <th style='text-align: center;' colspan='4'>ASSIGNMENT</th>
                     <th style='text-align: center;'>Sub<br/> Total</th>
                     <th style='text-align: center; ' colspan="2">PROJECT WORK</th>
                     <th style='text-align: center; '>Sub<br/>Total</th>

@@ -1,4 +1,5 @@
 <?php
+include_once '../admin/chck_sub.php';
 include_once '../admin/objts/config.php';
 $cf = new config();
 $cf->connect();
@@ -10,11 +11,11 @@ $subjt = $_GET['subjt'];
 $per_page = 1;
 $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
 $start = ($page - 1) * $per_page;
-$cnsql = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and id like '%$stid%' and ayear = '$ayear' and id  not in (select stid from records  where ta1 is not null and ta2 is not null and ta3 is not null and ta4 is not null and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls') and id not in(SELECT stid from withdraw)");
-$stinputs = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and id like '%$stid%' and ayear = '$ayear' and id not in (select stid from records where ta1 is not null and ta2 is not null and ta3 is not null and ta4 is not null and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls') and id not in(SELECT stid from withdraw) order by fname ASC LIMIT " . $start . "," . $per_page);
+$cnsql = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and id like '%$stid%' and ayear = '$ayear' and id  not in (select stid from records  where (ta1 is not null and ta1>0) or (ta2 is not null and ta2>0) or (ta3 is not null and ta3>0) or (ta4 is not null and ta4>0) and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls') and id not in(SELECT stid from withdraw)");
+$stinputs = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and id like '%$stid%' and ayear = '$ayear' and id not in (select stid from records where (ta1 is not null and ta1>0) or (ta2 is not null and ta2>0) or (ta3 is not null and ta3>0) or (ta4 is not null and ta4>0) and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls') and id not in(SELECT stid from withdraw) order by fname ASC LIMIT " . $start . "," . $per_page);
 $recount = mysqli_num_rows($cnsql);
 $pages = ceil($recount / $per_page);
-$stnames = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and ayear = '$ayear' and id not in (select stid from records where ta1 is not null and ta2 is not null and ta3 is not null and ta4 is not null and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls') and id not in(SELECT stid from withdraw) order by fname ASC");
+$stnames = mysqli_query($cf->con, "select id,fname,lname,oname,photo from stuinfo where class='$cls' and ayear = '$ayear' and id not in (select stid from records where (ta1 is not null and ta1 >0) or (ta2 is not null and ta2>0) or (ta3 is not null and ta3>0) or (ta4 is not null and ta4>0) and acyear = '$ayear' and term = '$term' and subjt = '$subjt' and cls = '$cls') and id not in(SELECT stid from withdraw) order by fname ASC");
 if (mysqli_num_rows($stinputs) > 0){
 while ($row = mysqli_fetch_assoc($stinputs)) {
 ?>
@@ -121,10 +122,9 @@ while ($row = mysqli_fetch_assoc($stinputs)) {
                         }
                         ?>
                         <input type="hidden" value="<?= $page ?>" id="nexval"/>
-                        <span class="text-success"> <i class="fa fa-info-circle"></i> <strong>NOTE.</strong> Scores under this category should sum up to a maximum of 60 </span>
+                        <span class="text-danger"> <i class="fa fa-info-circle"></i> <strong>NOTE.</strong> Scores under this category should sum up to a maximum of 40 </span>
 
                         <?php
-                        // echo 'term:'. $term."year:".$ayear."sub:".$subjt."cls:".$cls;
                         if ($page < $pages) {
 
                             ?>

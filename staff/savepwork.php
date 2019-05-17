@@ -10,7 +10,8 @@ $pw1 = $_GET['pw1'];
 $pw2 = $_GET['pw2'];
 $totl = $_GET['totl'];
 
-
+$totl = $pw1+$pw2;
+if($totl<=20){
 $cg = new config();
 $cg->connect();
 include_once './objts/utitlity.php';
@@ -21,17 +22,16 @@ if ($n < 1) {
 
     echo "Records Saved";
 } else {
-    $n2 = mysqli_fetch_object(mysqli_query($cg->con, "select count(*) as cn from records where stid = '$stid' and term='$term' and acyear='$ayear' and subjt='$sub'and cls='$cls' and pw1 is not null and pw2 is not null and hw3 is not null and hw4 is not null"))->cn;
+    $n2 = mysqli_fetch_object(mysqli_query($cg->con, "select count(*) as cn from records where stid = '$stid' and term='$term' and acyear='$ayear' and subjt='$sub'and cls='$cls' and (pw1 + pw2)>0 "))->cn;
     if ($n2 > 0) {
         echo 'This record already exist, go to the view assessment records page if you want to modify this record';
     } else {
         mysqli_query($cg->con, "update records set pw1='$pw1',pw2='$pw2',subtotl=subtotl+$totl where stid='$stid' and term='$term' and acyear='$ayear' and subjt='$sub'and cls='$cls'");
-        //--------------------------------------------------totl score------------------
         echo "Records Saved";
 
 
     }
 
 
-}
+}}
 

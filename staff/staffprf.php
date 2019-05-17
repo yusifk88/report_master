@@ -1,5 +1,4 @@
 <?php
-include("check_session.php");
 include_once("../admin/objts/config.php");
 include_once("../admin/objts/school.php");
 $cf = new config();
@@ -8,9 +7,13 @@ $sch = new school();
 $id = $_GET['id'];
 $staf = mysqli_fetch_object(mysqli_query($cf->con, "select * from staff where id = '$id'"));
 $subs = mysqli_query($cf->con, "select subjects.subjdesc,subjects.type,classes.*,subas.* from subjects,classes,subas WHERE subas.subid = subjects.id and subas.clid = classes.id and subas.stfid = '$id'");
-
 $ranklist = ["Senior Sup't", "Prin. Sup't", "Assist. Dir ii", "Assist. Dir I", "Dep. Dir.", "Dir. II", "Dir. I"];
 $formcls = mysqli_query($cf->con, "select * from classes where id in(select clid from frmmaters where stfid = '$id')");
+$hms = mysqli_query($cf->con, "select * from houses where id in(select hid from housem where stfid = '$id')");
+$shm = mysqli_fetch_object(mysqli_query($cf->con,"select count(*) as cn from shm where stfid = '$id'"))->cn;
+$woff = mysqli_fetch_object(mysqli_query($cf->con,"select count(*) as cn from woff where stfid = '$id'"))->cn;
+$lib = mysqli_fetch_object(mysqli_query($cf->con,"select count(*) as cn from librian where stfid = '$id'"))->cn;
+
 $tday = date("Y-M-d");
 $tyear = substr($tday, 0, 4);
 $svyear = is_null($staf->assdate) ? $tyear : substr($staf->assdate, 0, 4);
@@ -155,6 +158,9 @@ $rank = is_numeric($staf->rank) ? $staf->rank : 0;
         </div>
     </div>
 
+
+
+
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <table class="table table-striped table-condensed">
@@ -181,6 +187,62 @@ $rank = is_numeric($staf->rank) ? $staf->rank : 0;
 
 
             </table>
+
+        </div>
+
+
+        <div class="col-lg-12 col-md-12">
+            <table class="table table-striped table-condensed">
+                <tr>
+                    <th class="text-center">
+                        HOUSE <?= ($staf->gender == "Male") ? "MASTER" : "MISTRESS" ?>
+                    </th>
+                </tr>
+                <?php
+                while ($row = mysqli_fetch_object($hms)) {
+                    ?>
+                    <tr>
+                        <td>
+                            <?= $row->name ?> (<?=$row->des?>)
+                        </td>
+                    </tr>
+                    <?php
+                }
+
+                ?>
+
+
+            </table>
+
+        </div>
+
+        <div class="col-md-12">
+            <h3>OTHER DUTIES</h3>
+
+            <?php
+                if($shm>0){
+                    ?>
+                    <h4>Senior House <?= ($staf->gender == "Male") ? "MASTER" : "MISTRESS" ?></h4>
+
+                    <?php
+                }
+
+
+                if($woff>0){
+                    ?>
+                    <h4>WAEC/Exam Officer</h4>
+
+                    <?php
+                }
+
+                if($lib>0){
+                    ?>
+                    <h4>Librarian</h4>
+
+                    <?php
+                }
+
+            ?>
 
         </div>
         <br>
