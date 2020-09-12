@@ -11,7 +11,7 @@ class school
     var $exam_ratio = 70;
     var $schoolID = "TUMUSECTEC";
     var $SMSsub = false;
-    var $sub_date = '2019-09-10' ;
+    var $sub_date = '2021-09-10' ;
     function __construct()
     {
     }

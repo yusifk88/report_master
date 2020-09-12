@@ -2,11 +2,11 @@
 
 class config
 {
-    var $host = "localhost";
-    var $user = "root";
-    var $password = "";
-    var $db = "reportdb";
-    var $con;
+    public $host = "127.0.0.1";
+    public $user = "root";
+    public $password = "password";
+    public $db = "reportdb";
+    public $con;
 
     public function connect()
     {

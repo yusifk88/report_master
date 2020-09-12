@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 include_once './admin/objts/school.php';
 include_once './admin/objts/config.php';
@@ -9,74 +8,71 @@ session_start();
 session_destroy();
 $dead = mysqli_fetch_object(mysqli_query($cf->con,"select * from deadline"));
 ?>
+<!DOCTYPE html>
+
+
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>Report Master |Log In</title>
+    <title>Report Master | Log In</title>
     <link rel="icon" href="admin/img/rmicon.png"/>
     <link href="admin/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="admin/css/mdb.min.css" rel="stylesheet" type="text/css"/>
-    <link href="admin/css/mystyle.css" rel="stylesheet" type="text/css"/>
     <link href="admin/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="admin/css/wecss.css" rel="stylesheet" type="text/css"/>
+    <link href="admin/css/atlantis.min.css" rel="stylesheet" type="text/css"/>
     <link href="admin/css/mystyle.css" rel="stylesheet" type="text/css"/>
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-12 mx-auto pt-5">
-			<div class="row">
-			<p class="text-danger">Before you login, please prove that you are not a robot</p> <br>
-			<div class="g-recaptcha" data-sitekey="6LfgNncUAAAAAKZLB_fZLSkBySpHmU8iXc83u9Is"></div>
-			
-			</div>
-            <div class="card animated fadeInUp mt-5 container-fluid">
-                    <div class="row">
-                        <div class="col-md-12 col-12 bg-warning text-center p-3 m-0">
-                            <i class="fa fa-lock"></i> USER AUTHENTICATION
+<body class="">
+<div class="container-fluid p-0">
+    <div class="row" style="position: absolute; height: 100%; width: 100%;">
+        <div class="col-md-4" style="background-image: url('admin/img/login_bg.jpg');">
 
-                        </div>
-                    </div>
+        </div>
+        <div class="col-md-8 col-12 pt-5">
+
+            <div class="card animated fadeInUp mt-5 container-fluid">
+
 
                 <div class="row">
-                        <div class="col-12 col-md-4 my-auto ">
+                        <div class="col-12 col-md-6 my-auto ">
+                            <div class="card-header">
+                                <div class="col-md-12 col-12 text-center p-3 m-0">
+                                   <h4> <i class="fa fa-lock"></i> Please login to continue</h4>
 
+                                </div>
+                            </div>
                             <form action="" class="m-1">
                                 <div class="md-form">
-                                    <i class="fa fa-user prefix grey-text"></i>
                                     <input type="text" id="uname" class="form-control">
                                     <label for="uname">User Name</label>
                                 </div>
 
                                 <div class="md-form">
-                                    <i class="fa fa-asterisk prefix grey-text"></i>
                                     <input type="password" id="upass" class="form-control">
                                     <label for="upass">Password</label>
                                 </div>
                                 <br>
-                                <button type="button" id="btnlogin" style="border-radius: 0;" class=" btn bg-info btn-block btn-lg">LogIn <i
+                                <div class="g-recaptcha" data-sitekey="6LfgNncUAAAAAKZLB_fZLSkBySpHmU8iXc83u9Is"></div>
+
+                                <button type="button" id="btnlogin" style="border-radius: 0;" class=" btn bg-primary btn-block btn-lg">LogIn <i
                                             class="fa fa-sign-in"></i></button>
                             </form>
 
                         </div>
-                        <div class="col-md-8 col-12 bg-info">
-                        <div class="list-group list-group-flush">
+                        <div class="col-md-6 col-12 bg-primary-gradient">
+                        <div class="list-group list-group-flush text-white">
                             <div class="list-group-item bg-transparent">
-                                <div class="row">
-                                <div class="col-md-3 col-3">
-                                    <i class="fa fa-info-circle fa-4x text-white"></i>
-                                </div>
-                                <div class="col-md-9 col-9 text-white">
+                                    <i class="fa fa-info-circle fa-2x text-white m-4"></i>
                                     Please note that anything you do is recorded against your user account for security auditing purposes
-                                </div>
+
                             </div>
-                        </div>
+
                             <div class="list-group-item bg-transparent">
                                 <div class="row">
                                 <div class="col-md-3 col-3">
-                                    <i class="fa fa-clock-o fa-4x text-white"></i>
+                                    <i class="fa fa-clock-o fa-2x text-white"></i>
                                 </div>
                                 <div class="col-md-9 col-9 text-white">
                                     <?php
@@ -100,11 +96,9 @@ $dead = mysqli_fetch_object(mysqli_query($cf->con,"select * from deadline"));
 
 
                             <div class="list-group-item bg-transparent">
-                                <div class="row">
-                                <div class="col-md-3 col-3">
-                                    <i class="fa fa-calendar-check-o fa-4x text-white"></i>
-                                </div>
-                                <div class="col-md-9 col-9 text-white">
+
+                                    <i class="fa fa-calendar-check-o fa-2x text-white"></i>
+
                                 <?php
                                     if($sch->sub_date == null){
                                         ?>
@@ -121,7 +115,7 @@ $dead = mysqli_fetch_object(mysqli_query($cf->con,"select * from deadline"));
                                     }else{
                                         ?>
                                             <h5 class="text-white">Next Subscription date: <strong><?=date('d-M-Y',strtotime($sch->sub_date))?></strong></h5>
-                                        <h5 class="text-danger"><?=$sch->get_subdays()?> Days to Expiration</h5>
+                                        <h5 class="text-danger"><?=$sch->get_subdays()?> Days More</h5>
 
 
                                         <?php
@@ -130,8 +124,7 @@ $dead = mysqli_fetch_object(mysqli_query($cf->con,"select * from deadline"));
                                 ?>
 
 
-                                </div>
-                            </div>
+
                         </div>
 
                         </div>
