@@ -1,5 +1,5 @@
 <?php
-include_once 'admin/objts/config.php';
+include_once ('admin/objts/config.php');
 include_once 'admin/objts/utitlity.php';
 include_once 'admin/objts/school.php';
 $sch = new school();

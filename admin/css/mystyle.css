@@ -51,7 +51,7 @@ body{
 }
 
 .snarl-info {
-    background-color: #17a2b8 !important;
+    background-color:#1069DB !important;
     color: #FFFFFF !important;
 }
 
@@ -74,8 +74,8 @@ body{
 .modal-header,
 .bootstrap-dialog-title {
     border-radius: 0 !important;
-    background-color: #17a2b8 !important;
-    color: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #1069DB !important;
 }
 
 .btn-good {
@@ -221,7 +221,7 @@ body > .container-fluid {
 }
 
 .tooltip * {
-    background-color: #17a2b8;
+    background-color: #1069DB;
     color: #FFFFFF;
 }
 
@@ -268,97 +268,12 @@ body > .container-fluid {
 .noclose .ui-dialog-titlebar {
 }
 
-.startmenu {
-    display: none;
-}
+
 
 
 .mainform {
     margin-top: 1.5em;
 }
-
-.startmenu {
-    margin-top: 2em;
-}
-
-.tile:hover {
-    cursor: pointer;
-    transform: scale(1.08);
-}
-
-.title {
-    font-weight: bolder;
-}
-
-.tile .detail {
-    text-align: match-parent;
-    padding: 2px;
-}
-
-.tile {
-    overflow-y: hidden;
-    transition: .5s ease;
-    height: 120px;
-    background-color: #999;
-    margin: 2px;
-    margin-bottom: 8px;
-    margin-top: 8px;
-    color: #fff;
-    width: 100%;
-    padding: 2px;
-}
-
-.tile-icon {
-    float: none;
-    font-size: 2em;
-    margin: 10px;
-    margin-bottom: 0;
-}
-
-.tile-blue {
-    background-color: #17a2b8;
-}
-
-.tile-green {
-    background-color: #0C0;
-}
-
-.tile-brown {
-    background-color: brown;
-}
-
-.tile-pink {
-    background-color: deeppink;
-}
-
-.tile-green-yellow {
-    background-color: #990;
-}
-
-.tile-violet {
-    background-color: #990099;
-}
-
-.tile-deepblue {
-    background-color: #0033ff;
-}
-
-.tile-orange {
-    background-color: #FC3;
-}
-
-.tile-red {
-    background-color: #F00;
-}
-
-.tile-black {
-    background-color: #000;
-}
-
-.tile-grey {
-    background-color: #767676;
-}
-
 
 
 .mainform {
@@ -387,22 +302,12 @@ body > .container-fluid {
     padding: 10px;
 }
 
-.mainform-content .row,
-.mainform-content .col-lg-12 .col-md-12 {
-}
 
 .ui-datepicker-month,
 .ui-datepicker-year {
     color: #000;
 }
 
-.mainform-footer {
-    float: bottom;
-    top: 90%;
-    padding: 10px;
-    width: 100%;
-    border-top: thick solid deepskyblue;
-}
 
 .wimg {
     position: relative;
@@ -446,7 +351,7 @@ table tr {
 
 i.active, label.active {
 
-    color: #17a2b8 !important;
+    color: #1069DB !important;
 
 }
 

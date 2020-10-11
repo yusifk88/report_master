@@ -1,3 +1,5 @@
+
+
 jQuery.fn.redraw = function () {
     return this.hide(0, function () {
         $(this).show(100);
@@ -12,6 +14,9 @@ function cloasedlgs() {
     });
 }
 
+function show_404() {
+
+}
 
 function remove_fullprog() {
 
@@ -71,8 +76,11 @@ function getsubas() {
 }
 
 
+
 function fullProg() {
-    $("body").append("<div class='we-overlay'><i class='fa fa-circle-o we-spin fa-4x' style='margin-top: 20%;'></i></div>");
+
+   let loading =  document.getElementById('loading').innerHTML;
+    $("body").append("<div class='we-overlay'>"+loading+"</i></div>");
 }
 
 function allprint() {
@@ -103,10 +111,7 @@ function cloasedlgs() {
 
 
     $.each(BootstrapDialog.dialogs, function (valu, key) {
-
         key.close();
-
-
     });
 
 
@@ -146,7 +151,7 @@ function getclstaks_inputs() {
                     }
                 }],
                 onshown:function(){
-                    showprogress('task-cont');
+                    showprogress();
                     $.get("gettaskinputs.php?cls=" + $("#assess_class").val() + "&ayear=" + $("#assess-ayear").val() + "&term=" + $("#assess-term").val() + "&subjt=" + $("#assess-subjt").val() + "&stid=", function (data) {
 
                     })
@@ -942,42 +947,63 @@ function getid_BeforeSave() {
     });
 }
 
+function displayData(data){
+
+    document.getElementById('maincontent').innerHTML = data;
+
+}
+
 //=========================================================================================
-function getdepts() {
-    showprogress("regdept");
+ window.getdepts= function () {
+    showprogress();
     $.get("getdepts.php", null, function (data) {
-        $("#regdept").html(data);
+        displayData(data);
     }).done(function () {
         finish();
 
     });
-}
+};
 
 //--------------------------------------------------------------------------------------------------
-function getclass() {
-    showprogress("regclass");
+window.getclass=function(){
+   // showprogress();
 
     $.get("getclass.php", function (data) {
 
+        displayData(data);
 
     }).done(function (data) {
 
-        $("#regclass").html(data);
         finish();
 
     });
 
+};
+
+//==============================================
+function getass(){
+    displayData("");
+
+    let header = document.getElementById('assess_header').innerHTML;
+
+    $("#assess_class").change();
+
+    let container = document.getElementById('assess-container').innerHTML;
+
+    let data = header+container;
+
+    displayData(data);
 }
+
 
 //=================================================================================================
 //--------------------------------------------------------------------------------------------------
 function getsubjts() {
-    showprogress("regsubjts");
 
     $.get("getsubjts.php", null, function (data) {
 
 
-        $("#regsubjts").html(data);
+        displayData(data);
 
 
     }).done(function () {
@@ -987,9 +1013,8 @@ function getsubjts() {
 
 //=====================================================================================================
 function gethouses() {
-    showprogress("reghouse");
     $.get("gethouse.php", null, function (data) {
-        $("#reghouse").html(data);
+        displayData(data);
     }).done(function () {
         finish();
     });
@@ -997,9 +1022,10 @@ function gethouses() {
 
 //====================================================================================================
 function getstaff() {
-    showprogress("regstaf");
     $.get("getstaff.php?search=" + $(".main-search").val(), null, function (data) {
-        $("#regstaf").html(data);
+
+        displayData(data);
+
     }).done(function () {
         finish();
     });
@@ -1010,15 +1036,14 @@ function getstaff() {
 
 //---------------------------------------------------------------------------------------------------
 function getstud(page) {
-    showprogress("stud-list");
-    var prog = $("#getstud-pro").val();
-    var cls = $("#getstud-class").val();
-    var huse = $("#getstud-house").val();
-    var fm = $("#getstud-form").val();
-    var ay = $("#getstud-ayear").val();
-    var gn = $("#filter-gender").val();
-    var gh = $("#getstud-ghouse").val();
-    var resstatus = $("#filter_resstatus").val();
+    const prog = $("#getstud-pro").val();
+    const cls = $("#getstud-class").val();
+    const huse = $("#getstud-house").val();
+    const fm = $("#getstud-form").val();
+    const ay = $("#getstud-ayear").val();
+    const gn = $("#filter-gender").val();
+    const gh = $("#getstud-ghouse").val();
+    const resstatus = $("#filter_resstatus").val();
     if (page === 'undefined') {
         var url = "getstuds.php?prog=" + prog + "&cls=" + cls + "&huse=" + huse + "&form=" + fm + "&ayear=" + ay + "&gender=" + gn + "&ghouse=" + gh + "&resstatus=" + resstatus;
         $.get(url, function () {
@@ -1071,108 +1096,21 @@ function getstud(page) {
 
 
 //=================================================================================================
-function showstart() {
+window.hideaddbtn = function () {
     $(".add-btn").fadeOut(100);
-    $(".startmenu").effect("drop", {mode: "show", direction: "left"}, 200);
-}
+};
+window.showaddbtn = function(){
+    $(".add-btn").fadeIn(100);
 
+};
 //--------------------------------------------------------------------------------------------------
-function performshow(id, target) {
-    window.requestAnimationFrame(function () {
-        var strid = id.toString();
-        $(".startmenu").effect("drop", {mode: "hide", direction: "left"}, 200, function () {
-            $(strid).effect("drop", {mode: "show", direction: "left"}, 500, function () {
-                if (target === "depts") {
-                    $(".add-btn").fadeIn(100);
-                    getdepts();
-                } else if (target === "classes") {
-                    $(".add-btn").fadeIn(100);
-                    getclass();
-                } else if (target === "subjts") {
-                    $(".add-btn").fadeIn(100);
-                    getsubjts();
-                } else if (target === "house") {
-                    $(".add-btn").fadeIn(100);
-                    gethouses();
-                } else if (target === "staff") {
-                    $(".add-btn").fadeIn(100);
-                    getstaff();
-                } else if (target === "student") {
-                    resetform();
-                    getid();
-                } else if (target === 'getstud') {
-                    $("#getstud-pro").change();
-                } else if (target === 'clstask') {
-                } else if (target === 'assess') {
-                    $("#assess_class").change();
-                } else if (target === 'printcls') {
-                    print_cls();
-                } else if (target === 'printprog') {
-                    print_prog();
-                } else if (target === 'printhse') {
-                    print_hse();
-                } else if (target === 'printsign') {
-                    print_sign();
-                } else if (target === 'rep_one') {
-                    print_rep_one();
-                } else if (target === 'rep_all') {
-                    print_rep_all();
-                } else if (target === 'brdsheet') {
-                    print_brdsheet();
-                } else if (target === 'formlst') {
-                    print_formlst();
-                } else if (target === 'scoresht') {
-                    print_scoresht();
-                } else if (target === 'transrpt') {
-                    print_transcrpt();
-                } else if (target === 'backup') {
-                    backup();
-                } else if (target === 'restore') {
-                    restore();
-                } else if (target === 'accounts') {
-                    getaccounts();
-                } else if (target === 'wdraw') {
-                    print_widraw();
-                } else if (target === 'frmres') {
-                    print_frmres();
-                } else if (target === 'clavg') {
-                    print_clavg();
-                } else if (target === 'genpop') {
-                    print_genpop();
-                } else if (target === 'waec') {
-                    getwaec();
-                } else if (target === 'graphclass') {
-                    $("#chart-ayear").change();
-                } else if (target === 'getaccount') {
-                    getMyaccount();
-                } else if (target === "frmdata") {
-                    $("#frm_class").change();
-                } else if (target === "smsreports") {
-                    getsmshistory();
-                } else if (target === 'smsnotif') {
-
-                    getsmsnotifhistory();
-                } else if (target === 'allca') {
-                    $("#allca_class").change();
-                } else if (target == 'mng-books') {
-                    getbooks();
-                } else if (target == 'lendbooks') {
-                    getlendbooks();
-
-                } else if (target == 'exeats') {
 
 
-                    get_exeats();
-                }
-
-            });
-        });
 
 
-    });
 
 
-}
+
 
 //end of performshow function
 //-------------------------------------------------------------------------------------------------------------------------
@@ -1755,6 +1693,11 @@ function remfrmm(id) {
 $(document).ready(function () {
 
 
+
+
+
+
+
     $("div#image_cont").dropzone(
         {
             url: "./dropfile.php",
@@ -2134,6 +2077,9 @@ $(document).ready(function () {
     $("#allca-subjt").change(function () {
         $("#allca_class").change();
     });
+
+
+
     $("#assess_class").change(function () {
         var cls = $("#assess_class").val();
         var subjt = $("#assess-subjt").val();
@@ -2720,10 +2666,10 @@ function mkwo(stfid) {
 }
 
 
-function showprogress(view) {
-    var viewid = "#" + view;
-    var prog = "<img style='width: 100%; height: auto;' src='../admin/img/listloader.gif' alt=''>";
-    $(viewid).html(prog);
+function showprogress() {
+
+    document.getElementById('maincontent').innerHTML = document.getElementById('loading').innerHTML;
+
 }
 
 
@@ -2778,6 +2724,18 @@ function getbooks() {
 
             show_error();
         });
+
+
+}
+
+function regstud() {
+
+
+    const data = document.getElementById('regstud').innerHTML;
+
+    displayData(data);
+
+
 
 
 }
@@ -3806,3 +3764,616 @@ function delstud(id) {
 }
 
 //--------------------------------------------------------------------------------
+
+
+    $(document).ready(function (){
+        Waves.init();
+        Waves.attach('.tile', ['waves-float', 'waves-light']);
+        Waves.attach('button', ['waves-button']);
+        $("div.dropzone").dropzone(
+            {
+                url: "./dropfile.php",
+                acceptedFiles: "image/*",
+                addRemoveLinks: true,
+                dictDefaultMessage: "drop photo here or click to upload",
+                dictRemoveFile: "Remove photo",
+                resizeWidth: "180",
+                resizeHeight: "200",
+                resizeMethod: "crop",
+                capture: null,
+                removedfile: function (file) {
+                    $.get("rmphoto.php?file=" + file.name, function () {
+                    }).done(function () {
+                        $("#photo").val("dpic/photo.jpg");
+                        var previewElement;
+                        return (previewElement = file.previewElement) != null ?
+                            (previewElement.parentNode.removeChild(file.previewElement)) : (void 0);
+                    });
+                },
+                maxFiles: 1,
+                accept: function (file, done) {
+                    $("#photo").val("temppic/" + file.name);
+                    done();
+                }
+            });
+        $("button").tooltip();
+        $("li").tooltip();
+        $("a").tooltip();
+        $("#assess-ayear").change(function () {
+            $("#assess_class").change();
+        });
+        $("#assess-subjt").change(function () {
+            $("#assess_class").change();
+        });
+        $("#assess-term").change(function () {
+            $("#assess_class").change();
+        });
+        $("#reloadbtn5").click(function () {
+
+            $("#assess_class").change();
+
+        });
+
+        //---------------------------
+
+        mkayear();
+        var addtest = localStorage.addtest;
+        $(".startmenu .col-lg-3, .tile").sortable();
+        var d = null;
+
+        //---------------------------------------------------------------------------------------
+
+        var d = new Date();
+        var td = d.getDate();
+        var tmon = d.getMonth() + 1;
+        var tyea = d.getFullYear();
+        $("#dor").val(tyea + "-" + tmon + "-" + td);
+
+        // showstart();
+
+        //-------------------------------------------------------------------------------------------------------------------------
+        $("#dept").change(function () {
+            if ($("#dept").val() !== "Select") {
+                var tmpop = "<option value=''>Getting classes</option>";
+                var me = $(this);
+                $.get("getclassbydep.php?depid=" + me.val(), null, function (d) {
+                    $("#clas").html(d);
+                }).done(function (d) {
+                });
+            } else {
+                $("#clas").html("");
+
+            }
+        });
+
+        //------------------------------------------------------------------------------------------------------------------------
+
+
+        //------------------------------------------------------------------------------------------------------------------------
+
+        $(".add-btn").click(function (e) {
+            if (addtest === "depts") {
+                var temp = "<div class='col-lg-12 col-md-12 col-sm-12 col-12'><form><div class='md-form'><i class='prefix fa fa-star-o'></i>";
+                temp += "<input type ='text' class='form-control'  id='depname' />";
+                temp += "<label  for ='depname'>Department Name/Description</label></div>";
+                temp += "</form></div>";
+                BootstrapDialog.show({
+                    title: "Add a Program/department",
+                    message: temp,
+                    buttons: [{
+                        label: "SAVE", cssClass: "bg-info text-white", action: function (d) {
+
+                            if ($("#depname").val() === "") {
+
+                                $("#depname").focus();
+
+                            } else {
+
+                                $.get("savedep.php?depname=" + $("#depname").val().toString(), null, function (data) {
+
+                                    getdepts();
+                                    $("#depname").val("");
+                                    $("#depname").focus();
+                                    Snarl.addNotification({
+                                        title: "SAVED",
+                                        text: "Programe/Department creates successfully",
+                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                                        timeout: 3000
+                                    });
+                                    $(".snarl-notification").addClass('snarl-success');
+
+
+                                });
+
+
+                            }
+
+
+                        }
+                    }]
+
+
+                });
+
+
+            } else if (addtest === "classes") {
+
+                $.get("adclass_inputs.php", null, function (data) {
+                }).done(function (data) {
+
+                    BootstrapDialog.show({
+                        title: "Add a class",
+                        message: data,
+                        buttons: [{
+                            label: "SAVE", cssClass: "bg-info text-white", action: function (d) {
+
+                                if (!$("#classname").val()) {
+                                    $("#classname").focus();
+
+                                    return false;
+                                }
+
+
+                                $.get("saveclass.php?dpid=" + $("#dep").val() + "&classname=" + $("#classname").val(), null, function (data) {
+                                }).done(function (data) {
+                                    $("#classname").val("");
+                                    $("#classname").focus();
+                                    getclass();
+                                    Snarl.addNotification({
+                                        title: "SAVED",
+                                        text: data,
+                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                                        timeout: 3000
+                                    });
+                                    $(".snarl-notification").addClass('snarl-success');
+
+
+                                });
+
+                            }
+                        }]
+
+                    });
+
+
+                });
+
+            } else if (addtest === "subjts") {
+                var temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'><div class='md-form'><i class='prefix fa fa-book'></i>";
+                temp += "<input type ='text' class='form-control'  id='subname' />";
+                temp += "<label class='control-label' for ='subname'>Subject Name</label></div>";
+                temp += "<label class='control-label' for ='subtype'>Subject Type</label>";
+                temp += "<select class='form-control' id='subtype'>";
+                temp += "<option>Core Subject</option>";
+                temp += "<option>Elective Subject</option>";
+                temp += "</select>";
+                temp += "</form></div>";
+                BootstrapDialog.show({
+                    title: "Add a Subject",
+                    message: temp,
+                    buttons: [{
+                        label: "SAVE", cssClass: "btn-good waves-button waves-effect", action: function (d) {
+                            if ($("#subname").val() === "") {
+                                $("#subname").focus();
+                            } else {
+
+                                $.get("savesub.php?subname=" + $("#subname").val().toString() + "&type=" + $("#subtype").val(), null, function (data) {
+
+                                    $("#subname").val("").focus();
+                                    getsubjts();
+                                    Snarl.addNotification({
+                                        title: "SAVED",
+                                        text: data,
+                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                                        timeout: 3000
+                                    });
+                                    $(".snarl-notification").addClass('snarl-success');
+
+
+                                });
+
+
+                            }
+
+                        }
+                    }]
+
+                });
+
+
+                //---------------------------------------------------adding house
+            } else if (addtest === "house") {
+                var temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'><div class='md-form'><i class='prefix fa fa-home'></i>";
+                temp += "<input type ='text' class='form-control' id='name' />";
+                temp += "<label for ='name'>House Name</label></div><div class='md-form'><i class='prefix fa fa-file-text-o'></i>";
+                temp += "<input type='text' class='form-control'  id='des'>";
+                temp += "<label class='control-label' for ='subtype'>House Description</label></div>";
+                temp += "<label class='control-label' for ='subtype'>House Type</label>";
+                temp += "<select id='house-type' class='form-control'>";
+                temp += "<option value='genhouse'>General House</option>";
+                temp += "<option value='ghouse'>Girls House</option>";
+                temp += "<option value='bhouse'>Boys House</option>";
+                temp += "</select>";
+                temp += "</form></div>";
+                BootstrapDialog.show({
+                    title: "Create New House",
+                    message: temp,
+
+                    buttons: [{
+                        label: "SAVE", cssClass: "btn-good waves-button waves-effect", action: function (d) {
+
+                            if ($("#name").val() === "" || $("#des").val() === "") {
+                                $("#name").focus();
+                            } else {
+
+                                $.get("savehouse.php?name=" + $("#name").val().toString() + "&des=" + $("#des").val() + "&htype=" + $("#house-type").val(), null, function (data) {
+                                    gethouses();
+                                    $("#name").val("");
+                                    $("#des").val("");
+                                    $("#name").focus();
+                                    Snarl.addNotification({
+                                        title: "SAVED",
+                                        text: data,
+                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                                        timeout: 3000
+                                    });
+                                    $(".snarl-notification").addClass('snarl-success');
+
+                                });
+                            }
+                        }
+                    }]
+                });
+
+            } else if (addtest === "staff") {
+                //starting
+                let temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'>";
+                temp += "<div class='row'>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-user'></i>";
+
+                temp += "<input type ='text' class='form-control' id='stffname' />";
+                temp += "<label for ='stffname'>First Name</label>";
+                temp += "</div>";
+                temp += "</div>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-user'></i>";
+                temp += "<input type='text' class='form-control' id='stflname' />";
+                temp += "<label  for ='stflname'>Last Name</label>";
+                temp += "</div> </div></div>";
+                temp += "<div class='row'>";
+                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+                temp += "<label class='control-label' for ='gender'>Gender</label>";
+                temp += "<select class='form-control' id='gender'><option>Male</option><option>Female</option></select>";
+                temp += "</div>";
+                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-phone'></i>";
+                temp += "<input type='text' class='form-control' id='cont'><br/>";
+                temp += "<label for ='cont'>Contact Number</label>";
+                temp += "</div></div>";
+                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+                temp += "<label class='control-label' for ='rank'>Rank</label>";
+                temp += "<select class='form-control' id='rank'><option value='0'>Senior Sup't</option><option value='1'>Prin. Sup't</option><option value='2'>Assist. Dir. ii</option><option value='3'>Assist. Dir. I</option><option value='4'>Dep. Dir.</option><option value='5'>Dir. II</option><option value='6'>Dir. I</option></select>";
+                temp += "</div> </div> <div class='row'>";
+                temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-id-badge'></i>";
+                temp += "<input type='text' class='form-control' id='stfid'><br/>";
+                temp += "<label for ='stfid'>Staff ID No.</label>";
+                temp += "</div></div>";
+                temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-calendar-check-o active'></i>";
+                temp += "<input type='date' class='form-control' id='sdob' />";
+                temp += "<label for ='sdob' class='active'>D.O.B</label>";
+                temp += "</div></div>";
+                temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-hashtag'></i>";
+                temp += "<input type='text' class='form-control' id='regno'><br/>";
+                temp += "<label for ='regno'>Registered No.</label>";
+                temp += "</div></div>";
+                temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-id-card-o'></i>";
+                temp += "<input type='text' class='form-control' id='ssnid'><br/>";
+                temp += "<label for ='ssnid'>SSNIT No.</label>";
+                temp += "</div></div>";
+                temp += "</div>";
+                temp += "<div class='row'>";
+                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-graduation-cap'></i>";
+                temp += "<input type='text' class='form-control' id='aqual'/>";
+                temp += "<label for ='aqaul'>Academic Qualification</label>";
+                temp += "</div></div>";
+                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-star-o'></i>";
+                temp += "<input type='text' class='form-control' id='pqual' />";
+                temp += "<label  for ='pqual'>Professional Qualification</label>";
+                temp += "</div></div>";
+                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-calendar'></i>";
+                temp += "<input type='date' class='form-control' id='appdate'><br/>";
+                temp += "<label class='active' for ='appdate'>Date Of First Appointment</label>";
+                temp += "</div> </div> </div>";
+                temp += "<div class='row'>";
+                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-calendar-plus-o'></i>";
+                temp += "<input type='date' class='form-control' id='assdate'><br/>";
+                temp += "<label class='active' for ='assdate'>Duty Assumed Date</label>";
+                temp += "</div></div>";
+                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-bank'></i>";
+                temp += "<input type='text' class='form-control' id='bankname'><br/>";
+                temp += "<label for ='bankname'>Associated Bank</label>";
+                temp += "</div></div> ";
+                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-hashtag'></i>";
+                temp += "<input type='text' class='form-control' id='accno'><br/>";
+                temp += "<label for ='accno'>Account Number</label>";
+                temp += "</div></div></div>";
+                temp += "<div class='card bg-secondary p-3 text-white'>Account information";
+                temp += "<div class='row'>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-user-circle-o'></i>";
+                temp += "<input type ='text' class='form-control text-white' id='uname' />";
+                temp += "<label class='control-label text-white' for ='uname' >User Name</label>";
+                temp += "</div></div>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-asterisk'></i>";
+                temp += "<label class='control-label text-white'  for ='upass'>Password</label>";
+                temp += "<input type='password' class='form-control' id='upass'>";
+                temp += "</div> </div> </div>";
+                temp += "<div class='row'>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
+                temp += "</div>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
+                temp += "<div class='md-form'>";
+                temp += "<i class='prefix fa fa-asterisk'></i>";
+                temp += "<input type='password' class='form-control' id='cpass'>";
+                temp += "<label class='control-label text-white' for ='cpass'>Confirm Password</label>";
+                temp += "</div> </div></div>";
+                temp += "</form>";
+                BootstrapDialog.show({
+                    title: "Register Staff",
+                    message: temp,
+                    size: "size-wide",
+                    buttons: [{
+                        label: "SAVE", cssClass: "btn bg-info", action: function (d) {
+
+                            if (!($("#upass").val() === $("#cpass").val())) {
+
+                                Snarl.addNotification({
+                                    title: "ERROR",
+                                    text: "Passwords do not match, please check and try again",
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-error');
+
+                                return false;
+
+                            }
+
+                            if (!$("#stffname").val() || !$("#stflname").val() || !$("#cont").val() || !$("#uname").val() || !$("#upass").val() || !$("#cpass").val()) {
+
+                                Snarl.addNotification({
+                                    title: "ERROR",
+                                    text: "A field is left blank, please check and try again",
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-error');
+                                return false;
+                            } else {
+
+                                var progress = Snarl.addNotification({
+                                    title: "PROCCESSING",
+                                    text: "Please Wait...",
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-circle-notch fa-spin'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-info');
+
+                                $.get("savestaff.php?fname=" + $("#stffname").val().toString() + "&lname=" + $("#stflname").val() + "&gender=" + $("#gender").val() + "&cont=" + $("#cont").val() + "&uname=" + $("#uname").val() + "&upass=" + $("#upass").val() + "&rank=" + $("#rank").val() + "&stfid=" + $("#stfid").val() + "&sdob=" + $("#sdob").val() + "&regno=" + $("#regno").val() + "&aqual=" + $("#aqual").val() + "&pqual=" + $("#pqual").val() + "&appdate=" + $("#appdate").val() + "&assdate=" + $("#assdate").val() + "&bankname=" + $("#bankname").val() + "&accno=" + $("#accno").val() + "&ssnid=" + $("#ssnid").val(), null, function (data) {
+
+
+                                }).done(function (data) {
+                                    d.close();
+                                    getstaff();
+                                    Snarl.removeNotification(progress);
+                                    Snarl.addNotification({
+                                        title: "SAVED",
+                                        text: data,
+                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                                        timeout: 3000
+                                    });
+                                    $(".snarl-notification").addClass('snarl-success');
+
+
+                                }).error(function () {
+
+                                    Snarl.removeNotification(progress);
+                                    Snarl.addNotification({
+                                        title: "ERROR",
+                                        text: "Could not save staff, please try again",
+                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                                        timeout: 3000
+                                    });
+                                    $(".snarl-notification").addClass('snarl-error');
+
+                                });
+
+
+                            }
+
+
+                        }
+                    }, {
+                        label: "CANCEL", cssClass: "btn-bad waves-button waves-effect", action: function (d) {
+
+                            d.close();
+
+                        }
+                    }]
+                });
+
+                //edditing
+            } else if (addtest === "accounts") {
+
+                //add account--------------------------------------------
+
+                var temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'>";
+                temp += "<div class='row'>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+                temp += "<label class='control-label' for ='stffname'>First Name</label>";
+                temp += "<input type ='text' class='form-control' placeholder='Enter first Name' id='adfname' />";
+                temp += "</div>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+                temp += "<label class='control-label' for ='stflname'>Last Name</label>";
+                temp += "<input type='text' class='form-control' placeholder='Enter Last Name' id='adlname' />";
+                temp += "</div> </div>";
+                temp += "<div class='row'>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+                temp += "<label class='control-label' for ='gender'>Gender</label>";
+                temp += "<select class='form-control' id='adgender'><option>Male</option><option>Female</option></select>";
+                temp += "</div>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+                temp += "<label class='control-label' for ='cont'>Contact Number</label>";
+                temp += "<input type='text' class='form-control' placeholder='Enter admin phone number' id='adcont'><br/>";
+                temp += "</div> </div>";
+                temp += "<div class='alert alert-info' style='padding:2px;'>Account information <span class='fa fa-hand-down'></span><br/>";
+                temp += "<div class='row'>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+                temp += "<label class='control-label' for ='uname'>User Name</label>";
+                temp += "<input type ='text' class='form-control' placeholder='Enter user Name' id='aduname' />";
+                temp += "</div>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+                temp += "<label class='control-label' for ='upass'>Admin Password</label>";
+                temp += "<input type='password' class='form-control' placeholder='Enter admin password' id='adupass'>";
+                temp += "</div> </div>";
+                temp += "<div class='row'>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+                temp += "</div>";
+                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+                temp += "<label class='control-label' for ='cpass'>Confirm admin Password</label>";
+                temp += "<input type='password' class='form-control' placeholder='Enter admin password again' id='adcpass'>";
+                temp += "</div> </div>";
+                temp += "</form>";
+                BootstrapDialog.show({
+                    title: "Create Admin. Account",
+                    message: temp,
+                    buttons: [{
+                        label: "CREATE", cssClass: "btn-good waves-button waves-effect", action: function (d) {
+
+                            if (!($("#adupass").val() === $("#adcpass").val())) {
+
+                                Snarl.addNotification({
+                                    title: "ERROR",
+                                    text: "Passwords do not match, please check and try again",
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-error');
+                                return false;
+
+                            }
+
+                            if (!$("#adfname").val() || !$("#adlname").val() || !$("#adcont").val() || !$("#aduname").val() || !$("#adupass").val() || !$("#adcpass").val()) {
+
+                                Snarl.addNotification({
+                                    title: "ERROR",
+                                    text: "A field is left blank, please check and try again",
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-error');
+
+                                return false;
+                            } else {
+
+                                var progress = Snarl.addNotification({
+                                    title: "PROCCESSING",
+                                    text: "Please Wait...",
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-circle-notch fa-spin'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-info');
+                                $.get("adadmin.php?fname=" + $("#adfname").val().toString() + "&lname=" + $("#adlname").val() + "&gender=" + $("#adgender").val() + "&cont=" + $("#adcont").val() + "&uname=" + $("#aduname").val() + "&upass=" + $("#adupass").val(), null, function (data) {
+                                }).done(function (data) {
+                                    d.close();
+                                    getaccounts();
+                                    Snarl.removeNotification(progress);
+                                    Snarl.addNotification({
+                                        title: "ACCOUNT CREATED",
+                                        text: data,
+                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                                        timeout: 3000
+                                    });
+                                    $(".snarl-notification").addClass('snarl-success');
+
+                                }).error(function () {
+                                    Snarl.removeNotification(progress);
+                                    Snarl.removeNotification(progress);
+                                    Snarl.addNotification({
+                                        title: "ERROR",
+                                        text: "Could not creat account, please try again",
+                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                                        timeout: 3000
+                                    });
+                                    $(".snarl-notification").addClass('snarl-error');
+
+                                });
+                            }
+
+
+                        }
+                    }]
+                });
+
+
+            }
+
+
+        });
+
+        $(".tile").click(function () {
+            var target = $(this).attr("data-get");
+            localStorage.addtest = target;
+            localStorage.dget = target;
+            addtest = localStorage.addtest;
+
+        });
+
+
+
+
+
+
+
+        $(".submit-btn").click(function () {
+            var ins = $("#frmregdept :input");
+            ins = ins.toArray();
+            var id = $(this).attr("data-id").toString();
+            d = saverecs(id);
+
+        });
+        $(".home-btn").click(function () {
+            addtest = null;
+
+            closewindow(".content");
+
+
+        });
+    });

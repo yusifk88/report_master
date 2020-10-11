@@ -19,88 +19,336 @@ include './objts/subjects.php';
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta name="theme-color" content="#17a2b8">
     <link rel="icon" href="img/rmicon.png"/>
-    <link href="css/ui-lightness/jquery-ui-1.10.4.min.css" rel="stylesheet" type="text/css"/>
-    <link href="start/jquery-ui.theme.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/dropzone.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/basic.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/snarl.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/waves.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/bootstrap-dialog.min.css" rel="stylesheet"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/mdb.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <script src="assets/js/plugin/webfont/webfont.min.js"></script>
+
+    <link href="css/atlantis.min.css" rel="stylesheet" type="text/css"/>
+
     <link href="css/mystyle.css" rel="stylesheet"/>
+    <link href="css/wecss.css" rel="stylesheet"/>
+    <script>
+        WebFont.load({
+            google: {"families":["Lato:300,400,700,900"]},
+            custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['/admin/assets/css/fonts/fonts.min.css']},
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
 </head>
-<body>
+<body class="bg-grey2">
 <input type="hidden" id="global_stfid" value="<?= $_SESSION['ad_id'] ?>">
 <input type="hidden" id="global_usertype" value="<?= $_SESSION['ad_utype'] ?>">
-<nav class="navbar navbar-expand-md fixed-top bg-info  ">
-    <div class="container-fluid">
-        <div class="navbar-header" style="transition: .3s ease-in-out !important;">
-            <a class="navbar-brand hidden-md mr-4 float-left" id="nav-back" href="#"><i
-                        class="fa fa-long-arrow-left text-white"> </i></a>
-            <a class="navbar-brand hidden-xs hidden-sm text-white m-0" href="#"
-               style="font-weight: bold; color: #fff !important;"
-               onclick="return false;"> <?= $_SESSION['ad_fname'] . " " . $_SESSION['ad_lname'] . " [" . $_SESSION['ad_utype'] . "]"; ?></a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav ml-auto ">
-                <li class="nav-item text-center" title="View user activity Log" data-toggle="tooltip"><a
-                            onclick="actlog(); return false;" style="color: #fff;" href="#" class=" nav-link"><i
-                                class="fa fa-binoculars"></i>
-                    </a></li>
-                <li class="nav-item text-center" title="Print record entry Log" data-toggle="tooltip"><a
-                            onclick="entrylog(); return false;" style="color: #fff;" href="#" class=" nav-link"><i
-                                class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i>
-                    </a></li>
-                <li title="Manage deadline" data-toggle="tooltip" class="nav-item text-center text-white"><a
-                            onclick="setdeadline(); return false;" href="#" class="nav-link"><i
-                                class="fa fa-clock-o text-white"></i>
-                    </a></li>
-                <li class="nav-item text-center"><a onclick="showinfo(); return false;" class="nav-link text-white"><i
-                                class="fa fa-info-circle"></i>
-                    </a></li>
-                <li class="nav-item text-center text-white"><a id="hlpmnu" onclick="showhelp(); return false;"
-                                                               href="#Help" class="nav-link text-white"><i
-                                class="fa fa-lightbulb-o text-white"></i> </a></li>
-                <li class="nav-item text-center"><a href="#" onclick="logout(); return false;" class="nav-link"><i
-                                class="fa fa-sign-out text-white"></i>
-                    </a></li>
-                <li class="nav-item text-white text-center"><a id="searchbtn" href="#"
-                                                               onclick="showsearch(); return false;"
-                                                               class="bg-info text-white nav-link"><i
-                                style="font-weight: bolder;" class="fa fa-search"></i>
-
-                    </a></li>
-            </ul>
-        </div>
-        <button id="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                class="navbar-toggler collapsed ml-auto p-0"><i
-                    class="fa fa-ellipsis-v navbar-toggler-icon text-white"></i></button>
-        <ul class="dropdown-menu animated zoomIn" style="transition: 0.1s ease-in-out !important;"
-            aria-labelledby="menu">
-            <li class="dropdown-item" title="Manage deadline" data-toggle="tooltip"><a
-                        onclick="actlog(); return false;" href="#">View User Activity Log</a>
-            </li>
-            <li class="dropdown-item" title="Manage deadline" data-toggle="tooltip"><a
-                        onclick="entrylog(); return false;" href="#">View Entry Log</a>
-            </li>
-            <li class="dropdown-item" title="Manage deadline" data-toggle="tooltip"><a
-                        onclick="setdeadline(); return false;" href="#">Set Deadline</i></a></li>
-            <li class="dropdown-item"><a onclick="showinfo(); return false;" href="#">System Info.</a></li>
-            <li class="dropdown-item"><a onclick="showhelp(); return false;" href="#Help">Tech Assistance </a></li>
-            <li class="dropdown-item"><a href="#" onclick="logout(); return false;">Log Out</a></li>
-        </ul>
-
-        <button id="searchbtn" onclick="showsearch();" type="button" class="navbar-toggler collapsed"
-                aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <i class="fa fa-search text-white"></i>
-        </button>
-    </div>
-</nav>
 <!--/ top navigation -->
-<div class="container-fluid" style="margin-bottom:7em;">
+<div class="wrapper" style="margin-bottom:7em;">
+    <div class="main-header">
+
+        <!-- Logo Header -->
+        <div class="logo-header bg-white">
+
+            <a href="/#" class="logo">
+                <img src="img/rmicon.png" alt="navbar brand" class="navbar-brand">
+            </a>
+            <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+						<i class="icon-menu"></i>
+					</span>
+            </button>
+            <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+            <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                    <i class="icon-menu"></i>
+                </button>
+            </div>
+        </div>
+        <!-- End Logo Header -->
+
+
+    <nav class="navbar navbar-header navbar-expand-lg bg-white">
+        <div class="container-fluid">
+            <div class="navbar-header" style="transition: .3s ease-in-out !important;">
+                <a class="navbar-brand hidden-md mr-4 float-left" id="nav-back" href="#">
+                    <i class="fa fa-long-arrow-left text-white"> </i></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav ml-auto ">
+                    <li class="nav-item text-center" title="View user activity Log" data-toggle="tooltip">
+                        <a
+                                onclick="actlog(); return false;" style="color: #fff;" href="#" class="nav-link text-primary"><i
+                                    class="fa fa-binoculars"></i>
+                        </a></li>
+                    <li class="nav-item text-center" title="Print record entry Log" data-toggle="tooltip"><a
+                                onclick="entrylog(); return false;" style="color: #fff;" href="#" class="nav-link text-primary"><i
+                                    class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i>
+                        </a></li>
+                    <li title="Manage deadline" data-toggle="tooltip" class="nav-item text-center"><a
+                                onclick="setdeadline(); return false;" href="#" class="nav-link text-primary"><i
+                                    class="fa fa-clock-o text-primary"></i>
+                        </a></li>
+                    <li class="nav-item text-center"><a onclick="showinfo(); return false;" class="nav-link text-primary"><i
+                                    class="fa fa-info-circle"></i>
+                        </a></li>
+                    <li class="nav-item text-center"><a id="hlpmnu" onclick="showhelp(); return false;"
+                                                                   href="#Help" class="nav-link text-primary"><i
+                                    class="fa fa-lightbulb-o"></i> </a></li>
+                    <li class="nav-item text-center"><a href="#" onclick="logout(); return false;" class="nav-link text-primary"><i
+                                    class="fa fa-sign-out text-primary"></i>
+                        </a></li>
+                    <li class="nav-item text-white text-center"><a id="searchbtn" href="#"
+                                                                   onclick="showsearch(); return false;"
+                                                                   class=" text-primary nav-link"><i
+                                    style="font-weight: bolder;" class="fa fa-search"></i>
+
+                        </a></li>
+                </ul>
+            </div>
+            <button id="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    class="navbar-toggler collapsed ml-auto p-0"><i
+                        class="fa fa-ellipsis-v navbar-toggler-icon text-primary"></i></button>
+            <ul class="dropdown-menu animated zoomIn" style="transition: 0.1s ease-in-out !important;"
+                aria-labelledby="menu">
+                <li class="dropdown-item" title="Manage deadline" data-toggle="tooltip"><a
+                            onclick="actlog(); return false;" href="#">View User Activity Log</a>
+                </li>
+                <li class="dropdown-item" title="Manage deadline" data-toggle="tooltip"><a
+                            onclick="entrylog(); return false;" href="#">View Entry Log</a>
+                </li>
+                <li class="dropdown-item" title="Manage deadline" data-toggle="tooltip"><a
+                            onclick="setdeadline(); return false;" href="#">Set Deadline</i></a></li>
+                <li class="dropdown-item"><a onclick="showinfo(); return false;" href="#">System Info.</a></li>
+                <li class="dropdown-item"><a onclick="showhelp(); return false;" href="#Help">Tech Assistance </a></li>
+                <li class="dropdown-item"><a href="#" onclick="logout(); return false;">Log Out</a></li>
+            </ul>
+
+            <button id="searchbtn" onclick="showsearch();" type="button" class="navbar-toggler collapsed"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-search text-white"></i>
+            </button>
+        </div>
+    </nav>
+
+</div>
+    <!-- Sidebar -->
+    <div class="sidebar sidebar-style-2" data-background-color="light">
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+            <div class="sidebar-content">
+                <div class="user">
+                    <div class="avatar-sm float-left mr-2">
+                        <img src="assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                    </div>
+                    <div class="info">
+                        <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+								<span>
+									Hizrian
+									<span class="user-level">Administrator</span>
+									<span class="caret"></span>
+								</span>
+                        </a>
+                        <div class="clearfix"></div>
+
+                        <div class="collapse in" id="collapseExample">
+                            <ul class="nav">
+                                <li>
+                                    <a href="#/profile">
+                                        <span class="link-collapse">My Profile</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#edit">
+                                        <span class="link-collapse">Edit Profile</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#settings">
+                                        <span class="link-collapse">Settings</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav nav-primary">
+
+
+                    <li class="nav-item active text-center">
+                        <a href="#/" class="collapsed text-center" aria-expanded="false">
+                            <i class="fa fa-dashboard"></i>
+                            <p>Dashboard</p>
+                        </a>
+
+                    </li>
+                    <li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+                        <h4 class="text-section">Students</h4>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#/regstud">
+                            <i class="fa fa-user-plus"></i>
+                            <p>Register Student</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a  href="#/viewstuds">
+                            <i class="fa fa-users"></i>
+                            <p>Manage Students</p>
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+                        <h4 class="text-section">Staff</h4>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#/regstaf">
+                            <i class="fa fa-users"></i>
+                            <p>Manage Staff</p>
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+                        <h4 class="text-section">Structures</h4>
+                    </li>
+                    <li class="nav-item">
+                        <a  href="#/regdept">
+                            <i class="fa fa-clone"></i>
+                            <p>Programes</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a  href="#/regclass">
+                            <i class="fa fa-cubes"></i>
+                            <p>Classes</p>
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a  href="#/reghouse">
+                            <i class="fa fa-home"></i>
+                            <p>Houses</p>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+                        <h4 class="text-section">Academics</h4>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#/regsubjts">
+                            <i class="fa fa-book"></i>
+                            <p>Subjects</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#/viewassess">
+                            <i class="fa fa-bar-chart"></i>
+                            <p>Assessments</p>
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a data-toggle="collapse" href="#/waec">
+                            <i class="fa fa-line-chart"></i>
+                            <p>WAEC Records</p>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+                        <h4 class="text-section">Reports</h4>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#base">
+                            <i class="fa fa-list"></i>
+                            <p>Class List</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#base">
+                            <i class="fa fa-list-alt"></i>
+                            <p>Programe List</p>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="#base">
+                            <i class="fa fa-list-ol"></i>
+                            <p>House List</p>
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a data-toggle="collapse" href="#base">
+                            <i class="fa fa-th-list"></i>
+                            <p>Sign List</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a data-toggle="collapse" href="#base">
+                            <i class="fa fa-th-list"></i>
+                            <p>Form List</p>
+                        </a>
+                    </li>
+
+
+
+
+
+
+                    <li class="mx-4 mt-2">
+                        <a  class="btn btn-primary btn-block"><span class="btn-label mr-2"> <i class="fa fa-heart"></i> </span>Buy Pro</a>
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- End Sidebar -->
+
+    <div class="main-panel">
+
+        <div class="container-fluid pt-5">
+
+
     <div class="row main-search-cont p-2 bg-light hoverable" style="margin-top: 3.5rem; box-shadow: 0 0 3px; ">
         <div class="col-lg-10 col-md-10 col-12 col-sm-12 col-lg-offset-1 col-md-offset-1">
             <div class="md-form">
@@ -110,425 +358,19 @@ include './objts/subjects.php';
             </div>
         </div>
     </div>
-    <?=$_SESSION['school_id']?>
-    <!-- start menu -->
-    <div class="startmenu" style="display: none;">
-        <!---fisrt row ------------------------------------------------------------------------>
-        <div class="tile-group">
-            <div class="row hidden-xs hidden-sm">
-                <div class="col-lg-10 col-md-10">
-                    <span class="pull-left tile-group-heading">General</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/regstud" style="text-decoration: none;">
-                        <div class="tile tile-blue" data-id="#regstud" data-get="student">
-                            <i class="fa fa-user tile-icon"></i><i class="fa fa-plus"></i>
-                            <p class="title">New student</p>
-                            <small class="detail hidden-sm font-small">
-                                register new students into the system.
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/regstaf" style="text-decoration: none;">
-                        <div class="tile tile-brown" data-id="#regstaf" data-get="staff">
-                            <i class="fa fa-users tile-icon"></i>
-                            <p class="title">Staff</p>
-                            <small class="detail hidden-sm font-small">
-                                register new staff that would use the system.
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/regclass" style="text-decoration: none;">
-                        <div class="tile tile-red" data-id="#regclass" data-get="classes">
-                            <i class="fa fa-home tile-icon"></i>
-                            <p class="title">Classes</p>
-                            <small class="detail hidden-sm">
-                                Register classes that are in the school
 
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/regdept" style="text-decoration: none;">
-
-                        <div class="tile tile-violet" data-id="#regdept" data-get="depts">
-                            <i class="fa fa-star-o tile-icon"></i>
-                            <p class="title">Programs</p>
-                            <small class="detail hidden-sm font-small">
-                                Register the programs that are offered in the school.
-                            </small>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!---fisrt row ------------------------------------------------------------------------>
-            <!---second row ------------------------------------------------------------------------>
-
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/regsubjts" style="text-decoration: none;">
-
-                        <div class="tile tile-pink" data-id="#regsubjts" data-get="subjts">
-
-                            <i class="fa fa-book tile-icon"></i>
-
-                            <p class="title">Subjects</p>
-
-                            <small class="detail hidden-sm">
-                                Register All subjects in the school
-
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/reghouse" style="text-decoration: none;">
-
-                        <div class="tile tile-green-yellow" data-id="#reghouse" data-get="house">
-                            <i class="fa fa-bank tile-icon"></i>
-                            <p class="title"> Houses</p>
-                            <small class="detail hidden-sm">
-                                Register the houses in the school
-                            </small>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/viewstuds" style="text-decoration: none;">
-
-                        <div class="tile tile-deepblue" data-id="#viewstuds" data-get="getstud">
-                            <i class="fa fa-users tile-icon"></i>
-                            <p class="title">Manage Students</p>
-                            <small class="detail hidden-sm">
-                                View and manage students' information
-                            </small>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/viewexeats" style="text-decoration: none;">
-
-                        <div class="tile tile-grey" data-id="#viewexeats" data-get="exeats">
-
-                            <span class="fa fa-id-card-o tile-icon"></span>
-
-                            <p class="title">Exeat Records</p>
-
-                            <small class="detail hidden-sm font-small">
-                                View exeats signed by house masters/mistresses and the senior house master/mistress
-                            </small>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/viewassess" style="text-decoration: none;">
-
-                        <div class="tile tile-violet" data-id="#viewassess" data-get="assess">
-
-                            <span class="fa fa-line-chart tile-icon"></span>
-
-                            <p class="title">View Assessments</p>
-
-                            <small class="detail hidden-sm">
-                                View assessment records such as class task,assignments,project etc.
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#smsreport" onclick="" style="text-decoration: none;">
-                        <div class="tile tile-grey" data-id="#smsreport" data-get="smsreports">
-                            <i class="fa fa-inbox tile-icon"></i><sup><i class="fa fa-mail-forward"></i></sup>
-                            <p class="title">Broadcast Reports</p>
-                            <small class="detail hidden-sm">
-                                send reports to parents through SMS
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#smsnotif" onclick="" style="text-decoration: none;">
-                        <div class="tile tile-blue" data-id="#smsnotif" data-get="smsnotif">
-                            <i class="fa fa-info-circle tile-icon"></i><sup><i class="fa fa-mail-forward"></i></sup>
-                            <p class="title">Broadcast Notifications</p>
-                            <small class="detail hidden-sm">
-                                send a common message to parrents thruogh SMS
-                            </small>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="tile-group">
-            <div class="row hidden-xs hidden-sm">
-                <div class="col-lg-10 col-md-10">
-                    <span class="pull-left tile-group-heading">WAEC Records</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/waec" style="text-decoration: none;">
-                        <div class="tile tile-green-yellow" data-id="#waec" data-get="waec">
-                            <i class="fa fa-balance-scale tile-icon"></i>
-                            <p class="title">Manage WAEC Records</p>
-                            <small class="detail hidden-sm">
-                                Manage WASSCE results of final year students
-                            </small>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/graph-class" style="text-decoration: none;">
-                        <div class="tile tile-black" data-id="#graph-class" data-get="graphclass">
-                            <i class="fa fa-pie-chart tile-icon"></i>
-                            <p class="title">Graphical Analysis by Class</p>
-                            <small class="detail hidden-sm">
-                                View the graphical representation of waec records under a selected class
-                            </small>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-        <div class="tile-group hidden-sm hidden-xs">
-            <div class="row hidden-xs hidden-sm">
-                <div class="col-lg-10 col-md-10">
-                    <span class="pull-left tile-group-heading">Print Documents</span>
-                </div>
-            </div>
-            <!---second row ------------------------------------------------------------------------>
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/print-pool" style="text-decoration: none;">
-
-                        <div class="tile tile-pink" data-id="#print-pool" data-get="printcls">
-                            <i class="fa fa-print tile-icon"><sup><i class="fa fa-user"></i></sup></i>
-                            <p class="title">Print Class List</p>
-                            <small class="detail hidden-sm">
-                                Generate and Print list of students in a particular class
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/print-pool" style="text-decoration: none;">
-                        <div class="tile tile-blue" data-id="#print-pool" data-get="printprog">
-                            <i class="fa fa-print tile-icon"><sup><i class="fa fa-list-alt"></i></sup></i>
-                            <p class="title">Print Programe List</p>
-                            <small class="detail hidden-sm">
-                                Generate and print a list students under a particular programe
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/print-pool" style="text-decoration: none;">
-                        <div class="tile tile-red" data-id="#print-pool" data-get="printhse">
-                            <i class="fa fa-print tile-icon"><sup><span class="fa fa-home"></span></sup></i>
-                            <p class="title">Print House List</p>
-                            <small class="detail hidden-sm">
-                                Generate and print a list of students under a particular house
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/print-pool" style="text-decoration: none;">
-
-                        <div class="tile tile-brown" data-id="#print-pool" data-get="printsign">
-                            <i class="fa fa-print tile-icon"></i>
-                            <p class="title">Print sign List</p>
-                            <small class="detail hidden-sm">
-                                Generate and Print a list of students to be signed against by the students.
-                            </small>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/print-pool" style="text-decoration: none;">
-                        <div class="tile tile-orange" data-id="#print-pool" data-get="rep_all">
-                            <i class="fa fa-print tile-icon"><sup><i class="fa fa-id-badge"></i></sup></i>
-                            <p class="title">Print Report[All]</p>
-                            <small class="detail hidden-sm">
-                                Generate and Print reports for all students in a particular class
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/print-pool" style="text-decoration: none;">
-
-                        <div class="tile tile-green" data-id="#print-pool" data-get="brdsheet">
-                            <i class="fa fa-print tile-icon"><sup><i class="fa fa-list-ul"></i></sup></i>
-                            <p class="title">Print Broadsheet</p>
-                            <small class="detail hidden-sm">
-                                generate and Print a broad performance sheet containing all subjects along with
-                                scores...
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/print-pool" style="text-decoration: none;">
-
-                        <div class="tile tile-violet" data-id="#print-pool" data-get="formlst">
-                            <i class="fa fa-print tile-icon"><sup><span class="fa fa-file"></span></sup></i>
-                            <p class="title">Print Form List</p>
-                            <div class="detail visible-lg visible-md">
-                                Print a list of students under a specific form
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/print-pool" style="text-decoration: none;">
-
-                        <div class="tile tile-black" data-id="#print-pool" data-get="scoresht">
-                            <i class="fa fa-print tile-icon"><sup><span class="fa fa-file"></span></sup></i>
-                            <p class="title">Print Score Sheet</p>
-                            <small class="detail visible-lg visible-md">
-                                Print a sheet that can be used to gather students' records
-                            </small>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/print-pool" style="text-decoration: none;">
-
-                        <div class="tile tile-red" data-id="#print-pool" data-get="wdraw">
-                            <span class="fa fa-print tile-icon"><sup><i class="fa fa-undo"></i></sup></span>
-                            <p class="title">Print Withdrawal List</p>
-                            <small class="detail visible-lg visible-md">
-                                Print a list of students that were withdrawn in an academic year
-                            </small>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/print-pool" style="text-decoration: none;">
-                        <div class="tile tile-green" data-id="#print-pool" data-get="frmres">
-                            <span class="fa fa-print tile-icon"><sup><i class="fa fa-area-chart"></i></sup></span>
-                            <p class="title">Print form Averages</p>
-                            <small class="detail visible-lg visible-md">
-                                Print a list of students of a certain form ranked by their general performance for the
-                                term
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/print-pool" style="text-decoration: none;">
-                        <div class="tile tile-blue" data-id="#print-pool" data-get="clavg">
-                            <span class="fa fa-print tile-icon"><sup><i class="fa fa-address-card-o"></i></sup></span>
-                            <p class="title">Print Class Averages</p>
-                            <small class="detail visible-lg visible-md">
-                                Print list of students in a class with their overall averages and ranking
-                            </small>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a onclick="print_avgs(); return false;" style="text-decoration: none;">
-                        <div class="tile tile-deepblue" data-id="#print-pool" data-get="clavg">
-                            <span class="fa fa-print tile-icon"><sup><i class="fa fa-calculator"></i></sup></span>
-                            <p class="title">Print Accumulated Averages</p>
-                            <small class="detail visible-lg visible-md">
-                                Print list of students in a class with their overall averages and ranking
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/print-pool" style="text-decoration: none;">
-
-                        <div class="tile tile-blue" data-id="#print-pool" data-get="genpop">
-                            <span class="fa fa-print tile-icon"><sup><i class="fa fa-users"></i></sup></span>
-                            <p class="title">Print general Population</p>
-                            <small class="detail visible-lg visible-md">
-                                Generate and print a list of all students in the school per an academic year
-                            </small>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!--admin tools-->
-        <div class="tile-group">
-            <div class="row hidden-xs hidden-sm">
-                <div class="col-lg-10 col-md-10">
-                    <span class="pull-left tile-group-heading">Utilities</span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/promtstud" style="text-decoration: none;">
-                        <div class="tile tile-violet" data-id="#promtstud" data-get="prmtstud">
-                            <i class=" fa fa-user tile-icon"><sup><span class="fa fa-arrow-right"></span></sup></i>
-                            <p class="title">Promote Students</p>
-                            <small class="detail visible-lg visible-md">
-                                Move some group of students to a new class
-                            </small>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                    <a href="#/print-pool" style="text-decoration: none;">
-
-                        <div onclick="localStorage.addtest='accounts';" class="tile tile-blue" data-id="#print-pool"
-                             data-get="accounts">
-                            <span class=" fa fa-user tile-icon"><sup><span class="fa fa-lock"></span></sup></span>
-                            <p class="title">User Accounts</p>
-                            <small class="detail visible-lg visible-md">
-                                Manage login accounts for authorised users
-                            </small>
-                        </div>
-                    </a>
-                </div>
-
-
-            </div>
-        </div> <!--  end of admin tools-->
-    </div>
     <div class="row">
-        <div class="m-auto col-lg-8 col-md-8 col-sm-12 col-12 col-md-offset-2 col-lg-offset-2">
-            <div class="mainform content" id="regdept">
+        <div class="m-auto col-lg-12 col-md-12 col-sm-12 col-12 col-md-offset-2 col-lg-offset-2">
 
-            </div>
-            <div class="mainform content" id="regclass">
 
-            </div>
-            <div class="mainform content" id="regsubjts">
-            </div>
-            <div class="mainform content" id="reghouse">
+            <!--main router view-->
+           <div class="w-100" id="maincontent">
 
-            </div>
+
+           </div>
+            <!--/main router view-->
+
+
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="mainform content" style="background: transparent; box-shadow: 0 !important;" id="viewexeats">
@@ -688,9 +530,9 @@ include './objts/subjects.php';
             </div>
         </div>
     </div><!--col-*-->
-    <div class="row content" id="regstud" style="display: none; margin-top: 1.7em;">
+    <div class="row " id="regstud" style="display: none; margin-top: 1.7em;">
         <div class="col-lg-10 col-md-10 col-sm-12 col-12 col-lg-offset-2 col-md-offset-2">
-            <div class="card card-info">
+            <div class="card">
                 <div class="card-heading bg-info text-white p-2">
                     <br> REGISTER STUDENT <i class="fa fa-user-plus fa-2x"></i>
                 </div>
@@ -1020,7 +862,7 @@ include './objts/subjects.php';
     </div>
 
     <div class="mainform content row bg-transparent pl-4" id="viewassess">
-        <div class="col-md-12">
+        <div class="col-md-12" id="assess_header">
             <div class="alert alert-info">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-12 col-12 hidden-sm hidden-xs pt-3">
@@ -1095,7 +937,8 @@ include './objts/subjects.php';
                 </form>
             </div>
         </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0" style="margin-top: -20px !important;"
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0"
+             style="margin-top: -20px !important;"
              id="assess-container">
         </div>
     </div>
@@ -1145,6 +988,7 @@ include './objts/subjects.php';
         </div>
         <div id="waec-content"></div>
     </div>
+
     <div class="mainform content row"
          style="background: transparent; box-shadow: 0 0 0 ; padding: 0; margin-right: 0 !important; margin-left: 0 !important; margin-bottom: 3em;"
          id="print-pool">
@@ -1399,9 +1243,18 @@ include './objts/subjects.php';
         </div>
         <div id="smsnotif-cont"></div>
     </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
 </div>
-<script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/jquery-ui-1.10.4.min.js" type="text/javascript"></script>
+<script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src="js/popper.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script src="js/bootstrap-dialog.min.js" type="text/javascript"></script>
@@ -1411,641 +1264,6 @@ include './objts/subjects.php';
 <script src="js/chart.js" type="text/javascript"></script>
 <script src="js/mdb.min.js" type="text/javascript"></script>
 <script src="js/wejs.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(document).ready(function (){
-        Waves.init();
-        Waves.attach('.tile', ['waves-float', 'waves-light']);
-        Waves.attach('button', ['waves-button']);
-        $("div.dropzone").dropzone(
-            {
-                url: "./dropfile.php",
-                acceptedFiles: "image/*",
-                addRemoveLinks: true,
-                dictDefaultMessage: "drop photo here or click to upload",
-                dictRemoveFile: "Remove photo",
-                resizeWidth: "180",
-                resizeHeight: "200",
-                resizeMethod: "crop",
-                capture: null,
-                removedfile: function (file) {
-                    $.get("rmphoto.php?file=" + file.name, function () {
-                    }).done(function () {
-                        $("#photo").val("dpic/photo.jpg");
-                        var previewElement;
-                        return (previewElement = file.previewElement) != null ?
-                            (previewElement.parentNode.removeChild(file.previewElement)) : (void 0);
-                    });
-                },
-                maxFiles: 1,
-                accept: function (file, done) {
-                    $("#photo").val("temppic/" + file.name);
-                    done();
-                }
-            });
-        $("button").tooltip();
-        $("li").tooltip();
-        $("a").tooltip();
-        $("#assess-ayear").change(function () {
-            $("#assess_class").change();
-        });
-        $("#assess-subjt").change(function () {
-            $("#assess_class").change();
-        });
-        $("#assess-term").change(function () {
-            $("#assess_class").change();
-        });
-        $("#reloadbtn5").click(function () {
-
-            $("#assess_class").change();
-
-        });
-
-        //---------------------------
-
-        mkayear();
-        var addtest = localStorage.addtest;
-        $(".startmenu .col-lg-3, .tile").sortable();
-        var d = null;
-
-        //---------------------------------------------------------------------------------------
-
-        var d = new Date();
-        var td = d.getDate();
-        var tmon = d.getMonth() + 1;
-        var tyea = d.getFullYear();
-        $("#dor").val(tyea + "-" + tmon + "-" + td);
-
-        // showstart();
-
-        //-------------------------------------------------------------------------------------------------------------------------
-        $("#dept").change(function () {
-            if ($("#dept").val() !== "Select") {
-                var tmpop = "<option value=''>Getting classes</option>";
-                var me = $(this);
-                $.get("getclassbydep.php?depid=" + me.val(), null, function (d) {
-                    $("#clas").html(d);
-                }).done(function (d) {
-                });
-            } else {
-                $("#clas").html("");
-
-            }
-        });
-
-        //------------------------------------------------------------------------------------------------------------------------
-
-
-        //------------------------------------------------------------------------------------------------------------------------
-
-        $(".add-btn").click(function (e) {
-            if (addtest === "depts") {
-                var temp = "<div class='col-lg-12 col-md-12 col-sm-12 col-12'><form><div class='md-form'><i class='prefix fa fa-star-o'></i>";
-                temp += "<input type ='text' class='form-control'  id='depname' />";
-                temp += "<label  for ='depname'>Department Name/Description</label></div>";
-                temp += "</form></div>";
-                BootstrapDialog.show({
-                    title: "Add a Program/department",
-                    message: temp,
-                    buttons: [{
-                        label: "SAVE", cssClass: "bg-info text-white", action: function (d) {
-
-                            if ($("#depname").val() === "") {
-
-                                $("#depname").focus();
-
-                            } else {
-
-                                $.get("savedep.php?depname=" + $("#depname").val().toString(), null, function (data) {
-
-                                    getdepts();
-                                    $("#depname").val("");
-                                    $("#depname").focus();
-                                    Snarl.addNotification({
-                                        title: "SAVED",
-                                        text: "Programe/Department creates successfully",
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-success');
-
-
-                                });
-
-
-                            }
-
-
-                        }
-                    }]
-
-
-                });
-
-
-            } else if (addtest === "classes") {
-
-                $.get("adclass_inputs.php", null, function (data) {
-                }).done(function (data) {
-
-                    BootstrapDialog.show({
-                        title: "Add a class",
-                        message: data,
-                        buttons: [{
-                            label: "SAVE", cssClass: "bg-info text-white", action: function (d) {
-
-                                if (!$("#classname").val()) {
-                                    $("#classname").focus();
-
-                                    return false;
-                                }
-
-
-                                $.get("saveclass.php?dpid=" + $("#dep").val() + "&classname=" + $("#classname").val(), null, function (data) {
-                                }).done(function (data) {
-                                    $("#classname").val("");
-                                    $("#classname").focus();
-                                    getclass();
-                                    Snarl.addNotification({
-                                        title: "SAVED",
-                                        text: data,
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-success');
-
-
-                                });
-
-                            }
-                        }]
-
-                    });
-
-
-                });
-
-            } else if (addtest === "subjts") {
-                var temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'><div class='md-form'><i class='prefix fa fa-book'></i>";
-                temp += "<input type ='text' class='form-control'  id='subname' />";
-                temp += "<label class='control-label' for ='subname'>Subject Name</label></div>";
-                temp += "<label class='control-label' for ='subtype'>Subject Type</label>";
-                temp += "<select class='form-control' id='subtype'>";
-                temp += "<option>Core Subject</option>";
-                temp += "<option>Elective Subject</option>";
-                temp += "</select>";
-                temp += "</form></div>";
-                BootstrapDialog.show({
-                    title: "Add a Subject",
-                    message: temp,
-                    buttons: [{
-                        label: "SAVE", cssClass: "btn-good waves-button waves-effect", action: function (d) {
-                            if ($("#subname").val() === "") {
-                                $("#subname").focus();
-                            } else {
-
-                                $.get("savesub.php?subname=" + $("#subname").val().toString() + "&type=" + $("#subtype").val(), null, function (data) {
-
-                                    $("#subname").val("").focus();
-                                    getsubjts();
-                                    Snarl.addNotification({
-                                        title: "SAVED",
-                                        text: data,
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-success');
-
-
-                                });
-
-
-                            }
-
-                        }
-                    }]
-
-                });
-
-
-                //---------------------------------------------------adding house
-            } else if (addtest === "house") {
-                var temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'><div class='md-form'><i class='prefix fa fa-home'></i>";
-                temp += "<input type ='text' class='form-control' id='name' />";
-                temp += "<label for ='name'>House Name</label></div><div class='md-form'><i class='prefix fa fa-file-text-o'></i>";
-                temp += "<input type='text' class='form-control'  id='des'>";
-                temp += "<label class='control-label' for ='subtype'>House Description</label></div>";
-                temp += "<label class='control-label' for ='subtype'>House Type</label>";
-                temp += "<select id='house-type' class='form-control'>";
-                temp += "<option value='genhouse'>General House</option>";
-                temp += "<option value='ghouse'>Girls House</option>";
-                temp += "<option value='bhouse'>Boys House</option>";
-                temp += "</select>";
-                temp += "</form></div>";
-                BootstrapDialog.show({
-                    title: "Create New House",
-                    message: temp,
-
-                    buttons: [{
-                        label: "SAVE", cssClass: "btn-good waves-button waves-effect", action: function (d) {
-
-                            if ($("#name").val() === "" || $("#des").val() === "") {
-                                $("#name").focus();
-                            } else {
-
-                                $.get("savehouse.php?name=" + $("#name").val().toString() + "&des=" + $("#des").val() + "&htype=" + $("#house-type").val(), null, function (data) {
-                                    gethouses();
-                                    $("#name").val("");
-                                    $("#des").val("");
-                                    $("#name").focus();
-                                    Snarl.addNotification({
-                                        title: "SAVED",
-                                        text: data,
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-success');
-
-                                });
-                            }
-                        }
-                    }]
-                });
-
-            } else if (addtest === "staff") {
-                //starting
-                var temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-user'></i>";
-
-                temp += "<input type ='text' class='form-control' id='stffname' />";
-                temp += "<label for ='stffname'>First Name</label>";
-                temp += "</div>";
-                temp += "</div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-user'></i>";
-                temp += "<input type='text' class='form-control' id='stflname' />";
-                temp += "<label  for ='stflname'>Last Name</label>";
-                temp += "</div> </div></div>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<label class='control-label' for ='gender'>Gender</label>";
-                temp += "<select class='form-control' id='gender'><option>Male</option><option>Female</option></select>";
-                temp += "</div>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-phone'></i>";
-                temp += "<input type='text' class='form-control' id='cont'><br/>";
-                temp += "<label for ='cont'>Contact Number</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<label class='control-label' for ='rank'>Rank</label>";
-                temp += "<select class='form-control' id='rank'><option value='0'>Senior Sup't</option><option value='1'>Prin. Sup't</option><option value='2'>Assist. Dir. ii</option><option value='3'>Assist. Dir. I</option><option value='4'>Dep. Dir.</option><option value='5'>Dir. II</option><option value='6'>Dir. I</option></select>";
-                temp += "</div> </div> <div class='row'>";
-                temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-id-badge'></i>";
-                temp += "<input type='text' class='form-control' id='stfid'><br/>";
-                temp += "<label for ='stfid'>Staff ID No.</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-calendar-check-o active'></i>";
-                temp += "<input type='date' class='form-control' id='sdob' />";
-                temp += "<label for ='sdob' class='active'>D.O.B</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-hashtag'></i>";
-                temp += "<input type='text' class='form-control' id='regno'><br/>";
-                temp += "<label for ='regno'>Registered No.</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-id-card-o'></i>";
-                temp += "<input type='text' class='form-control' id='ssnid'><br/>";
-                temp += "<label for ='ssnid'>SSNIT No.</label>";
-                temp += "</div></div>";
-                temp += "</div>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-graduation-cap'></i>";
-                temp += "<input type='text' class='form-control' id='aqual'/>";
-                temp += "<label for ='aqaul'>Academic Qualification</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-star-o'></i>";
-                temp += "<input type='text' class='form-control' id='pqual' />";
-                temp += "<label  for ='pqual'>Professional Qualification</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-calendar'></i>";
-                temp += "<input type='date' class='form-control' id='appdate'><br/>";
-                temp += "<label class='active' for ='appdate'>Date Of First Appointment</label>";
-                temp += "</div> </div> </div>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-calendar-plus-o'></i>";
-                temp += "<input type='date' class='form-control' id='assdate'><br/>";
-                temp += "<label class='active' for ='assdate'>Duty Assumed Date</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-bank'></i>";
-                temp += "<input type='text' class='form-control' id='bankname'><br/>";
-                temp += "<label for ='bankname'>Associated Bank</label>";
-                temp += "</div></div> ";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-hashtag'></i>";
-                temp += "<input type='text' class='form-control' id='accno'><br/>";
-                temp += "<label for ='accno'>Account Number</label>";
-                temp += "</div></div></div>";
-                temp += "<div class='card bg-secondary p-3 text-white'>Account information";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-user-circle-o'></i>";
-                temp += "<input type ='text' class='form-control text-white' id='uname' />";
-                temp += "<label class='control-label text-white' for ='uname' >User Name</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-asterisk'></i>";
-                temp += "<label class='control-label text-white'  for ='upass'>Password</label>";
-                temp += "<input type='password' class='form-control' id='upass'>";
-                temp += "</div> </div> </div>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
-                temp += "</div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-asterisk'></i>";
-                temp += "<input type='password' class='form-control' id='cpass'>";
-                temp += "<label class='control-label text-white' for ='cpass'>Confirm Password</label>";
-                temp += "</div> </div></div>";
-                temp += "</form>";
-                BootstrapDialog.show({
-                    title: "Register Staff",
-                    message: temp,
-                    size: "size-wide",
-                    buttons: [{
-                        label: "SAVE", cssClass: "btn bg-info", action: function (d) {
-
-                            if (!($("#upass").val() === $("#cpass").val())) {
-
-                                Snarl.addNotification({
-                                    title: "ERROR",
-                                    text: "Passwords do not match, please check and try again",
-                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                    timeout: 3000
-                                });
-                                $(".snarl-notification").addClass('snarl-error');
-
-                                return false;
-
-                            }
-
-                            if (!$("#stffname").val() || !$("#stflname").val() || !$("#cont").val() || !$("#uname").val() || !$("#upass").val() || !$("#cpass").val()) {
-
-                                Snarl.addNotification({
-                                    title: "ERROR",
-                                    text: "A field is left blank, please check and try again",
-                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                    timeout: 3000
-                                });
-                                $(".snarl-notification").addClass('snarl-error');
-                                return false;
-                            } else {
-
-                                var progress = Snarl.addNotification({
-                                    title: "PROCCESSING",
-                                    text: "Please Wait...",
-                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-circle-notch fa-spin'></i>",
-                                    timeout: 3000
-                                });
-                                $(".snarl-notification").addClass('snarl-info');
-
-                                $.get("savestaff.php?fname=" + $("#stffname").val().toString() + "&lname=" + $("#stflname").val() + "&gender=" + $("#gender").val() + "&cont=" + $("#cont").val() + "&uname=" + $("#uname").val() + "&upass=" + $("#upass").val() + "&rank=" + $("#rank").val() + "&stfid=" + $("#stfid").val() + "&sdob=" + $("#sdob").val() + "&regno=" + $("#regno").val() + "&aqual=" + $("#aqual").val() + "&pqual=" + $("#pqual").val() + "&appdate=" + $("#appdate").val() + "&assdate=" + $("#assdate").val() + "&bankname=" + $("#bankname").val() + "&accno=" + $("#accno").val() + "&ssnid=" + $("#ssnid").val(), null, function (data) {
-
-
-                                }).done(function (data) {
-                                    d.close();
-                                    getstaff();
-                                    Snarl.removeNotification(progress);
-                                    Snarl.addNotification({
-                                        title: "SAVED",
-                                        text: data,
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-success');
-
-
-                                }).error(function () {
-
-                                    Snarl.removeNotification(progress);
-                                    Snarl.addNotification({
-                                        title: "ERROR",
-                                        text: "Could not save staff, please try again",
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-error');
-
-                                });
-
-
-                            }
-
-
-                        }
-                    }, {
-                        label: "CANCEL", cssClass: "btn-bad waves-button waves-effect", action: function (d) {
-
-                            d.close();
-
-                        }
-                    }]
-                });
-
-                //edding
-            } else if (addtest === "accounts") {
-
-                //add account-------------------------------------------- 
-
-                var temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='stffname'>First Name</label>";
-                temp += "<input type ='text' class='form-control' placeholder='Enter first Name' id='adfname' />";
-                temp += "</div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='stflname'>Last Name</label>";
-                temp += "<input type='text' class='form-control' placeholder='Enter Last Name' id='adlname' />";
-                temp += "</div> </div>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='gender'>Gender</label>";
-                temp += "<select class='form-control' id='adgender'><option>Male</option><option>Female</option></select>";
-                temp += "</div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='cont'>Contact Number</label>";
-                temp += "<input type='text' class='form-control' placeholder='Enter admin phone number' id='adcont'><br/>";
-                temp += "</div> </div>";
-                temp += "<div class='alert alert-info' style='padding:2px;'>Account information <span class='fa fa-hand-down'></span><br/>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='uname'>User Name</label>";
-                temp += "<input type ='text' class='form-control' placeholder='Enter user Name' id='aduname' />";
-                temp += "</div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='upass'>Admin Password</label>";
-                temp += "<input type='password' class='form-control' placeholder='Enter admin password' id='adupass'>";
-                temp += "</div> </div>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "</div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='cpass'>Confirm admin Password</label>";
-                temp += "<input type='password' class='form-control' placeholder='Enter admin password again' id='adcpass'>";
-                temp += "</div> </div>";
-                temp += "</form>";
-                BootstrapDialog.show({
-                    title: "Create Admin. Account",
-                    message: temp,
-                    buttons: [{
-                        label: "CREATE", cssClass: "btn-good waves-button waves-effect", action: function (d) {
-
-                            if (!($("#adupass").val() === $("#adcpass").val())) {
-
-                                Snarl.addNotification({
-                                    title: "ERROR",
-                                    text: "Passwords do not match, please check and try again",
-                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                    timeout: 3000
-                                });
-                                $(".snarl-notification").addClass('snarl-error');
-                                return false;
-
-                            }
-
-                            if (!$("#adfname").val() || !$("#adlname").val() || !$("#adcont").val() || !$("#aduname").val() || !$("#adupass").val() || !$("#adcpass").val()) {
-
-                                Snarl.addNotification({
-                                    title: "ERROR",
-                                    text: "A field is left blank, please check and try again",
-                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                    timeout: 3000
-                                });
-                                $(".snarl-notification").addClass('snarl-error');
-
-                                return false;
-                            } else {
-
-                                var progress = Snarl.addNotification({
-                                    title: "PROCCESSING",
-                                    text: "Please Wait...",
-                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-circle-notch fa-spin'></i>",
-                                    timeout: 3000
-                                });
-                                $(".snarl-notification").addClass('snarl-info');
-                                $.get("adadmin.php?fname=" + $("#adfname").val().toString() + "&lname=" + $("#adlname").val() + "&gender=" + $("#adgender").val() + "&cont=" + $("#adcont").val() + "&uname=" + $("#aduname").val() + "&upass=" + $("#adupass").val(), null, function (data) {
-                                }).done(function (data) {
-                                    d.close();
-                                    getaccounts();
-                                    Snarl.removeNotification(progress);
-                                    Snarl.addNotification({
-                                        title: "ACCOUNT CREATED",
-                                        text: data,
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-success');
-
-                                }).error(function () {
-                                    Snarl.removeNotification(progress);
-                                    Snarl.removeNotification(progress);
-                                    Snarl.addNotification({
-                                        title: "ERROR",
-                                        text: "Could not creat account, please try again",
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-error');
-
-                                });
-                            }
-
-
-                        }
-                    }]
-                });
-
-
-            }
-
-
-        });
-
-        $(".tile").click(function () {
-            var target = $(this).attr("data-get");
-            localStorage.addtest = target;
-            localStorage.dget = target;
-            addtest = localStorage.addtest;
-
-        });
-
-
-        $(window).on('hashchange', function (e) {
-            var rawtag = window.location.hash;
-            var target = window.location.hash.replace('/', '');
-            localStorage.tget = target;
-            testtarget = window.location.hash.replace('#/', '');
-            if (testtarget != "regstaf") {
-                $(".main-search-cont").slideUp(100);
-            }
-            if ($(".bootstrap-dialog").length > 0) {
-                cloasedlgs();
-                window.location = rawtag;
-                return false;
-            } else {
-                if (window.location.hash && testtarget) {
-                    $("#nav-back").fadeIn(200);
-                    var dget = localStorage.dget;
-                    performshow(target, dget);
-                } else {
-                    $("#nav-back").fadeOut(200);
-                    $(".content").hide(1);
-                    showstart();
-                }
-            }
-
-
-        }).trigger('hashchange');
-
-        $(".submit-btn").click(function () {
-            var ins = $("#frmregdept :input");
-            ins = ins.toArray();
-            var id = $(this).attr("data-id").toString();
-            d = saverecs(id);
-
-        });
-        $(".home-btn").click(function () {
-            addtest = null;
-
-            closewindow(".content");
-
-
-        });
-    });
-</script>
 <?php
     if(!$sch->sub_expired()){
         ?>
@@ -2056,6 +1274,190 @@ include './objts/subjects.php';
     }
 
 ?>
+
+
+<script type="text/javascript">
+
+    //App routes
+
+    const routes = [
+        {
+            route:'/regdept',
+            callback: function () {
+                return getdepts();
+
+            },
+            showBtn:true
+        },
+
+        {
+            route:'/regclass',
+            callback: function () {
+                return getclass();
+
+            },
+            showBtn:true
+        },
+
+        {
+            route:'/regsubjts',
+            callback: function () {
+                return  getsubjts();
+
+            },
+            showBtn:true
+        },
+        {
+            route:'/reghouse',
+            callback: function () {
+                return gethouses();
+            },
+            showBtn:true
+        },
+        {
+            route:'/regstaf',
+            callback: function () {
+                return  getstaff();
+            },
+            showBtn:true
+        },
+        {
+            route:'/regstud',
+            callback: function () {
+                return regstud();
+            },
+            showBtn:false
+        },
+        {
+            route:'/viewstuds',
+            callback: function () {
+                return  getstud(1);
+            },
+            showBtn:false
+        },
+        {
+            route:'/viewexeats',
+            callback: function () {
+                return get_exeats();
+            },
+            showBtn:false
+        },
+        {
+            route:'/viewassess',
+            callback: function () {
+                return getass();
+            },
+            showBtn:false
+        },
+        {
+            route:'/viewassess',
+            callback: function () {
+                return false;
+            },
+            showBtn:false
+        },
+
+        {
+            route:'/smsreport',
+            callback: function () {
+                return  getsmshistory();
+            },
+            showBtn:false
+        },
+        {
+            route:'/smsnotif',
+            callback: function () {
+                return  getsmsnotifhistory();
+            },
+            showBtn:false
+        },
+        {
+            route:'/waec',
+            callback: function () {
+                return getwaec();
+            },
+            showBtn:false
+        },
+        {
+            route:'/graph-class',
+            callback: function () {
+                return false;
+            },
+            showBtn:false
+        },
+
+        {
+            route:'/graph-class',
+            callback: function () {
+                return false;
+            },
+            showBtn:false
+        },
+
+    ];
+
+    //
+
+    function fireRoute(target) {
+
+        let current_route = routes.filter(function (route) {
+            return route.route === target;
+        });
+        if ( current_route.length > 0 ){
+            document.getElementById('maincontent').innerHTML = document.getElementById('loading').innerHTML;
+            let routBlock = current_route[0];
+
+        //fire the route action
+            routBlock.callback();
+
+        //show the add button if true
+            if(routBlock.showBtn) {
+                $(".add-btn").fadeIn(100);
+
+            }else{
+                $(".add-btn").fadeOut(100);
+            }
+        }else{
+            show_404();
+        }
+    }
+
+    $(window).ready(function(){
+
+        $(window).on('hashchange', function (e) {
+            const rawtag = window.location.hash;
+            const target = window.location.hash.replace('#', '');
+            localStorage.tget = target;
+            fireRoute(target);
+
+        }).trigger('hashchange');
+    });
+
+
+
+
+
+
+</script>
+
+
+<!--loader-->
+<div id="loading" class="d-none container" >
+
+<div class='container pt-5' style="margin-top: 300px" >
+    <div class='loading'>
+        <div class='loader--dot'></div>
+        <div class='loader--dot'></div>
+        <div class='loader--dot'></div>
+        <div class='loader--dot'></div>
+        <div class='loader--dot'></div>
+        <div class='loader--dot'></div>
+        <div class='loader--text'></div>
+    </div>
+</div>
+</div>
+<!--loader-->
+
 
 </body>
 </html>

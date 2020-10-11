@@ -64,7 +64,7 @@ $dead = mysqli_fetch_object(mysqli_query($cf->con,"select * from deadline"));
                         <div class="col-md-6 col-12 bg-primary-gradient">
                         <div class="list-group list-group-flush text-white">
                             <div class="list-group-item bg-transparent">
-                                    <i class="fa fa-info-circle fa-2x text-white m-4"></i>
+                                    <i class="fa fa-info-circle fa-2x text-white "></i>
                                     Please note that anything you do is recorded against your user account for security auditing purposes
 
                             </div>
