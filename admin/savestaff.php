@@ -3,6 +3,7 @@ include_once './objts/config.php';
 include_once './objts/staff.php';
 $cfg = new config();
 $cfg->connect();
+//var_dump($_GET);
 $fname = $_GET['fname'];
 $lname = $_GET['lname'];
 $cont = $_GET['cont'];
@@ -39,5 +40,6 @@ $stf->assdate = $assdate;
 $stf->bankname = $bank;
 $stf->accno = $accno;
 $stf->ssnid = $ssnid;
-$d = $stf->createstaff();
-echo $d;
+
+echo $stf->createstaff();
+var_dump($stf);

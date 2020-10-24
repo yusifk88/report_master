@@ -8,6 +8,9 @@ $sch = new school();
 $limit = $_GET['limit'];
 $cf->connect();
 $log_list = mysqli_query($cf->con,"select user_log.*,staff.fname,staff.lname from user_log,staff where user_log.uid = staff.id order by datetime_entry desc limit 0 ,".$limit);
+if (!$log_list){
+    die();
+}
 $num = count($log_list);
 ?>
 <html>

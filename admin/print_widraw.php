@@ -13,9 +13,9 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo order by ay
 
 
         <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12">
-            <div class="card card-info" style="border-radius: 0;">
-                <div class="card-header bg-info text-white">
-                    <p class="card-title">Print Withdrawal List</p>
+            <div class="card" style="border-radius: 0;">
+                <div class="card-header bg-primary text-white">
+                    <p class="card-title text-white">Print Withdrawal List</p>
                 </div>
                 <form>
                     <div class="card-body">
@@ -37,7 +37,7 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo order by ay
 
                     <div class="card-footer">
 
-                        <button onclick="getprog_widraw();" type="button" class="btn bg-info">Print</button>
+                        <button onclick="getprog_widraw();" type="button" class="btn btn-primary">Print</button>
 
                     </div>
                 </form>

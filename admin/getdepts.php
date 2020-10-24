@@ -7,16 +7,19 @@ $dept = new Department();
 
 $data = $dept->getdpts();
 ?>
+<div class="row">
+    <div class="col-md-8 mx-auto">
+
 
 <div class="card">
-    <div class="card-header bg-info text-white">
-        <p class="card-title">List of Departments</p>
+    <div class="card-header bg-primary2 text-white">
+        <p class="card-title text-white">List of Departments</p>
     </div>
 
 
     <div class="table-responsive text-nowrap">
         <table class="table table-hover table-striped">
-            <thead class="bg-info text-white">
+            <thead>
             <tr>
                 <th>S/N</th>
                 <th>Description</th>
@@ -50,12 +53,12 @@ $data = $dept->getdpts();
                         ?>
                     </td>
 
-                    <td><i class="fa fa-edit waves-effect waves-circle editicon" title="Edit this department"
+                    <td><i class="fa fa-edit waves-effect waves-circle editicon text-primary" title="Edit this department"
                            data-input="<?php echo "$row[depname]"; ?>" data-id="<?php echo $row['id']; ?>"
-                           style="color: deepskyblue; cursor: pointer;"></i></td>
-                    <td><i class="fa fa-remove waves-effect waves-circle delicon" title="Delete this department"
+                           style="cursor: pointer;"></i></td>
+                    <td><i class="fa fa-remove waves-effect waves-circle delicon text-primary" title="Delete this department"
                            data-del="deldept.php" data-id="<?php echo $row['id']; ?>"
-                           style="color: #F00; cursor: pointer;"></i></td>
+                           style="cursor: pointer;"></i></td>
 
                 </tr>
 
@@ -141,6 +144,9 @@ $data = $dept->getdpts();
 
 
 
+    </div>
+
+</div>
 
 
 

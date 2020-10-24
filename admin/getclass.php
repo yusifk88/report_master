@@ -5,14 +5,16 @@ include_once './objts/rclass.php';
 $clss = new Rclass();
 $d = $clss->getclasses();
 ?>
+<div class="row">
+    <div class="col-md-8 mx-auto">
     <div class="card">
-        <div class="card-header bg-info">
+        <div class="card-header bg-primary2">
             <p class="card-title text-white">List of Classes</p>
         </div>
         <div class="table-responsive">
 
             <table class="table table-striped table-hover">
-                <thead class="bg-info text-white">
+                <thead>
                 <tr>
                     <th>ID</th>
                     <th>Class Name</th>
@@ -30,10 +32,10 @@ $d = $clss->getclasses();
                         <td><?php echo $row['classname']; ?>  </td>
                         <td><?php echo $row['depname']; ?>  </td>
                         <td><i title="Edit this class" data-get="<?= $row['classname']; ?>"
-                               data-dpid="<?= $row['dpid']; ?>" style="color: deepskyblue; cursor: pointer;"
-                               class="fa fa-edit editicon1" data-id="<?php echo $row['id']; ?>"> </i></td>
-                        <td><i title="Delete this class" style="color: red; cursor: pointer;"
-                               class="fa fa-remove waves-effect waves-circle delicon" data-id="<?= $row['id']; ?>"> </i>
+                               data-dpid="<?= $row['dpid']; ?>" style="cursor: pointer;"
+                               class="fa fa-edit editicon1 text-primary waves-circle" data-id="<?php echo $row['id']; ?>"> </i></td>
+                        <td><i title="Delete this class" style="cursor: pointer;"
+                               class="fa fa-remove waves-effect waves-circle delicon text-danger" data-id="<?= $row['id']; ?>"> </i>
                         </td>
                     </tr>
                     <?php
@@ -44,6 +46,9 @@ $d = $clss->getclasses();
             </table>
         </div>
     </div>
+    </div>
+
+</div>
     <script>
 
         $(".editicon1").click(function () {

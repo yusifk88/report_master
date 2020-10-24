@@ -5,13 +5,16 @@ $sbjt = new Subjects();
 $data = $sbjt->getsubjects();
 if (mysqli_num_rows($data) > 0) {
     ?>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+
     <div class="card">
-        <div class="card-header bg-info text-white">
-            <p class="card-title">List of Subjects</p>
+        <div class="card-header bg-primary2 text-white">
+            <p class="card-title text-white">List of Subjects</p>
         </div>
         <div class="table-responsive text-nowrap">
             <table class="table table-hover table-striped">
-                <thead class="bg-info text-white">
+                <thead>
                 <tr>
                     <th>S/N</th>
                     <th>Subject Description</th>
@@ -41,13 +44,13 @@ if (mysqli_num_rows($data) > 0) {
                             ?>
                         </td>
 
-                        <td><i class="fa fa-edit waves-effect waves-circle editicon2" title="Edit this Subject"
+                        <td><i class="fa fa-edit waves-effect waves-circle editicon2 text-primary" title="Edit this Subject"
                                data-type="<?php echo "$row[type]"; ?>" data-input="<?php echo "$row[subjdesc]"; ?>"
-                               data-id="<?php echo $row['id']; ?>" style="color: deepskyblue; cursor: pointer;"></i>
+                               data-id="<?php echo $row['id']; ?>" style="cursor: pointer;"></i>
                         </td>
-                        <td><i class="fa fa-remove waves-effect waves-circle delicon2" title="Delete this Subject"
+                        <td><i class="fa fa-remove waves-effect waves-circle delicon2 text-danger" title="Delete this Subject"
                                data-del="delsubj.php" data-id="<?php echo $row['id']; ?>"
-                               style="color: #F00; cursor: pointer;"></i></td>
+                               style="cursor: pointer;"></i></td>
 
                     </tr>
                     <?php
@@ -64,6 +67,10 @@ if (mysqli_num_rows($data) > 0) {
 
             </table>
         </div>
+    </div>
+
+        </div>
+
     </div>
     <?php
 } else {

@@ -20,7 +20,6 @@ include './objts/subjects.php';
     <meta name="theme-color" content="#17a2b8">
     <link rel="icon" href="img/rmicon.png"/>
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/dropzone.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/basic.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/snarl.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/waves.min.css" rel="stylesheet" type="text/css"/>
@@ -276,7 +275,7 @@ include './objts/subjects.php';
 
 
                     <li class="nav-item">
-                        <a data-toggle="collapse" href="#/waec">
+                        <a href="#/waec">
                             <i class="fa fa-line-chart"></i>
                             <p>WAEC Records</p>
                         </a>
@@ -290,22 +289,22 @@ include './objts/subjects.php';
                         <h4 class="text-section">Reports</h4>
                     </li>
                     <li class="nav-item">
-                        <a href="#base">
+                        <a href="#/classlist">
                             <i class="fa fa-list"></i>
                             <p>Class List</p>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#base">
+                        <a href="#/programlist">
                             <i class="fa fa-list-alt"></i>
-                            <p>Programe List</p>
+                            <p>Programme List</p>
                         </a>
                     </li>
 
 
                     <li class="nav-item">
-                        <a href="#base">
+                        <a href="#/houselist">
                             <i class="fa fa-list-ol"></i>
                             <p>House List</p>
                         </a>
@@ -314,25 +313,103 @@ include './objts/subjects.php';
 
 
                     <li class="nav-item">
-                        <a data-toggle="collapse" href="#base">
+                        <a href="#/signlist">
                             <i class="fa fa-th-list"></i>
                             <p>Sign List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a data-toggle="collapse" href="#base">
+                        <a href="#/formlist">
                             <i class="fa fa-th-list"></i>
                             <p>Form List</p>
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a href="#/reports">
+                            <i class="fa fa-th-list"></i>
+                            <p>Terminal Reports</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#/broadsheet">
+                            <i class="fa fa-th-list"></i>
+                            <p>Broadsheet</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#/scoresheet">
+                            <i class="fa fa-th-list"></i>
+                            <p>Score Sheet</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#/withdrawalist">
+                            <i class="fa fa-th-list"></i>
+                            <p>Withdrawal List</p>
+                        </a>
+                    </li>
 
 
+
+                    <li class="nav-item">
+                        <a href="#/formaverage">
+                            <i class="fa fa-th-list"></i>
+                            <p>Form Averages</p>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="#/classaverage">
+                            <i class="fa fa-th-list"></i>
+                            <p>Class Averages</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#/accumulatedaverages">
+                            <i class="fa fa-th-list"></i>
+                            <p>Accumulated Averages</p>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="#/generalpopulation">
+                            <i class="fa fa-th-list"></i>
+                            <p>General Population</p>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+                        <h4 class="text-section">Utilities</h4>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#/useraccounts">
+                            <i class="fa fa-user-secret"></i>
+                            <p>User Accounts</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#/promotestudents">
+                            <i class="fa fa-arrow-right"></i>
+                            <p>Promote Students</p>
+                        </a>
+                    </li>
 
 
 
                     <li class="mx-4 mt-2">
-                        <a  class="btn btn-primary btn-block"><span class="btn-label mr-2"> <i class="fa fa-heart"></i> </span>Buy Pro</a>
+                        <a  class="btn btn-primary btn-block"><span class="btn-label mr-2"> <i class="fa fa-heart"></i> </span>Help</a>
                     </li>
 
 
@@ -533,7 +610,7 @@ include './objts/subjects.php';
     <div class="row " id="regstud" style="display: none; margin-top: 1.7em;">
         <div class="col-lg-10 col-md-10 col-sm-12 col-12 col-lg-offset-2 col-md-offset-2">
             <div class="card">
-                <div class="card-heading bg-info text-white p-2">
+                <div class="card-heading bg-primary-gradient text-white p-2">
                     <br> REGISTER STUDENT <i class="fa fa-user-plus fa-2x"></i>
                 </div>
                 <div class="card-body" style="padding: 10px !important;">
@@ -542,25 +619,29 @@ include './objts/subjects.php';
                         if(!$sch->sub_expired()){
                     ?>
 
-                    <div class="alert bg-warning">
+                    <div class="alert alert-warning">
                         <h4><i class="fa fa-warning"></i> Please make sure to select the correct academic year to prevent misplacing students  </h4>
 
                     </div>
-                    <form method="post" action="regstud.php" id="frmregstud" class="form">
+                    <form enctype="multipart/form-data" method="post" id="frmregstud" class="form" onsubmit="saveStiudent(); return false;">
 
 
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                 <br><br><br>
                                 <label class="control-label" for="index">ID</label>
-                                <input readonly="" id="index" name="index"
-                                       style="background-color: #17a2b8; color: #FFF; text-align: center;" type="text"
+                                <input readonly=""
+                                       id="index"
+                                       name="index"
+                                       style="background-color: #17a2b8; text-align: center;" type="text"
                                        class="form-control input-lg" required="required"
                                        placeholder="identification number"/>
                             </div>
-                            <input type="hidden" value="dpic/photo.jpg" name="photo" id="photo" required="required"/>
                             <div class="col-lg-3 col-md-3 col-sm-8 col-12 pull-right ml-auto">
-                                <div class="dropzone waves-effect waves-ripple"></div>
+                                <img style="max-height: 200px; max-width: 190px;" id="student_image_preview" class="img-fluid img-thumbnail" src="img/photo.jpg" alt="Student photo">
+                                <input onchange="student_image_selected(event)" name="photo" type="file" accept="image/*" id="student_image_input" class="d-none"><br/>
+                                <button type="button" onclick="select_student_image()" class="btn text-primary btn-link">Select Photo</button>
+                                <button id="remove_student_photo_button" type="button" onclick="remove_student_image()" class="btn text-danger btn-link " style="display: none;">Remove Photo</button>
                             </div>
 
                         </div>
@@ -568,18 +649,16 @@ include './objts/subjects.php';
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="md-form">
-                                    <i class="fa fa-hashtag prefix grey-text"></i>
+                                    <label class="form-control-label" for="jhsno">JHS No.</label>
                                     <input type="text" name="jhsno" id="jhsno" class="form-control">
-                                    <label for="jhsno">JHS No.</label>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
 
 
                                 <div class="md-form">
-                                    <i class="fa fa-hashtag prefix grey-text"></i>
+                                    <label class="form-control-label" for="shsno">SHS No.</label>
                                     <input type="text" name="shsno" id="shsno" class="form-control">
-                                    <label for="shsno">SHS No.</label>
                                 </div>
 
 
@@ -590,18 +669,16 @@ include './objts/subjects.php';
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="md-form">
-                                    <i class="fa fa-user prefix grey-text"></i>
+                                    <label class="form-control-label" for="fname">SurName <i style="color: #F00;" class="fa fa-asterisk"></i></label>
                                     <input required type="text" name="fname" id="fname" class="form-control">
-                                    <label for="fname">SurName</label>
                                 </div>
 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
 
                                 <div class="md-form">
-                                    <i class="fa fa-user prefix grey-text"></i>
+                                    <label class="form-control-label" for="lname">Last Name <i style="color: #F00;" class="fa fa-asterisk"></i></label>
                                     <input required type="text" name="lname" id="lname" class="form-control">
-                                    <label for="lname">Last Name</label>
                                 </div>
                             </div>
 
@@ -612,9 +689,8 @@ include './objts/subjects.php';
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="md-form">
-                                    <i class="fa fa-user prefix grey-text"></i>
-                                    <input required type="text" name="oname" id="oname" class="form-control">
-                                    <label for="oname">Other Name(s)</label>
+                                    <label class="form-control-label" for="oname">Other Name(s)</label>
+                                    <input type="text" name="oname" id="oname" class="form-control">
                                 </div>
 
                             </div>
@@ -623,7 +699,7 @@ include './objts/subjects.php';
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
 
-                                        <label class="control-label" for="gender">Gender</label>
+                                        <label class="form-control-label" for="gender">Gender</label>
 
                                         <select class="form-control we-select" id="gender" name="gender">
 
@@ -637,9 +713,8 @@ include './objts/subjects.php';
 
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="md-form">
-                                            <i class="fa fa-calendar-check-o prefix grey-text"></i>
+                                            <label class="form-control-label" class="active" for="dob">Date Of Birth <i style="color: #F00;" class="fa fa-asterisk"></i></label>
                                             <input required type="date" name="dob" id="dob" class="form-control">
-                                            <label class="active" for="dob">Date Of Birth</label>
                                         </div>
 
                                     </div>
@@ -657,8 +732,7 @@ include './objts/subjects.php';
 
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <label class="control-label" for="dept">Department <span style="color: #F00;"
-                                                                                                 class="fa fa-asterisk"></span></label>
+                                        <label class="form-control-label" for="dept">Department <i style="color: #F00;" class="fa fa-asterisk"></i></label>
                                         <select class="form-control we-select" name="dept" id="dept">
 
                                             <?php
@@ -674,7 +748,7 @@ include './objts/subjects.php';
                                         </select>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <label class="control-label" for="form">
+                                        <label class="form-control-label" for="form">
                                             Form
                                         </label>
                                         <select class="form-control" name="form" id="form">
@@ -690,20 +764,29 @@ include './objts/subjects.php';
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="md-form">
-                                            <i class="fa fa-home prefix grey-text"></i>
-                                            <input required type="text" class="form-control" readonly id="hse_alt">
-                                            <label class="active" for="hse_alt">House</label>
-                                            <input required type="hidden" name="hse" id="hse" class="form-control">
+                                            <label class="form-control-label" for="hse_alt">House</label>
+                                            <select class="form-control" name="house" id="house" required>
+
+                                                <?php
+                                                $ghouse = mysqli_query($cf->con, "select * from houses where house_type = 'genhouse'");
+
+                                                while ($rh = mysqli_fetch_object($ghouse)) {
+                                                    ?>
+                                                    <option value="<?= $rh->id ?>"><?= $rh->des ?> (<?= $rh->name ?>)</option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+
                                         </div>
 
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
 
                                         <div class="md-form">
-                                            <i class="fa fa-calendar-o prefix grey-text"></i>
+                                            <label class="form-control-label" for="dor">Registration Date</label>
                                             <input value="<?= date('mm/dd/yyyy') ?>" required type="date" name="dor"
                                                    id="dor" class="form-control">
-                                            <label class="active" for="dor">Registeration Date</label>
                                         </div>
                                     </div>
                                 </div>
@@ -712,9 +795,9 @@ include './objts/subjects.php';
                         </div>
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-12 col-12">
-                                <label for="" class="control-label">Gender House/Hall</label>
+                                <label for="ghouse" class="form-control-label">Gender House/Hall</label>
                                 <select name="ghouse" id="ghouse" class="form-control">
-                                    <option value="0">None</option>
+                                    <option value="">None</option>
 
                                     <?php
                                     $ghouse = mysqli_query($cf->con, "select * from houses where house_type <> 'genhouse'");
@@ -729,8 +812,7 @@ include './objts/subjects.php';
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-12 col-12">
-                                <label class="control-label" for="clas">Class <span style="color: #F00;"
-                                                                                    class="fa fa-asterisk"></span></label>
+                                <label class="form-control-label" for="clas">Class</label>
                                 <select required="required" class="form-control we-select" name="cls" id="clas">
                                     <?php
                                     $cls = new Rclass();
@@ -746,14 +828,12 @@ include './objts/subjects.php';
                                 </select>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-12 col-12">
-                                <label class="control-label" for="ayear">Academic Year <span style="color: #F00;"
-                                                                                             class="fa fa-asterisk"></span></label>
+                                <label class="form-control-label" for="ayear">Academic Year</label>
                                 <select class="form-control" name="ayear" id="ayear">
                                 </select>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-12 col-12">
-                                <label class="control-label" for="lschool">Residential Status <span style="color: #F00;"
-                                                                                                    class="fa fa-asterisk"></span></label>
+                                <label class="form-control-label" for="restatus">Residential Status</label>
                                 <select class="form-control" name="reststatus" id="restatus">
                                     <option selected value="Boarding Student">Boarding Student</option>
                                     <option value="Day Student">Day Student</option>
@@ -761,47 +841,45 @@ include './objts/subjects.php';
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                 <div class="md-form">
-                                    <i class="fa fa-caret-left prefix grey-text"></i>
+                                    <label class="form-control-label" for="lschool">Last School Attended </label>
                                     <input type="text" name="lsch" required="required" id="lschool"
                                            class="form-control"/>
-                                    <label for="lschool">Last School Attended </label>
                                 </div>
                             </div>
 
                         </div>
                         <br/>
-                        <div style="padding: 0;" class="p-2 bg-warning text-white"><p class="text-muted">
-                            <h3>Parent/Guidiant's Information <i class="fa fa-caret-down"></i></h3> </p></div>
+                        <div style="padding: 0;" class="p-2">
+                            <p >
+                            <h3 class="text-primary">Parent/Guidiant's Information</h3>
+                            </p>
+                        </div>
                         <!---- row for parent's information-->
-                        <div class="row" style="border-bottom: thin solid #17a2b8">
+                        <div class="row">
                             <!----father's information-->
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
 
-                                <div class="card card-warning">
+                                <div class="card">
                                     <div class="card-heading p-2 bg-info text-white">Father's information</div>
-                                    <div class="card-body" style="padding: 5px;">
+                                    <div class="card-body">
 
                                         <div class="md-form">
-                                            <i class="fa fa-user prefix grey-text"></i>
-                                            <input class="form-control" type="text" required="required" name="fthname"
-                                                   id="fthname"/>
-                                            <label for="fthname">Father's Full Name <span style="color: #F00;"
-                                                                                          class="fa fa-asterisk"></span></label>
+                                            <label for="fthname" class="form-control-label">Father's Full Name </label>
+
+                                                <input class="form-control" type="text" required="required" name="fthname"
+                                                                                          id="fthname"/>
                                         </div>
 
                                         <div class="md-form">
-                                            <i class="fa fa-address-book-o prefix grey-text"></i>
+                                            <label for="fhtown" class="form-control-label">Father's Home Town</label>
                                             <input class="form-control" type="text" required="required" name="fhtown"
                                                    id="fhtown"/>
-                                            <label for="fhtown">Father's Home Town <span style="color: #F00;"
-                                                                                         class="fa fa-asterisk"></span></label>
                                         </div>
                                         <div class="md-form">
-                                            <i class="fa fa-phone prefix grey-text"></i>
 
+                                            <label class="form-control-label" for="pthtel">Father's Phone Number</label>
                                             <input class="form-control" type="tel" required="required" name="pthtel"
                                                    id="pthtel"/>
-                                            <label for="pthtel">Father's Phone Number</label>
 
                                         </div>
                                     </div>
@@ -810,29 +888,25 @@ include './objts/subjects.php';
                             <!--mother's information-->
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
 
-                                <div class="card card-default">
+                                <div class="card">
                                     <div class="card-heading p-2 bg-success text-white">Mother's information</div>
-                                    <div class="card-body" style="padding: 5px;">
+                                    <div class="card-body">
                                         <div class="md-form">
-                                            <i class="fa fa-user prefix grey-text"></i>
+                                            <label for="mthname"  class="form-control-label">Mother's Full Name </label>
                                             <input class="form-control" type="text" required="required" name="mthname"
                                                    id="mthname"/>
-                                            <label for="mthname">Mother's Full Name </label>
                                         </div>
 
                                         <div class="md-form">
-                                            <i class="fa fa-address-book-o prefix grey-text"></i>
+                                            <label class="control-label" for="mtown" class="form-control-label" >Mother's Home Town</label>
                                             <input class="form-control" type="text" required="required" name="mtown"
                                                    id="mtown"/>
-                                            <label class="control-label" for="mtown">Mother's Home Town</label>
 
                                         </div>
 
                                         <div class="md-form">
-                                            <i class="fa fa-phone prefix grey-text"></i>
-
+                                            <label class="form-control-label" for="mthtel">Mother's Phone Number</label>
                                             <input class="form-control" type="tel" name="mthtel" id="mthtel"/>
-                                            <label class="control-label" for="mthtel">Mother's Phone Number</label>
 
                                         </div>
 
@@ -840,7 +914,7 @@ include './objts/subjects.php';
                                 </div>
                             </div>
                         </div>
-                        <button type='submit' class="btn bg-info" id="btnregstud">Save</button>
+                        <button type='submit' class="btn btn-primary" id="btnregstud">Save</button>
 
                         <button type="button" id="clearbtn" class="btn btn-danger">Clear All</button>
 
@@ -849,10 +923,10 @@ include './objts/subjects.php';
                 <?php
                 }else{
 
-                            ?>
+                ?>
 
-                            <h3 class="text-danger">Sorry, you cannot have access to this component at the moment, your portal subscription is over</h3>
-                            <?php
+                <h3 class="text-danger">Sorry, you cannot have access to this component at the moment, your portal subscription is over</h3>
+                <?php
                 }
 
                 ?>
@@ -1258,16 +1332,16 @@ include './objts/subjects.php';
 <script src="js/popper.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script src="js/bootstrap-dialog.min.js" type="text/javascript"></script>
-<script src="js/dropzone.min.js" type="text/javascript"></script>
 <script src="js/snarl.min.js" type="text/javascript"></script>
 <script src="js/waves.min.js" type="text/javascript"></script>
 <script src="js/chart.js" type="text/javascript"></script>
 <script src="js/mdb.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
 <script src="js/wejs.js" type="text/javascript"></script>
 <?php
     if(!$sch->sub_expired()){
         ?>
-        <button class="btn btn-circle floating-right bg-info waves-effect waves-float waves-light add-btn"
+        <button onclick="addNew()" class="btn btn-circle floating-right btn-primary waves-effect waves-float waves-light add-btn"
                 style="display: none;"><i class="fa fa-plus"></i></button>
 
         <?php
@@ -1278,6 +1352,495 @@ include './objts/subjects.php';
 
 <script type="text/javascript">
 
+    function get_addAction(){
+
+        return  localStorage.addtest;
+    }
+
+    window.addNew = function() {
+
+        let addtest = get_addAction();
+        if (addtest === "depts") {
+            var temp = "<div class='col-lg-12 col-md-12 col-sm-12 col-12'><form><div class='md-form'>";
+            temp += "<label  for ='depname' class='form-control-label'>Department Name/Description</label>";
+            temp += "<input type ='text' class='form-control'  id='depname' /></div>";
+            temp += "</form></div>";
+            BootstrapDialog.show({
+                title: "Add a Program/department",
+                message: temp,
+                buttons: [{
+                    label: "SAVE", cssClass: "btn-primary", action: function (d) {
+
+                        if ($("#depname").val() === "") {
+
+                            $("#depname").focus();
+
+                        } else {
+
+                            $.get("savedep.php?depname=" + $("#depname").val().toString(), null, function (data) {
+
+                                getdepts();
+                                $("#depname").val("");
+                                $("#depname").focus();
+                                Snarl.addNotification({
+                                    title: "SAVED",
+                                    text: "Programe/Department creates successfully",
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-success');
+
+
+                            });
+
+
+                        }
+
+
+                    }
+                }]
+
+
+            });
+
+
+        } else if (addtest === "classes") {
+
+            $.get("adclass_inputs.php", null, function (data) {
+            }).done(function (data) {
+
+                BootstrapDialog.show({
+                    title: "Add a class",
+                    message: data,
+                    buttons: [{
+                        label: "SAVE", cssClass: "btn-primary", action: function (d) {
+
+                            if (!$("#classname").val()) {
+                                $("#classname").focus();
+
+                                return false;
+                            }
+
+
+                            $.get("saveclass.php?dpid=" + $("#dep").val() + "&classname=" + $("#classname").val(), null, function (data) {
+                            }).done(function (data) {
+                                $("#classname").val("");
+                                $("#classname").focus();
+                                getclass();
+                                Snarl.addNotification({
+                                    title: "SAVED",
+                                    text: data,
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-success');
+
+
+                            });
+
+                        }
+                    }]
+
+                });
+
+
+            });
+
+        } else if (addtest === "subjts") {
+            var temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'><div class='md-form'>";
+            temp += "<label class='control-label' for ='subname'>Subject Name</label>";
+            temp += "<input type ='text' class='form-control'  id='subname' /></div>";
+            temp += "<label class='control-label' for ='subtype'>Subject Type</label>";
+            temp += "<select class='form-control' id='subtype'>";
+            temp += "<option>Core Subject</option>";
+            temp += "<option>Elective Subject</option>";
+            temp += "</select>";
+            temp += "</form></div>";
+            BootstrapDialog.show({
+                title: "Add a Subject",
+                message: temp,
+                buttons: [{
+                    label: "SAVE", cssClass: "btn-primary", action: function (d) {
+                        if ($("#subname").val() === "") {
+                            $("#subname").focus();
+                        } else {
+
+                            $.get("savesub.php?subname=" + $("#subname").val().toString() + "&type=" + $("#subtype").val(), null, function (data) {
+
+                                $("#subname").val("").focus();
+                                getsubjts();
+                                Snarl.addNotification({
+                                    title: "SAVED",
+                                    text: data,
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-success');
+
+
+                            });
+
+
+                        }
+
+                    }
+                }]
+
+            });
+
+
+            //---------------------------------------------------adding house
+        } else if (addtest === "house") {
+            var temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'><div class='md-form'>";
+            temp += "<label for ='name'>House Name</label>";
+            temp += "<input type ='text' class='form-control' id='name' /></div><div class='md-form'>";
+            temp += "<label class='control-label' for ='subtype'>House Description</label>";
+            temp += "<input type='text' class='form-control'  id='des'></div>";
+            temp += "<label class='control-label' for ='subtype'>House Type</label>";
+            temp += "<select id='house-type' class='form-control'>";
+            temp += "<option value='genhouse'>General House</option>";
+            temp += "<option value='ghouse'>Girls House</option>";
+            temp += "<option value='bhouse'>Boys House</option>";
+            temp += "</select>";
+            temp += "</form></div>";
+            BootstrapDialog.show({
+                title: "Create New House",
+                message: temp,
+
+                buttons: [{
+                    label: "SAVE", cssClass: "btn-primary", action: function (d) {
+
+                        if ($("#name").val() === "" || $("#des").val() === "") {
+                            $("#name").focus();
+                        } else {
+
+                            $.get("savehouse.php?name=" + $("#name").val().toString() + "&des=" + $("#des").val() + "&htype=" + $("#house-type").val(), null, function (data) {
+                                gethouses();
+                                $("#name").val("");
+                                $("#des").val("");
+                                $("#name").focus();
+                                Snarl.addNotification({
+                                    title: "SAVED",
+                                    text: data,
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-success');
+
+                            });
+                        }
+                    }
+                }]
+            });
+
+        } else if (addtest === "staff") {
+            //starting
+            let temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'>";
+            temp += "<div class='row'>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+
+            temp += "<label for ='stffname'>First Name</label>";
+            temp += "<input type ='text' class='form-control' id='stffname' />";
+            temp += "</div>";
+            temp += "</div>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label  for ='stflname'>Last Name</label>";
+            temp += "<input type='text' class='form-control' id='stflname' />";
+            temp += "</div> </div></div>";
+            temp += "<div class='row'>";
+            temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+            temp += "<label class='control-label' for ='gender'>Gender</label>";
+            temp += "<select class='form-control' id='gender'><option>Male</option><option>Female</option></select>";
+            temp += "</div>";
+            temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label for ='cont'>Contact Number</label>";
+            temp += "<input type='text' class='form-control' id='cont'><br/>";
+            temp += "</div></div>";
+            temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+            temp += "<label class='control-label' for ='rank'>Rank</label>";
+            temp += "<select class='form-control' id='rank'><option value='0'>Senior Sup't</option><option value='1'>Prin. Sup't</option><option value='2'>Assist. Dir. ii</option><option value='3'>Assist. Dir. I</option><option value='4'>Dep. Dir.</option><option value='5'>Dir. II</option><option value='6'>Dir. I</option></select>";
+            temp += "</div> </div> <div class='row'>";
+            temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label for ='stfid' class='form-control-label'>Staff ID No.</label>";
+            temp += "<input type='text' class='form-control' id='stfid'><br/>";
+            temp += "</div></div>";
+            temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label for ='sdob' class='active form-control-label'>D.O.B</label>";
+            temp += "<input type='date' class='form-control' id='sdob' />";
+            temp += "</div></div>";
+            temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label for ='regno' class='form-control-label'>Registered No.</label>";
+            temp += "<input type='text' class='form-control' id='regno'><br/>";
+            temp += "</div></div>";
+            temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label for ='ssnid' class='form-control-label'>SSNIT No.</label>";
+            temp += "<input type='text' class='form-control' id='ssnid'><br/>";
+            temp += "</div></div>";
+            temp += "</div>";
+            temp += "<div class='row'>";
+            temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label for ='aqaul' class='form-control-label'>Academic Qualification</label>";
+            temp += "<input type='text' class='form-control' id='aqual'/>";
+            temp += "</div></div>";
+            temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label  for ='pqual' class='form-control-label'>Professional Qualification</label>";
+            temp += "<input type='text' class='form-control' id='pqual' />";
+            temp += "</div></div>";
+            temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label class='active form-control-label' for ='appdate'>Date Of First Appointment</label>";
+            temp += "<input type='date' class='form-control' id='appdate'><br/>";
+            temp += "</div> </div> </div>";
+            temp += "<div class='row'>";
+            temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label class='active form-control-label' for ='assdate'>Duty Assumed Date</label>";
+            temp += "<input type='date' class='form-control' id='assdate'><br/>";
+            temp += "</div></div>";
+            temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label for ='bankname' class='form-control-label'>Associated Bank</label>";
+            temp += "<input type='text' class='form-control' id='bankname'><br/>";
+            temp += "</div></div> ";
+            temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label for ='accno' class='form-control-label'>Account Number</label>";
+            temp += "<input type='text' class='form-control' id='accno'><br/>";
+            temp += "</div></div></div>";
+            temp += "<div class='card bg-light p-3 text-white'>Account information";
+            temp += "<div class='row'>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label class='control-label' for ='uname' >User Name</label>";
+            temp += "<input type ='text' class='form-control text-white' id='uname' />";
+            temp += "</div></div>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label class='control-label text-white'  for ='upass'>Password</label>";
+            temp += "<input type='password' class='form-control' id='upass'>";
+            temp += "</div> </div> </div>";
+            temp += "<div class='row'>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
+            temp += "</div>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
+            temp += "<div class='md-form'>";
+            temp += "<label class='control-label' for ='cpass'>Confirm Password</label>";
+            temp += "<input type='password' class='form-control' id='cpass'>";
+            temp += "</div> </div></div>";
+            temp += "</form>";
+            BootstrapDialog.show({
+                title: "Register Staff",
+                message: temp,
+                size: "size-wide",
+                buttons: [{
+                    label: "SAVE", cssClass: "btn btn-primary", action: function (d) {
+
+                        if (!($("#upass").val() === $("#cpass").val())) {
+
+                            Snarl.addNotification({
+                                title: "ERROR",
+                                text: "Passwords do not match, please check and try again",
+                                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                                timeout: 3000
+                            });
+                            $(".snarl-notification").addClass('snarl-error');
+
+                            return false;
+
+                        }
+
+                        if (!$("#stffname").val() || !$("#stflname").val() || !$("#cont").val() || !$("#uname").val() || !$("#upass").val() || !$("#cpass").val()) {
+
+                            Snarl.addNotification({
+                                title: "ERROR",
+                                text: "A field is left blank, please check and try again",
+                                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                                timeout: 3000
+                            });
+                            $(".snarl-notification").addClass('snarl-error');
+                            return false;
+                        } else {
+
+                            var progress = Snarl.addNotification({
+                                title: "PROCCESSING",
+                                text: "Please Wait...",
+                                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-circle-notch fa-spin'></i>",
+                                timeout: 3000
+                            });
+                            $(".snarl-notification").addClass('snarl-info');
+
+                            $.get("savestaff.php?fname=" + $("#stffname").val().toString() + "&lname=" + $("#stflname").val() + "&gender=" + $("#gender").val() + "&cont=" + $("#cont").val() + "&uname=" + $("#uname").val() + "&upass=" + $("#upass").val() + "&rank=" + $("#rank").val() + "&stfid=" + $("#stfid").val() + "&sdob=" + $("#sdob").val() + "&regno=" + $("#regno").val() + "&aqual=" + $("#aqual").val() + "&pqual=" + $("#pqual").val() + "&appdate=" + $("#appdate").val() + "&assdate=" + $("#assdate").val() + "&bankname=" + $("#bankname").val() + "&accno=" + $("#accno").val() + "&ssnid=" + $("#ssnid").val(), null, function (data) {
+
+
+                            }).done(function (data) {
+                                d.close();
+                                getstaff();
+                                Snarl.removeNotification(progress);
+                                Snarl.addNotification({
+                                    title: "SAVED",
+                                    text: data,
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-success');
+
+
+                            }).error(function () {
+
+                                Snarl.removeNotification(progress);
+                                Snarl.addNotification({
+                                    title: "ERROR",
+                                    text: "Could not save staff, please try again",
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-error');
+
+                            });
+
+
+                        }
+
+
+                    }
+                }, {
+                    label: "CANCEL", cssClass: "btn-bad waves-button waves-effect", action: function (d) {
+
+                        d.close();
+
+                    }
+                }]
+            });
+
+            //edditing
+        } else if (addtest === "accounts") {
+
+            //add account--------------------------------------------
+
+            var temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'>";
+            temp += "<div class='row'>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+            temp += "<label class='control-label' for ='stffname'>First Name</label>";
+            temp += "<input type ='text' class='form-control' placeholder='Enter first Name' id='adfname' />";
+            temp += "</div>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+            temp += "<label class='control-label' for ='stflname'>Last Name</label>";
+            temp += "<input type='text' class='form-control' placeholder='Enter Last Name' id='adlname' />";
+            temp += "</div> </div>";
+            temp += "<div class='row'>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+            temp += "<label class='control-label' for ='gender'>Gender</label>";
+            temp += "<select class='form-control' id='adgender'><option>Male</option><option>Female</option></select>";
+            temp += "</div>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+            temp += "<label class='control-label' for ='cont'>Contact Number</label>";
+            temp += "<input type='text' class='form-control' placeholder='Enter admin phone number' id='adcont'><br/>";
+            temp += "</div> </div>";
+            temp += "<div class='alert alert-info' style='padding:2px;'>Account information <span class='fa fa-hand-down'></span><br/>";
+            temp += "<div class='row'>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+            temp += "<label class='control-label' for ='uname'>User Name</label>";
+            temp += "<input type ='text' class='form-control' placeholder='Enter user Name' id='aduname' />";
+            temp += "</div>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+            temp += "<label class='control-label' for ='upass'>Admin Password</label>";
+            temp += "<input type='password' class='form-control' placeholder='Enter admin password' id='adupass'>";
+            temp += "</div> </div>";
+            temp += "<div class='row'>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+            temp += "</div>";
+            temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
+            temp += "<label class='control-label' for ='cpass'>Confirm admin Password</label>";
+            temp += "<input type='password' class='form-control' placeholder='Enter admin password again' id='adcpass'>";
+            temp += "</div> </div>";
+            temp += "</form>";
+            BootstrapDialog.show({
+                title: "Create Admin. Account",
+                message: temp,
+                buttons: [{
+                    label: "CREATE", cssClass: "btn-good waves-button waves-effect", action: function (d) {
+
+                        if (!($("#adupass").val() === $("#adcpass").val())) {
+
+                            Snarl.addNotification({
+                                title: "ERROR",
+                                text: "Passwords do not match, please check and try again",
+                                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                                timeout: 3000
+                            });
+                            $(".snarl-notification").addClass('snarl-error');
+                            return false;
+
+                        }
+
+                        if (!$("#adfname").val() || !$("#adlname").val() || !$("#adcont").val() || !$("#aduname").val() || !$("#adupass").val() || !$("#adcpass").val()) {
+
+                            Snarl.addNotification({
+                                title: "ERROR",
+                                text: "A field is left blank, please check and try again",
+                                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                                timeout: 3000
+                            });
+                            $(".snarl-notification").addClass('snarl-error');
+
+                            return false;
+                        } else {
+
+                            var progress = Snarl.addNotification({
+                                title: "PROCCESSING",
+                                text: "Please Wait...",
+                                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-circle-notch fa-spin'></i>",
+                                timeout: 3000
+                            });
+                            $(".snarl-notification").addClass('snarl-info');
+                            $.get("adadmin.php?fname=" + $("#adfname").val().toString() + "&lname=" + $("#adlname").val() + "&gender=" + $("#adgender").val() + "&cont=" + $("#adcont").val() + "&uname=" + $("#aduname").val() + "&upass=" + $("#adupass").val(), null, function (data) {
+                            }).done(function (data) {
+                                d.close();
+                                getaccounts();
+                                Snarl.removeNotification(progress);
+                                Snarl.addNotification({
+                                    title: "ACCOUNT CREATED",
+                                    text: data,
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-success');
+
+                            }).error(function () {
+                                Snarl.removeNotification(progress);
+                                Snarl.removeNotification(progress);
+                                Snarl.addNotification({
+                                    title: "ERROR",
+                                    text: "Could not creat account, please try again",
+                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                                    timeout: 3000
+                                });
+                                $(".snarl-notification").addClass('snarl-error');
+
+                            });
+                        }
+
+
+                    }
+                }]
+            });
+
+
+        }
+
+
+    };
+
+
     //App routes
 
     const routes = [
@@ -1287,7 +1850,8 @@ include './objts/subjects.php';
                 return getdepts();
 
             },
-            showBtn:true
+            showBtn:true,
+            addAction:'depts'
         },
 
         {
@@ -1296,7 +1860,9 @@ include './objts/subjects.php';
                 return getclass();
 
             },
-            showBtn:true
+            showBtn:true,
+            addAction:'classes'
+
         },
 
         {
@@ -1305,28 +1871,35 @@ include './objts/subjects.php';
                 return  getsubjts();
 
             },
-            showBtn:true
+            showBtn:true,
+            addAction:'subjts'
+
         },
         {
             route:'/reghouse',
             callback: function () {
                 return gethouses();
             },
-            showBtn:true
+            showBtn:true,
+            addAction:'house'
+
         },
         {
             route:'/regstaf',
             callback: function () {
                 return  getstaff();
             },
-            showBtn:true
+            showBtn:true,
+            addAction:'staff'
+
         },
         {
             route:'/regstud',
             callback: function () {
                 return regstud();
             },
-            showBtn:false
+            showBtn:false,
+
         },
         {
             route:'/viewstuds',
@@ -1393,6 +1966,112 @@ include './objts/subjects.php';
             },
             showBtn:false
         },
+        {
+            route:'/classlist',
+            callback: function () {
+                return print_cls();
+            },
+            showBtn:false
+        },
+        {
+            route:'/programlist',
+            callback: function () {
+                return print_prog();
+            },
+            showBtn:false
+        },
+        {
+            route:'/houselist',
+            callback: function () {
+                return print_hse();
+            },
+            showBtn:false
+        },
+        {
+            route:'/signlist',
+            callback: function () {
+                return print_sign();
+            },
+            showBtn:false
+        },
+         {
+            route:'/formlist',
+            callback: function () {
+                return print_formlst();
+            },
+            showBtn:false
+        },
+        {
+            route:'/reports',
+            callback: function () {
+                return print_rep_all();
+            },
+            showBtn:false
+        },
+        {
+            route:'/broadsheet',
+            callback: function () {
+                return print_brdsheet();
+            },
+            showBtn:false
+        },
+
+        {
+            route:'/scoresheet',
+            callback: function () {
+                return print_scoresht();
+            },
+            showBtn:false
+        },
+        {
+            route:'/withdrawalist',
+            callback: function () {
+                return print_widraw();
+            },
+            showBtn:false
+        },
+        {
+            route:'/formaverage',
+            callback: function () {
+                return print_frmres();
+            },
+            showBtn:false
+        },
+        {
+            route:'/classaverage',
+            callback: function () {
+                return print_clavg();
+            },
+            showBtn:false
+        },
+        {
+            route:'/accumulatedaverages',
+            callback: function () {
+                return print_avgs();
+            },
+            showBtn:false
+        },
+         {
+            route:'/generalpopulation',
+            callback: function () {
+                return print_genpop();
+            },
+            showBtn:false
+        },
+        {
+            route:'/useraccounts',
+            callback: function () {
+                return getaccounts();
+            },
+            showBtn:true,
+            addAction:'accounts'
+        },
+          {
+            route:'/promotestudents',
+            callback: function () {
+                return getaccounts();
+            },
+        },
 
     ];
 
@@ -1413,6 +2092,8 @@ include './objts/subjects.php';
         //show the add button if true
             if(routBlock.showBtn) {
                 $(".add-btn").fadeIn(100);
+
+                localStorage.addtest = routBlock.addAction;
 
             }else{
                 $(".add-btn").fadeOut(100);

@@ -40,15 +40,15 @@ class Staff
             $data = "This user name already exist, please use a different user name";
         } else {
 
-            mysqli_query($dbcon->con, "insert into staff (fname,lname,gender,contact,rank,stfid,dob,regno,aqual,pqual,appdate,assdate,bank,accno,snnid,uname,upass,user_type,status)
+            $new_staff = mysqli_query($dbcon->con, "insert into staff (fname,lname,gender,contact,rank,stfid,dob,regno,aqual,pqual,appdate,assdate,bank,accno,snnid,uname,upass,user_type,status)
     values('$this->fname','$this->lname','$this->gender','$this->contact','$this->rank','$this->stfid','$this->dob','$this->regno','$this->aqual','$this->pqual','$this->appdate','$this->assdate','$this->bankname','$this->accno','$this->ssnid','$this->uname','$this->upass','staff','active')");
 
-            $data = "Staff created Successfully";
-            $ut = new utitlity();
-            session_start();
-            $ut->uid = isset($_SESSION['id']) ?  $_SESSION['id'] : $_SESSION['ad_id'];
-            $ut->action = "Registered a new staff ($this->fname $this->lname )";
-            $ut->create_log();
+            $data = $new_staff;
+//            $ut = new utitlity();
+//            session_start();
+//            $ut->uid = isset($_SESSION['id']) ?  $_SESSION['id'] : $_SESSION['ad_id'];
+//            $ut->action = "Registered a new staff ($this->fname $this->lname )";
+//            $ut->create_log();
         }
         return $data;
 

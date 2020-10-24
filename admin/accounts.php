@@ -8,18 +8,16 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
 
 ?>
 
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mx-auto">
     <div class="alert bg-warning">
         <h4><i class="fa fa-info"></i> If you want to delete a user account, please go to the staff view and delete the
             staff</h4>
     </div>
-    <div class="card card-info" style="border-radius: 0;">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="alert alert-info">
-                    <p class="card-title">Manage User Accounts</p>
+    <div class="card" style="border-radius: 0;">
+
+                <div class="card-header bg-primary">
+                    <p class="card-title text-white">Manage User Accounts</p>
                 </div>
-            </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                 <div class="table-responsive">

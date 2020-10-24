@@ -29,5 +29,4 @@ $student->form = $_POST['form'];
 $student->ghouse = $_POST['ghouse'];
 $student->resstatus = $_POST['reststatus'];
 
-$msg = $student->createstudent();
-echo $msg;
+return $student->createstudent();

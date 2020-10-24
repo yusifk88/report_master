@@ -15,9 +15,9 @@ $cls = mysqli_query($cf->con, "select * from classes");
         <div class="col-md-3"></div>
 
         <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12">
-            <div class="card card-info" style="border-radius: 0;">
-                <div class="card-header text-white bg-info">
-                    <p class="card-title">Print Sign List</p>
+            <div class="card" style="border-radius: 0;">
+                <div class="card-header text-white bg-primary2">
+                    <p class="card-title text-white">Print Sign List</p>
                 </div>
                 <div class="card-body">
 
@@ -68,14 +68,13 @@ $cls = mysqli_query($cf->con, "select * from classes");
                         <div class="row" style="padding-left: 5px; padding-right: 5px; padding-bottom: 5px;">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="md-form">
-                                    <i class="prefix fa fa-money"></i>
-                                    <input style="text-align: center;" type="number" id="rate" class="form-control"/>
                                     <label form="rate" class="control-label" for="rate">Rate (GH¢)</label>
+                                    <input style="text-align: center;" type="number" id="rate" class="form-control"/>
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                 <br/>
-                                <button onclick="getprog_list();" type="button" class="btn bg-info">Print</button>
+                                <button onclick="getprog_list();" type="button" class="btn btn-primary">Print</button>
                             </div>
                         </div>
                 </div>

@@ -35,8 +35,16 @@ class Students
 
     //================================================================================================
 
+    /**
+     * @return string|void
+     * @throws Exception
+     * create a new student
+     */
+
     public function createstudent()
     {
+        try {
+
         include_once 'school.php';
         $ut = new utitlity();
         $sch = new school();
@@ -106,42 +114,26 @@ class Students
         }
 
 
-        if (!$this->index || !$this->ayear || !$this->clas || !$this->dept || !$this->dob || !$this->dor || !$this->ffname || !$this->fhometown || !$this->fname || !$this->ftel || !$this->gender || !$this->house || !$this->lname || !$this->lschool || !$this->mfname || !$this->form) {
-            $data = "blank-true";
-
-        } else {
-
-            if (file_exists('objts/' . $this->photo)) {
-                $exten = substr($this->photo, -4);
-
-                if (copy('objts/' . $this->photo, 'objts/pass/' . $this->index . $exten)) {
-
-                    $newpic = 'objts/pass/' . $this->index . $exten;
-
-                    $this->photo != "dpic/photo.jpg" ? unlink('objts/' . $this->photo) : "";
-                    $this->photo = $newpic;
-                } else {
-                    echo 'pass-false' . $this->photo;
-                    exit();
-                }
-                mysqli_query($dbconf->con, "insert into stuinfo(stindex,ayear,class,dept,dob,dor,ffname,fhometown,fname,ftel,gender,house,lname,lschool,mfname,mhometown,mtel,photo,form,oname,jhsno,shsno,ghouse,res_status)
-        values('$this->index','$this->ayear','$this->clas','$this->dept','$this->dob','$this->dor','$this->ffname','$this->fhometown','$this->fname','$this->ftel','$this->gender','$this->house','$this->lname','$this->lschool','$this->mfname','$this->mhometown','$this->mtel','$this->photo','$this->form','$this->oname','$this->jhsno','$this->shsno','$this->ghouse','$this->resstatus')");
-                $data = "saved";
-            } else {
                 $this->photo = 'objts/dpic/photo.jpg';
-                mysqli_query($dbconf->con, "insert into stuinfo(stindex,ayear,class,dept,dob,dor,ffname,fhometown,fname,ftel,gender,house,lname,lschool,mfname,mhometown,mtel,photo,form,oname,jhsno,shsno,ghouse,res_status)
-        values('$this->index','$this->ayear','$this->clas','$this->dept','$this->dob','$this->dor','$this->ffname','$this->fhometown','$this->fname','$this->ftel','$this->gender','$this->house','$this->lname','$this->lschool','$this->mfname','$this->mhometown','$this->mtel','$this->photo','$this->form','$this->oname','$this->jhsno','$this->shsno','$this->ghouse','$this->resstatus')");
-                $data = "saved";
-
-
-            }
+               $student = mysqli_query($dbconf->con, "insert into stuinfo(stindex,ayear,class,dept,dob,dor,ffname,
+                fhometown,fname,ftel,gender,house,lname,lschool,mfname,mhometown,mtel,photo,form,oname,jhsno,shsno,
+                ghouse,res_status)
+                values('$this->index','$this->ayear','$this->clas','$this->dept','$this->dob','$this->dor',
+                '$this->ffname','$this->fhometown','$this->fname','$this->ftel','$this->gender','$this->house',
+                '$this->lname','$this->lschool','$this->mfname','$this->mhometown','$this->mtel','$this->photo',
+                '$this->form','$this->oname','$this->jhsno','$this->shsno','$this->ghouse','$this->resstatus')");
 
             session_start();
             $ut->uid = isset($_SESSION['id']) ?  $_SESSION['id'] : $_SESSION['ad_id'];
             $ut->action = "Registered a new student ($this->fname $this->lname $this->oname)";
             $ut->create_log();
-        }
+
+            return $student;
         return $data;
+        }catch (Exception $e){
+            throw new Exception($e->getMessage());
+        }
+
     }
 
 //================================================================================================

@@ -11,16 +11,16 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6 col-12">
-            <div class="card card-info" style="border-radius: 0;">
-                <div class="card-header bg-info text-white">
-                    <p class="card-title">Print Class List</p>
+            <div class="card" style="border-radius: 0;">
+                <div class="card-header bg-primary2 text-white">
+                    <p class="card-title text-white">Print Class List</p>
                 </div>
                 <div class="card-body">
                     <form>
                         <div class="row" style="padding-left: 5px !important; padding-right: 5px !important;">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <label class="control-label" for="cls">Class</label>
-                                <select id="cls" class="we-select form-control">
+                                <select onchange="check_cls()" id="cls" class="we-select form-control">
                                     <?php
                                     while ($row = mysqli_fetch_object($cls)) {
                                         ?>
@@ -45,7 +45,7 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <br/>
-                                <button onclick="getcls_list();" type="button" class="btn bg-info">Print</button>
+                                <button onclick="getcls_list();" type="button" class="btn btn-primary">Print</button>
                             </div>
                         </div>
                 </div>
@@ -61,6 +61,7 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
 <script type="text/javascript">
 
     function getcls_list() {
+
         var cls = $("#cls").val();
         var ayear = $("#ayer").val();
         $.getJSON("cnt_cls.php?clas=" + $("#cls").val() + "&ayear=" + $("#ayer").val(), function (dataobj) {
@@ -85,8 +86,8 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
 
     }
 
-    $(document).ready(function () {
-        $("#cls").change(function () {
+        function check_cls () {
+                alert('chec class');
 
             $.getJSON("cnt_cls.php?clas=" + $("#cls").val() + "&ayear=" + $("#ayer").val(), function (dataobj) {
 
@@ -94,7 +95,8 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
             });
 
 
-        });
+        }
+
         $("#ayer").change(function () {
             $("#cls").change();
 
@@ -102,6 +104,5 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
         });
 
 
-    });
 </script>
 

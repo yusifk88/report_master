@@ -14,15 +14,15 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
 
         <div class="col-md-3 col-md-3"></div>
         <div class="col-lg-6 col-md-6 col-12 mr-auto">
-            <div class="card card-info" style="border-radius: 0;">
-                <div class="card-header bg-info">
-                    <p class="card-title text-white">Print Programe List</p>
+            <div class="card">
+                <div class="card-header bg-primary2">
+                    <p class="card-title text-white">Print Programme List</p>
                 </div>
                 <div class="card-body">
                     <form>
                         <div class="row" style="padding-left: 5px !important; padding-right: 5px !important;">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <label class="control-label" for="cls">Programe</label>
+                                <label class="control-label" for="cls">Programme</label>
                                 <select id="prog" class="we-select form-control">
                                     <?php
                                     while ($row = mysqli_fetch_object($prog)) {
@@ -48,7 +48,7 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
                             </div>
                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                 <br/>
-                                <button onclick="getprog_list();" type="button" class="btn bg-info">Print</button>
+                                <button onclick="getprog_list();" type="button" class="btn btn-primary">Print</button>
                             </div>
                         </div>
                 </div>

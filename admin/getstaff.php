@@ -9,11 +9,11 @@ $d = $stf->getstaff($keyword, $keyword);
 $ranklist = ["Senior Sup't", "Prin. Sup't", "Assist. Dir ii", "Assist. Dir I", "Dep. Dir.", "Dir. II", "Dir. I"];
 ?>
 <div class="card">
-    <div class="card-header bg-info text-white">
+    <div class="card-header bg-primary2 text-white">
         STAFF LIST
         <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-           class="btn bg-warning mr-auto btn-sm"><i class="fa fa-print text-white"> </i> Print Staff List <i
-                    class="fa fa-caret-down"></i> </a>
+           class="btn bg-warning mr-auto btn-sm text-white">
+            <i class="fa fa-print text-white"> </i> Print Staff List <i class="fa fa-caret-down"></i> </a>
         <ul class="dropdown-menu animated zoomIn" aria-labelledby="exduties">
             <li class="dropdown-item text-muted" style="cursor:pointer;"><a onclick="print_staff();return false;">Print
                     All Staff</a></li>

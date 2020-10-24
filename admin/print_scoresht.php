@@ -11,9 +11,9 @@ $subjts = mysqli_query($cf->con, "select * from subjects");
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-            <div class="card card-info" style="border-radius: 0;">
-                <div class="card-header bg-info text-white">
-                    <p class="card-title">Print Assessment Score sheet</p>
+            <div class="card" style="border-radius: 0;">
+                <div class="card-header bg-primary2 text-white">
+                    <p class="card-title text-white">Print Assessment Score sheet</p>
                 </div>
                 <div class="card-body">
                     <form>
@@ -67,7 +67,7 @@ $subjts = mysqli_query($cf->con, "select * from subjects");
                             </div>
                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                 <br/>
-                                <button onclick="get_brdsheet();" type="button" class="btn bg-info">Print</button>
+                                <button onclick="get_brdsheet();" type="button" class="btn btn-primary">Print</button>
                             </div>
                         </div>
                 </div>

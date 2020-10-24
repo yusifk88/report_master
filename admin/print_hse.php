@@ -13,8 +13,8 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
 
 
         <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12">
-            <div class="card card-info" style="border-radius: 0;">
-                <div class="card-header bg-info">
+            <div class="card" style="border-radius: 0;">
+                <div class="card-header bg-primary">
                     <p class="card-title text-white">Print House List</p>
                 </div>
                 <div class="card-body">
@@ -47,7 +47,7 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
                             </div>
                             <div class="col-md-12">
                                 <br/>
-                                <button onclick="gethse_list();" type="button" class="btn bg-info">Print</button>
+                                <button onclick="gethse_list();" type="button" class="btn btn-primary">Print</button>
                             </div>
                         </div>
                 </div>

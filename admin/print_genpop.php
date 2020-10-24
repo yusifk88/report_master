@@ -6,9 +6,9 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo ORDER by ay
 
 ?>
 <div class="col-lg-6 col-md-6 col-md-offset-3 col-sm-12 col-12 mx-auto">
-    <div class="card card-info" style="border-radius: 0;">
-        <div class="card-header bg-info text-white">
-            <p class="card-title">Print General Population List</p>
+    <div class="card" style="border-radius: 0;">
+        <div class="card-header bg-primary text-white">
+            <p class="card-title text-white">Print General Population List</p>
         </div>
         <form>
             <div class="card-body">
@@ -32,7 +32,7 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo ORDER by ay
             <div class="card-footer">
                 <div class="col-md-12">
 
-                    <button onclick="get_genpop();" type="button" class="btn bg-info">Print</button>
+                    <button onclick="get_genpop();" type="button" class="btn btn-primary">Print</button>
                 </div>
             </div>
         </form>

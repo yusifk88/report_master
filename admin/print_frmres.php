@@ -13,9 +13,9 @@ $stud = mysqli_query($cf->con, "select id,fname,lname,oname from stuinfo order b
 
 
         <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12">
-            <div class="card card-info" style="border-radius: 0;">
-                <div class="card-header bg-info text-white">
-                    <p class="card-title"><i class="fa fa-area-chart"></i> Print Form Results </p>
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <p class="card-title text-white"> Print Form Results </p>
                 </div>
                 <div class="card-body">
                     <form>
@@ -56,7 +56,7 @@ $stud = mysqli_query($cf->con, "select id,fname,lname,oname from stuinfo order b
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <br/>
-                                <button onclick="get_formlst();" type="button" class="btn bg-info">Print</button>
+                                <button onclick="get_formlst();" type="button" class="btn btn-primary">Print</button>
                             </div>
                         </div>
                 </div>

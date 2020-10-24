@@ -271,7 +271,7 @@ class Utitlity
      * @param $year
      * @param $cls
      * @return int
-     * Determins the position of the student but subject
+     * Determine the position of the student but subject
      */
 
     function getpost($id, $subid, $term, $year, $cls)
@@ -318,4 +318,8 @@ class Utitlity
     }
 
 //---------------end of utitlity class--------------------------------
+
+
+
+
 }

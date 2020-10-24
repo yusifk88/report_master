@@ -6,13 +6,16 @@ $cf->connect();
 $data = mysqli_query($cf->con, "select * from houses ORDER by name ASC");
 if (mysqli_num_rows($data) > 0) {
     ?>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+
     <div class="card">
-        <div class="card-header bg-info text-white">
-            <p class="card-title">List of Houses</p>
+        <div class="card-header bg-primary2 text-white">
+            <p class="card-title text-white">List of Houses</p>
         </div>
         <div class="table-responsive text-nowrap">
             <table class="table table-condensed table-hover table-striped">
-                <thead class="bg-info text-white">
+                <thead>
                 <tr>
                     <th>S/N</th>
                     <th>House Name</th>
@@ -52,13 +55,13 @@ if (mysqli_num_rows($data) > 0) {
                             }
                             ?>
                         </td>
-                        <td><i class="fa fa-edit waves-effect waves-button editicon3" title="Edit this department"
+                        <td><i class="fa fa-edit waves-effect waves-button editicon3 text-primary" title="Edit this department"
                                data-input="<?php echo "$row[name]"; ?>" data-id="<?php echo $row['id']; ?>"
                                data-des="<?= $row['des']; ?>" data-htype="<?= $row['house_type'] ?>"
-                               style="color: deepskyblue; cursor: pointer;"></i></td>
-                        <td><i class="fa fa-remove  waves-effect waves-button delicon3" title="Delete this department"
+                               style="cursor: pointer;"></i></td>
+                        <td><i class="fa fa-remove  waves-effect waves-button delicon3 text-danger" title="Delete this department"
                                data-del="delhouse.php" data-id="<?php echo $row['id']; ?>"
-                               style="color: #F00; cursor: pointer;"></i></td>
+                               style="cursor: pointer;"></i></td>
                     </tr>
                     <?php
                     $i++;
@@ -144,6 +147,10 @@ if (mysqli_num_rows($data) > 0) {
                 </tbody>
             </table>
         </div>
+    </div>
+
+        </div>
+
     </div>
     <?php
 } else {

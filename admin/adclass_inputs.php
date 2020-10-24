@@ -9,9 +9,8 @@ $d = $dp->getdpts();
     <form>
 
         <div class="md-form">
-            <i class="prefix fa fa-home"></i>
+            <label for="classname" class="form-control-label">Class Name</label>
             <input id="classname" class="form-control" type="text" required="required"/>
-            <label for="classname">Class Name</label>
 
         </div>
 

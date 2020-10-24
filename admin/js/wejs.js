@@ -633,11 +633,8 @@ function setdeadline() {
 
 
 function getaccounts() {
-    showprogress("print-pool");
     $.get("accounts.php", function (data) {
-    }).done(function (data) {
-        $("#print-pool").html(data);
-        finish();
+        displayData(data);
     });
 }
 
@@ -809,96 +806,90 @@ function print_transcrpt() {
 
 //----------------------------------------------------------------------------------------------
 function print_scoresht() {
-    showprogress("print-pool");
 
     $.get("print_scoresht.php", function (data) {
-        $("#print-pool").html(data);
+        displayData(data);
     });
 }
 
 //----------------------------------------------------------------------------------------------
 
 function print_formlst() {
-    showprogress("print-pool");
 
     $.get("print_formlst.php", function (data) {
-        $("#print-pool").html(data);
+        displayData(data);
     });
 }
 
 //----------------------------------------------------------------------------------------------
 function print_sign() {
-    showprogress("print-pool");
 
     $.get("print_sign.php", function (data) {
-        $("#print-pool").html(data);
+        displayData(data);
     });
 }
 
 //----------------------------------------------------------------------------------------------
 function print_brdsheet() {
-    showprogress("print-pool");
 
     $.get("print_brdsheet.php", function (data) {
-        $("#print-pool").html(data);
+        displayData(data);
     });
 }
 
-//----------------------------------------------------------------------------------------------
-function print_rep_one() {
-    showprogress("print-pool");
-
-    $.get("print_rep_one.php", function (data) {
-        $("#print-pool").html(data);
-    });
-}
+//---------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------
 function print_rep_all() {
-    showprogress("print-pool");
     $.get("print_rep_all.php", function (data) {
-        $("#print-pool").html(data);
+        displayData(data);
     });
 }
 
 //-----------------------------------------------------------------------------------------------
 function print_cls() {
-    showprogress("print-pool");
     $.get("print_cls.php", function (data) {
-        $("#print-pool").html(data);
+        displayData(data);
+
     });
 }
 
 //------------------------------------------------------------------------------------------------
 function print_prog() {
-    showprogress("print-pool");
 
     $.get("print_prog.php", function (data) {
-        $("#print-pool").html(data);
+        displayData(data);
     });
 }
 
 //------------------------------------------------------------------------------------------------
 function print_hse() {
-    showprogress("print-pool");
 
     $.get("print_hse.php", function (data) {
-        $("#print-pool").html(data);
+        displayData(data);
     });
 }
 
+window.init_student_form = function(){
+
+    getid();
+    mkayear();
+
+};
+
 //----------------------------------------------------------------------------------------------
-function mkayear() {
+
+window.mkayear=function() {
     var mydt = new Date();
     var curyear = mydt.getFullYear();
     curyear -= 10;
     var opt = "";
-    var prevyear = 0;
-    var nexyear = 0;
-    var i = 0;
+     let prevyear = 0;
+     let nexyear = 0;
+     var i = 0;
     for (i = 1; i <= 20; i++) {
-        var prevyear = curyear;
-        var nexyear = prevyear + 1;
+        prevyear = curyear;
+        nexyear = prevyear + 1;
         if (prevyear === mydt.getFullYear()) {
             opt += "<option selected>" + prevyear + "/" + nexyear + "</option>";
         } else {
@@ -910,26 +901,54 @@ function mkayear() {
 
     $("#ayear").html(opt);
     $("#prmtoyear").html(opt);
-}
+};
 
 //-------------------------------------------------------------------------------------------------
-function getid() {
-    //var noty = Snarl.addNotification({
-    //    title: "Please Wait..",
-    //    text: "Checking for ID duplication",
-    //    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-    //    timeout: 3000
-    //});
+window.getid = function() {
+
     $("#frmregstud :input").attr('disabled', true);
-    $.get("getindex.php", null, function (id) {
-    }).done(function (id) {
+    axios.get("getindex.php")
+        .then(function (id) {
         $("#frmregstud :input").attr('disabled', false);
-        $("#index").val(id);
-        if ($("#index").val() != id) {
-            $("#index").val(id);
+        $("input#index").val(id.data);
+        if ($("#index").val() != id.data) {
+            $("#index").val(id.data);
         }
     });
+};
+var student_photo =null;
+
+function select_student_image() {
+
+    document.getElementById('student_image_input').click();
+
 }
+
+function remove_student_image() {
+    document.getElementById('student_image_preview').setAttribute('src','img/photo.jpg');
+
+    $('#student_image_input').val('');
+    $('#remove_student_photo_button').hide();
+    student_photo =null;
+
+}
+function student_image_selected() {
+    let photo = event.target.files[0];
+    student_photo = photo;
+    let fr = new FileReader();
+
+    fr.readAsDataURL(photo);
+    fr.onload=function(){
+
+        let preview = fr.result;
+    document.getElementById('student_image_preview').setAttribute('src',preview);
+
+        $('#remove_student_photo_button').show();
+    };
+
+}
+
+
 
 function getid_BeforeSave() {
     //var noty = Snarl.addNotification({
@@ -938,11 +957,11 @@ function getid_BeforeSave() {
     //    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
     //    timeout: 3000
     //});
-    $.get("getindex.php", null, function (id) {
-    }).done(function (id) {
-        $("#index").val(id);
-        if ($("#index").val() != id) {
-            $("#index").val(id);
+    axios.get("getindex.php")
+        .then(function (id) {
+        $("#index").val(id.data);
+        if ($("#index").val() != id.data) {
+            $("#index").val(id.data);
         }
     });
 }
@@ -968,11 +987,9 @@ function displayData(data){
 window.getclass=function(){
    // showprogress();
 
-    $.get("getclass.php", function (data) {
-
-        displayData(data);
-
-    }).done(function (data) {
+    axios.get("getclass.php")
+        .then(function (data) {
+        displayData(data.data);
 
         finish();
 
@@ -999,34 +1016,31 @@ function getass(){
 //=================================================================================================
 //--------------------------------------------------------------------------------------------------
 function getsubjts() {
+    axios.get("getsubjts.php")
+        .then(function (data) {
+            displayData(data.data);
 
-    $.get("getsubjts.php", null, function (data) {
-
-
-        displayData(data);
-
-
-    }).done(function () {
-        finish();
+            finish();
     });
 }
 
 //=====================================================================================================
 function gethouses() {
-    $.get("gethouse.php", null, function (data) {
-        displayData(data);
-    }).done(function () {
-        finish();
+    axios.get("gethouse.php"
+    )
+        .then(function (data) {
+            displayData(data.data);
+
+            finish();
     });
 }
 
 //====================================================================================================
 function getstaff() {
-    $.get("getstaff.php?search=" + $(".main-search").val(), null, function (data) {
+    axios.get("getstaff.php?search=" + $(".main-search").val())
+        .then(function (data) {
+        displayData(data.data);
 
-        displayData(data);
-
-    }).done(function () {
         finish();
     });
 }
@@ -1046,20 +1060,21 @@ function getstud(page) {
     const resstatus = $("#filter_resstatus").val();
     if (page === 'undefined') {
         var url = "getstuds.php?prog=" + prog + "&cls=" + cls + "&huse=" + huse + "&form=" + fm + "&ayear=" + ay + "&gender=" + gn + "&ghouse=" + gh + "&resstatus=" + resstatus;
-        $.get(url, function () {
-            $("#viewstuds").html(" ");
-            $(".panel-body").redraw();
-        }).done(function (data) {
+        axios.get(url)
+    .then(function (data) {
+        $("#viewstuds").html(" ");
+        $(".panel-body").redraw();
             finish();
-            $('#viewstuds').html(data);
+            $('#viewstuds').html(data.data);
         });
+
     } else {
         var url = "getstuds.php?page=" + page + "&prog=" + prog + "&cls=" + cls + "&huse=" + huse + "&form=" + fm + "&ayear=" + ay + "&gender=" + gn + "&ghouse=" + gh + "&resstatus=" + resstatus;
-        $.get(url, function (data) {
-            $('#stud-list').html("");
-            $(".panel-body").redraw();
-            $('#stud-list').html(data);
-        }).done(function () {
+        axios.get(url)
+            .then(function (data) {
+                $('#stud-list').html("");
+                $(".panel-body").redraw();
+                $('#stud-list').html(data.data);
             finish();
         });
     }
@@ -1118,25 +1133,24 @@ function getlendbooks() {
     showprogress("lend-container");
 
     var search = $("#lend-search").val();
-    $
-        .get("getlendbooks.php?search=" + search)
-        .done(function (list) {
+    axios.get("getlendbooks.php?search=" + search)
+        .then(function (list) {
             $("#lend-container").html(list);
         })
-        .error(function () {
+        .catch(function () {
             show_error();
         });
 }
 
 function getsmsnotifhistory() {
     showprogress("smsnotif-cont");
-    $
+    axios
         .get("getsmsnotifhistory.php")
-        .done(function (data) {
+        .then(function (data) {
             $("#smsnotif-cont").html(data);
 
         })
-        .error(function () {
+        .catch(function () {
             show_error();
         });
 
@@ -1146,13 +1160,13 @@ function getsmsnotifhistory() {
 function get_exeats() {
     showprogress('viewexeats');
 
-    $
+    axios
         .get("getexeats.php")
-        .done(function (data) {
+        .then(function (data) {
 
-            $("#viewexeats").html(data);
+            $("#viewexeats").html(data.data);
         })
-        .error(function () {
+        .catch(function () {
             show_error();
 
         });
@@ -1230,47 +1244,39 @@ function sendSMSnotif() {
 
 
 function getsmshistory() {
-    showprogress("smsreport-cont");
-    $
-        .get("getsmshistory.php")
-        .done(function (data) {
-            $("#smsreport-cont").html(data);
-        })
 
-        .error(function () {
+    showprogress("smsreport-cont");
+        axios.get("getsmshistory.php")
+        .then(function (data) {
+            $("#smsreport-cont").html(data.data);
+        })
+        .catch(function () {
             show_error();
 
         });
+
 }
 
 function getwaec() {
     showprogress("waec-content");
     var search = $("#waec-search").val();
     var ayear = $("#waec-ayear").val();
-    $
-        .get("getwaec.php?search=" + search + "&ayear=" + ayear)
-        .done(function (data) {
-            $("#waec-content").html(data);
+        axios.get("getwaec.php?search=" + search + "&ayear=" + ayear)
+        .then(function (data) {
+            $("#waec-content").html(data.data);
             finish();
         })
-        .error(function () {
+        .catch(function () {
             show_error();
         });
 }
 
 
 function print_genpop() {
-    showprogress("print-pool");
 
-    $
-        .get("print_genpop.php", function (data) {
+    $.get("print_genpop.php", function (data) {
+        displayData(data);
         })
-        .error(function () {
-            $("#print-pool").html("<h2 class='text-danger text-center'>could not process data, you seem to be off the network <i class='fa fa-chain-broken'></i> </h2>");
-        })
-        .done(function (data) {
-            $("#print-pool").html(data);
-        });
 }
 
 //------------------------------------------------------------------------------------------------------------------------------
@@ -1286,17 +1292,12 @@ function show_error() {
 
 //-----------------------------------------------------------------------------------------------------------------------------
 function print_clavg() {
-    showprogress("print-pool");
     $
-        .get("print_clavg.php", function () {
-        })
-        .error(function () {
-            $("#print-pool").html("<h2 class='text-danger text-center'>could not process data, you seem to be off the network <i class='fa fa-chain-broken'></i> </h2>");
-        })
-        .done(function (data) {
+        .get("print_clavg.php", function (data) {
+            displayData(data);
 
-            $("#print-pool").html(data);
         });
+
 }
 
 function getheaders() {
@@ -1321,63 +1322,31 @@ function getheaders() {
 
 function print_avgs() {
 
-    BootstrapDialog.show({
-        message: "<div id='avgdlg-cont'></div>",
-        title: "Print Accumulated averages",
-        buttons: [{
-            label: "Preview & Print", cssClass: "bg-info", action: function (d) {
-                var ayear = $("#acayear").val();
-                var cls = $("#acclas").val();
-                var actitle = $("#actitle").val();
-                window.open("printacavgs.php?ayear=" + ayear + "&cls=" + cls + "&title=" + actitle, "All Print List", "outerHeight=800px,outerWidth=800px,innerHeight=750px,innerWidth=750px,menubar=yes,scrollbars=yes");
 
-            }
-        }],
-        onshown: function () {
-            showprogress("avgdlg-cont");
-            $
-
-                .get("acavginputs.php", function (data) {
+            $.get("acavginputs.php", function (data) {
+                displayData(data);
 
 
-                }).error(function () {
-                show_error();
-                cloasedlgs();
+                });
 
-            }).done(function (data) {
 
-                $("#avgdlg-cont").html(data);
-            });
 
-        }
-
-    });
 
 }
 
 function print_frmres() {
-    showprogress("print-pool");
     $
-        .get("print_frmres.php", function () {
+        .get("print_frmres.php", function (data) {
+            displayData(data);
+
         })
-
-        .error(function () {
-            $("#print-pool").html("<h2 class='text-danger text-center'>could not process data, you seem to be off the network <i class='fa fa-chain-broken'></i> </h2>");
-        })
-
-        .done(function (data) {
-
-            $("#print-pool").html(data);
-        });
 
 }
 
 function print_widraw() {
-    showprogress("print-pool");
     $.get("print_widraw.php", function (data) {
 
-        $("#print-pool").html(data);
-
+        displayData(data);
     });
 
 }
@@ -1478,10 +1447,9 @@ function saverecs(form_id) {
     });
     $(".snarl-notification").addClass('snarl-info');
 
-    $.post($(form_id).attr("action"), $(form_id + " :input").serializeArray(), function (data) {
-    }).done(function (data) {
+    axios.post($(form_id).attr("action"), $(form_id + " :input").serializeArray())
 
-    }).done(function () {
+    .then(function (data) {
         resetform();
         get_ranhous();
         getid();
@@ -1493,7 +1461,8 @@ function saverecs(form_id) {
             timeout: 3000
         });
         $(".snarl-notification").addClass('snarl-success');
-    }).error(function () {
+    })
+        .catch(function () {
         Snarl.removeNotification(progress);
         Snarl.addNotification({
             title: "ERROR",
@@ -1535,6 +1504,81 @@ function showinfo() {
     });
 }
 
+/**
+ *
+ * @returns {boolean}
+ * save student
+ */
+
+function saveStiudent(){
+
+    let progress = Snarl.addNotification({
+        title: "PROCESSING",
+        text: "Please Wait...",
+        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-circle-o-notch fa-spin'></i>",
+        timeout: 3000
+    });
+    $(".snarl-notification").addClass('snarl-info');
+
+   // let formdata = $("#frmregstud" + " :input").serializeArray();
+    let formdata = new FormData();
+        formdata.append('index',$('#index').val());
+        formdata.append('photo',student_photo);
+        formdata.append('jhsno',$('#jhsno').val());
+        formdata.append('shsno',$('#shsno').val());
+        formdata.append('fname',$('#fname').val());
+        formdata.append('lname',$('#lname').val());
+        formdata.append('oname',$('#oname').val());
+        formdata.append('gender',$('#gender').val());
+        formdata.append('dob',$('#dob').val());
+        formdata.append('debt',$('#debt').val());
+        formdata.append('form',$('#form').val());
+        formdata.append('house',$('#house').val());
+        formdata.append('dor',$('#dor').val());
+        formdata.append('ghouse',$('#ghouse').val());
+        formdata.append('clas',$('#clas').val());
+        formdata.append('ayear',$('#ayear').val());
+        formdata.append('restatus',$('#restatus').val());
+        formdata.append('lschool',$('#lschool').val());
+        formdata.append('fthname',$('#fthname').val());
+        formdata.append('fhtown',$('#fhtown').val());
+        formdata.append('pthtel',$('#fhtown').val());
+        formdata.append('mthname',$('#mthname').val());
+        formdata.append('mtown',$('#mtown').val());
+        formdata.append('mthtel',$('#mthtel').val());
+
+
+    axios.post('regstud.php',formdata)
+
+        .then(function (data) {
+            resetform();
+            get_ranhous();
+            getid();
+            Snarl.removeNotification(progress);
+            Snarl.addNotification({
+                title: "SAVED",
+                text: "Student registered successfully",
+                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                timeout: 3000
+            });
+            $(".snarl-notification").addClass('snarl-success');
+            remove_student_image();
+        })
+        .catch(function (error) {
+            Snarl.removeNotification(progress);
+            Snarl.addNotification({
+                title: "ERROR",
+                text: "Something went wrong, could not save student",
+                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-remove'></i>",
+                timeout: 3000
+            });
+            $(".snarl-notification").addClass('snarl-error');
+        });
+
+    return false;
+
+
+}
 
 function skipstud(page) {
     var sid = $("#stname").val();
@@ -2175,20 +2219,7 @@ $(document).ready(function () {
         $("#filter-form").slideToggle(500);
     });
     //-------------------------------------
-    $("#btnregstud").click(function (e) {
-        getid_BeforeSave();
-        if (!$("#photo").val()) {
-            Snarl.addNotification({
-                title: "ERROR",
-                text: "Passport picture not selected, please select a passport picture",
-                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                timeout: 3000
-            });
-            $(".snarl-notification").addClass('snarl-error');
-            return false;
-        }
-        saverecs("#frmregstud");
-    });
+
     //===========================================
     $('#clearbtn').click(function () {
         BootstrapDialog.show({
@@ -2734,8 +2765,7 @@ function regstud() {
     const data = document.getElementById('regstud').innerHTML;
 
     displayData(data);
-
-
+    init_student_form();
 
 
 }
@@ -3817,7 +3847,13 @@ function delstud(id) {
         //---------------------------
 
         mkayear();
-        var addtest = localStorage.addtest;
+
+
+        function get_addAction(){
+
+            return  localStorage.addtest;
+        }
+
         $(".startmenu .col-lg-3, .tile").sortable();
         var d = null;
 
@@ -3851,7 +3887,10 @@ function delstud(id) {
 
         //------------------------------------------------------------------------------------------------------------------------
 
-        $(".add-btn").click(function (e) {
+    window.addNew = function() {
+
+            let addtest = get_addAction();
+            alert(addtest);
             if (addtest === "depts") {
                 var temp = "<div class='col-lg-12 col-md-12 col-sm-12 col-12'><form><div class='md-form'><i class='prefix fa fa-star-o'></i>";
                 temp += "<input type ='text' class='form-control'  id='depname' />";
@@ -4253,7 +4292,7 @@ function delstud(id) {
                 temp += "<label class='control-label' for ='cont'>Contact Number</label>";
                 temp += "<input type='text' class='form-control' placeholder='Enter admin phone number' id='adcont'><br/>";
                 temp += "</div> </div>";
-                temp += "<div class='alert alert-info' style='padding:2px;'>Account information <span class='fa fa-hand-down'></span><br/>";
+                temp += "<div>Account information<br/>";
                 temp += "<div class='row'>";
                 temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
                 temp += "<label class='control-label' for ='uname'>User Name</label>";
@@ -4275,7 +4314,7 @@ function delstud(id) {
                     title: "Create Admin. Account",
                     message: temp,
                     buttons: [{
-                        label: "CREATE", cssClass: "btn-good waves-button waves-effect", action: function (d) {
+                        label: "CREATE", cssClass: "btn-primary", action: function (d) {
 
                             if (!($("#adupass").val() === $("#adcpass").val())) {
 
@@ -4346,19 +4385,7 @@ function delstud(id) {
             }
 
 
-        });
-
-        $(".tile").click(function () {
-            var target = $(this).attr("data-get");
-            localStorage.addtest = target;
-            localStorage.dget = target;
-            addtest = localStorage.addtest;
-
-        });
-
-
-
-
+        };
 
 
 

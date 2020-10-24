@@ -16,7 +16,7 @@ class school
     {
     }
     function sub_expired(){
-date_default_timezone_set('Africa/Accra');
+            date_default_timezone_set('Africa/Accra');
             $td = date('Y-m-d');
             $tday = strtotime($td);
             $ex = strtotime($this->sub_date);
@@ -28,6 +28,7 @@ date_default_timezone_set('Africa/Accra');
 
         return $exstatus;
     }
+
     function get_subdays(){
 
         $today = new DateTime('now');
