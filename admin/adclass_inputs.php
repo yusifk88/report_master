@@ -1,8 +1,8 @@
 <?php
 
-include_once './objts/config.php';
-include_once './objts/department.php';
-$dp = new Department();
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+
+$dp = new APP\Department;
 $d = $dp->getdpts();
 ?>
 <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">

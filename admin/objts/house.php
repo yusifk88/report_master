@@ -1,5 +1,6 @@
 <?php
-
+namespace APP;
+use APP\config;
 class House
 {
     var $house_name;

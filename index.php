@@ -45,8 +45,8 @@ $dead = mysqli_fetch_object(mysqli_query($cf->con,"select * from deadline"));
                             </div>
                             <form action="" class="m-1">
                                 <div class="md-form">
-                                    <input type="text" id="uname" class="form-control">
-                                    <label for="uname">User Name</label>
+                                    <label for="uname">Email</label>
+                                    <input type="email" id="uname" class="form-control">
                                 </div>
 
                                 <div class="md-form">

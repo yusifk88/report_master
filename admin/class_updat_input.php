@@ -1,7 +1,6 @@
 <?php
-include_once './objts/config.php';
-include_once './objts/department.php';
-include_once './objts/rclass.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\Department;
 $id = $_GET['id'];
 $dpid = $_GET['dpid'];
 $cname = $_GET['classname'];

@@ -1,7 +1,9 @@
 <?php
-include_once './objts/config.php';
-include_once './objts/school.php';
-include_once './objts/utitlity.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\config;
+use APP\school;
+use APP\Utitlity;
+
 $ut = new utitlity();
 $sch = new school();
 $term = $_GET['term'];
@@ -10,7 +12,6 @@ $cls = $_GET['cls'];
 //$sub= $_GET['subjt'];
 $cg = new config();
 $cg->connect();
-include_once './objts/utitlity.php';
 $util = new Utitlity();
 $subs = mysqli_query($cg->con, "select id,subjdesc from subjects where id in (select distinct(subjt) from records where acyear = '$ayear' and term = '$term' and cls = '$cls')");
 $classname = mysqli_fetch_object(mysqli_query($cg->con, "select classname from classes where id = '$cls'"))->classname;

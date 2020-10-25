@@ -1,8 +1,8 @@
 <?php
 include("check_session.php");
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\config;
 
-include_once './objts/school.php';
-include_once 'objts/config.php';
 $cf = new config();
 $cf->connect();
 $frmcls = $_GET['frmcls'];
@@ -34,8 +34,7 @@ $toayear = $_GET['toayear'];
 <body>
 <div class="container">
     <?php
-    $cfg = new config();
-    $cfg->connect();
+
     $toclassname = mysqli_fetch_object(mysqli_query($cf->con, "select classname from classes where id = '$tocls'"))->classname;
     $cls_list = mysqli_query($cf->con, "select fname,oname,lname,gender,ayear from stuinfo where (class = '$frmcls' and ayear = '$frmayear' and form = '$frmform') or (class = '$tocls' and ayear = '$toayear' and form = '$toform') and id not in (SELECT stid from withdraw) order by fname ASC ");
     $sch = new school();

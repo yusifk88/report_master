@@ -1,9 +1,10 @@
 <?php
-include_once 'objts/config.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\config;
 $cf = new config();
 $cf->connect();
 
-$acc = mysqli_query($cf->con, "select id,uname,upass,user_type,status from staff");
+$acc = mysqli_query($cf->con, "select id,uname,upass,type,status from staff");
 $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
 
 ?>
@@ -25,8 +26,7 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
                     <table class="table table-condensed table-hover table-striped">
                         <thead>
                         <th>S/N</th>
-                        <th>User Name</th>
-                        <th>Password</th>
+                        <th>Email</th>
                         <th>User Type</th>
                         <th>Status</th>
                         <th colspan="2">Action</th>
@@ -38,7 +38,6 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
                         <?php
                         $i = 1;
                         while ($row = mysqli_fetch_object($acc)) {
-                            if ($row->status == "active") {
                                 ?>
                                 <tr>
 
@@ -51,16 +50,11 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
 
                                     </td>
                                     <td>
-                                        <?= $row->upass; ?>
+                                        <?= $row->type; ?>
 
                                     </td>
-                                    <td>
-                                        <?= $row->user_type; ?>
-
-                                    </td>
-                                    <td style="font-style: italic;">
+                                    <td style="font-style: italic;" class="<?=$row->status == 'active' ? 'text-success' : 'text-danger'?>">
                                         <?= $row->status; ?>
-
                                     </td>
                                     <td>
                                         <i onclick="resetpass(<?= $row->id; ?>)" title="Reset user's password"
@@ -77,50 +71,7 @@ $ayear = mysqli_query($cf->con, "select distinct(ayear) from stuinfo");
 
                                 </tr>
 
-                                <?php
-
-                            } else {
-
-                                ?>
-                                <tr>
-
-                                    <td style="color: red;">
-                                        <?= $i; ?>
-
-                                    </td>
-                                    <td style="color: red;">
-                                        <?= $row->uname; ?>
-
-                                    </td>
-                                    <td style="color: red;">
-                                        <?= $row->upass; ?>
-
-                                    </td>
-                                    <td style="color: red;">
-                                        <?= $row->user_type; ?>
-
-                                    </td>
-                                    <td style="color: red; font-style: italic;">
-                                        <?= $row->status; ?>
-
-                                    </td>
-                                    <td>
-                                        <i onclick="resetpass(<?= $row->id; ?>)" title="Reset user's password"
-                                           style="color: deepskyblue; cursor: pointer;"
-                                           class="fa fa-refresh waves-effect waves-circle"></i>
-
-                                    </td>
-                                    <td>
-                                        <i onclick="enableacc(<?= $row->id; ?>)" title="Enable user Account"
-                                           style="color: deepskyblue; cursor: pointer;"
-                                           class="fa fa-star waves-effect waves-circle"></i>
-                                    </td>
-
-
-                                </tr>
-
-                                <?php
-                            }
+                            <?php
                             $i++;
                         }
 

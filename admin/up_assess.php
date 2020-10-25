@@ -1,8 +1,10 @@
 <?php
-include_once './objts/config.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\config;
+use APP\Utitlity;
+
 $cfg = new config();
 $cfg->connect();
-include_once './objts/utitlity.php';
 $util = new Utitlity();
 $id = $_GET['id'];
 $term = $_GET['term'];

@@ -1,6 +1,6 @@
 <?php
-include_once './objts/config.php';
-include_once './objts/subjects.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\Subjects;
 $sbjt = new Subjects();
 $data = $sbjt->getsubjects();
 if (mysqli_num_rows($data) > 0) {

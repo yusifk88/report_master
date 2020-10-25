@@ -1,9 +1,11 @@
 <?php
-include_once './objts/config.php';
-include_once './objts/staff.php';
-$cfg = new config();
+
+
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+
+$cfg = new \APP\config();
 $cfg->connect();
-$stf = new Staff();
+$stf = new \APP\Staff();
 $keyword = $_GET['search'];
 $d = $stf->getstaff($keyword, $keyword);
 $ranklist = ["Senior Sup't", "Prin. Sup't", "Assist. Dir ii", "Assist. Dir I", "Dep. Dir.", "Dir. II", "Dir. I"];

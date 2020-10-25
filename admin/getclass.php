@@ -1,7 +1,8 @@
 <?php
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
 
-include_once './objts/config.php';
-include_once './objts/rclass.php';
+use APP\Rclass;
+
 $clss = new Rclass();
 $d = $clss->getclasses();
 ?>

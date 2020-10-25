@@ -1,6 +1,8 @@
 <?php
-include_once './objts/config.php';
-include_once './objts/students.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\Students;
+use APP\config;
+
 $cf = new config();
 $cf->connect();
 $student = new Students();

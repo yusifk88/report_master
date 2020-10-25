@@ -1,6 +1,8 @@
 <?php
-include_once './objts/config.php';
-include_once './objts/school.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+
+use APP\school;
+use APP\config;
 $sch = new school();
 $code = $sch->code;
 $cnfg = new config();

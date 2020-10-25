@@ -1,5 +1,7 @@
 <?php
-include("objts/config.php");
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+
+use APP\config;
 $cf = new config();
 $cf->connect();
 session_start();

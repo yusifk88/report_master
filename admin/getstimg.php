@@ -5,7 +5,8 @@
  * Date: 10/18/2017
  * Time: 2:58 PM
  */
-include_once("objts/config.php");
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\config;
 $cfg = new config();
 $cfg->connect();
 $id = $_GET["id"];

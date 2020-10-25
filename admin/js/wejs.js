@@ -1,5 +1,4 @@
 
-
 jQuery.fn.redraw = function () {
     return this.hide(0, function () {
         $(this).show(100);
@@ -705,15 +704,6 @@ function backup() {
 
 }
 
-function restore() {
-    $.get("restore.php", function (data) {
-        $("#print-pool").html(data);
-
-
-    });
-
-}
-
 
 function promotstuds() {
     var data = $("#frmpromotstud :input").serializeArray();
@@ -916,7 +906,7 @@ window.getid = function() {
         }
     });
 };
-var student_photo =null;
+let student_photo =null;
 
 function select_student_image() {
 
@@ -2239,6 +2229,7 @@ $(document).ready(function () {
         });
     });
 });
+
 
 //--------------------------------------------------------------------------------------
 
@@ -3796,7 +3787,7 @@ function delstud(id) {
 //--------------------------------------------------------------------------------
 
 
-    $(document).ready(function (){
+    $(document).ready(function () {
         Waves.init();
         Waves.attach('.tile', ['waves-float', 'waves-light']);
         Waves.attach('button', ['waves-button']);
@@ -3849,9 +3840,9 @@ function delstud(id) {
         mkayear();
 
 
-        function get_addAction(){
+        function get_addAction() {
 
-            return  localStorage.addtest;
+            return localStorage.addtest;
         }
 
         $(".startmenu .col-lg-3, .tile").sortable();
@@ -3881,526 +3872,13 @@ function delstud(id) {
 
             }
         });
-
-        //------------------------------------------------------------------------------------------------------------------------
-
-
-        //------------------------------------------------------------------------------------------------------------------------
-
-    window.addNew = function() {
-
-            let addtest = get_addAction();
-            alert(addtest);
-            if (addtest === "depts") {
-                var temp = "<div class='col-lg-12 col-md-12 col-sm-12 col-12'><form><div class='md-form'><i class='prefix fa fa-star-o'></i>";
-                temp += "<input type ='text' class='form-control'  id='depname' />";
-                temp += "<label  for ='depname'>Department Name/Description</label></div>";
-                temp += "</form></div>";
-                BootstrapDialog.show({
-                    title: "Add a Program/department",
-                    message: temp,
-                    buttons: [{
-                        label: "SAVE", cssClass: "bg-info text-white", action: function (d) {
-
-                            if ($("#depname").val() === "") {
-
-                                $("#depname").focus();
-
-                            } else {
-
-                                $.get("savedep.php?depname=" + $("#depname").val().toString(), null, function (data) {
-
-                                    getdepts();
-                                    $("#depname").val("");
-                                    $("#depname").focus();
-                                    Snarl.addNotification({
-                                        title: "SAVED",
-                                        text: "Programe/Department creates successfully",
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-success');
-
-
-                                });
-
-
-                            }
-
-
-                        }
-                    }]
-
-
-                });
-
-
-            } else if (addtest === "classes") {
-
-                $.get("adclass_inputs.php", null, function (data) {
-                }).done(function (data) {
-
-                    BootstrapDialog.show({
-                        title: "Add a class",
-                        message: data,
-                        buttons: [{
-                            label: "SAVE", cssClass: "bg-info text-white", action: function (d) {
-
-                                if (!$("#classname").val()) {
-                                    $("#classname").focus();
-
-                                    return false;
-                                }
-
-
-                                $.get("saveclass.php?dpid=" + $("#dep").val() + "&classname=" + $("#classname").val(), null, function (data) {
-                                }).done(function (data) {
-                                    $("#classname").val("");
-                                    $("#classname").focus();
-                                    getclass();
-                                    Snarl.addNotification({
-                                        title: "SAVED",
-                                        text: data,
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-success');
-
-
-                                });
-
-                            }
-                        }]
-
-                    });
-
-
-                });
-
-            } else if (addtest === "subjts") {
-                var temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'><div class='md-form'><i class='prefix fa fa-book'></i>";
-                temp += "<input type ='text' class='form-control'  id='subname' />";
-                temp += "<label class='control-label' for ='subname'>Subject Name</label></div>";
-                temp += "<label class='control-label' for ='subtype'>Subject Type</label>";
-                temp += "<select class='form-control' id='subtype'>";
-                temp += "<option>Core Subject</option>";
-                temp += "<option>Elective Subject</option>";
-                temp += "</select>";
-                temp += "</form></div>";
-                BootstrapDialog.show({
-                    title: "Add a Subject",
-                    message: temp,
-                    buttons: [{
-                        label: "SAVE", cssClass: "btn-good waves-button waves-effect", action: function (d) {
-                            if ($("#subname").val() === "") {
-                                $("#subname").focus();
-                            } else {
-
-                                $.get("savesub.php?subname=" + $("#subname").val().toString() + "&type=" + $("#subtype").val(), null, function (data) {
-
-                                    $("#subname").val("").focus();
-                                    getsubjts();
-                                    Snarl.addNotification({
-                                        title: "SAVED",
-                                        text: data,
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-success');
-
-
-                                });
-
-
-                            }
-
-                        }
-                    }]
-
-                });
-
-
-                //---------------------------------------------------adding house
-            } else if (addtest === "house") {
-                var temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'><div class='md-form'><i class='prefix fa fa-home'></i>";
-                temp += "<input type ='text' class='form-control' id='name' />";
-                temp += "<label for ='name'>House Name</label></div><div class='md-form'><i class='prefix fa fa-file-text-o'></i>";
-                temp += "<input type='text' class='form-control'  id='des'>";
-                temp += "<label class='control-label' for ='subtype'>House Description</label></div>";
-                temp += "<label class='control-label' for ='subtype'>House Type</label>";
-                temp += "<select id='house-type' class='form-control'>";
-                temp += "<option value='genhouse'>General House</option>";
-                temp += "<option value='ghouse'>Girls House</option>";
-                temp += "<option value='bhouse'>Boys House</option>";
-                temp += "</select>";
-                temp += "</form></div>";
-                BootstrapDialog.show({
-                    title: "Create New House",
-                    message: temp,
-
-                    buttons: [{
-                        label: "SAVE", cssClass: "btn-good waves-button waves-effect", action: function (d) {
-
-                            if ($("#name").val() === "" || $("#des").val() === "") {
-                                $("#name").focus();
-                            } else {
-
-                                $.get("savehouse.php?name=" + $("#name").val().toString() + "&des=" + $("#des").val() + "&htype=" + $("#house-type").val(), null, function (data) {
-                                    gethouses();
-                                    $("#name").val("");
-                                    $("#des").val("");
-                                    $("#name").focus();
-                                    Snarl.addNotification({
-                                        title: "SAVED",
-                                        text: data,
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-success');
-
-                                });
-                            }
-                        }
-                    }]
-                });
-
-            } else if (addtest === "staff") {
-                //starting
-                let temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-user'></i>";
-
-                temp += "<input type ='text' class='form-control' id='stffname' />";
-                temp += "<label for ='stffname'>First Name</label>";
-                temp += "</div>";
-                temp += "</div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-user'></i>";
-                temp += "<input type='text' class='form-control' id='stflname' />";
-                temp += "<label  for ='stflname'>Last Name</label>";
-                temp += "</div> </div></div>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<label class='control-label' for ='gender'>Gender</label>";
-                temp += "<select class='form-control' id='gender'><option>Male</option><option>Female</option></select>";
-                temp += "</div>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-phone'></i>";
-                temp += "<input type='text' class='form-control' id='cont'><br/>";
-                temp += "<label for ='cont'>Contact Number</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<label class='control-label' for ='rank'>Rank</label>";
-                temp += "<select class='form-control' id='rank'><option value='0'>Senior Sup't</option><option value='1'>Prin. Sup't</option><option value='2'>Assist. Dir. ii</option><option value='3'>Assist. Dir. I</option><option value='4'>Dep. Dir.</option><option value='5'>Dir. II</option><option value='6'>Dir. I</option></select>";
-                temp += "</div> </div> <div class='row'>";
-                temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-id-badge'></i>";
-                temp += "<input type='text' class='form-control' id='stfid'><br/>";
-                temp += "<label for ='stfid'>Staff ID No.</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-calendar-check-o active'></i>";
-                temp += "<input type='date' class='form-control' id='sdob' />";
-                temp += "<label for ='sdob' class='active'>D.O.B</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-hashtag'></i>";
-                temp += "<input type='text' class='form-control' id='regno'><br/>";
-                temp += "<label for ='regno'>Registered No.</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-3 col-md-3 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-id-card-o'></i>";
-                temp += "<input type='text' class='form-control' id='ssnid'><br/>";
-                temp += "<label for ='ssnid'>SSNIT No.</label>";
-                temp += "</div></div>";
-                temp += "</div>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-graduation-cap'></i>";
-                temp += "<input type='text' class='form-control' id='aqual'/>";
-                temp += "<label for ='aqaul'>Academic Qualification</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-star-o'></i>";
-                temp += "<input type='text' class='form-control' id='pqual' />";
-                temp += "<label  for ='pqual'>Professional Qualification</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-calendar'></i>";
-                temp += "<input type='date' class='form-control' id='appdate'><br/>";
-                temp += "<label class='active' for ='appdate'>Date Of First Appointment</label>";
-                temp += "</div> </div> </div>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-calendar-plus-o'></i>";
-                temp += "<input type='date' class='form-control' id='assdate'><br/>";
-                temp += "<label class='active' for ='assdate'>Duty Assumed Date</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-bank'></i>";
-                temp += "<input type='text' class='form-control' id='bankname'><br/>";
-                temp += "<label for ='bankname'>Associated Bank</label>";
-                temp += "</div></div> ";
-                temp += "<div class='col-lg-4 col-md-4 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-hashtag'></i>";
-                temp += "<input type='text' class='form-control' id='accno'><br/>";
-                temp += "<label for ='accno'>Account Number</label>";
-                temp += "</div></div></div>";
-                temp += "<div class='card bg-secondary p-3 text-white'>Account information";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-user-circle-o'></i>";
-                temp += "<input type ='text' class='form-control text-white' id='uname' />";
-                temp += "<label class='control-label text-white' for ='uname' >User Name</label>";
-                temp += "</div></div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-asterisk'></i>";
-                temp += "<label class='control-label text-white'  for ='upass'>Password</label>";
-                temp += "<input type='password' class='form-control' id='upass'>";
-                temp += "</div> </div> </div>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
-                temp += "</div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
-                temp += "<div class='md-form'>";
-                temp += "<i class='prefix fa fa-asterisk'></i>";
-                temp += "<input type='password' class='form-control' id='cpass'>";
-                temp += "<label class='control-label text-white' for ='cpass'>Confirm Password</label>";
-                temp += "</div> </div></div>";
-                temp += "</form>";
-                BootstrapDialog.show({
-                    title: "Register Staff",
-                    message: temp,
-                    size: "size-wide",
-                    buttons: [{
-                        label: "SAVE", cssClass: "btn bg-info", action: function (d) {
-
-                            if (!($("#upass").val() === $("#cpass").val())) {
-
-                                Snarl.addNotification({
-                                    title: "ERROR",
-                                    text: "Passwords do not match, please check and try again",
-                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                    timeout: 3000
-                                });
-                                $(".snarl-notification").addClass('snarl-error');
-
-                                return false;
-
-                            }
-
-                            if (!$("#stffname").val() || !$("#stflname").val() || !$("#cont").val() || !$("#uname").val() || !$("#upass").val() || !$("#cpass").val()) {
-
-                                Snarl.addNotification({
-                                    title: "ERROR",
-                                    text: "A field is left blank, please check and try again",
-                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                    timeout: 3000
-                                });
-                                $(".snarl-notification").addClass('snarl-error');
-                                return false;
-                            } else {
-
-                                var progress = Snarl.addNotification({
-                                    title: "PROCCESSING",
-                                    text: "Please Wait...",
-                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-circle-notch fa-spin'></i>",
-                                    timeout: 3000
-                                });
-                                $(".snarl-notification").addClass('snarl-info');
-
-                                $.get("savestaff.php?fname=" + $("#stffname").val().toString() + "&lname=" + $("#stflname").val() + "&gender=" + $("#gender").val() + "&cont=" + $("#cont").val() + "&uname=" + $("#uname").val() + "&upass=" + $("#upass").val() + "&rank=" + $("#rank").val() + "&stfid=" + $("#stfid").val() + "&sdob=" + $("#sdob").val() + "&regno=" + $("#regno").val() + "&aqual=" + $("#aqual").val() + "&pqual=" + $("#pqual").val() + "&appdate=" + $("#appdate").val() + "&assdate=" + $("#assdate").val() + "&bankname=" + $("#bankname").val() + "&accno=" + $("#accno").val() + "&ssnid=" + $("#ssnid").val(), null, function (data) {
-
-
-                                }).done(function (data) {
-                                    d.close();
-                                    getstaff();
-                                    Snarl.removeNotification(progress);
-                                    Snarl.addNotification({
-                                        title: "SAVED",
-                                        text: data,
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-success');
-
-
-                                }).error(function () {
-
-                                    Snarl.removeNotification(progress);
-                                    Snarl.addNotification({
-                                        title: "ERROR",
-                                        text: "Could not save staff, please try again",
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-error');
-
-                                });
-
-
-                            }
-
-
-                        }
-                    }, {
-                        label: "CANCEL", cssClass: "btn-bad waves-button waves-effect", action: function (d) {
-
-                            d.close();
-
-                        }
-                    }]
-                });
-
-                //edditing
-            } else if (addtest === "accounts") {
-
-                //add account--------------------------------------------
-
-                var temp = "<form><div class='col-lg-12 col-md-12 col-sm-12 col-12'>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='stffname'>First Name</label>";
-                temp += "<input type ='text' class='form-control' placeholder='Enter first Name' id='adfname' />";
-                temp += "</div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='stflname'>Last Name</label>";
-                temp += "<input type='text' class='form-control' placeholder='Enter Last Name' id='adlname' />";
-                temp += "</div> </div>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='gender'>Gender</label>";
-                temp += "<select class='form-control' id='adgender'><option>Male</option><option>Female</option></select>";
-                temp += "</div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='cont'>Contact Number</label>";
-                temp += "<input type='text' class='form-control' placeholder='Enter admin phone number' id='adcont'><br/>";
-                temp += "</div> </div>";
-                temp += "<div>Account information<br/>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='uname'>User Name</label>";
-                temp += "<input type ='text' class='form-control' placeholder='Enter user Name' id='aduname' />";
-                temp += "</div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='upass'>Admin Password</label>";
-                temp += "<input type='password' class='form-control' placeholder='Enter admin password' id='adupass'>";
-                temp += "</div> </div>";
-                temp += "<div class='row'>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "</div>";
-                temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-                temp += "<label class='control-label' for ='cpass'>Confirm admin Password</label>";
-                temp += "<input type='password' class='form-control' placeholder='Enter admin password again' id='adcpass'>";
-                temp += "</div> </div>";
-                temp += "</form>";
-                BootstrapDialog.show({
-                    title: "Create Admin. Account",
-                    message: temp,
-                    buttons: [{
-                        label: "CREATE", cssClass: "btn-primary", action: function (d) {
-
-                            if (!($("#adupass").val() === $("#adcpass").val())) {
-
-                                Snarl.addNotification({
-                                    title: "ERROR",
-                                    text: "Passwords do not match, please check and try again",
-                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                    timeout: 3000
-                                });
-                                $(".snarl-notification").addClass('snarl-error');
-                                return false;
-
-                            }
-
-                            if (!$("#adfname").val() || !$("#adlname").val() || !$("#adcont").val() || !$("#aduname").val() || !$("#adupass").val() || !$("#adcpass").val()) {
-
-                                Snarl.addNotification({
-                                    title: "ERROR",
-                                    text: "A field is left blank, please check and try again",
-                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                    timeout: 3000
-                                });
-                                $(".snarl-notification").addClass('snarl-error');
-
-                                return false;
-                            } else {
-
-                                var progress = Snarl.addNotification({
-                                    title: "PROCCESSING",
-                                    text: "Please Wait...",
-                                    icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-circle-notch fa-spin'></i>",
-                                    timeout: 3000
-                                });
-                                $(".snarl-notification").addClass('snarl-info');
-                                $.get("adadmin.php?fname=" + $("#adfname").val().toString() + "&lname=" + $("#adlname").val() + "&gender=" + $("#adgender").val() + "&cont=" + $("#adcont").val() + "&uname=" + $("#aduname").val() + "&upass=" + $("#adupass").val(), null, function (data) {
-                                }).done(function (data) {
-                                    d.close();
-                                    getaccounts();
-                                    Snarl.removeNotification(progress);
-                                    Snarl.addNotification({
-                                        title: "ACCOUNT CREATED",
-                                        text: data,
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-success');
-
-                                }).error(function () {
-                                    Snarl.removeNotification(progress);
-                                    Snarl.removeNotification(progress);
-                                    Snarl.addNotification({
-                                        title: "ERROR",
-                                        text: "Could not creat account, please try again",
-                                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                        timeout: 3000
-                                    });
-                                    $(".snarl-notification").addClass('snarl-error');
-
-                                });
-                            }
-
-
-                        }
-                    }]
-                });
-
-
-            }
-
-
-        };
-
-
-
-        $(".submit-btn").click(function () {
-            var ins = $("#frmregdept :input");
-            ins = ins.toArray();
-            var id = $(this).attr("data-id").toString();
-            d = saverecs(id);
-
-        });
-        $(".home-btn").click(function () {
-            addtest = null;
-
-            closewindow(".content");
-
-
-        });
     });
+
+        //------------------------------------------------------------------------------------------------------------------------
+
+
+        //------------------------------------------------------------------------------------------------------------------------
+
+
+
+

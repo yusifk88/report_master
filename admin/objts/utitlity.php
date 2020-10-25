@@ -1,7 +1,8 @@
 <?php
 
-include_once 'school.php';
-include_once 'config.php';
+namespace APP;
+require_once (__DIR__.'/vendor/autoload.php');
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,7 +25,7 @@ class Utitlity
      */
     var $host = "localhost";
     var $user = "root";
-    var $password = "";
+    var $password = "password";
     var $db = "reportdb";
     var $con;
     var $uid = 0;
@@ -42,6 +43,33 @@ class Utitlity
         $cfig = new config();
         $cfig->connect();
         mysqli_query($cfig->con,"insert into user_log(uid,action) values ('$this->uid','$this->action')");
+    }
+
+
+    public static function set_response($code=200){
+        http_response_code($code);
+    }
+
+    /**
+     * @param string $data
+     * @return string
+     * escapes mysql string wrapper
+     */
+
+    public static function escape($data=""){
+        $connection = new config();
+        $connection->connect();
+        return mysqli_real_escape_string($connection->con,$data);
+
+    }
+
+
+    public static function response($data,$code=200){
+
+
+
+        http_response_code($code);
+        echo $data;
     }
 
     public function sendMessage()

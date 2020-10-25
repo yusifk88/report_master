@@ -1,6 +1,8 @@
 <?php
-include_once 'objts/config.php';
-include_once 'objts/school.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\school;
+use APP\config;
+use APP\Utitlity;
 $sch = new school();
 $term = $_GET['term'];
 $ayear = $_GET['ayear'];
@@ -9,7 +11,6 @@ $sub = $_GET['subjt'];
 
 $cg = new config();
 $cg->connect();
-include_once '../admin/objts/utitlity.php';
 $util = new Utitlity();
 $classname = mysqli_fetch_object(mysqli_query($cg->con, "select classname from classes where id = '$cls'"))->classname;
 $staff = mysqli_fetch_object(mysqli_query($cg->con, "select lname,fname from staff where id = (select stfid from subas where clid='$cls' and subid = '$sub')"));

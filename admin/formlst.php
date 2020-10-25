@@ -1,8 +1,9 @@
 <?php
 include("check_session.php");
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\config;
+use APP\school;
 
-include_once './objts/school.php';
-include_once 'objts/config.php';
 
 $form = $_GET['form'];
 $term = $_GET['term'];

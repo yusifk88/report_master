@@ -1,0 +1,28 @@
+{
+    "name": "app/reportmaster",
+    "description": "A cloud compute space for high schools in west africa especially Ghana",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Yusif Katulie",
+            "email": "amloyal4life@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "admin/objts/config.php",
+            "admin/objts/DB.php",
+            "admin/objts/department.php",
+            "admin/objts/house.php",
+            "admin/objts/rclass.php",
+            "admin/objts/school.php",
+            "admin/objts/staff.php",
+            "admin/objts/students.php",
+            "admin/objts/school.php",
+            "admin/objts/subjects.php",
+            "admin/objts/utitlity.php"
+        ]
+    },
+    "minimum-stability": "stable",
+    "require": {}
+}

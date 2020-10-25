@@ -1,6 +1,8 @@
 <?php
-include_once 'objts/config.php';
-include_once 'objts/utitlity.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\Utitlity;
+use APP\config;
+
 $ut = new utitlity();
 $cf = new config();
 $cf->connect();

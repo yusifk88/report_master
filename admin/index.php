@@ -1,15 +1,18 @@
 <?php
-include_once './objts/school.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+
+use APP\school;
+use APP\config;
+use APP\Rclass;
+use APP\Subjects;
+use APP\Department;
+use APP\House;
+
 $sch = new school();
 session_start();
     if (!$_SESSION['ad_uname'] && !$_SESSION['ad_upass'] && !$_SESSION['ad_id'] && (!$_SESSION['school_id'] || $_SESSION['school_id'] != $sch->code)) {
         header("location:../");
     }
-include_once './objts/config.php';
-include_once './objts/department.php';
-include_once './objts/house.php';
-include_once './objts/rclass.php';
-include './objts/subjects.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -441,7 +444,7 @@ include './objts/subjects.php';
 
 
             <!--main router view-->
-           <div class="w-100" id="maincontent">
+           <div class="w-100 pt-5" id="maincontent">
 
 
            </div>
@@ -1335,7 +1338,6 @@ include './objts/subjects.php';
 <script src="js/snarl.min.js" type="text/javascript"></script>
 <script src="js/waves.min.js" type="text/javascript"></script>
 <script src="js/chart.js" type="text/javascript"></script>
-<script src="js/mdb.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
 <script src="js/wejs.js" type="text/javascript"></script>
 <?php
@@ -1616,16 +1618,16 @@ include './objts/subjects.php';
             temp += "<label for ='accno' class='form-control-label'>Account Number</label>";
             temp += "<input type='text' class='form-control' id='accno'><br/>";
             temp += "</div></div></div>";
-            temp += "<div class='card bg-light p-3 text-white'>Account information";
+            temp += "<div class='card bg-light p-3 text-muted'>Account information";
             temp += "<div class='row'>";
             temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
             temp += "<div class='md-form'>";
             temp += "<label class='control-label' for ='uname' >User Name</label>";
-            temp += "<input type ='text' class='form-control text-white' id='uname' />";
+            temp += "<input type ='text' class='form-control' id='uname' />";
             temp += "</div></div>";
             temp += "<div class='col-lg-6 col-md-6 col-sm-12 col-12'>";
             temp += "<div class='md-form'>";
-            temp += "<label class='control-label text-white'  for ='upass'>Password</label>";
+            temp += "<label class='control-label'  for ='upass'>Password</label>";
             temp += "<input type='password' class='form-control' id='upass'>";
             temp += "</div> </div> </div>";
             temp += "<div class='row'>";
@@ -1694,14 +1696,14 @@ include './objts/subjects.php';
                                 $(".snarl-notification").addClass('snarl-success');
 
 
-                            }).error(function () {
+                            }).catch(function (data) {
 
                                 Snarl.removeNotification(progress);
                                 Snarl.addNotification({
                                     title: "ERROR",
-                                    text: "Could not save staff, please try again",
+                                    text: data.responseText,
                                     icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                    timeout: 3000
+                                    timeout: 8000
                                 });
                                 $(".snarl-notification").addClass('snarl-error');
 
@@ -1745,10 +1747,10 @@ include './objts/subjects.php';
             temp += "<label class='control-label' for ='cont'>Contact Number</label>";
             temp += "<input type='text' class='form-control' placeholder='Enter admin phone number' id='adcont'><br/>";
             temp += "</div> </div>";
-            temp += "<div class='alert alert-info' style='padding:2px;'>Account information <span class='fa fa-hand-down'></span><br/>";
-            temp += "<div class='row'>";
+            temp += "Account information<br/>";
+            temp += "<div class='row mt-3'>";
             temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
-            temp += "<label class='control-label' for ='uname'>User Name</label>";
+            temp += "<label class='control-label' for ='uname'>Email</label>";
             temp += "<input type ='text' class='form-control' placeholder='Enter user Name' id='aduname' />";
             temp += "</div>";
             temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
@@ -1761,13 +1763,13 @@ include './objts/subjects.php';
             temp += "<div class='col-lg-6 col-md-6 col-sm-6 col-6'>";
             temp += "<label class='control-label' for ='cpass'>Confirm admin Password</label>";
             temp += "<input type='password' class='form-control' placeholder='Enter admin password again' id='adcpass'>";
-            temp += "</div> </div>";
+            temp += "</div>";
             temp += "</form>";
             BootstrapDialog.show({
                 title: "Create Admin. Account",
                 message: temp,
                 buttons: [{
-                    label: "CREATE", cssClass: "btn-good waves-button waves-effect", action: function (d) {
+                    label: "CREATE", cssClass: "btn btn-primary", action: function (d) {
 
                         if (!($("#adupass").val() === $("#adcpass").val())) {
 
@@ -1815,14 +1817,14 @@ include './objts/subjects.php';
                                 });
                                 $(".snarl-notification").addClass('snarl-success');
 
-                            }).error(function () {
+                            }).catch(function (data) {
                                 Snarl.removeNotification(progress);
                                 Snarl.removeNotification(progress);
                                 Snarl.addNotification({
                                     title: "ERROR",
-                                    text: "Could not creat account, please try again",
+                                    text: data.responseText,
                                     icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                                    timeout: 3000
+                                    timeout: 8000
                                 });
                                 $(".snarl-notification").addClass('snarl-error');
 

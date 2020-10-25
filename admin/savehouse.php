@@ -1,7 +1,7 @@
 <?php
 
-include_once './objts/config.php';
-include_once './objts/house.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\House;
 
 $hse = new House();
 $name = $_GET['name'];

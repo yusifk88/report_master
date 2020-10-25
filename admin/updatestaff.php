@@ -1,7 +1,8 @@
 <?php
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\config;
+use APP\Staff;
 
-include_once './objts/config.php';
-include_once './objts/staff.php';
 $cfg = new config();
 $cfg->connect();
 $stf = new Staff();

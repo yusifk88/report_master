@@ -1,5 +1,6 @@
 <?php
-include("objts/config.php");
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\config;
 $con = new config();
 $con->connect();
 $id = $_GET['stid'];

@@ -1,7 +1,7 @@
 <?php
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\Rclass;
 
-include_once './objts/config.php';
-include_once './objts/rclass.php';
 $cls = new Rclass();
 $id = $_GET['id'];
 $dpid = $_GET['dpid'];

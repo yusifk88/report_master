@@ -1,4 +1,7 @@
 <?php
+namespace APP;
+require_once ('../../vendor/autoload.php');
+
 include('config.php');
 
 class DB

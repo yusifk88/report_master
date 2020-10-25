@@ -1,5 +1,8 @@
 <?php
-include_once("objts/config.php");
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+
+use APP\config;
+
 $cf = new config();
 $cf->connect();
 $ayears = mysqli_query($cf->con, "select distinct(ayear) from stuinfo ORDER by ayear ASC");

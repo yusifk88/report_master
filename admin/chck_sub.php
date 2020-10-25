@@ -1,5 +1,7 @@
 <?php
-include_once 'objts/school.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\school;
+
 $sch = new school();
 if($sch->sub_expired()){
 

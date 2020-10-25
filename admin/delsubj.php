@@ -1,6 +1,8 @@
 <?php
-include_once './objts/config.php';
-include_once './objts/subjects.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\config;
+use APP\Subjects;
+
 $cn = new config();
 $cn->connect();
 $id = $_GET['id'];

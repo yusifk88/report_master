@@ -1,6 +1,6 @@
 <?php
-include_once './objts/config.php';
-include_once './objts/subjects.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\Students;
 
 $sub = new Subjects();
 $subname = $_GET['subname'];

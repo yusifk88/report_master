@@ -1,5 +1,8 @@
 <?php
 
+namespace APP;
+require_once (__DIR__.'/vendor/autoload.php');
+
 class Subjects
 {
 

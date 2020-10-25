@@ -1,5 +1,8 @@
 <?php
-include_once ('utitlity.php');
+namespace APP;
+
+require_once (__DIR__.'/vendor/autoload.php');
+
 class Staff
 {
     var $fname;
@@ -29,38 +32,53 @@ class Staff
 
     //=================================================================================================
 
-    public function createstaff()
+
+    /**
+     * @return bool
+     * validates the properties of the staff before creating a new staff
+     */
+    public function validate(){
+
+         return ($this->fname && $this->lname && $this->contact && $this->gender && $this->uname && $this->upass);
+
+    }
+
+    /**
+     * @return bool
+     * create a new staff
+     */
+
+    public function create()
     {
         $dbcon = new config();
         $dbcon->connect();
-        if (!$this->fname || !$this->lname || !$this->contact || !$this->gender || !$this->uname || !$this->upass) {
-            $data = "Blank field(s) detected, please complete your entry";
 
-        } elseif ($this->staffexist($this->uname)) {
-            $data = "This user name already exist, please use a different user name";
-        } else {
 
-            $new_staff = mysqli_query($dbcon->con, "insert into staff (fname,lname,gender,contact,rank,stfid,dob,regno,aqual,pqual,appdate,assdate,bank,accno,snnid,uname,upass,user_type,status)
-    values('$this->fname','$this->lname','$this->gender','$this->contact','$this->rank','$this->stfid','$this->dob','$this->regno','$this->aqual','$this->pqual','$this->appdate','$this->assdate','$this->bankname','$this->accno','$this->ssnid','$this->uname','$this->upass','staff','active')");
+      //$staff = mysqli_query($dbcon->con, "insert into staff(fname,lname,gender,contact,rank,stfid,dob,regno,aqual,pqual,appdate,assdate,bank,accno,snnid,uname,upass,type,status,photo) values('$this->fname','$this->lname','$this->gender','$this->contact','$this->rank','$this->stfid','$this->dob','$this->regno','$this->aqual','$this->pqual','$this->appdate','$this->assdate','$this->bankname','$this->accno','$this->ssnid','$this->uname','$this->upass','staff','active','img/photo.jpg')");
+        mysqli_query($dbcon->con,"insert into staff(fname,lname,gender,contact,stfid,dob,regno,aqual,pqual,uname,upass,type,status) values('$this->fname','$this->lname','$this->gender','$this->contact','$this->stfid','$this->dob','$this->regno','$this->aqual','$this->pqual','$this->uname','$this->upass','staff','active')");
 
-            $data = $new_staff;
-//            $ut = new utitlity();
-//            session_start();
-//            $ut->uid = isset($_SESSION['id']) ?  $_SESSION['id'] : $_SESSION['ad_id'];
-//            $ut->action = "Registered a new staff ($this->fname $this->lname )";
-//            $ut->create_log();
-        }
-        return $data;
+            $ut = new utitlity();
+            session_start();
+            $ut->uid = isset($_SESSION['id']) ?  $_SESSION['id'] : $_SESSION['ad_id'];
+            $ut->action = "Registered a new staff ($this->fname $this->lname )";
+            $ut->create_log();
+
+            if (mysqli_error($dbcon->con)){
+                echo mysqli_error($dbcon->con);
+            }
+
+
+
 
     }
 
     //=================================================================================================
 
-    protected function staffexist($uname)
+    public function exists()
     {
         $dbcon = new config();
         $dbcon->connect();
-        $chk = mysqli_num_rows(mysqli_query($dbcon->con, "select * from staff where uname = '$uname'"));
+        $chk = mysqli_num_rows(mysqli_query($dbcon->con, "select * from staff where uname = '$this->uname'"));
         if ($chk > 0) {
             $res = TRUE;
         } else {
@@ -80,7 +98,7 @@ class Staff
         $dbcon = new config();
         $dbcon->connect();
 
-        $data = mysqli_query($dbcon->con, "select * from staff where user_type <> 'admin' and (fname LIKE '%$fname%' or lname LIKE '%$lname%') order by fname asc, lname asc");
+        $data = mysqli_query($dbcon->con, "select * from staff where type <> 'admin' and (fname LIKE '%$fname%' or lname LIKE '%$lname%') order by fname asc, lname asc");
 
         return $data;
     }

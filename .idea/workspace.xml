@@ -3,6 +3,192 @@
   <component name="ChangeListManager">
     <list default="true" id="da78f5b6-4fad-4f0e-bf29-d2bd6e785055" name="Default Changelist" comment="fixed switching withdraw to resume in search results">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/accounts.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/accounts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/adadmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/adadmin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/adclass_inputs.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/adclass_inputs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/addfrm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/addfrm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/addhouse.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/addhouse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/addshm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/addshm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/addwaecinputs.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/addwaecinputs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/addwo.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/addwo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/allprint.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/allprint.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assayear.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assayear.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/asscls.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/asscls.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assignsubs.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assignsubs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/brdsheet.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/brdsheet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/chck_sub.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/chck_sub.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/class_updat_input.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/class_updat_input.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/clavg.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/clavg.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cls_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cls_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cmntlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cmntlist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cnt_all.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cnt_all.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cnt_cavg.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cnt_cavg.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cnt_cls.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cnt_cls.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cnt_formlst.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cnt_formlst.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cnt_genpop.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cnt_genpop.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cnt_hse.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cnt_hse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cnt_prog.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cnt_prog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cnt_rep.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cnt_rep.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cnt_scoresht.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cnt_scoresht.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cnt_sign.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cnt_sign.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cnt_trscrpt.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cnt_trscrpt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cnt_widraw.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cnt_widraw.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/delass.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/delass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/delclass.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/delclass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/delcmnt.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/delcmnt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/deldept.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/deldept.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/delhm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/delhm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/delhouse.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/delhouse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/delstaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/delstaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/delstud.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/delstud.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/delsubj.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/delsubj.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/delwaec.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/delwaec.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/disacc.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/disacc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/do_reset.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/do_reset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/enableacc.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/enableacc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/entrylog.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/entrylog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/exiat_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/exiat_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/fmstaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/fmstaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/formlst.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/formlst.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/formres.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/formres.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/genpop.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/genpop.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/get_schstud.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/get_schstud.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/get_up_inputs.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/get_up_inputs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getassess.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getassess.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getassessupdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getassessupdate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getbatchstudinputs-exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getbatchstudinputs-exam.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getbatchstudinputs-hw.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getbatchstudinputs-hw.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getbatchstudinputs-pw.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getbatchstudinputs-pw.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getbatchtaskinputs.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getbatchtaskinputs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getchart_value.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getchart_value.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getclass.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getclass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getclassbydep.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getclassbydep.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getcomnts.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getcomnts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getdead.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getdead.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getdeplist.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getdeplist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getdepts.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getdepts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getexeats.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getexeats.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getfrmm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getfrmm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getfrmmst.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getfrmmst.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/gethouse.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/gethouse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getindex.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getindex.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getrndhuse.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getrndhuse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getsmshistory.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getsmshistory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getsmsnotifhistory.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getsmsnotifhistory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getstaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getstaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getstimg.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getstimg.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getstnames.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getstnames.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getstnames2.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getstnames2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getstudinputs-exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getstudinputs-exam.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getstudinputs-hw.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getstudinputs-hw.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getstudinputs-pw.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getstudinputs-pw.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getstuds.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getstuds.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getsubjts.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getsubjts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/gettaskinputs.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/gettaskinputs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getwaec.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getwaec.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/hmstaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/hmstaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/hse_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/hse_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/js/wejs.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/js/wejs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/manifest.appcache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/mark_ex.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/mark_ex.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/mkhm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/mkhm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/mklib.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/mklib.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/mklibfrm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/mklibfrm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/mkshm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/mkshm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/mkwo.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/mkwo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/DB.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/DB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/department.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/department.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/house.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/house.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/rclass.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/rclass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/school.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/school.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/staff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/students.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/students.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/subjects.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/subjects.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/utitlity.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/utitlity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/patch6.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_assess.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_assess.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_brdsheet.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_brdsheet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_clavg.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_clavg.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_cls.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_cls.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_formlst.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_formlst.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_frmres.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_frmres.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_genpop.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_genpop.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_hse.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_hse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_prog.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_prog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_rep_all.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_rep_all.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_rep_one.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_rep_one.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_scoresht.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_scoresht.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_sign.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_sign.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_transcrpt.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_transcrpt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/print_widraw.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/print_widraw.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/printacavgs.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/printacavgs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/printentrylog.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/printentrylog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/prog_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/prog_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/proganalysis.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/proganalysis.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/promolist.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/promolist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/promote.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/promote.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/promotionlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/promotionlist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/refresh_onestaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/refresh_onestaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/regstud.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/regstud.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/remfrmm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/remfrmm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/rep_all.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/rep_all.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/rep_one.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/rep_one.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/reset_studacc.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/reset_studacc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/resetpass.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resetpass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/rmlib.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/rmlib.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/rmshm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/rmshm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/rmsub.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/rmsub.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/rmwof.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/rmwof.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/save_exeat.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/save_exeat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savebatchexam.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savebatchexam.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savebatchhw.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savebatchhw.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savebatchpw.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savebatchpw.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/saveclass.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/saveclass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savecmnt.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savecmnt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savedep.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savedep.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/saveexam.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/saveexam.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savehouse.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savehouse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savehwork.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savehwork.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savepwork.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savepwork.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savestaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savestaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savesub.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savesub.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savetask.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savetask.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savewaec.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savewaec.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/scoresheet.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/scoresheet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/search_ex.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/search_ex.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/send_SMSnotif.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/send_SMSnotif.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/send_SMSreports.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/send_SMSreports.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/setdeadling.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/setdeadling.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/sign_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/sign_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/single_refresh.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/single_refresh.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/smsnotif_input.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/smsnotif_input.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/smsreport_input.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/smsreport_input.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/staff_sublist.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/staff_sublist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/stafflist.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/stafflist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/staffprf.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/staffprf.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/studprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/studprofile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/sub_update_input.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/sub_update_input.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/subanalysis.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/subanalysis.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/subcls.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/subcls.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/substf.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/substf.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/transcript.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/transcript.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/up_assess.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/up_assess.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/updateclass.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/updateclass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/updatedep.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/updatedep.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/updatehouse.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/updatehouse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/updatestaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/updatestaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/updatesub.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/updatesub.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/upstud_inputs.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/upstud_inputs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/upstud_script.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/upstud_script.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/uw.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/uw.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/waecayear.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/waecayear.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/wfrm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/wfrm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/widraw_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/widraw_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/wsave.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/wsave.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,45 +212,87 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="reportdb@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="reportdb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="reportdb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="reportdb: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="report7" />
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>getstud</find>
-      <find>sms</find>
-      <find>staff</find>
-      <find>regstaf</find>
-      <find>document</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="ProjectId" id="1ge0d8NKiJUPy2f1DwhDC59my5l" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.jscs" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.jscs" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.jscs" value="" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\report7\staff" />
       <recent name="C:\xampp\htdocs\report7\admin" />
     </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="reportdb@localhost: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="reportdb@localhost: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@5d14084f" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -95,6 +323,7 @@
       <workItem from="1557936281795" duration="5216000" />
       <workItem from="1557958200970" duration="1222000" />
       <workItem from="1598459841413" duration="463000" />
+      <workItem from="1603586504813" duration="19873000" />
     </task>
     <servers />
   </component>
@@ -129,7 +358,50 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="fixed swiching withdraw to resume in search results" />
     <option name="LAST_COMMIT_MESSAGE" value="fixed swiching withdraw to resume in search results" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="440" y="190" key="#Notifications" timestamp="1603587169634">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="440" y="190" key="#Notifications/0.0.1680.1050@0.0.1680.1050" timestamp="1603587169634" />
+    <state x="440" y="190" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603591446159">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="440" y="190" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1603591446159" />
+    <state width="1126" height="576" key="GridCell.Tab.0.bottom" timestamp="1603600621955">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1126" height="576" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1603600621955" />
+    <state width="1126" height="576" key="GridCell.Tab.0.center" timestamp="1603600621954">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1126" height="576" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1603600621954" />
+    <state width="1126" height="576" key="GridCell.Tab.0.left" timestamp="1603600621954">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1126" height="576" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1603600621954" />
+    <state width="1126" height="576" key="GridCell.Tab.0.right" timestamp="1603600621955">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1126" height="576" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1603600621955" />
+    <state x="341" y="164" key="SettingsEditor" timestamp="1603587052271">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1603587052271" />
+    <state x="569" y="234" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1603597285595">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="569" y="234" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1603597285595" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1603604997342">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1603604997342" />
+    <state x="505" y="240" width="670" height="676" key="search.everywhere.popup" timestamp="1603611060795">
+      <screen x="0" y="23" width="1680" height="986" />
+    </state>
+    <state x="505" y="240" width="670" height="676" key="search.everywhere.popup/0.23.1680.986@0.23.1680.986" timestamp="1603611060795" />
   </component>
 </project>

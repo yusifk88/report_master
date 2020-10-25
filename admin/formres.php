@@ -2,10 +2,11 @@
 ini_set("max_execution_time",300);
 
 include("check_session.php");
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\Utitlity;
+use APP\school;
+use APP\config;
 
-include_once './objts/school.php';
-include_once 'objts/config.php';
-include_once './objts/utitlity.php';
 $utl = new utitlity();
 
 $form = $_GET['form'];

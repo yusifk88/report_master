@@ -1,4 +1,5 @@
 <?php
+namespace APP;
 
 class school
 {

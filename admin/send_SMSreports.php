@@ -1,7 +1,8 @@
 <?php
-include_once("objts/utitlity.php");
-include_once("objts/config.php");
-include_once("objts/school.php");
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\config;
+use APP\Utitlity;
+
 ini_set("max_execution_time",600);
 $sch = new school();
 if($sch->SMSsub == false){

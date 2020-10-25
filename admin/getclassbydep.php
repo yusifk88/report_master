@@ -1,6 +1,7 @@
 <?php
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
 
-include_once './objts/config.php';
+use APP\config;
 $cf = new config();
 $cf->connect();
 $dpid = $_GET['depid'];

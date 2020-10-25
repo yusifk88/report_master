@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <?php
 include("check_session.php");
-include_once './objts/utitlity.php';
-include_once './objts/config.php';
-include_once './objts/school.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\config;
+use APP\school;
+use APP\Utitlity;
+
 ?>
 <html>
 <head>
@@ -30,7 +32,6 @@ include_once './objts/school.php';
 </head>
 <body>
 <div class="container">
-
 
     <?php
     $cfg = new config();

@@ -4,9 +4,9 @@
     ini_set("max_execution_time",300);
 
     include("check_session.php");
-
-    include_once("./objts/school.php");
-    include_once("./objts/config.php");
+    require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+    use  APP\config;
+    use APP\school;
     $cf = new config();
     $cf->connect();
     $sch = new school();
