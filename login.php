@@ -1,7 +1,9 @@
 <?php
-include_once ('admin/objts/config.php');
-include_once 'admin/objts/utitlity.php';
-include_once 'admin/objts/school.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\config;
+use APP\school;
+use APP\Utitlity;
+
 $sch = new school();
 $ut = new utitlity();
 $cf = new config();

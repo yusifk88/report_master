@@ -1,6 +1,7 @@
 <?php
-include_once './admin/objts/school.php';
-include_once './admin/objts/config.php';
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+use APP\config;
+use APP\school;
 $cf = new config();
 $cf->connect();
 $sch = new school();
@@ -115,7 +116,7 @@ $dead = mysqli_fetch_object(mysqli_query($cf->con,"select * from deadline"));
                                     }else{
                                         ?>
                                             <h5 class="text-white">Next Subscription date: <strong><?=date('d-M-Y',strtotime($sch->sub_date))?></strong></h5>
-                                        <h5 class="text-danger"><?=$sch->get_subdays()?> Days More</h5>
+                                        <h5 class="text-danger m-3"><?=$sch->get_subdays()?> Days More</h5>
 
 
                                         <?php
