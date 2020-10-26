@@ -54,7 +54,7 @@ class Staff
 
 
       //$staff = mysqli_query($dbcon->con, "insert into staff(fname,lname,gender,contact,rank,stfid,dob,regno,aqual,pqual,appdate,assdate,bank,accno,snnid,uname,upass,type,status,photo) values('$this->fname','$this->lname','$this->gender','$this->contact','$this->rank','$this->stfid','$this->dob','$this->regno','$this->aqual','$this->pqual','$this->appdate','$this->assdate','$this->bankname','$this->accno','$this->ssnid','$this->uname','$this->upass','staff','active','img/photo.jpg')");
-        mysqli_query($dbcon->con,"insert into staff(fname,lname,gender,contact,stfid,dob,regno,aqual,pqual,uname,upass,type,status) values('$this->fname','$this->lname','$this->gender','$this->contact','$this->stfid','$this->dob','$this->regno','$this->aqual','$this->pqual','$this->uname','$this->upass','staff','active')");
+        mysqli_query($dbcon->con,"insert into staff(fname,lname,gender,contact,stfid,dob,regno,aqual,pqual,appdate,assdate,bank,accno,snnid,uname,upass,type,status) values('$this->fname','$this->lname','$this->gender','$this->contact','$this->stfid','$this->dob','$this->regno','$this->aqual','$this->pqual','$this->appdate','$this->assdate','$this->bank','$this->accno','$this->ssnid','$this->uname','$this->upass','staff','active')");
 
             $ut = new utitlity();
             session_start();
@@ -63,6 +63,7 @@ class Staff
             $ut->create_log();
 
             if (mysqli_error($dbcon->con)){
+                Utitlity::set_response(500);
                 echo mysqli_error($dbcon->con);
             }
 
@@ -113,7 +114,7 @@ class Staff
         mysqli_query($dbcon->con, "delete from subas where stfid =" . $id);
         mysqli_query($dbcon->con, "delete from frmmaters where stfid =" . $id);
         $data = "Staff deleted";
-        $ut = new utitlity();
+        $ut = new Utitlity();
         session_start();
         $ut->uid = isset($_SESSION['id']) ?  $_SESSION['id'] : $_SESSION['ad_id'];
         $ut->action = "Deleted a staff ($stf->fname $stf->lname )";
@@ -126,22 +127,47 @@ class Staff
         $dbcon = new config();
         $dbcon->connect();
         if (!($this->fname && $this->lname && $this->gender && $this->contact)) {
-            $data = "Blank field(s) detected, please complete your entry";
+            Utitlity::response( "Blank field(s) detected, please complete your entry",302);
         } else {
 
             mysqli_query($dbcon->con, "update staff set fname='$this->fname',lname='$this->lname',contact='$this->contact',gender='$this->gender',rank = '$this->rank',stfid='$this->stfid',dob='$this->dob',regno='$this->regno',aqual='$this->aqual',pqual='$this->pqual',appdate='$this->appdate',assdate='$this->assdate',bank='$this->bank',accno='$this->acno',snnid='$this->ssnid' where id ='$this->id'");
 
             $data = "Staff info. updated";
-            $ut = new utitlity();
+            $ut = new Utitlity();
             session_start();
             $ut->uid = isset($_SESSION['id']) ?  $_SESSION['id'] : $_SESSION['ad_id'];
             $ut->action = "Edited staff information ($this->fname $this->lname )";
             $ut->create_log();
 
+            Utitlity::response($data);
         }
-        return $data;
     }
     //=================================================================================================
+
+    /**
+     * @param int $id
+     * @return object
+     * @throws \Exception
+     * find a single staff from the database
+     */
+
+    public static function find(int $id){
+        try {
+
+
+        $dbcon = new config();
+        $dbcon->connect();
+        $staff = mysqli_query($dbcon->con,"select * from staff where id = '$id'");
+        if (mysqli_num_rows($staff)>0){
+            return mysqli_fetch_object($staff);
+        }else{
+            return false;
+        }
+        }catch (\Exception $e){
+            Utitlity::set_response(500);
+            throw new \Exception($e->getMessage());
+        }
+    }
 
 
 }

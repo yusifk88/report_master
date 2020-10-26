@@ -1,10 +1,12 @@
 <?php
 ini_set("max_execution_time",300);
+
 include("check_session.php");
-include_once './objts/school.php';
-include_once 'objts/config.php';
-$cf = new config();
-$sch = new school();
+require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
+
+
+$cf = new \APP\config();
+$sch = new \APP\school();
 $limit = $_GET['limit'];
 $cf->connect();
 $log_list = mysqli_query($cf->con,"select user_log.*,staff.fname,staff.lname from user_log,staff where user_log.uid = staff.id order by datetime_entry desc limit 0 ,".$limit);

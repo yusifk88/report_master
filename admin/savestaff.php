@@ -42,23 +42,24 @@ $stf->assdate = $assdate;
 $stf->bankname = $bank;
 $stf->accno = $accno;
 $stf->ssnid = $ssnid;
-echo $stf->create();
-die();
+$stf->bank = $bank;
+//echo $stf->create();
+//die();
 
 if ($stf->validate()){
     if (!$stf->exists()){
         $stf->create();
-        utitlity::response('Staff created');
+        \APP\Utitlity::response('Staff created');
 
     }else{
 
-        utitlity::response("This email was already taken",302);
+        \APP\Utitlity::response("This email was already taken",302);
 
     }
 
 }else{
 
-    utitlity::response('Invalid data given, please fill out all required fields',302);
+    \APP\Utitlity::response('Invalid data given, please fill out all required fields',302);
 
 
 }

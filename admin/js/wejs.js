@@ -24,6 +24,8 @@ function remove_fullprog() {
 }
 
 
+
+
 function actlog() {
     window.open("actlog.php?limit=500", "User activity log", "outerHeight=800px,outerWidth=800px,innerHeight=750px,innerWidth=750px,menubar=yes,scrollbars=yes");
 }
@@ -629,6 +631,8 @@ function setdeadline() {
 
     });
 }
+
+
 
 
 function getaccounts() {
@@ -3286,12 +3290,13 @@ function refresh_onestaff(id) {
 }
 
 function upstaff(id) {
+    let data = document.getElementById('loading').innerHTML;
 
         BootstrapDialog.show({
             title: "Update Staff Info.",
-            message: "<div id='stf-cont'></div>",
+            message: `<div id='staffinfo' >${data}</div>`,
             buttons: [{
-                label: "UPDATE", cssClass: "btn bg-info", action: function (d) {
+                label: "UPDATE", cssClass: "btn btn-primary", action: function (d) {
                     if (!$("#upfname,#uplname,#upcontact").val()) {
                         return false;
                     }
@@ -3317,12 +3322,10 @@ function upstaff(id) {
             closable: false,
             size: "size-wide",
             onshown:function () {
-                showprogress("stf-cont");
-                $.get("get_up_inputs.php?id=" + id, null, function (data) {
-                }).done(function (data) {
-                    $("#stf-cont").html(data);
+                $.get("get_up_inputs.php?id=" + id, null, function (d) {
+                    $("#staffinfo").html(d);
 
-                }).error(function () {
+                }).catch(function () {
                     show_error();
                     cloasedlgs();
 
@@ -3369,6 +3372,12 @@ function refresh_subs(id) {
     });
 }
 
+function reInit() {
+
+    $(window).trigger('hashchange');
+
+}
+
 function asub(id) {
     fullProg();
     $.get("subcls.php", null, function (data) {
@@ -3382,7 +3391,7 @@ function asub(id) {
                     d.close();
                     $.get("assignsubs.php?sfid=" + id + "&subid=" + $("#sub").val() + "&clsid=" + $("#cls").val(), null, function (data) {
                     }).done(function (data) {
-                        refresh_subs(id);
+                        reInit();
                         Snarl.addNotification({
                             title: "ASSIGNED",
                             text: data,

@@ -3,12 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="da78f5b6-4fad-4f0e-bf29-d2bd6e785055" name="Default Changelist" comment="fixed switching withdraw to resume in search results">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/objts/DB.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/DB.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/objts/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/objts/school.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/school.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/objts/vendor/autoload.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/actlog.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/actlog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getstaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getstaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/js/wejs.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/js/wejs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/mklibfrm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/mklibfrm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/staff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/utitlity.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/utitlity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savestaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savestaff.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +49,27 @@
         <item name="reportdb@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="reportdb: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="reportdb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="reportdb: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="classes: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="reportdb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="reportdb: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="subas: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="reportdb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="reportdb: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="subjects: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -143,7 +166,8 @@
       <workItem from="1557936281795" duration="5216000" />
       <workItem from="1557958200970" duration="1222000" />
       <workItem from="1598459841413" duration="463000" />
-      <workItem from="1603586504813" duration="20747000" />
+      <workItem from="1603586504813" duration="21147000" />
+      <workItem from="1603665943189" duration="18139000" />
     </task>
     <servers />
   </component>
@@ -207,18 +231,24 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1126" height="576" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1603600621955" />
+    <state x="658" y="446" key="NewPhpFileDialog" timestamp="1603675736205">
+      <screen x="0" y="23" width="1680" height="986" />
+    </state>
+    <state x="658" y="446" key="NewPhpFileDialog/0.23.1680.986@0.23.1680.986" timestamp="1603675736205" />
     <state x="341" y="164" key="SettingsEditor" timestamp="1603587052271">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1603587052271" />
-    <state x="569" y="234" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1603597285595">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="1013" y="135" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1603669810659">
+      <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state x="569" y="234" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1603597285595" />
-    <state width="600" height="424" key="javadoc.popup" timestamp="1603604997342">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="1013" y="135" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.23.1680.986@0.23.1680.986" timestamp="1603669810659" />
+    <state width="600" height="399" key="javadoc.popup" timestamp="1603668307075">
+      <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state width="600" height="424" key="javadoc.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1603604997342" />
+    <state width="600" height="399" key="javadoc.popup/0.23.1680.986@0.23.1680.986" timestamp="1603668307075" />
     <state x="505" y="240" width="670" height="676" key="search.everywhere.popup" timestamp="1603611060795">
       <screen x="0" y="23" width="1680" height="986" />
     </state>

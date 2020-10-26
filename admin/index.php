@@ -2074,12 +2074,19 @@ session_start();
                 return getaccounts();
             },
         },
+        {
+            route:'/viewstaff',
+            callback: function (query) {
+                return getstaffdetails(query);
+            },
+
+        },
 
     ];
 
     //
 
-    function fireRoute(target) {
+    function fireRoute(target,query=null) {
 
         let current_route = routes.filter(function (route) {
             return route.route === target;
@@ -2089,7 +2096,7 @@ session_start();
             let routBlock = current_route[0];
 
         //fire the route action
-            routBlock.callback();
+            routBlock.callback(query);
 
         //show the add button if true
             if(routBlock.showBtn) {
@@ -2111,15 +2118,27 @@ session_start();
             const rawtag = window.location.hash;
             const target = window.location.hash.replace('#', '');
             localStorage.tget = target;
-            fireRoute(target);
+            if (target.indexOf('?') !=-1){
+                let query = target.substr(target.indexOf('?'),target.length);
+
+                fireRoute(target.replace(query,''),query);
+
+            }else {
+                fireRoute(target,null);
+            }
 
         }).trigger('hashchange');
     });
 
 
+    function getstaffdetails(query) {
 
+        $.get('viewstaff.php'+query,function (data) {
 
+            displayData(data);
+        });
 
+    }
 
 </script>
 

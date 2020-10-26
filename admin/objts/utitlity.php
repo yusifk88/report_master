@@ -346,7 +346,50 @@ class Utitlity
 
 //---------------end of utitlity class--------------------------------
 
+    /**
+     * @param string $message
+     * @param string $title
+     * @param string $type
+     * display a business card for errors
+     */
 
+public static function showError(string $message,string $title="Error",string $type=""){
+
+        $view ="<div class='card card-".$type."'><div class='card-header'>
+                    <p class='card-title'> ".$title."</p>
+                    </div>
+                    <div class='card-body'>
+                    ".$message."
+                    </div>
+                     </div>";
+
+        echo $view;
+
+}
+
+
+public static function showAssignSubjects(int $id){
+    $cf = new config();
+    $cf->connect();
+    $subjects = mysqli_query($cf->con,"select  subjects.subjdesc as subjectname,classes.classname,subas.clid,subas.stfid,subas.subid,subjects.id,classes.id,subas.id as asid from subjects,classes,subas where subas.stfid='$id' and subas.subid = subjects.id and subas.clid = classes.id");
+
+     if (mysqli_error($cf->con)){
+         Utitlity::set_response(mysqli_error($cf->con),500);
+     }else{
+         $view = "<div class='list-group list-group-flush'>";
+         while ($row = mysqli_fetch_object($subjects)){
+             $view.="<div class='list-group-item' id='sub_$row->asid'>$row->classname - $row->subjectname <br/> <button onclick='rmsub($id,$row->asid)' class='btn btn-link text-danger'>Remove <i class='fa fa-remove'></i></button></div>";
+
+         }
+
+         $view.="</div>";
+
+         echo $view;
+
+
+     }
+
+}
 
 
 }
