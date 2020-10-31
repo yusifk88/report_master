@@ -11,11 +11,10 @@ $row = mysqli_fetch_assoc($stud);
 <div class="row">
 
 
-    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin: 0 !important; ">
-        <div class="text-center waves-effect waves-float" id="image_cont"
-             style=" width: 180px; height:200px; color: #FFFFFF; vertical-align: middle; background-position: center; background-size: cover; border: thin dashed deepskyblue; background-image: url('<?= file_exists($row['photo']) ? $row['photo'] : "objts/dpic/photo.jpg" ?>')">
-            Drop photo or click to change photo
-        </div>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center" >
+        <img ac id="new_student_image_preview" src="<?=$row['photo']?>" class="img-thumbnail">
+        <button onclick="change_photo(event)" class="btn btn-outline-primary btn-sm btn-rounded">Change photo</button>
+        <button id="remove_student_new_photo_button" style="display: none;" onclick="remove_new_photo()" class="btn btn-outline-danger btn-sm btn-rounded mt-2">Remove photo</button>
     </div>
 
     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="border-left: 1px solid #ccc;">
@@ -23,25 +22,24 @@ $row = mysqli_fetch_assoc($stud);
             <input type="hidden" id="picpath" name="picpath"/>
             <input type="hidden" id="upid" value="<?= $row['id']; ?>" name="upid"/>
             <input type="hidden" id="upindex" value="<?= $row['stindex']; ?>" name="upindex"/>
+            <input accept="image/*" type="file" class="d-none" id="image_select" onchange="image_selected()">
 
             <div class="row">
 
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-id-card-o active"></i>
+                        <label for="upjhsno" class="control-label active">JHS No.</label>
                         <input class="form-control" name="upjhsno" id="upjhsno" type="text"
                                value="<?= $row['jhsno']; ?>"/>
-                        <label for="upjhsno" class="control-label active">JHS No.</label>
 
                     </div>
 
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-id-card-o active"></i>
+                        <label for="upshsno" class="control-label active">SHS No.</label>
                         <input class="form-control" name="upshsno" id="upshsno" type="text"
                                value="<?= $row['shsno']; ?>"/>
-                        <label for="upshsno" class="control-label active">SHS No.</label>
                     </div>
 
                 </div>
@@ -50,28 +48,25 @@ $row = mysqli_fetch_assoc($stud);
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-user-o active"></i>
+                        <label for="upfname" class="control-label active">First Name</label>
                         <input class="form-control" name="upfname" id="upfname" type="text"
                                value="<?= $row['fname']; ?>"/>
-                        <label for="upfname" class="control-label active">First Name</label>
                     </div>
 
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 
                     <div class="md-form">
-                        <i class="prefix fa fa-user-o active"></i>
+                        <label for="uplname" class="control-label active">Last Name</label>
                         <input class="form-control" name="uplname" id="uplname" type="text"
                                value="<?= $row['lname']; ?>"/>
-                        <label for="uplname" class="control-label active">Last Name</label>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-user-o active"></i>
+                        <label for="uponame" class="control-label active">Other Name(s)</label>
                         <input class="form-control" name="uponame" id="uponame" type="text"
                                value="<?= $row['oname']; ?>"/>
-                        <label for="uponame" class="control-label active">Other Name(s)</label>
                     </div>
                 </div>
             </div>
@@ -219,18 +214,15 @@ $row = mysqli_fetch_assoc($stud);
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-birthday-cake active"></i>
-
-                        <input name="updob" id="updob" class="form-control" type="date" value="<?= $row['dob']; ?>"/>
                         <label for="updob" class="control-label active">Date Of Birth</label>
+                        <input name="updob" id="updob" class="form-control" type="date" value="<?= $row['dob']; ?>"/>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-caret-left active"></i>
+                        <label for="uplsch" class="control-label active">Last School Attended</label>
                         <input name="uplsch" id="uplsch" type="text" class="form-control"
                                value="<?= $row['lschool']; ?>"/>
-                        <label for="uplsch" class="control-label active">Last School Attended</label>
 
                     </div>
 
@@ -252,52 +244,46 @@ $row = mysqli_fetch_assoc($stud);
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-male active"></i>
+                        <label for="upffname" class="control-label active">Father's Name</label>
                         <input name="upffname" id="upffname" class="form-control" type="text"
                                value="<?= $row['ffname']; ?>"/>
-                        <label for="upffname" class="control-label active">Father's Name</label>
 
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-map-pin active"></i>
+                        <label for="upfhometown" class="control-label active">Father's Hometown</label>
                         <input name="upfhometown" id="upfhometown" type="text" class="form-control"
                                value="<?= $row['fhometown']; ?>"/>
-                        <label for="upfhometown" class="control-label active">Father's Hometown</label>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-phone active"></i>
-                        <input name="upftel" id="upftel" type="tel" class="form-control" value="<?= $row['ftel']; ?>"/>
                         <label for="upftel" class="control-label active">Father's Tel.</label>
+                        <input name="upftel" id="upftel" type="tel" class="form-control" value="<?= $row['ftel']; ?>"/>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-female active"></i>
+                        <label for="upmname" class="control-label active">Mother's Name</label>
                         <input name="upmname" id="upmname" class="form-control" type="text"
                                value="<?= $row['mfname']; ?>"/>
-                        <label for="upmname" class="control-label active">Mother's Name</label>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-map-pin active"></i>
+                        <label class="control-label active" for="upmhometown">Mother's Hometown</label>
                         <input name="upmhometown" id="upmhometown" type="text" class="form-control"
                                value="<?= $row['mhometown']; ?>"/>
-                        <label class="control-label active" for="upmhometown">Mother's Hometown</label>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-phone active"></i>
-                        <input name="upmtel" id="upmtel" type="tel" class="form-control" value="<?= $row['mtel']; ?>"/>
                         <label class="control-label active">Mother's Tel.(Optional)</label>
+                        <input name="upmtel" id="upmtel" type="tel" class="form-control" value="<?= $row['mtel']; ?>"/>
 
                     </div>
                 </div>
@@ -311,24 +297,36 @@ $row = mysqli_fetch_assoc($stud);
 
 <script>
 
-    $("div#image_cont").dropzone(
-        {
-            url: "./dropfile.php",
-            acceptedFiles: "image/*",
-            addRemoveLinks: true,
-            dictDefaultMessage: "drop photo here or click to upload",
-            dictRemoveFile: "Remove photo",
-            resizeWidth: "180",
-            resizeHeight: "200",
-            resizeMethod: "crop",
-            maxFiles: 1,
-            accept: function (file, done) {
-                $("#picpath").val("temppic/" + file.name);
-                done();
-            }
+
+    function change_photo(){
+        document.getElementById("image_select").click();
+    }
+
+    function image_selected(){
+
+        let photo = event.target.files[0];
+        student_photo = photo;
+        let fr = new FileReader();
+
+        fr.readAsDataURL(photo);
+        fr.onload=function(){
+
+            let preview = fr.result;
+            document.getElementById('new_student_image_preview').setAttribute('src',preview);
+
+            $('#remove_student_new_photo_button').show();
+        };
 
 
-        });
+    }
+
+    function remove_new_photo(){
+        document.getElementById('new_student_image_preview').setAttribute('src','img/photo.jpg');
+        $('#student_image_input').val('');
+        $('#remove_student_new_photo_button').hide();
+        student_photo =null;
+
+    }
 
 
     $($("#upfname,#uplname,#uponame,#upffname,#upmname")).keypress(function (e) {

@@ -28,9 +28,8 @@ $yea = mysqli_fetch_object($ayears);
                 <input id="id" type="hidden" name="id" value="<?= $id; ?>">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-calendar-o active"></i>
-                        <input name="ayear" type="text" value="<?= $yea->ayear; ?>" readonly class="form-control">
                         <label class="control-label active">Academic Year</label>
+                        <input name="ayear" type="text" value="<?= $yea->ayear; ?>" readonly class="form-control">
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12">
@@ -43,23 +42,22 @@ $yea = mysqli_fetch_object($ayears);
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-calendar-check-o"></i>
+                        <label class="control-label active">Date</label>
                         <input class="form-control" type="date" name="dentry" id="dentry" required="required"
                                style="cursor: alias"/>
-                        <label class="control-label active">Date</label>
                     </div>
 
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="md-form">
+                        <label for="cmt" class="control-label">Brief Comment on this student...</label>
                         <textarea id="cmnt" class="form-control md-textarea" rows="3" name="cmnt"
                                   required="required"></textarea>
-                        <label for="cmt" class="control-label">Brief Comment on this student...</label>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 
-                    <button id="savecmt" type="submit" class="btn bg-info">Save</button>
+                    <button id="savecmt" type="submit" class="btn btn-primary m-2">Save</button>
                 </div>
             </div>
         </form>
@@ -73,7 +71,7 @@ $yea = mysqli_fetch_object($ayears);
         ?>
         <div class="table-responsive" id="cmnttbl">
             <table class="table table-stripped table-sm table-hover">
-                <thead class="bg-info text-white">
+                <thead>
                 <tr>
                     <th>S/N</th>
                     <th>Comment</th>
@@ -89,7 +87,7 @@ $yea = mysqli_fetch_object($ayears);
                 while ($row = mysqli_fetch_object($cmts)) {
 
                     ?>
-                    <tr id="tr_<?= $row->id; ?>">
+                    <tr id="tr_<?=$row->id; ?>">
                         <td><?= $i; ?></td>
                         <td><?= $row->coment; ?></td>
                         <td><?= $row->ayear; ?></td>
@@ -100,9 +98,7 @@ $yea = mysqli_fetch_object($ayears);
                                                            style="color: red; cursor: pointer;"
                                                            class="fa fa-remove waves-circle waves-effect"></i></td>
 
-
                     </tr>
-
 
                     <?php
                     $i++;
@@ -110,10 +106,8 @@ $yea = mysqli_fetch_object($ayears);
                 ?>
 
                 </tbody>
-
             </table>
         </div>
-
 
     </div>
 </div>
@@ -121,11 +115,8 @@ $yea = mysqli_fetch_object($ayears);
 <script>
 
     function cmntlist(id) {
-        showprogress("cmnttbl");
+        $("#cmnttbl").html(document.getElementById('loading').innerHTML);
         $.get("cmntlist.php?id=" + id, function (data) {
-
-        }).done(function (data) {
-
 
             $("#cmnttbl").html(data);
         });
@@ -133,20 +124,16 @@ $yea = mysqli_fetch_object($ayears);
 
 
     function delcomm(id) {
-        var trid = "#tr_" + id;
+        let trid = "tr#tr_" + id;
 
         BootstrapDialog.show({
             title: "Confirm Delete",
             message: "Do you want to delete this comment? ",
             buttons: [{
-                label: "DELETE", cssClass: "btn-good waves-effect waves-button", action: function (d) {
+                label: "DELETE", cssClass: "btn-danger", action: function (d) {
                     d.close();
-                    fullProg();
                     $.get("delcmnt.php?id=" + id, function () {
-                    }).done(function () {
-                        remove_fullprog();
-                        $(trid).fadeOut(100).remove();
-
+                        $(trid).remove();
                     });
                 }
             }]
@@ -159,19 +146,15 @@ $yea = mysqli_fetch_object($ayears);
     $(document).ready(function () {
 
         $("#cmtform").submit(function () {
-
             var data = $("#cmtform :input").serializeArray();
             if (!$("#dentry").val()) {
                 $("#dentry").focus();
             } else if (!$("#cmnt").val()) {
                 $("#cmnt").focus();
             } else {
-                fullProg();
                 $.post($("#cmtform").attr('action'), data, function () {
-                }).done(function () {
-                    remove_fullprog();
-
                     cmntlist($("#id").val());
+
                 });
             }
             return false;

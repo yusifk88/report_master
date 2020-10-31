@@ -15,9 +15,9 @@ $status = mysqli_query($cf->con, "select * from librian where stfid = '$stfid'")
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <h5><?= strtoupper($staff->fname . " " . $staff->lname) ?></h5>
         <?php
-        if (!$status) {
+        if (mysqli_num_rows($status)<1) {
             ?>
-            <button onclick="mklibrian(<?= $stfid ?>)" type="button" class="btn bg-info">Assign Duty</button>
+            <button onclick="mklibrian(<?= $stfid ?>)" type="button" class="btn btn-primary">Assign Duty</button>
             <?php
         } else {
 

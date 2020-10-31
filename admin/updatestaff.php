@@ -22,7 +22,7 @@ $stf->appdate = $_GET['appdate'];
 $stf->assdate = $_GET['assdate'];
 $stf->bank = $_GET['bank'];
 $stf->acno = $_GET['accno'];
-$stf->ssnid = $_GET['ssnid'];
+$stf->snnid = $_GET['ssnid'];
 $stf->rank = $_GET['rank'];
 $msg = $stf->updatestaff();
 echo $msg;

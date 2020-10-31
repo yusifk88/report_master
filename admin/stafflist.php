@@ -14,7 +14,7 @@ $cg->connect();
 include_once './objts/utitlity.php';
 $util = new Utitlity();
 $acyear = mysqli_fetch_object(mysqli_query($cg->con, "select distinct(ayear) from stuinfo ORDER by ayear DESC "));
-$stafflist = mysqli_query($cg->con, "select * from staff WHERE  user_type <>'admin' ORDER by fname ASC ");
+$stafflist = mysqli_query($cg->con, "select * from staff WHERE  type <>'admin' ORDER by fname ASC ");
 $ranklist = ["Senior Sup't", "Prin. Sup't", "Assist. Dir ii", "Assist. Dir I", "Dep. Dir.", "Dir. II", "Dir. I"];
 ?>
 <html>

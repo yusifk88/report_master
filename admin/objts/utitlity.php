@@ -163,6 +163,22 @@ class Utitlity
         return $i . "th";
     }
 
+    public static function getsufix(int $i)
+    {
+        $j = (int)$i % 10;
+        $k = (int)$i % 100;
+        if ($j == 1 && $k != 11) {
+            return $i . "st";
+        }
+        if ($j == 2 && $k != 12) {
+            return $i . "nd";
+        }
+        if ($j == 3 && $k != 13) {
+            return $i . "rd";
+        }
+        return $i . "th";
+    }
+
 //public function addsufix($i){
 //    $pos = NULL;
 //    if(is_numeric($i)){

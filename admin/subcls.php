@@ -18,12 +18,9 @@ $clss = $cls->getclasses();
             <select id="sub" class="form-control">
                 <?php
                 while ($row = mysqli_fetch_assoc($subs)) {
-
                     ?>
                     <option value="<?php echo $row['id']; ?>"><?php echo $row['subjdesc']; ?></option>
-
                     <?php
-
                 }
                 ?>
             </select>

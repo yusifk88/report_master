@@ -13,7 +13,7 @@ $log_list = mysqli_query($cf->con,"select user_log.*,staff.fname,staff.lname fro
 if (!$log_list){
     die();
 }
-$num = count($log_list);
+$num = mysqli_num_rows($log_list);
 ?>
 <html>
 <head>

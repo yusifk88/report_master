@@ -21,8 +21,7 @@ $status = mysqli_query($cf->con, "select * from shm where stfid = '$stfid'");
         if (mysqli_num_rows($status) < 1) {
             ?>
 
-            <button onclick="mkshm(<?= $stfid ?>)" type="button" class="btn bg-info waves-effect waves-light">Assign
-                Duty
+            <button onclick="mkshm(<?= $stfid ?>)" type="button" class="btn btn-primary">Assign Duty
             </button>
 
 

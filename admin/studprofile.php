@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php
-include("check_session.php");
 require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
 use APP\config;
 use APP\school;
@@ -14,20 +13,13 @@ use APP\Utitlity;
     <style type="text/css">
         table, th, tr, td {
             border: 1px solid #000 !important;
-
-
         }
 
         @media print {
-
             table, th, tr, td {
                 border: 1px solid #000 !important;
-
-
             }
-
         }
-
     </style>
 </head>
 <body>
@@ -63,6 +55,14 @@ use APP\Utitlity;
                 <td rowspan="6" style="text-align: center;">
                     <img src="<?php echo $row['photo']; ?> " alt="<?php $row['fname'] . " " . $row['oname'] ?>"
                          width="180" height="200"/>
+                    <?php
+                    if (\APP\Students::isWithdrawn($id)){
+                        ?>
+                        <span  style="background-color: red; color: white; padding: 10px;" class="p-4">Withdrawn</span>
+                        <?php
+                    }
+                    ?>
+
 
                 </td>
             </tr>

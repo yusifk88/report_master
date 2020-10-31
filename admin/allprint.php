@@ -3,7 +3,6 @@
     <?php
     ini_set("max_execution_time",300);
 
-    include("check_session.php");
     require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
     use  APP\config;
     use APP\school;
@@ -162,7 +161,7 @@
                 </thead>
                 <tbody>
                 <?php
-                if (count($studs) > 0) {
+                if (mysqli_num_rows($studs) > 0) {
                     $i = 1;
                     while ($stud = mysqli_fetch_object($studs)) {
                         ?>

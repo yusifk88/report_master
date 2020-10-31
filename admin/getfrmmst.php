@@ -32,7 +32,7 @@ $stinfo = mysqli_fetch_object(mysqli_query($cfg->con, "select * from staff where
                     </select> <br>
                 </div>
                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                    <button onclick="mkfrm()" id="btnaddfrm" type="button" class="btn bg-info">Add <i
+                    <button onclick="mkfrm()" id="btnaddfrm" type="button" class="btn btn-primary">Add <i
                                 class="fa fa-plus-square-o"></i></button>
                 </div>
             </div>
@@ -71,37 +71,3 @@ $stinfo = mysqli_fetch_object(mysqli_query($cfg->con, "select * from staff where
         </div>
     </div>
 </div>
-<script>
-
-
-    function remfrmm(id) {
-        BootstrapDialog.show({
-            title: "Confirm Delete",
-            message: "Are you sure you want to unassign this class from this staff",
-            buttons: [{
-                label: "DELETE", cssClass: "btn-bad waves-effect waves-button", action: function (d) {
-                    d.close();
-                    $.get("remfrmm.php?id=" + id, function () {
-
-                    }).done(function (data) {
-                        getfrmlist();
-                        Snarl.removeNotification(progress);
-                        Snarl.addNotification({
-                            title: "DELETE",
-                            text: "Class unassigned successfully",
-                            icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle-o'></i>",
-                            timeout: 3000
-                        });
-                        $(".snarl-notification").addClass('snarl-success');
-                    });
-
-
-                }
-            }]
-        });
-
-
-    }
-
-
-</script>

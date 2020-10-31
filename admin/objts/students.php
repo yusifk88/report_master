@@ -47,7 +47,7 @@ class Students
         try {
 
         include_once 'school.php';
-        $ut = new utitlity();
+        $ut = new Utitlity();
         $sch = new school();
         $dbconf = new config();
         $dbconf->connect();
@@ -129,7 +129,7 @@ class Students
             $ut->action = "Registered a new student ($this->fname $this->lname $this->oname)";
             $ut->create_log();
 
-            return $student;
+            return mysqli_error($dbconf->con);
         return $data;
         }catch (Exception $e){
             throw new Exception($e->getMessage());
@@ -196,6 +196,24 @@ class Students
         $data = "Student updated successfully";
         return $data;
     }
+
+    /**
+     * @param int $id
+     * get a students withdrawn state
+     * @return bool
+     */
+
+    static function isWithdrawn(int $id){
+        $dbcon = new config();
+        $dbcon->connect();
+
+        $test=mysqli_query($dbcon->con,"select * from withdraw where stid = '$id'");
+
+
+        return mysqli_num_rows($test) ? true : false;
+    }
+
+
 
 }
 

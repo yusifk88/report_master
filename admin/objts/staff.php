@@ -4,26 +4,28 @@ namespace APP;
 
 class Staff
 {
-    var $fname;
-    var $lname;
-    var $gender;
-    var $contact;
-    var $uname;
-    var $upass;
-    var $rank;
-    var $stfid;
-    var $dob;
-    var $bank;
-    var $acno;
-    var $regno;
-    var $aqual;
-    var $pqual;
-    var $appdate;
-    var $assdate;
-    var $bankname;
-    var $accno;
-    var $ssnid;
-    var $id;
+    public $fname;
+    public $lname;
+    public $gender;
+    public $contact;
+    public $uname;
+    public $upass;
+    public $rank;
+    public $stfid;
+    public $dob;
+    public $bank;
+    public $acno;
+    public $regno;
+    public $aqual;
+    public $pqual;
+    public $appdate;
+    public $assdate;
+    public $bankname;
+    public $accno;
+    public $snnid;
+    public $id;
+    public $ranklist = ["Senior Sup't", "Prin. Sup't", "Assist. Dir ii", "Assist. Dir I", "Dep. Dir.", "Dir. II", "Dir. I"];
+
     function __construct()
     {
 
@@ -31,6 +33,24 @@ class Staff
 
     //=================================================================================================
 
+
+    /**
+     * @return mixed
+     */
+    public function getAccno()
+    {
+        return $this->accno;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function resolveRank($index)
+    {
+         $ranklist = ["Senior Sup't", "Prin. Sup't", "Assist. Dir ii", "Assist. Dir I", "Dep. Dir.", "Dir. II", "Dir. I"];
+            return $ranklist[$index];
+
+    }
 
     /**
      * @return bool
@@ -54,7 +74,7 @@ class Staff
 
 
       //$staff = mysqli_query($dbcon->con, "insert into staff(fname,lname,gender,contact,rank,stfid,dob,regno,aqual,pqual,appdate,assdate,bank,accno,snnid,uname,upass,type,status,photo) values('$this->fname','$this->lname','$this->gender','$this->contact','$this->rank','$this->stfid','$this->dob','$this->regno','$this->aqual','$this->pqual','$this->appdate','$this->assdate','$this->bankname','$this->accno','$this->ssnid','$this->uname','$this->upass','staff','active','img/photo.jpg')");
-        mysqli_query($dbcon->con,"insert into staff(fname,lname,gender,contact,stfid,dob,regno,aqual,pqual,appdate,assdate,bank,accno,snnid,uname,upass,type,status) values('$this->fname','$this->lname','$this->gender','$this->contact','$this->stfid','$this->dob','$this->regno','$this->aqual','$this->pqual','$this->appdate','$this->assdate','$this->bank','$this->accno','$this->ssnid','$this->uname','$this->upass','staff','active')");
+        mysqli_query($dbcon->con,"insert into staff(fname,lname,gender,contact,stfid,dob,regno,aqual,pqual,appdate,assdate,bank,accno,snnid,staff_rank,uname,upass,type,status) values('$this->fname','$this->lname','$this->gender','$this->contact','$this->stfid','$this->dob','$this->regno','$this->aqual','$this->pqual','$this->appdate','$this->assdate','$this->bank','$this->accno','$this->ssnid','$this->rank','$this->uname','$this->upass','staff','active')");
 
             $ut = new utitlity();
             session_start();
@@ -92,13 +112,13 @@ class Staff
 
     //=================================================================================================
 
-    public function getstaff($fname, $lname)
+    public function getstaff()
     {
 
         $dbcon = new config();
         $dbcon->connect();
 
-        $data = mysqli_query($dbcon->con, "select * from staff where type <> 'admin' and (fname LIKE '%$fname%' or lname LIKE '%$lname%') order by fname asc, lname asc");
+        $data = mysqli_query($dbcon->con, "select * from staff where type <> 'admin' order by fname asc, lname asc");
 
         return $data;
     }
@@ -130,7 +150,7 @@ class Staff
             Utitlity::response( "Blank field(s) detected, please complete your entry",302);
         } else {
 
-            mysqli_query($dbcon->con, "update staff set fname='$this->fname',lname='$this->lname',contact='$this->contact',gender='$this->gender',rank = '$this->rank',stfid='$this->stfid',dob='$this->dob',regno='$this->regno',aqual='$this->aqual',pqual='$this->pqual',appdate='$this->appdate',assdate='$this->assdate',bank='$this->bank',accno='$this->acno',snnid='$this->ssnid' where id ='$this->id'");
+            mysqli_query($dbcon->con, "update staff set fname='$this->fname',lname='$this->lname',contact='$this->contact',gender='$this->gender',staff_rank = ".$this->rank.",stfid='$this->stfid',dob='$this->dob',regno='$this->regno',aqual='$this->aqual',pqual='$this->pqual',appdate='$this->appdate',assdate='$this->assdate',bank='$this->bank',accno='$this->acno',snnid='$this->snnid' where id ='$this->id'");
 
             $data = "Staff info. updated";
             $ut = new Utitlity();
@@ -138,8 +158,12 @@ class Staff
             $ut->uid = isset($_SESSION['id']) ?  $_SESSION['id'] : $_SESSION['ad_id'];
             $ut->action = "Edited staff information ($this->fname $this->lname )";
             $ut->create_log();
+            if (mysqli_error($dbcon->con)){
+                Utitlity::set_response(500);
+            }
+            echo mysqli_error($dbcon->con);
 
-            Utitlity::response($data);
+           // Utitlity::response($data);
         }
     }
     //=================================================================================================

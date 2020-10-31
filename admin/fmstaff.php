@@ -4,7 +4,7 @@ include("check_session.php");
 require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
 use APP\Utitlity;
 use APP\school;
-use APP\configl;
+use APP\config;
 
 $ut = new utitlity();
 $sch = new school();

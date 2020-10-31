@@ -4,13 +4,46 @@
     <list default="true" id="da78f5b6-4fad-4f0e-bf29-d2bd6e785055" name="Default Changelist" comment="fixed switching withdraw to resume in search results">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/actlog.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/actlog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/addfrm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/addfrm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/addshm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/addshm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/allprint.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/allprint.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assignsubs.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assignsubs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/class_updat_input.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/class_updat_input.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/cmntlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/cmntlist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/delstaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/delstaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/fmstaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/fmstaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/get_up_inputs.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/get_up_inputs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getclass.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getclass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getcomnts.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getcomnts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getdepts.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getdepts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getfrmmst.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getfrmmst.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/gethouse.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/gethouse.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/getstaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getstaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getstuds.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getstuds.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/getsubjts.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/getsubjts.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/js/wejs.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/js/wejs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/mklibfrm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/mklibfrm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/mkwo.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/mkwo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/department.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/department.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/objts/staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/staff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/objts/students.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/students.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/objts/utitlity.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/objts/utitlity.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/savestaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savestaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/regstud.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/regstud.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/savesub.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/savesub.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/stafflist.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/stafflist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/studprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/studprofile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/subcls.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/subcls.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/substf.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/substf.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/transcript.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/transcript.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/updatestaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/updatestaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/upstud_inputs.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/upstud_inputs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/upstud_script.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/upstud_script.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/uw.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/uw.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/viewstaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/viewstaff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/wfrm.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/wfrm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/wsave.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/wsave.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff/get_schstud.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff/get_schstud.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,27 +82,6 @@
         <item name="reportdb@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="reportdb: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="reportdb@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="reportdb: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="classes: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="reportdb@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="reportdb: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="subas: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="reportdb@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="reportdb: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="subjects: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -128,7 +140,12 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="reportdb@localhost: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@5d14084f" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@6bd737e4" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="reportdb@localhost: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@201360b7" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
             <select />
@@ -167,7 +184,11 @@
       <workItem from="1557958200970" duration="1222000" />
       <workItem from="1598459841413" duration="463000" />
       <workItem from="1603586504813" duration="21147000" />
-      <workItem from="1603665943189" duration="18139000" />
+      <workItem from="1603665943189" duration="18661000" />
+      <workItem from="1603891642112" duration="8174000" />
+      <workItem from="1603921043433" duration="30073000" />
+      <workItem from="1604075464937" duration="662000" />
+      <workItem from="1604108574875" duration="11184000" />
     </task>
     <servers />
   </component>
@@ -215,40 +236,48 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="440" y="190" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1603591446159" />
-    <state width="1126" height="576" key="GridCell.Tab.0.bottom" timestamp="1603600621955">
-      <screen x="0" y="0" width="1680" height="1050" />
-    </state>
-    <state width="1126" height="576" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1603600621955" />
-    <state width="1126" height="576" key="GridCell.Tab.0.center" timestamp="1603600621954">
-      <screen x="0" y="0" width="1680" height="1050" />
-    </state>
-    <state width="1126" height="576" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1603600621954" />
-    <state width="1126" height="576" key="GridCell.Tab.0.left" timestamp="1603600621954">
-      <screen x="0" y="0" width="1680" height="1050" />
-    </state>
-    <state width="1126" height="576" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1603600621954" />
-    <state width="1126" height="576" key="GridCell.Tab.0.right" timestamp="1603600621955">
-      <screen x="0" y="0" width="1680" height="1050" />
-    </state>
-    <state width="1126" height="576" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1603600621955" />
-    <state x="658" y="446" key="NewPhpFileDialog" timestamp="1603675736205">
+    <state width="1126" height="521" key="GridCell.Tab.0.bottom" timestamp="1603926031779">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
-    <state x="658" y="446" key="NewPhpFileDialog/0.23.1680.986@0.23.1680.986" timestamp="1603675736205" />
+    <state width="1126" height="576" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1603600621955" />
+    <state width="1126" height="521" key="GridCell.Tab.0.bottom/0.23.1680.986@0.23.1680.986" timestamp="1603926031779" />
+    <state width="1126" height="521" key="GridCell.Tab.0.center" timestamp="1603926031778">
+      <screen x="0" y="23" width="1680" height="986" />
+    </state>
+    <state width="1126" height="576" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1603600621954" />
+    <state width="1126" height="521" key="GridCell.Tab.0.center/0.23.1680.986@0.23.1680.986" timestamp="1603926031778" />
+    <state width="1126" height="521" key="GridCell.Tab.0.left" timestamp="1603926031777">
+      <screen x="0" y="23" width="1680" height="986" />
+    </state>
+    <state width="1126" height="576" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1603600621954" />
+    <state width="1126" height="521" key="GridCell.Tab.0.left/0.23.1680.986@0.23.1680.986" timestamp="1603926031777" />
+    <state width="1126" height="521" key="GridCell.Tab.0.right" timestamp="1603926031779">
+      <screen x="0" y="23" width="1680" height="986" />
+    </state>
+    <state width="1126" height="576" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1603600621955" />
+    <state width="1126" height="521" key="GridCell.Tab.0.right/0.23.1680.986@0.23.1680.986" timestamp="1603926031779" />
+    <state x="658" y="446" key="NewPhpFileDialog" timestamp="1603935491356">
+      <screen x="0" y="23" width="1680" height="986" />
+    </state>
+    <state x="658" y="446" key="NewPhpFileDialog/0.23.1680.986@0.23.1680.986" timestamp="1603935491356" />
     <state x="341" y="164" key="SettingsEditor" timestamp="1603587052271">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1603587052271" />
-    <state x="1013" y="135" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1603669810659">
+    <state x="745" y="418" width="350" height="220" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1603894736794">
+      <screen x="0" y="23" width="1680" height="986" />
+    </state>
+    <state x="745" y="418" width="350" height="220" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.23.1680.986@0.23.1680.986" timestamp="1603894736794" />
+    <state x="1023" y="329" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1603931246443">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state x="569" y="234" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1603597285595" />
-    <state x="1013" y="135" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.23.1680.986@0.23.1680.986" timestamp="1603669810659" />
-    <state width="600" height="399" key="javadoc.popup" timestamp="1603668307075">
+    <state x="1023" y="329" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.23.1680.986@0.23.1680.986" timestamp="1603931246443" />
+    <state width="600" height="399" key="javadoc.popup" timestamp="1603945652091">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state width="600" height="424" key="javadoc.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1603604997342" />
-    <state width="600" height="399" key="javadoc.popup/0.23.1680.986@0.23.1680.986" timestamp="1603668307075" />
+    <state width="600" height="399" key="javadoc.popup/0.23.1680.986@0.23.1680.986" timestamp="1603945652091" />
     <state x="505" y="240" width="670" height="676" key="search.everywhere.popup" timestamp="1603611060795">
       <screen x="0" y="23" width="1680" height="986" />
     </state>

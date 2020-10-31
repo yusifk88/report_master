@@ -429,16 +429,6 @@ session_start();
         <div class="container-fluid pt-5">
 
 
-    <div class="row main-search-cont p-2 bg-light hoverable" style="margin-top: 3.5rem; box-shadow: 0 0 3px; ">
-        <div class="col-lg-10 col-md-10 col-12 col-sm-12 col-lg-offset-1 col-md-offset-1">
-            <div class="md-form">
-                <i class="prefix fa fa-search"></i>
-                <input id="main-search" type="search" class="form-control main-search"/>
-                <label for="main-search">Type a name to search...</label>
-            </div>
-        </div>
-    </div>
-
     <div class="row">
         <div class="m-auto col-lg-12 col-md-12 col-sm-12 col-12 col-md-offset-2 col-lg-offset-2">
 
@@ -462,17 +452,16 @@ session_start();
         </div>
     </div>
     <div class="mainform content row"
-         style="background: transparent; box-shadow: 0 0 0 ; padding: 0; margin-right: 0 !important; margin-left: 0 !important; margin-bottom: 3em;"
          id="viewstuds">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="margin: 0 !important;">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="alert alert-info hidden-print" style="margin: 1px !important; box-shadow: 0 0 5px;">
+                    <div class="alert bg-primary hidden-print">
                         <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-12 col-12 hidden-xs hidden-sm"><h3>View Students <span
+                            <div class="col-lg-8 col-md-8 col-sm-12 col-12 hidden-xs hidden-sm text-whitext"><h3 class="text-white">Registered Students <span
                                             class="fa fa-user"><span class="fa fa-user"></span></h3></div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-6">
-                                <button id="filter-btn" class="btn btn-good"
+                                <button onclick="show_students_filter()" class="btn btn-good"
                                         style="color:#fff !important; margin-top:20px !important;" id="filter-btn"><i
                                             class="fa fa-filter "></i>Filter Students
                                 </button>
@@ -485,7 +474,7 @@ session_start();
                             <div class="row">
                                 <div class=" col-md-2 col-sm-4 col-4">
                                     <label class="control-label text-white">Programe:</label>
-                                    <select class="form-control" id="getstud-pro">
+                                    <select onchange="filterstud()" class="form-control" id="getstud-pro">
                                         <option value="" selected="selected">All</option>
                                         <?php
                                         $de = new Department();
@@ -500,16 +489,16 @@ session_start();
                                     </select>
                                 </div>
                                 <div class="col-lg-1 col-md-1 col-sm-2 col-2">
-                                    <label style="color:#fff;" class="control-label">Gender</label>
-                                    <select id="filter-gender" class="form-control">
+                                    <label style="color:#fff;" class="control-label text-white">Gender</label>
+                                    <select onchange="filterstud()" id="filter-gender" class="form-control">
                                         <option value="">All</option>
                                         <option value="Female">Female</option>
                                         <option value="Male">Male</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-1 col-md-1 col-sm-3 col-3">
-                                    <label style="color: #FFFFFF; " class="control-label">Aca. Year</label>
-                                    <select class="form-control" id="getstud-ayear">
+                                    <label style="color: #FFFFFF; " class="control-label text-white">Aca. Year</label>
+                                    <select onchange="filterstud()" class="form-control" id="getstud-ayear">
                                         <option value="" selected="selected">All</option>
                                         <?php
                                         $cf = new config();
@@ -525,8 +514,8 @@ session_start();
                                     </select>
                                 </div>
                                 <div class="col-lg-1 col-md-1 col-sm-3 col-3">
-                                    <label style="color: #FFFFFF; " class="control-label">Form</label>
-                                    <select class="form-control" id="getstud-form">
+                                    <label style="color: #FFFFFF; " class="control-label text-white">Form</label>
+                                    <select onchange="filterstud()" class="form-control" id="getstud-form">
                                         <option value="" selected="selected">All</option>
                                         <option value="1">Form 1</option>
                                         <option value="2">Form 2</option>
@@ -535,8 +524,8 @@ session_start();
                                     </select>
                                 </div>
                                 <div class="col-lg-1 col-md-1 col-sm-3 col-3">
-                                    <label style="color: #FFFFFF; " class="control-label">Class</label>
-                                    <select class="form-control" id="getstud-class">
+                                    <label style="color: #FFFFFF; " class="control-label text-white">Class</label>
+                                    <select onchange="filterstud()" class="form-control" id="getstud-class">
                                         <option value="" selected="selected">All</option>
                                         <?php
                                         $cl = new Rclass();
@@ -555,8 +544,8 @@ session_start();
                                 </div>
 
                                 <div class="col-lg-2 col-md-2 col-sm-3 col-3">
-                                    <label style="color: #FFFFFF; " class="control-label">House</label>
-                                    <select class="form-control" id="getstud-house">
+                                    <label style="color: #FFFFFF; " class="control-label text-white">House</label>
+                                    <select onchange="filterstud()" class="form-control" id="getstud-house">
                                         <option value="" selected="selected">All</option>
                                         <?php
                                         $h = new House();
@@ -573,8 +562,8 @@ session_start();
                                 </div>
 
                                 <div class="col-lg-2 col-md-2 col-sm-3 col-3">
-                                    <label style="color: #FFFFFF; " class="control-label">Gend. House</label>
-                                    <select class="form-control" id="getstud-ghouse">
+                                    <label style="color: #FFFFFF; " class="control-label text-white">Gend. House</label>
+                                    <select onchange="filterstud()" class="form-control" id="getstud-ghouse">
                                         <option value="" selected="selected">All</option>
                                         <?php
                                         $ghouse = mysqli_query($cf->con, "select * from houses where house_type <> 'genhouse'");
@@ -589,8 +578,8 @@ session_start();
 
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-3 col-3">
-                                    <label style="color: #FFFFFF; " for="" class="control-label">Res. Status</label>
-                                    <select name="resstatus" id="filter_resstatus" class="form-control">
+                                    <label style="color: #FFFFFF; " for="" class="control-label text-white">Res. Status</label>
+                                    <select onchange="filterstud()" name="resstatus" id="filter_resstatus" class="form-control">
                                         <option value="">All</option>
                                         <option value="Boarding">Boarding Student</option>
                                         <option value="Day">Day Student</option>
@@ -604,7 +593,7 @@ session_start();
                     </div>
                 </div>
             </div>
-            <div id="stud-list" class="row">
+            <div id="stud-list">
 
 
             </div>
@@ -626,7 +615,7 @@ session_start();
                         <h4><i class="fa fa-warning"></i> Please make sure to select the correct academic year to prevent misplacing students  </h4>
 
                     </div>
-                    <form enctype="multipart/form-data" method="post" id="frmregstud" class="form" onsubmit="saveStiudent(); return false;">
+                    <form enctype="multipart/form-data" method="post" id="frmregstud" class="form" onsubmit="saveStudent(); return false;">
 
 
                         <div class="row">
@@ -736,7 +725,7 @@ session_start();
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <label class="form-control-label" for="dept">Department <i style="color: #F00;" class="fa fa-asterisk"></i></label>
-                                        <select class="form-control we-select" name="dept" id="dept">
+                                        <select class="form-control we-select" name="dept" id="department_id">
 
                                             <?php
                                             $dpt = new Department();
@@ -1332,12 +1321,19 @@ session_start();
 
 </div>
 <script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
-<script src="js/popper.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
-<script src="js/bootstrap-dialog.min.js" type="text/javascript"></script>
 <script src="js/snarl.min.js" type="text/javascript"></script>
 <script src="js/waves.min.js" type="text/javascript"></script>
 <script src="js/chart.js" type="text/javascript"></script>
+<script src="assets/js/atlantis.js"></script>
+<script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="js/bootstrap-dialog.min.js" type="text/javascript"></script>
+<!-- jQuery UI -->
+<script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+<script src="assets/js/plugin/datatables/datatables.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
 <script src="js/wejs.js" type="text/javascript"></script>
 <?php
@@ -1353,6 +1349,7 @@ session_start();
 
 
 <script type="text/javascript">
+    let student_filer_shown = false;
 
     function get_addAction(){
 
@@ -1906,7 +1903,7 @@ session_start();
         {
             route:'/viewstuds',
             callback: function () {
-                return  getstud(1);
+                return  getstud();
             },
             showBtn:false
         },
@@ -2081,6 +2078,13 @@ session_start();
             },
 
         },
+        {
+            route:'/viewstudent',
+            callback: function (query) {
+                return getstudentdetails(query);
+            },
+
+        },
 
     ];
 
@@ -2128,7 +2132,24 @@ session_start();
             }
 
         }).trigger('hashchange');
+
+
+
+
+
     });
+
+
+
+    function getstudentdetails(query) {
+        $.get('viewstudent'+query,function (data) {
+            displayData(data);
+            renderTable();
+
+
+        })
+
+    }
 
 
     function getstaffdetails(query) {
@@ -2136,8 +2157,53 @@ session_start();
         $.get('viewstaff.php'+query,function (data) {
 
             displayData(data);
+            renderTable();
         });
 
+    }
+
+    function show_students_filter () {
+        if (student_filer_shown){
+            $("#filter-form").hide();
+            student_filer_shown=false;
+
+        }else {
+            $("#filter-form").show();
+            student_filer_shown=true;
+
+        }
+    }
+
+    /**
+     * render all datatab;e
+     * call after data is inserted into dom
+     */
+
+   function  renderTable() {
+
+        $('#table').DataTable( {
+            "pageLength": 50,
+            initComplete: function () {
+                this.api().columns().every( function () {
+                    var column = this;
+                    var select = $('<select class="form-control"><option value=""></option></select>')
+                        .appendTo( $(column.footer()).empty() )
+                        .on( 'change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+
+                            column
+                                .search( val ? '^'+val+'$' : '', true, false )
+                                .draw();
+                        } );
+
+                    column.data().unique().sort().each( function ( d, j ) {
+                        select.append( '<option value="'+d+'">'+d+'</option>' )
+                    } );
+                } );
+            }
+        });
     }
 
 </script>
@@ -2163,34 +2229,3 @@ session_start();
 
 </body>
 </html>
-<!-- dialogs ---->
-<div class="search-pane bg-info" style="opacity: 1 !important;">
-    <div class="container-fluid rgba-amber-strong">
-        <div class="search-header">
-            <div class="row">
-                <div class="col-md-1 col-1">
-                    <button type="button" class="btn btn-bad btn-sm search-close"><i
-                                class="fa fa-remove fa-4x text-white"></i></button>
-                </div>
-                <div class="col-md-11 col-11">
-                    <p class="search-pane-title">SEARCH</p>
-                </div>
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-    <div class="search-input-container">
-        <div class="md-form">
-            <i class="fa fa-search prefix text-white"></i>
-            <input type="search" class="search-box"/>
-            <label for="search-box" class="text-white">Search Students...</label>
-        </div>
-
-    </div>
-    <div class="search-content">
-    </div>
-</div>

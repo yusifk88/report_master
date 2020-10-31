@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
 use APP\config;
 use APP\Utitlity;
@@ -32,7 +33,6 @@ $resstatus = Utitlity::escape( $_POST['resstatus']);
 if (!$photo) {
     mysqli_query($cfg->con, "update stuinfo set fname='$fname',lname='$lname',oname='$oname',gender='$gender',ayear='$ayear',form='$form',class='$class',dept='$dept',house='$house',dob='$dob',lschool='$lschool',ffname='$ffname',fhometown='$fhometown',ftel='$ftel',mfname='$mname',mhometown='$mhometown',mtel='$mtel',jhsno='$jhsno',shsno='$shsno', res_status = '$resstatus' where id = '$id'");
     echo "Student's Info. Updated";
-    session_start();
     $ut->uid = isset($_SESSION['id']) ?  $_SESSION['id'] : $_SESSION['ad_id'];
     $ut->action = "Edited the profile of  $fname $lname ";
     $ut->create_log();

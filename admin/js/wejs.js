@@ -95,7 +95,7 @@ function allprint() {
         title: "Enter a custom title",
         message: temp,
         buttons: [{
-            label: "Preview & Print", cssClass: "btn-good waves-effect waves-button", action: function () {
+            label: "Preview & Print", cssClass: "btn-primary", action: function () {
                 window.open("allprint.php?ayear=" + $("#getstud-ayear").val() + "&form=" + $("#getstud-form").val() + "&cls=" + $("#getstud-class").val() + "&house=" + $("#getstud-house").val() + "&prog=" + $("#getstud-pro").val() + "&title=" + $("#print-title").val() + "&gender=" + $("#filter-gender").val() + "&ghouse=" + $("#getstud-ghouse").val() + "&resstatus=" + $("#filter_resstatus").val(), "All Print List", "outerHeight=800px,outerWidth=800px,innerHeight=750px,innerWidth=750px,menubar=yes,scrollbars=yes");
 
 
@@ -1008,13 +1008,43 @@ function getass(){
 
 
 //=================================================================================================
+function deletesubject(id) {
+    BootstrapDialog.show({
+        title: "Confirm Delete",
+        message: "Are you sure you want to delete this subject?",
+        buttons: [{
+            label: "DELETE", cssClass: "btn-danger", action: function (d) {
+                d.close();
+                $.get( "delsubj.php?id=" + id, null, function () {
+                    Snarl.addNotification({
+                        title: "DELETE",
+                        text: "Subject Deleted successfully",
+                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle-o'></i>",
+                        timeout: 3000
+                    });
+                    $(".snarl-notification").addClass('snarl-success');
+                    var viewid = "#row_" + id;
+                    $(viewid).fadeOut(200, function () {
+                        $(viewid).remove();
+                    });
+                });
+
+
+            }
+        }]
+
+
+    });
+
+    $(".modal-backdrop").addClass("backdrop-light");
+}
 //--------------------------------------------------------------------------------------------------
 function getsubjts() {
     axios.get("getsubjts.php")
         .then(function (data) {
             displayData(data.data);
-
             finish();
+            renderTable();
     });
 }
 
@@ -1029,21 +1059,132 @@ function gethouses() {
     });
 }
 
+function editsubject(id,name,type,){
+
+    BootstrapDialog.show({
+        title: "Update Subject",
+        message: "<div style='transition: 0.2s ease-in-out' id='sub-cont'></div>",
+        onshown: function () {
+           $('#sub-cont').html(document.getElementById('loading').innerHTML);
+
+            $.get("sub_update_input.php?id=" + id + "&type=" + type + "&name="+name, null, function (data) {
+                $("#sub-cont").html(data);
+
+            });
+        },
+        buttons: [{
+            label: "UPDATE", cssClass: "bg-info text-white", action: function (d) {
+
+                if (!$("#name").val()) {
+                    $("#name").focus();
+                    return false;
+                }
+                d.close();
+                $.get("updatesub.php?id=" + id + "&name=" + $("#name").val() + "&type=" + $("#type").val(), function (data) {
+                    getsubjts();
+                    Snarl.addNotification({
+                        title: "UPDATE",
+                        text: data,
+                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle-o'></i>",
+                        timeout: 3000
+                    });
+                    $(".snarl-notification").addClass('snarl-success');
+                });
+            }
+        }]
+    });
+}
+
 //====================================================================================================
 function getstaff() {
     axios.get("getstaff.php?search=" + $(".main-search").val())
         .then(function (data) {
         displayData(data.data);
 
-        finish();
+            renderTable();
+            finish();
     });
+}
+
+function deletehouse(id) {
+    BootstrapDialog.show({
+        title: "Confirm Delete",
+        message: "Are you sure you want to delete this house",
+        buttons: [{
+            label: "DELETE", cssClass: "btn-danger", action: function (d) {
+                d.close();
+                $.get("delhouse.php?id=" + id, function (data) {
+                    Snarl.addNotification({
+                        title: "DELETE",
+                        text: "House deleted successfully",
+                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle-o'></i>",
+                        timeout: 3000
+                    });
+                    $(".snarl-notification").addClass('snarl-success');
+                    gethouses();
+                });
+            }
+        }]
+    });
+    $(".modal-backdrop").addClass("backdrop-light");
+
+
 }
 
 //=================================================================================================
 
+function edithouse(id,name,des,housetyp) {
+
+    var temp = "<form> <div class='col-lg-12 col-md-12 col-xs-12 col-sm-12'><div class='md-form'>";
+    temp += "<label class='active' for='name'>House Name</label></div><div class='md-form'>";
+    temp += "<input type='text' id='name' value='" + name+ "' class='form-control'/>";
+    temp += "<label class='active' for='des'>House Description</label></div>";
+    temp += "<input type='text' id='des' value='" + des + "' class='form-control'/>";
+    temp += "<label class='control-label' for='des'>House Type</label>";
+    temp += "<select type='text' id='house_type' class='form-control'>";
+    if (housetyp === 'ghouse') {
+        temp += "<option selected value='ghouse'>Girls House</option>";
+        temp += "<option value='bhouse'>Boys House</option>";
+        temp += "<option value='genhouse'>General House</option>";
+    } else if (housetyp == 'bhouse') {
+        temp += "<option value='ghouse'>Girls House</option>";
+        temp += "<option selected value='bhouse'>Boys House</option>";
+        temp += "<option value='genhouse'>General House</option>";
+    } else {
+        temp += "<option value='ghouse'>Girls House</option>";
+        temp += "<option  value='bhouse'>Boys House</option>";
+        temp += "<option selected value='genhouse'>General House</option>";
+    }
+    temp += "</select>";
+    temp += "</div></form>";
+    BootstrapDialog.show({
+        title: "Update House Info.",
+        message: temp,
+        buttons: [{
+            label: "UPDATE", cssClass: "bg-info text-white", action: function (d) {
+                if (!$("#name").val() || !$("#des").val()) {
+                    return false;
+                }
+                d.close();
+                $.get("updatehouse.php?id=" + id + "&name=" + $("#name").val() + "&des=" + $("#des").val() + "&house_type=" + $("#house_type").val(), function (data) {
+                    gethouses();
+                    Snarl.addNotification({
+                        title: "UPDATED",
+                        text: data,
+                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle-o'></i>",
+                        timeout: 3000
+                    });
+                    $(".snarl-notification").addClass('snarl-success');
+                });
+            }
+        }]
+    });
+
+
+}
 
 //---------------------------------------------------------------------------------------------------
-function getstud(page) {
+function getstud() {
     const prog = $("#getstud-pro").val();
     const cls = $("#getstud-class").val();
     const huse = $("#getstud-house").val();
@@ -1052,26 +1193,189 @@ function getstud(page) {
     const gn = $("#filter-gender").val();
     const gh = $("#getstud-ghouse").val();
     const resstatus = $("#filter_resstatus").val();
-    if (page === 'undefined') {
-        var url = "getstuds.php?prog=" + prog + "&cls=" + cls + "&huse=" + huse + "&form=" + fm + "&ayear=" + ay + "&gender=" + gn + "&ghouse=" + gh + "&resstatus=" + resstatus;
+        let url = "getstuds.php?prog=" + prog + "&cls=" + cls + "&huse=" + huse + "&form=" + fm + "&ayear=" + ay + "&gender=" + gn + "&ghouse=" + gh + "&resstatus=" + resstatus;
         axios.get(url)
     .then(function (data) {
-        $("#viewstuds").html(" ");
-        $(".panel-body").redraw();
-            finish();
-            $('#viewstuds').html(data.data);
+
+            $('#stud-list').html(data.data);
+            let stud_view = document.getElementById('viewstuds').innerHTML;
+
+            displayData(stud_view);
+            renderTable();
+
         });
 
-    } else {
-        var url = "getstuds.php?page=" + page + "&prog=" + prog + "&cls=" + cls + "&huse=" + huse + "&form=" + fm + "&ayear=" + ay + "&gender=" + gn + "&ghouse=" + gh + "&resstatus=" + resstatus;
+
+}
+
+function filterstud() {
+    const prog = $("#getstud-pro").val();
+    const cls = $("#getstud-class").val();
+    const huse = $("#getstud-house").val();
+    const fm = $("#getstud-form").val();
+    const ay = $("#getstud-ayear").val();
+    const gn = $("#filter-gender").val();
+    const gh = $("#getstud-ghouse").val();
+    const resstatus = $("#filter_resstatus").val();
+
+
+    fullProg();
+        let url = "getstuds.php?prog=" + prog + "&cls=" + cls + "&huse=" + huse + "&form=" + fm + "&ayear=" + ay + "&gender=" + gn + "&ghouse=" + gh + "&resstatus=" + resstatus;
         axios.get(url)
-            .then(function (data) {
-                $('#stud-list').html("");
-                $(".panel-body").redraw();
-                $('#stud-list').html(data.data);
-            finish();
+    .then(function (data) {
+            $('#stud-list').html(data.data);
+           remove_fullprog();
         });
-    }
+}
+
+
+function deleclass(id) {
+    BootstrapDialog.show({
+        title: "Confirm Delete",
+        message: "Are you sure you want to delete this class, this action could affect students",
+        buttons: [{
+            label: "DELETE", cssClass: "btn-danger", action: function (d) {
+                fullProg();
+                $.get("delclass.php?id=" + id, function (data) {
+                    d.close();
+                    remove_fullprog();
+                    var viewid = "#row_" + id;
+                    $(viewid).fadeOut(200, function () {
+                        $(viewid).remove();
+                    });
+                    Snarl.removeNotification(progress);
+                    Snarl.addNotification({
+                        title: "DELETE",
+                        text: "Class Deleted successfully",
+                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle-o'></i>",
+                        timeout: 300
+                    });
+                    $(".snarl-notification").addClass('snarl-success');
+
+                });
+            }
+        }]
+    });
+    $(".modal-backdrop").addClass("backdrop-light");
+
+
+}
+
+
+function edit_class(id,did,name) {
+    BootstrapDialog.show({
+        title: "Edit Class Info.",
+        message: "<div id='cls-cont'></div>",
+        onshown: function () {
+
+            $("div#cls-cont").html(document.getElementById('loading').innerHTML);
+            $.get("class_updat_input.php?id=" + id + "&dpid=" + did + "&classname=" + name,function (data) {
+
+                $("div#cls-cont").html(data);
+
+            });
+
+        },
+        buttons: [{
+            label: "UPDATE", cssClass: "btn-primary", action: function (d) {
+
+                if (!$("input#classname1").val()) {
+                    $("input#classname1").focus();
+                } else {
+                    fullProg();
+
+                    $.get("updateclass.php?id=" + id  + "&classname=" + $("input#classname1").val() + "&dpid=" + $("select#dept1").val(), function (data) {
+
+                        d.close();
+                        remove_fullprog();
+                        getclass();
+
+                    })
+                        .catch(function () {
+
+                        Snarl.removeNotification(progress);
+                        Snarl.addNotification({
+                            title: "ERROR",
+                            text: "Something went wrong, could not update class",
+                            icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                            timeout: 8000
+                        });
+                        $(".snarl-notification").addClass('snarl-error');
+
+                    });
+                }
+
+
+            }
+        }]
+
+    });
+
+
+}
+
+function delete_department(id) {
+
+    BootstrapDialog.show({
+        title: "Confirm Delete",
+        message: "This will affect all classes under this department including their students, PROCEED?",
+        buttons: [{
+            label: "DELETE", cssClass: "btn-danger", action: function (d) {
+                d.close();
+                $.get("deldept.php?id=" + id, function (data) {
+                    const viewid = "#row_" + id;
+                    $(viewid).remove();
+                    Snarl.addNotification({
+                        title: "DELETED",
+                        text: "Department deleted successfully",
+                        icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle-o'></i>",
+                        timeout: 3000
+                    });
+                    $(".snarl-notification").addClass('snarl-success');
+                });
+            }
+        }]
+    });
+    $(".modal-backdrop").addClass("backdrop-light");
+}
+
+
+function edit_department(id,description){
+
+
+    var temp = "<form> <div class='col-lg-12 col-md-12 col-xs-12 col-sm-12'><div class='md-form'>";
+    temp += "<label class='active form-control-label' for='depname'>Department name/description</label>";
+    temp += "<input type='text' id='depname' class='form-control' value='" + description + "'/>";
+    temp += "</div></div></form>";
+    BootstrapDialog.show({
+        title: "Update Department",
+        message: temp,
+        buttons: [{
+            label: "UPDATE", cssClass: "btn-primary", action: function (d) {
+
+                if ($("#depname").val().length < 1) {
+                    $("#depname").focus();
+                } else {
+                    d.close();
+
+                    $.get("updatedep.php?id=" + id + "&depname=" + description, null, function (data) {
+                        getdepts();
+
+                        Snarl.addNotification({
+                            title: "UPDATED",
+                            text: data,
+                            icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle-o'></i>",
+                            timeout: 3000
+                        });
+                        $(".snarl-notification").addClass('snarl-success');
+
+                    });
+                }
+            }
+        }]
+    });
+
+
 }
 
 //--------------------------------------------------------------------
@@ -1504,7 +1808,7 @@ function showinfo() {
  * save student
  */
 
-function saveStiudent(){
+function saveStudent(){
 
     let progress = Snarl.addNotification({
         title: "PROCESSING",
@@ -1525,7 +1829,7 @@ function saveStiudent(){
         formdata.append('oname',$('#oname').val());
         formdata.append('gender',$('#gender').val());
         formdata.append('dob',$('#dob').val());
-        formdata.append('debt',$('#debt').val());
+        formdata.append('dept',$('#department_id').val());
         formdata.append('form',$('#form').val());
         formdata.append('house',$('#house').val());
         formdata.append('dor',$('#dor').val());
@@ -1639,9 +1943,8 @@ function mkfrm() {
         stfid: $("#stfid").val(),
         cls: $("#cls").val()
     };
-    data = $("#addfrm :input").serializeArray();
-    $.post("addfrm.php", data, function () {
-    }).done(function (d) {
+   // data = $("#addfrm :input").serializeArray();
+    $.post("addfrm.php", data, function (d) {
         getfrmlist(data.stfid);
         Snarl.addNotification({
             title: "ADDED",
@@ -1650,6 +1953,18 @@ function mkfrm() {
             timeout: 8000
         });
         $(".snarl-notification").addClass('snarl-success');
+
+    })
+    .catch(function (d) {
+
+        Snarl.addNotification({
+            title: "ERRO",
+            text: d.responseText,
+            icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-remove'></i>",
+            timeout: 8000
+        });
+        $(".snarl-notification").addClass('snarl-error');
+
     });
 
     return false;
@@ -1705,11 +2020,8 @@ function remfrmm(id) {
             label: "DELETE", cssClass: "btn-bad waves-effect waves-button", action: function (d) {
                 d.close();
                 $.get("remfrmm.php?id=" + id, function () {
+                    reInit();
 
-                }).done(function (data) {
-                    var el = "#frm_row" + id;
-                    $(el).fadeOut(100).remove();
-                    Snarl.removeNotification(progress);
                     Snarl.addNotification({
                         title: "DELETE",
                         text: "Class unassigned successfully",
@@ -1717,8 +2029,8 @@ function remfrmm(id) {
                         timeout: 3000
                     });
                     $(".snarl-notification").addClass('snarl-success');
-                });
 
+                });
 
             }
         }]
@@ -1729,32 +2041,6 @@ function remfrmm(id) {
 
 
 $(document).ready(function () {
-
-
-
-
-
-
-
-    $("div#image_cont").dropzone(
-        {
-            url: "./dropfile.php",
-            acceptedFiles: "image/*",
-            addRemoveLinks: true,
-            dictDefaultMessage: "drop photo here or click to upload",
-            dictRemoveFile: "Remove photo",
-            resizeWidth: "180",
-            resizeHeight: "200",
-            resizeMethod: "crop",
-            maxFiles: 1,
-            accept: function (file, done) {
-                $("#picpath").val("temppic/" + file.name);
-                done();
-            }
-
-
-        });
-
 
     $("form#addfrm").submit(function () {
         showprog();
@@ -2118,73 +2404,55 @@ $(document).ready(function () {
 
 
 
-    $("#assess_class").change(function () {
-        var cls = $("#assess_class").val();
-        var subjt = $("#assess-subjt").val();
-        if ($("#global_usertype").val() == 'staff') {
+  function getassements () {
+      var cls = $("#assess_class").val();
+      var subjt = $("#assess-subjt").val();
+      if ($("#global_usertype").val() == 'staff') {
 
-            $("button#asaddbtn").attr("disabled", true);
-            $("button#btnprintassess").attr("disabled", true);
-            var progress = Snarl.addNotification({
-                title: "PROCCESSING",
-                text: "Please Wait...",
-                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-circle-o-notch fa-spin'></i>",
-                timeout: null
-            });
-            $(".snarl-notification").addClass('snarl-info');
-            $
-                .getJSON("testsubasJSON.php?id=" + $("#global_stfid").val() + "&subjt=" + subjt + "&cls=" + cls)
-                .done(function (d) {
-                    if (d) {
+          $("button#asaddbtn").attr("disabled", true);
+          $("button#btnprintassess").attr("disabled", true);
+          var progress = Snarl.addNotification({
+              title: "PROCCESSING",
+              text: "Please Wait...",
+              icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-circle-o-notch fa-spin'></i>",
+              timeout: null
+          });
+          $(".snarl-notification").addClass('snarl-info');
+          $
+              .getJSON("testsubasJSON.php?id=" + $("#global_stfid").val() + "&subjt=" + subjt + "&cls=" + cls)
+              .done(function (d) {
+                  if (d) {
 
-                        $("button#asaddbtn").attr("disabled", false);
-                        $("button#btnprintassess").attr("disabled", false);
-                        Snarl.removeNotification(progress);
-                        showprogress("assess-container");
-                        $.get("getassess.php?cls=" + cls + "&ayear=" + $("#assess-ayear").val() + "&term=" + $("#assess-term").val() + "&subjt=" + $("#assess-subjt").val() + "&key=" + $("#txtsearch").val(), function (data) {
-                            $("#assess-container").hide();
-                            $("#assess-container").html(data);
-                        }).done(function (data) {
-                            $("#assess-container").effect("drop", {
-                                mode: "show",
-                                direction: "left",
-                                height: "toggle"
-                            }, 500);
-                            finish();
-                        });
-                    } else {
-                        $("#assess-container").html("");
-                        Snarl.removeNotification(progress);
-                        Snarl.addNotification({
-                            title: "ERROR",
-                            text: "You do not teach this subject in the selected class",
-                            icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
-                            timeout: 8000
-                        });
-                        $(".snarl-notification").addClass('snarl-error');
-                    }
-                })
-                .error(function () {
-                    show_error();
-                });
-        } else {
+                      $("button#asaddbtn").attr("disabled", false);
+                      $("button#btnprintassess").attr("disabled", false);
+                      Snarl.removeNotification(progress);
+                      $.get("getassess.php?cls=" + cls + "&ayear=" + $("#assess-ayear").val() + "&term=" + $("#assess-term").val() + "&subjt=" + $("#assess-subjt").val() + "&key=" + $("#txtsearch").val(), function (data) {
+                          displayData(data);
+                      });
+                  } else {
+                      $("#assess-container").html("");
+                      Snarl.removeNotification(progress);
+                      Snarl.addNotification({
+                          title: "ERROR",
+                          text: "You do not teach this subject in the selected class",
+                          icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-bug'></i>",
+                          timeout: 8000
+                      });
+                      $(".snarl-notification").addClass('snarl-error');
+                  }
+              })
+              .error(function () {
+                  show_error();
+              });
+      } else {
 
-            showprogress("assess-container");
-            $.get("getassess.php?cls=" + cls + "&ayear=" + $("#assess-ayear").val() + "&term=" + $("#assess-term").val() + "&subjt=" + $("#assess-subjt").val() + "&key=" + $("#txtsearch").val(), function (data) {
-                $("#assess-container").hide();
-                $("#assess-container").html(data);
-            }).done(function (data) {
-                $("#assess-container").effect("drop", {
-                    mode: "show",
-                    direction: "left",
-                    height: "toggle"
-                }, 500);
-                finish();
-            });
+          $.get("getassess.php?cls=" + cls + "&ayear=" + $("#assess-ayear").val() + "&term=" + $("#assess-term").val() + "&subjt=" + $("#assess-subjt").val() + "&key=" + $("#txtsearch").val(), function (data) {
+              displayData(data);
+          })
 
+      }
+  }
 
-        }
-    });
     //-----------------------------------------------
     $("#prmfrom_class").change(function () {
         showprogress("promt-container");
@@ -2208,12 +2476,6 @@ $(document).ready(function () {
     });
     //----------------------------
 
-    //----------------------------------------
-    $("#filter-btn").click(function () {
-        $("#filter-form").slideToggle(500);
-    });
-    //-------------------------------------
-
     //===========================================
     $('#clearbtn').click(function () {
         BootstrapDialog.show({
@@ -2236,6 +2498,9 @@ $(document).ready(function () {
 
 
 //--------------------------------------------------------------------------------------
+
+
+
 
 function addwaec() {
 
@@ -2416,20 +2681,20 @@ function addfrm() {
 function respass(id, stname) {
 
 
-    let temp = "<div class='alert bg-info text-white'>" + stname + "</div>";
-    temp += "<div class='md-form'> <i class='prefix fa fa-asterisk'></i>";
+    let temp = "<div class='alert alert-primary'> Reset " + stname + ",s Password</div>";
+    temp += "<div class='md-form'> ";
+    temp += "<label for='stpass' class='form-control-label'>Create New Password<i class='prefix fa fa-asterisk text-danger'></i></label>";
     temp += "<input type='password' class='form-control' id='stpass' name='stpass'>";
-    temp += "<label for='stpass'>Create New Password</label>";
     temp += "<div class='md-form'>";
-    temp += "<div class='md-form'> <i class='prefix fa fa-asterisk'></i>";
+    temp += "<div class='md-form'>";
+    temp += "<label for='stcpass' class='form-control-label'>Confirm New Password<i class='prefix fa fa-asterisk text-danger'></i></label>";
     temp += "<input type='password' class='form-control' id='stcpass' name='stcpass'>";
-    temp += "<label for='stcpass'>Confirm New Password</label>";
     temp += "<div class='md-form'>";
     BootstrapDialog.show({
         title: "Reset Password",
         message: temp,
         buttons: [{
-            label: "Reset", cssClass: 'bg-info', action: function () {
+            label: "Reset", cssClass: 'btn-primary', action: function () {
                 let stpass = $("#stpass").val();
                 let stcpass = $("#stcpass").val();
                 if (stpass.length < 1 && stcpass.length < 1) {
@@ -2445,8 +2710,7 @@ function respass(id, stname) {
                 } else {
 
                     $
-                        .get("do_reset.php?id=" + id + "&new_pass=" + stcpass)
-                        .done(function () {
+                        .get("do_reset.php?id=" + id + "&new_pass=" + stcpass,function (d) {
                             Snarl.addNotification({
                                 title: "RESET",
                                 text: "Your new password has been set",
@@ -2456,7 +2720,7 @@ function respass(id, stname) {
                             $(".snarl-notification").addClass('snarl-success');
                             cloasedlgs();
                         })
-                        .error(function () {
+                        .catch(function () {
                             Snarl.addNotification({
                                 title: "ERROR",
                                 text: "Server communication error, please check your connection",
@@ -2494,12 +2758,9 @@ function mkhm() {
     var data = {
         stfid: $("#stfid").val(),
         house: $("#houses").val()
-
     };
-    $
 
-        .post("mkhm.php", data)
-        .done(function () {
+    $.post("mkhm.php", data,function () {
             Snarl.addNotification({
                 title: "SUCCESSFUL",
                 text: "Your house assignment was successful",
@@ -2508,7 +2769,7 @@ function mkhm() {
             });
             $(".snarl-notification").addClass('snarl-success');
         })
-        .error(function () {
+        .catch(function () {
             Snarl.addNotification({
                 title: "ERROR",
                 text: "Sorry we could not assign the house",
@@ -2533,9 +2794,9 @@ function housem(stfid) {
                 message: data,
                 buttons: [
                     {
-                        label: "SAVE", cssClass: "btn bg-info", action: function () {
+                        label: "SAVE", cssClass: "btn btn-primary", action: function () {
                             mkhm();
-                            cloasedlgs();
+                            reInit();
                         }
                     },
                     {
@@ -2574,8 +2835,7 @@ function rmshm(id) {
 
 function mkshm(id) {
     $
-        .get("mkshm.php?id=" + id)
-        .done(function () {
+        .get("mkshm.php?id=" + id,function () {
             Snarl.addNotification({
                 title: "SUCCESSFUL",
                 text: "Your duty assignment was successful",
@@ -2583,8 +2843,9 @@ function mkshm(id) {
                 timeout: 3000
             });
             $(".snarl-notification").addClass('snarl-success');
+            reInit();
         })
-        .error(function () {
+        .catch(function () {
             Snarl.addNotification({
                 title: "ERROR",
                 text: "Sorry we could not assign the duty",
@@ -2646,8 +2907,8 @@ function rmwof(id) {
 
 function mkwof(id) {
     $
-        .get("addwo.php?id=" + id)
-        .done(function () {
+        .get("addwo.php?id=" + id,function () {
+
             Snarl.addNotification({
                 title: "SUCCESSFUL",
                 text: "Your duty assignment was successful",
@@ -2655,8 +2916,10 @@ function mkwof(id) {
                 timeout: 3000
             });
             $(".snarl-notification").addClass('snarl-success');
+            reInit();
+
         })
-        .error(function () {
+        .catch(function () {
             Snarl.addNotification({
                 title: "ERROR",
                 text: "Sorry we could not assign the duty",
@@ -3214,8 +3477,8 @@ function rmlibrian(id) {
 
 function mklibrian(id) {
     $
-        .get("mklib.php?id=" + id)
-        .done(function () {
+        .get("mklib.php?id=" + id,function () {
+            reInit();
             Snarl.addNotification({
                 title: "SUCCESSFUL",
                 text: "Your duty assignment was successful",
@@ -3224,7 +3487,7 @@ function mklibrian(id) {
             });
             $(".snarl-notification").addClass('snarl-success');
         })
-        .error(function () {
+        .catch(function () {
             Snarl.addNotification({
                 title: "ERROR",
                 text: "Sorry we could not assign the duty",
@@ -3232,9 +3495,8 @@ function mklibrian(id) {
                 timeout: 3000
             });
             $(".snarl-notification").addClass('snarl-error');
-
         });
-    cloasedlgs();
+
 
 }
 
@@ -3247,12 +3509,12 @@ function mklib(id) {
             title: "Make this Staff the Librarian",
             message: data,
             buttons: [{
-                label: "DONE", cssClass: "bg-info", action: function (d) {
+                label: "DONE", cssClass: "btn-primary", action: function (d) {
                     d.close();
                 }
             }]
         });
-    }).error(function () {
+    }).catch(function () {
         show_error();
     });
 }
@@ -3260,18 +3522,17 @@ function mklib(id) {
 function mkform(id) {
     fullProg();
     $.get("getfrmmst.php?id=" + id, function (data) {
-    }).done(function (data) {
         remove_fullprog();
         BootstrapDialog.show({
             title: "Manage Extra Duties",
             message: data,
             buttons: [{
-                label: "DONE", cssClass: "btn bg-info", action: function (d) {
+                label: "CLOSE", cssClass: "btn btn-primary", action: function (d) {
                     d.close();
                 }
             }]
         });
-    }).error(function () {
+    }).catch(function () {
         show_error();
     });
 }
@@ -3280,14 +3541,7 @@ function printstf(id) {
     window.open("staffprf.php?id=" + id, "Staff Profile", "outerHeight=800px,outerWidth=800px,innerHeight=750px,innerWidth=750px,menubar=yes,scrollbars=yes");
 }
 
-function refresh_onestaff(id) {
-    showprogress("row_" + id);
-    $
-        .get("refresh_onestaff.php?id=" + id)
-        .done(function (data) {
-            $("#row_" + id).html(data);
-        });
-}
+
 
 function upstaff(id) {
     let data = document.getElementById('loading').innerHTML;
@@ -3309,10 +3563,28 @@ function upstaff(id) {
                     });
                     $(".snarl-notification").addClass('snarl-info');
                     $.get("updatestaff.php?id=" + id + "&fname=" + $("#upfname").val() + "&lname=" + $("#uplname").val() + "&gender=" + $("#upgender").val() + "&contact=" + $("#upcontact").val() + "&rank=" + $("#uprank").val() + "&stfid=" + $("#upstfid").val() + "&dob=" + $("#updob").val() + "&regno=" + $("#upregno").val() + "&aqual=" + $("#upaqual").val() + "&pqual=" + $("#uppqual").val() + "&appdate=" + $("#upappdate").val() + "&assdate=" + $("#upassdate").val() + "&bank=" + $("#upbank").val() + "&accno=" + $("#upaccno").val() + "&ssnid=" + $('#upssnid').val(), function (data) {
-                    }).done(function () {
                         Snarl.removeNotification(progress);
-                        refresh_onestaff(id);
-                    });
+                        Snarl.addNotification({
+                            title: "Error",
+                            text: "Staff Updated",
+                            icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-check-circle'></i>",
+                            timeout: null
+                        });
+                        $(".snarl-notification").addClass('snarl-success');
+                        reInit();
+
+                    })
+
+                        .catch(function () {
+                             Snarl.addNotification({
+                                title: "Error",
+                                text: "Somethig went wrong",
+                                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-remove'></i>",
+                                timeout: null
+                            });
+                            $(".snarl-notification").addClass('snarl-error');
+
+                        });
                 }
             }, {
                 label: "CANCEL", cssClass: "btn-bad waves-effect waves-button", action: function (d) {
@@ -3374,7 +3646,7 @@ function refresh_subs(id) {
 
 function reInit() {
 
-    $(window).trigger('hashchange');
+    window.location.reload();
 
 }
 
@@ -3387,10 +3659,8 @@ function asub(id) {
             title: "Assing Subjects/Classes To Staff",
             message: data,
             buttons: [{
-                label: "ASSIGN", cssClass: "btn bg-info", action: function (d) {
-                    d.close();
+                label: "ASSIGN", cssClass: "btn btn-primary", action: function (d) {
                     $.get("assignsubs.php?sfid=" + id + "&subid=" + $("#sub").val() + "&clsid=" + $("#cls").val(), null, function (data) {
-                    }).done(function (data) {
                         reInit();
                         Snarl.addNotification({
                             title: "ASSIGNED",
@@ -3399,11 +3669,21 @@ function asub(id) {
                             timeout: 8000
                         });
                         $(".snarl-notification").addClass('snarl-success');
-                    });
+                    })
+                        .catch(function (d) {
+                            Snarl.addNotification({
+                                title: "ASSIGNED",
+                                text: d.responseText,
+                                icon: "<i style='margin: 0 !important; height: auto !important; width: auto !important; line-height: normal !important;' class='fa fa-remove'></i>",
+                                timeout: 8000
+                            });
+                            $(".snarl-notification").addClass('snarl-error');
+
+                        });
                 }
             }]
         });
-    }).error(function () {
+    }).catch(function () {
         show_error();
     });
 }
@@ -3413,13 +3693,11 @@ function delstaff(id) {
     BootstrapDialog.show({
         title: "Confirm Delete",
         message: "Are you sure you want to delete this staff",
-        type: 'TYPE_DANGER',
         buttons: [{
             label: "DELETE", cssClass: "btn-danger", action: function (d) {
                 d.close();
                 fullProg();
                 $.get("delstaff.php?id=" + id, null, function (data) {
-                }).done(function (data) {
                     remove_fullprog();
                     var rowid = "#row_" + id;
                     $(rowid).fadeOut(500, function () {
@@ -3432,6 +3710,7 @@ function delstaff(id) {
                         timeout: 3000
                     });
                     $(".snarl-notification").addClass('snarl-success');
+                    window.history.back();
                 });
             }
         }]
@@ -3479,13 +3758,13 @@ function printrep(id) {
         title: "Print termnal report for this student",
         message: "<div id='trep-cont'></div>",
         onshown: function () {
-            showprogress('trep-cont');
+            $("#trep-cont").html(document.getElementById('loading').innerHTML);
             $.get("print_rep_one.php?stid=" + id, function (data) {
                 $("#trep-cont").html(data);
             });
         },
         buttons: [{
-            label: "VIEW & PRINT", cssClass: "bg-info", action: function (d) {
+            label: "VIEW & PRINT", cssClass: "btn-primary", action: function (d) {
                 $.getJSON("cnt_rep.php?id=" + id + "&ayear=" + $("#ayer5").val() + "&term=" + $("#term").val(), function (dataobj) {
                     if (dataobj.count_val === 0) {
                         Snarl.addNotification({
@@ -3521,14 +3800,12 @@ function unwithdraw(id) {
         title: "Confirm Resume",
         message: "Do you want to resume this student into the school?",
         buttons: [{
-            label: "RESUME", cssClass: "bg-info", action: function (d) {
+            label: "RESUME", cssClass: "btn-primary", action: function (d) {
                 d.close();
                 fullProg();
                 $.get("uw.php?id=" + id, function () {
                 }).done(function () {
-                    remove_fullprog();
-                    var rowid = "row_" + id;
-                    single_refresh(id, rowid);
+                   reInit();
                     Snarl.addNotification({
                         title: "RESUMED",
                         text: "Student Resumed successfully",
@@ -3550,7 +3827,7 @@ function exiat(id) {
         message: "<div id='exiat-cont'></div>",
         size: "size-wide",
         onshown: function () {
-            showprogress("exiat-cont");
+            $("#exiat-cont").html(document.getElementById('loading').innerHTML);
 
             $
                 .get("exiat_form.php?id=" + id)
@@ -3580,16 +3857,16 @@ function withdraw(id) {
         message: "<div id='w-cont'></div>",
         size: "size-wide",
         onshown: function () {
-            showprogress("w-cont");
+            $("#w-cont").html(document.getElementById('loading').innerHTML);
+
             $.get("wfrm.php?id=" + id, function (data) {
-            }).done(function (data) {
                 $("#w-cont").html(data);
 
-
-            }).error(function () {
+            }).catch(function () {
                 show_error();
                 cloasedlgs();
             });
+
         },
         buttons: [{
             label: "WITHDRAW", cssClass: "btn-danger", action: function (d) {
@@ -3616,19 +3893,19 @@ function Comnt(id) {
         size: "size-wide",
         closable: false,
         onshown: function () {
-            showprogress('cm-cont');
+                $("#cm-cont").html(document.getElementById('loading').innerHTML);
             $.get("getcomnts.php?id=" + id, function (data) {
-            }).done(function (data) {
-
                 $("#cm-cont").html(data);
-            }).error(function () {
+
+            }).catch(function () {
                 show_error();
                 cloasedlgs();
             });
+
         },
         buttons: [{
             label: "CLOSE", cssClass: "btn-danger", action: function (d) {
-                d.close();
+                reInit();
             }
         }]
     });
@@ -3644,7 +3921,7 @@ function upstud(id, row) {
         size: "size-wide",
         closable: false,
         buttons: [{
-            label: "UPDATE", cssClass: "bg-info", action: function (d) {
+            label: "UPDATE", cssClass: "btn-primary", action: function (dl) {
                 if (!$("#upfname").val()) {
                     Snarl.addNotification({
                         title: "MISSING INPUT",
@@ -3709,14 +3986,15 @@ function upstud(id, row) {
                         timeout: null
                     });
                     $(".snarl-notification").addClass('snarl-info');
-                    var data = $("#stud_upform :input").serializeArray();
+                    const data = $("#stud_upform :input").serializeArray();
+                    data.push({name:'photo',value:student_photo});
+
                     $.post("upstud_script.php", data, function (d) {
-                    }).done(function () {
                         var stid = $("#upid").val();
                         var imgcont = "#imgcont_" + $("#upindex").val();
                         var stpic = $("#picpath").val();
-                        d.close();
-                        single_refresh(id, row);
+                        dl.close();
+                       reInit();
                         Snarl.removeNotification(progress);
                         Snarl.addNotification({
                             title: "UPDATED",
@@ -3725,6 +4003,9 @@ function upstud(id, row) {
                             timeout: 3000
                         });
                         $(".snarl-notification").addClass('snarl-success');
+                    })
+                        .catch(function () {
+
                     });
                 }
             }
@@ -3736,11 +4017,12 @@ function upstud(id, row) {
             }
         ],
         onshown: function () {
-            showprogress("upstud-cont");
+            $("#upstud-cont").html(document.getElementById('loading').innerHTML);
+
             $.get("upstud_inputs.php?id=" + id, function (data) {
-            }).done(function (data) {
                 $("#upstud-cont").html(data);
-            }).error(function () {
+            })
+                .catch(function () {
                 cloasedlgs();
                 show_error();
             });
@@ -3760,13 +4042,11 @@ function delstud(id) {
         message: "Are you sure you want to delete this student's info. from the system",
         buttons: [{
             label: "DELETE", cssClass: "btn-bad waves-effect waves-button", action: function (d) {
-                d.close();
+                fullProg();
                 $.get("delstud.php?id=" + id, function (data) {
-                }).done(function () {
-                    var rowid = "#row_" + id;
-                    $(rowid).fadeOut(200, function () {
-                        $(rowid).remove();
-                    });
+                    d.close();
+                  remove_fullprog();
+                  window.location="#/viewstuds";
                     if ($('#cbopage-list').index($('#cbopage-list')) > -1) {
                         Snarl.addNotification({
                             title: "DELETE",
@@ -3800,32 +4080,7 @@ function delstud(id) {
         Waves.init();
         Waves.attach('.tile', ['waves-float', 'waves-light']);
         Waves.attach('button', ['waves-button']);
-        $("div.dropzone").dropzone(
-            {
-                url: "./dropfile.php",
-                acceptedFiles: "image/*",
-                addRemoveLinks: true,
-                dictDefaultMessage: "drop photo here or click to upload",
-                dictRemoveFile: "Remove photo",
-                resizeWidth: "180",
-                resizeHeight: "200",
-                resizeMethod: "crop",
-                capture: null,
-                removedfile: function (file) {
-                    $.get("rmphoto.php?file=" + file.name, function () {
-                    }).done(function () {
-                        $("#photo").val("dpic/photo.jpg");
-                        var previewElement;
-                        return (previewElement = file.previewElement) != null ?
-                            (previewElement.parentNode.removeChild(file.previewElement)) : (void 0);
-                    });
-                },
-                maxFiles: 1,
-                accept: function (file, done) {
-                    $("#photo").val("temppic/" + file.name);
-                    done();
-                }
-            });
+
         $("button").tooltip();
         $("li").tooltip();
         $("a").tooltip();

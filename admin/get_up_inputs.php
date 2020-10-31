@@ -14,10 +14,9 @@ while ($row = mysqli_fetch_assoc($query)) {
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm12 col-xs-12">
                 <div class="md-form">
-                    <i class="fa fa-user prefix active "></i>
 
+                    <label class="active form-control-label" for="upfname">First Name</label>
                     <input class="form-control" id="upfname" type="text" value="<?php echo "$row[fname]"; ?>"/>
-                    <label class="active" for="upfname">First Name</label>
 
                 </div>
 
@@ -25,9 +24,8 @@ while ($row = mysqli_fetch_assoc($query)) {
             <div class="col-lg-6 col-md-6 col-sm12 col-xs-12">
 
                 <div class="md-form">
-                    <i class="prefix fa fa-user active"></i>
+                    <label for="uplname" class="active form-control-label">Last Name</label>
                     <input class="form-control" id="uplname" type="text" value="<?php echo "$row[lname]"; ?>"/>
-                    <label for="uplname" class="active">Last Name</label>
                 </div>
             </div>
         </div>
@@ -62,10 +60,9 @@ while ($row = mysqli_fetch_assoc($query)) {
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="md-form">
-                    <i class="prefix fa fa-phone active"></i>
 
+                    <label for="upcontact" class="active form-control-label">Contact</label>
                     <input type="text" class="form-control" value="<?php echo $row['contact']; ?>" id="upcontact"/>
-                    <label for="upcontact" class="active">Contact</label>
 
                 </div>
 
@@ -80,7 +77,7 @@ while ($row = mysqli_fetch_assoc($query)) {
                     for ($i = 0; $i < count($ranklist); $i++) {
 
                         ?>
-                        <option <?= ($i == $row['rank']) ? "Selected" : "" ?>
+                        <option <?= ($i == $row['staff_rank']) ? "Selected" : "" ?>
                                 value="<?= $i ?>"><?= $ranklist[$i] ?></option>
 
                         <?php
@@ -100,9 +97,8 @@ while ($row = mysqli_fetch_assoc($query)) {
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 
                 <div class="md-form">
-                    <i class="prefix fa fa-id-badge active"></i>
+                    <label class="active form-control-label" for="upstfid">Staff ID No.</label>
                     <input id="upstfid" type="text" class="form-control" value="<?= $row['stfid']; ?>"/>
-                    <label class="active" for="upstfid">Staff ID No.</label>
 
                 </div>
 
@@ -110,26 +106,23 @@ while ($row = mysqli_fetch_assoc($query)) {
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                 <div class="md-form">
-                    <i class="fa fa-calendar-check-o prefix active"></i>
+                    <label class="active form-control-label" for="updob">D.O.B</label>
                     <input id="updob" type="date" class="form-control" value="<?= $row['dob']; ?>"/>
-                    <label class="active" for="updob">D.O.B</label>
                 </div>
 
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 
                 <div class="md-form">
-                    <i class="prefix fa fa-hashtag active"></i>
+                    <label class="active form-control-label" for="upregno">Registered No.</label>
                     <input id="upregno" type="text" class="form-control" value="<?= $row['regno']; ?>"/>
-                    <label class="active" for="upregno">Registered No.</label>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                 <div class="md-form">
-                    <i class="prefix fa fa-id-card-o active"></i>
 
+                    <label class="active form-control-label" for="upssnid">SSNIT NO.</label>
                     <input id="upssnid" type="text" class="form-control" value="<?= $row['snnid']; ?>"/>
-                    <label class="active" for="upssnid">SSNIT NO.</label>
 
                 </div>
 
@@ -140,9 +133,8 @@ while ($row = mysqli_fetch_assoc($query)) {
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 
                 <div class="md-form">
-                    <i class="prefix fa fa-graduation-cap active"></i>
+                    <label class="active form-control-label" for="upaqual">Academic Qualification</label>
                     <input id="upaqual" type="text" class="form-control" value="<?= $row['aqual']; ?>"/>
-                    <label class="active" for="upaqual">Academic Qualification</label>
                 </div>
 
 
@@ -150,9 +142,8 @@ while ($row = mysqli_fetch_assoc($query)) {
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 
                 <div class="md-form">
-                    <i class="prefix fa fa-star active"></i>
+                    <label class="active form-control-label" for="uppqual">Professional Qualification</label>
                     <input id="uppqual" type="text" class="form-control" value="<?= $row['pqual']; ?>"/>
-                    <label class="active" for="uppqual">Professional Qualification</label>
 
                 </div>
 
@@ -160,10 +151,9 @@ while ($row = mysqli_fetch_assoc($query)) {
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="md-form">
-                    <i class="prefix fa fa-calendar-o active"> </i>
+                    <label class="active form-control-label" for="upappdate">Date Of First Appointment</label>
                     <input id="upappdate" type="date" class="form-control" placeholder="Enter Date"
                            value="<?= $row['appdate']; ?>"/>
-                    <label class="active" for="upappdate">Date Of First Appointment</label>
                 </div>
             </div>
 
@@ -172,27 +162,24 @@ while ($row = mysqli_fetch_assoc($query)) {
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="md-form">
-                    <i class="active fa fa-calendar-plus-o prefix"></i>
+                    <label class="active form-control-label" for="upassdate">Assumption Of Duty(Date)</label>
                     <input id="upassdate" type="date" class="form-control" placeholder="Enter Date"
                            value="<?= $row['assdate']; ?>"/>
-                    <label class="active" for="upassdate">Assumption Of Duty(Date)</label>
                 </div>
 
 
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="md-form">
-                    <i class="prefix fa fa-bank active"> </i>
+                    <label class="active form-control-label" for="upbank">Associated Bank</label>
                     <input id="upbank" type="text" class="form-control" value="<?= $row['bank']; ?>"/>
-                    <label class="active" for="upbank">Associated Bank</label>
 
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="md-form">
-                    <i class="prefix fa fa-universal-access active"></i>
+                    <label class="active form-control-label" for="upaccno">Account Number</label>
                     <input id="upaccno" type="text" class="form-control" value="<?= $row['accno']; ?>"/>
-                    <label class="active" for="upaccno">Account Number</label>
                 </div>
 
             </div>

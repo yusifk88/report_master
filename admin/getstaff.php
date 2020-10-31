@@ -6,8 +6,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'].'/report_master/vendor/autoload.php');
 $cfg = new \APP\config();
 $cfg->connect();
 $stf = new \APP\Staff();
-$keyword = $_GET['search'];
-$d = $stf->getstaff($keyword, $keyword);
+$d = $stf->getstaff();
 $ranklist = ["Senior Sup't", "Prin. Sup't", "Assist. Dir ii", "Assist. Dir I", "Dep. Dir.", "Dir. II", "Dir. I"];
 ?>
 <div class="card">
@@ -16,7 +15,7 @@ $ranklist = ["Senior Sup't", "Prin. Sup't", "Assist. Dir ii", "Assist. Dir I", "
         <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
            class="btn bg-warning mr-auto btn-sm text-white">
             <i class="fa fa-print text-white"> </i> Print Staff List <i class="fa fa-caret-down"></i> </a>
-        <ul class="dropdown-menu animated zoomIn" aria-labelledby="exduties">
+        <ul class="dropdown-menu" aria-labelledby="exduties">
             <li class="dropdown-item text-muted" style="cursor:pointer;"><a onclick="print_staff();return false;">Print
                     All Staff</a></li>
             <li class="dropdown-item text-muted" style="cursor:pointer;"><a onclick="hmasters(); return false;">House
@@ -31,8 +30,8 @@ $ranklist = ["Senior Sup't", "Prin. Sup't", "Assist. Dir ii", "Assist. Dir I", "
         <div id="row_<?= $row['id'] ?>" class="row mb-1">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card hoverable" style="margin: 0 !important;">
-                        <div class="table-responsive text-nowrap">
-                            <table class="table table-condensed table-hover table-sm">
+                        <div class="table-responsive text-nowrap card-body">
+                            <table id="table" class="table table-condensed table-hover table-sm">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -164,9 +163,3 @@ $ranklist = ["Senior Sup't", "Prin. Sup't", "Assist. Dir ii", "Assist. Dir I", "
         </div>
 
 
-<script>
-
-    $("span,i").tooltip();
-
-
-</script>

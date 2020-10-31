@@ -5,4 +5,6 @@ use APP\config;
 $cf = new config();
 $cf->connect();
 $id = $_GET['id'];
+if (\APP\Students::isWithdrawn($id)){
 mysqli_query($cf->con, "delete from withdraw where stid = '$id'");
+}

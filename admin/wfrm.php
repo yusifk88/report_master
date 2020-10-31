@@ -4,7 +4,7 @@ use APP\config;
 $cf = new config();
 $cf->connect();
 $id = $_GET{"id"};
-$stinfo = mysqli_query($cf->con, "select fname,lname,oname,photo,ayear from stuinfo where id = '$id'");
+$stinfo = mysqli_query($cf->con, "select * from stuinfo where id = '$id'");
 $stud = mysqli_fetch_object($stinfo);
 ?>
 <div class="row">
@@ -21,10 +21,9 @@ $stud = mysqli_fetch_object($stinfo);
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-calendar-check-o active"></i>
+                        <label class="control-label active" for="wayear">Academic Year</label>
                         <input name="wayear" type="text" readonly id="wayear" class="form-control"
                                value="<?= $stud->ayear ?>"/>
-                        <label class="control-label active" for="wayear">Academic Year</label>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-xs-12">
@@ -37,7 +36,6 @@ $stud = mysqli_fetch_object($stinfo);
                 </div>
                 <div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-calendar-o active"></i>
                         <input name="wdate" id="wdate" type="date" class="form-control"/>
                         <label class="control-label active" for="wdate">Date</label>
                     </div>
@@ -47,10 +45,9 @@ $stud = mysqli_fetch_object($stinfo);
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-xs-12">
                     <div class="md-form">
-                        <i class="prefix fa fa-comments-o"></i>
-                        <textarea name="wresn" class="form-control md-textarea" id="wresn" rows="2"></textarea>
                         <label class="control-label text-muted" for="wresn">Reason (Why you are withdrawing this
                             student)</label>
+                        <textarea name="wresn" class="form-control md-textarea" id="wresn" rows="2"></textarea>
                     </div>
                 </div>
             </div>
@@ -66,11 +63,6 @@ $stud = mysqli_fetch_object($stinfo);
             fullProg();
             var data = $("form#wfrm :input").serializeArray();
             $.post("wsave.php", data, function () {
-            }).done(function () {
-                remove_fullprog();
-                var id = <?=$id?>;
-                var rowid = "row_<?=$id?>";
-                single_refresh(id, rowid);
                 Snarl.addNotification({
                     title: "WITHDRAW",
                     text: "Student Withdrawn successfully",
@@ -78,6 +70,9 @@ $stud = mysqli_fetch_object($stinfo);
                     timeout: 3000
                 });
                 $(".snarl-notification").addClass('snarl-success');
+                reInit();
+
+
             });
             return false;
         });

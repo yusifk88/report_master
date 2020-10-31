@@ -83,11 +83,11 @@ class Department
     }
 
     //----------------------------------------------------------------------------------
-    public function updatedept($depid, $dptname)
+    public function updatedept($id, $dptname)
     {
         $dbcon = new config();
         $dbcon->connect();
-        mysqli_query($dbcon->con, "update dept set depname = '$dptname' where id = '$depid'");
+        mysqli_query($dbcon->con, "update dept set depname = '$dptname' where id = '$id'");
         $data = "Department updated successfully";
         return $data;
     }

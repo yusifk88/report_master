@@ -33,19 +33,20 @@ $id = $_GET['id'];
 
 
         ?>
-        <tr>
-            <td><?= $i; ?></td>
+        <tr id="tr_<?=$row->id;?>">
+            <td ><?= $i; ?></td>
             <td><?= $row->coment; ?></td>
             <td><?= $row->ayear; ?></td>
             <td><?= $ut->addsufix($row->term); ?> Term</td>
             <td><?= $row->dentry; ?></td>
-            <td style="text-align: center;"><i onclick="delcomm(<?= $row->id; ?>);" title="Delete this Comment"
-                                               data-toggle="tooltip" style="color: red; cursor: pointer;"
-                                               class="fa fa-remove waves-effect waves-circle"></i></td>
-
+            <td style="text-align: center;">
+                <i onclick="delcomm(<?= $row->id; ?>);"
+               title="Delete this Comment"
+               data-toggle="tooltip" style="color: red; cursor: pointer;"
+               class="fa fa-remove waves-effect waves-circle"></i>
+            </td>
 
         </tr>
-
 
         <?php
         $i++;
@@ -55,3 +56,4 @@ $id = $_GET['id'];
     </tbody>
 
 </table>
+

@@ -12,7 +12,7 @@ $cg = new config();
 $cg->connect();
 include_once './objts/utitlity.php';
 $util = new Utitlity();
-$stafflist = mysqli_query($cg->con, "select * from staff WHERE user_type <>'admin'  ORDER by fname ASC ");
+$stafflist = mysqli_query($cg->con, "select * from staff WHERE type <>'admin'  ORDER by fname ASC ");
 ?>
 <html>
 <head>

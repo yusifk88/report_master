@@ -21,7 +21,7 @@ $status = mysqli_query($cf->con, "select * from woff where stfid = '$stfid'");
         if (mysqli_num_rows($status) < 1) {
             ?>
 
-            <button onclick="mkwof(<?= $stfid ?>)" type="button" class="btn bg-info">Assign Duty</button>
+            <button onclick="mkwof(<?= $stfid ?>)" type="button" class="btn btn-primary">Assign Duty</button>
 
 
             <?php

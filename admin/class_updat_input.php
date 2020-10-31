@@ -11,9 +11,8 @@ $d = $dp->getdpts();
 <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
     <form>
         <div class="md-form">
-            <i class="prefix fa fa-home active"></i>
+            <label class="active form-control-label" for="classname">Class Name</label>
             <input id="classname1" class="form-control" value="<?php echo $cname; ?>" type="text" required="required"/>
-            <label class="active" for="classname">Class Name</label>
         </div>
 
 
@@ -25,23 +24,16 @@ $d = $dp->getdpts();
             while ($row = mysqli_fetch_assoc($d)) {
 
 
-                if ($dpid == $row['id']) {
 
                     ?>
 
-                    <option selected="selected"
+                    <option <?=$dpid===$row['id'] ? 'selected' : ''?>
                             value="<?php echo $row['id']; ?>"><?php echo $row['depname']; ?></option>
 
 
                     <?php
-                }
-                ?>
 
 
-                <option value="<?php echo $row['id']; ?>"><?php echo $row['depname']; ?></option>
-
-
-                <?php
 
             }
 

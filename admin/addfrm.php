@@ -19,6 +19,7 @@ if (mysqli_num_rows($testaff) > 0) {
     $mstaff = mysqli_fetch_object($testaff);
     $pronoun = ($mstaff->gender == "Male" ? "Mr." : "Miss");
     $titl = ($mstaff->gender == "Male" ? "Form master" : "Form mistress");
+    Utitlity::set_response(302);
     echo $pronoun . " " . $mstaff->fname . " " . $mstaff->lname . " is currently the " . $titl . " of ".$clsname.", please select a different class";
 } else {
     mysqli_query($cfg->con, "insert into frmmaters(stfid,clid) VALUES ('$stfid','$cls')");
