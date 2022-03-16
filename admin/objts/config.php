@@ -2,10 +2,10 @@
 
 class config
 {
-    var $host = "localhost";
-    var $user = "root";
-    var $password = "";
-    var $db = "reportdb";
+    var $host = "10.0.0.100";
+    var $user = "skull";
+    var $password = "Myname@032102726042_oracle_db";
+    var $db = "queensecdb";
     var $con;
 
     public function connect()
