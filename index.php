@@ -29,7 +29,7 @@ $dead = mysqli_fetch_object(mysqli_query($cf->con,"select * from deadline"));
         <div class="col-md-10 col-12 mx-auto pt-5">
 			<div class="row">
 			<p class="text-danger">Before you login, please prove that you are not a robot</p> <br>
-			<div class="g-recaptcha" data-sitekey="6LfgNncUAAAAAKZLB_fZLSkBySpHmU8iXc83u9Is"></div>
+			<div class="g-recaptcha" data-sitekey="6Lcx5-geAAAAAIdRxz5120jW-o_fFpWYIfV4tmxT"></div>
 			
 			</div>
             <div class="card animated fadeInUp mt-5 container-fluid">
