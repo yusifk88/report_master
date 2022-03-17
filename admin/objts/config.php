@@ -5,7 +5,7 @@ class config
     var $host = "10.0.0.100";
     var $user = "skull";
     var $password = "Myname@032102726042_oracle_db";
-    var $db = "queensecdb";
+    var $db = "q_db";
     var $con;
 
     public function connect()
